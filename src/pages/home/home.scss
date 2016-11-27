@@ -1,69 +1,7 @@
 page-home {
-  ion-content {
-    background: url('../../img/bg-sky.jpg');
+  .content-background {
+    background-image: url('../assets/img/bg-sky.png');
     background-repeat: no-repeat;
-    background-size:cover;
-
-    ion-card {
-      height: 70px;
-    }
-
-    ion-item {
-      height: 72px;
-    }
-
-    .diary-div-left {
-      width: 35px;
-
-      .diary-day {
-        font-size: 3rem;
-        padding-top: 20px;
-        margin-bottom: 0;
-      }
-
-      .diary-week {
-        font-size: 1.2rem;
-        padding-bottom: 18px;
-      }
-    }
-
-    .diary-div-main {
-      .diary-time {
-        font-size: 70%;
-        margin: 0;
-      }
-
-      .diary-header {
-        font-size: 85%;
-        font-weight: bold;
-        margin: 0;
-      }
-
-      .diary-content {
-        color: slategray;
-        font-size: 70%;
-        padding-top: 2px;
-      }
-    }
-
-    .diary-div-right {
-      width: 55px;
-
-      .diary-icon {
-        transform: scale(0.7, 0.7);
-        &.icon-2, &.icon-3 {
-          padding: 6px 0 0 1px;
-        }
-      }
-
-      .attach {
-        transform: scale(0.65, 0.85) rotate(40deg) translate(5px, -20px);
-        padding-left: 38px;
-      }
-
-      .attach-hidden {
-        color: white;
-      }
-    }
+    background-size: cover;
   }
 }

@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-calendar',
+  templateUrl: 'calendar.html'
 })
-export class HomePage {
-  segment: String;
+export class CalendarPage {
 
   constructor(public navCtrl: NavController) {
-    this.segment = 'entry';
+
   }
 }

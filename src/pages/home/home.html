@@ -1,102 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Diary
-    </ion-title>
+  <ion-navbar hideBackButton="true">
+    <div class='segment-menu' padding>
+      <ion-segment [(ngModel)]='segment'>
+        <ion-segment-button value='entry'>Entries</ion-segment-button>
+        <ion-segment-button value='calendar'>Calendar</ion-segment-button>
+        <ion-segment-button value='diary'>Diary</ion-segment-button>
+      </ion-segment>
+    </div>
+    <div class='segment-title' text-center>Diary</div>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <ion-card>
-    <ion-list>
-      <ion-item tappable>
-        <div class='diary-div-left' item-left text-center>
-          <h1 class='diary-day'>12</h1>
-          <h3 class='diary-week'>Mon.</h3>
-        </div>
-        <div class='diary-div-main'>
-          <h3 class='diary-time'>23:15</h3>
-          <h2 class='diary-header'>東京生活4💕</h2>
-          <h3 class='diary-content'>展望台巡りとフリーマーケット💐❤️</h3>
-        </div>  
-        <div class='diary-div-right' item-right>
-          <div>
-            <ion-icon class='diary-icon icon-1' name='ios-sunny-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-2' name='ios-happy-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-3' name='ios-bookmark-outline'></ion-icon>
-          </div>
-          <h1><ion-icon class='attach' name='ios-attach-outline'></ion-icon></h1>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-  <ion-card>
-    <ion-list>
-      <ion-item tappable>
-        <div class='diary-div-left' item-left text-center>
-          <h1 class='diary-day'>11</h1>
-          <h3 class='diary-week'>Sun.</h3>
-        </div>
-        <div class='diary-div-main'>
-          <h3 class='diary-time'>16:21</h3>
-          <h2 class='diary-header'>バイト</h2>
-          <h3 class='diary-content'>&nbsp;</h3>
-        </div>  
-        <div class='diary-div-right' item-right>
-          <div>
-            <ion-icon class='diary-icon icon-1' name='ios-cloudy-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-2' name='ios-happy-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-3' name='ios-bookmark-outline'></ion-icon>
-          </div>
-          <h1>&nbsp;</h1>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-  <ion-card>
-    <ion-list>
-      <ion-item tappable>
-        <div class='diary-div-left' item-left text-center>
-          <h1 class='diary-day'>9</h1>
-          <h3 class='diary-week'>Fri.</h3>
-        </div>
-        <div class='diary-div-main'>
-          <h3 class='diary-time'>21:12</h3>
-          <h2 class='diary-header'>東京生活3💕</h2>
-          <h3 class='diary-content'>お台場水族館に男子二人と💐</h3>
-        </div>  
-        <div class='diary-div-right' item-right>
-          <div>
-            <ion-icon class='diary-icon icon-1' name='ios-sunny-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-2' name='ios-happy-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-3' name='ios-bookmark-outline'></ion-icon>
-          </div>
-          <h1><ion-icon class='attach' name='ios-attach-outline'></ion-icon></h1>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-  <ion-card>
-    <ion-list>
-      <ion-item tappable>
-        <div class='diary-div-left' item-left text-center>
-          <h1 class='diary-day'>8</h1>
-          <h3 class='diary-week'>Thu.</h3>
-        </div>
-        <div class='diary-div-main'>
-          <h3 class='diary-time'>12:05</h3>
-          <h2 class='diary-header'>中間テスト開始</h2>
-          <h3 class='diary-content'>&nbsp;</h3>
-        </div>  
-        <div class='diary-div-right' item-right>
-          <div>
-            <ion-icon class='diary-icon icon-1' name='ios-sunny-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-2' name='ios-happy-outline'></ion-icon>
-            <ion-icon class='diary-icon icon-3' name='ios-bookmark-outline'></ion-icon>
-          </div>
-          <h1>&nbsp;</h1>
-        </div>
-      </ion-item>
-    </ion-list>
-  </ion-card> 
+<ion-content class='content-background' padding>
+  <div [ngSwitch]='segment'>
+    <div *ngSwitchCase="'entry'">
+      <page-entry></page-entry>
+    </div>
+    <div *ngSwitchCase="'calendar'">
+      <page-calendar></page-calendar>
+    </div>
+    <div *ngSwitchCase="'diary'">
+      <page-diary></page-diary>
+    </div>
+  </div>  
 </ion-content>
