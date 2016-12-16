@@ -1,13 +1,10 @@
 <ion-header>
-  <ion-navbar hideBackButton="true">
-    <div class='segment-menu' padding>
-      <ion-segment [(ngModel)]='segment'>
-        <ion-segment-button value='entry'>Entries</ion-segment-button>
-        <ion-segment-button value='calendar'>Calendar</ion-segment-button>
-        <ion-segment-button value='diary'>Diary</ion-segment-button>
-      </ion-segment>
-    </div>
-    <div class='segment-title' text-center>Diary</div>
+  <ion-navbar hideBackButton="true">    
+    <ion-segment [(ngModel)]='segment'>
+      <ion-segment-button value='entry'>Entries</ion-segment-button>
+      <ion-segment-button value='calendar'>Calendar</ion-segment-button>
+      <ion-segment-button value='diary'>Diary</ion-segment-button>
+    </ion-segment>
   </ion-navbar>
 </ion-header>
 <ion-content class='content-background' padding>
