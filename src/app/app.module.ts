@@ -1,11 +1,10 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-
-import { HomePage } from '../pages/home/home';
-import { EntryPage } from '../pages/entry/entry';
-import { CalendarPage } from '../pages/calendar/calendar';
-import { DiaryPage } from '../pages/diary/diary';
+import { NgModule, ErrorHandler } from "@angular/core";
+import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
+import { MyApp } from "./app.component";
+import { HomePage } from "../pages/home/home";
+import { EntryPage } from "../pages/entry/entry";
+import { CalendarPage } from "../pages/calendar/calendar";
+import { DiaryPage } from "../pages/diary/diary";
 
 @NgModule({
   declarations: [
@@ -16,7 +15,8 @@ import { DiaryPage } from '../pages/diary/diary';
     DiaryPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    // Set the whole app in iOS's style
+    IonicModule.forRoot(MyApp, {mode: "ios"})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
