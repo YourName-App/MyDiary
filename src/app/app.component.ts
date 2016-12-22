@@ -1,13 +1,14 @@
 import { Component } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { StatusBar, Splashscreen } from "ionic-native";
+import { MainSegment } from "../pages/segment/segment";
 import { HomePage } from "../pages/home/home";
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = MainSegment;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

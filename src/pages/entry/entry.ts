@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 
 @Component({
-  selector: "page-entry",
+  selector: "entry-page",
   templateUrl: "entry.html"
 })
 export class EntryPage {

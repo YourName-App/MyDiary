@@ -16,27 +16,25 @@
 // automatically applied to the <body> element in the app.
 
 // iOS-specific layout
+
+
 .platform-ios {
   ion-header {
     .segment-menu {
-      position: relative;
       top: -25px
     }
   }
 }
 
-// Android-specific layout
-.platform-android {
-  ion-header {
-    .segment-menu {
-      position: relative;
-    }
-  }
+.rel-position {
+  position: relative;
 }
 
-ion-header {
-  .segment-title {
-    color: steelblue;
-    font-size: 125%;
-  }
-} 
+.no-padding {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+

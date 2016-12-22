@@ -33,9 +33,10 @@ $ ionic serve
 
 ## Screenshot
 
-![Imgur](http://i.imgur.com/bzw7qjE.png)
+![Imgur](http://i.imgur.com/RLfKveH.png)
+![Imgur](http://i.imgur.com/mNOqNEP.png)
 
 
-  [1]: http://www.kiminona.com/index.html
-  [2]: http://ionicframework.com/docs/v2/setup/installation/
+[1]: http://www.kiminona.com/index.html
+[2]: http://ionicframework.com/docs/v2/setup/installation/
 

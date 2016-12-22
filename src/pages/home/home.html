@@ -1,25 +1,24 @@
 <ion-header>
-  <ion-navbar hideBackButton="true">
-    <div class='segment-menu' padding>  
-      <ion-segment [(ngModel)]="segment">
-        <ion-segment-button value="entry">Entries</ion-segment-button>
-        <ion-segment-button value="calendar">Calendar</ion-segment-button>
-        <ion-segment-button value="diary">Diary</ion-segment-button>
-      </ion-segment>
-    </div>
-    <div class='segment-title' text-center>Diary</div>
+  <ion-navbar color="primary" hideBackButton="true">
+    <ion-item color="primary" no-lines>
+      <ion-avatar item-left>
+        <img src="../assets/img/taki_face02.png">
+      </ion-avatar>
+      <h2>TAKI</h2>
+    </ion-item>
   </ion-navbar>
 </ion-header>
-<ion-content class="content-background" padding>
-  <div [ngSwitch]="segment">
-    <div *ngSwitchCase="'entry'">
-      <page-entry></page-entry>
-    </div>
-    <div *ngSwitchCase="'calendar'">
-      <page-calendar></page-calendar>
-    </div>
-    <div *ngSwitchCase="'diary'">
-      <page-diary></page-diary>
-    </div>
-  </div>  
+<ion-content>
+  <ion-list>
+    <ion-item-divider color="light"><ion-icon item-left name="book"></ion-icon>日記</ion-item-divider>
+    <button ion-item lines>我的日記</button>
+
+    <ion-item-divider color="light"><ion-icon item-left name="call"></ion-icon>聯絡人</ion-item-divider>
+    <button ion-item>緊急聯絡人</button>
+    <button ion-item>親朋好友 </button>
+
+    <ion-item-divider color="light"><ion-icon item-left name="information-circle"></ion-icon>備忘錄</ion-item-divider>
+    <button ion-item>禁止事項Ver.5</button>
+    <button ion-item>絕對禁止事項</button>
+  </ion-list>
 </ion-content>

@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from "@angular/core";
 import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
 import { MyApp } from "./app.component";
+import { MainSegment } from "../pages/segment/segment";
 import { HomePage } from "../pages/home/home";
 import { EntryPage } from "../pages/entry/entry";
 import { CalendarPage } from "../pages/calendar/calendar";
@@ -9,6 +10,7 @@ import { DiaryPage } from "../pages/diary/diary";
 @NgModule({
   declarations: [
     MyApp,
+    MainSegment,
     HomePage,
     EntryPage,
     CalendarPage,
@@ -21,6 +23,7 @@ import { DiaryPage } from "../pages/diary/diary";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MainSegment,
     HomePage,
     EntryPage,
     CalendarPage,
