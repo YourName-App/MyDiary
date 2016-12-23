@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar hideBackButton="true"> 
-    <div class="rel-position" padding>  
-      <ion-segment [(ngModel)]="segment">
+    <div class="segment-buttons" padding>  
+      <ion-segment color="diary" [(ngModel)]="segment">
         <ion-segment-button value="entry">項目</ion-segment-button>
         <ion-segment-button value="calendar">日曆</ion-segment-button>
         <ion-segment-button value="diary">日記</ion-segment-button>
       </ion-segment>
     </div>
-    <ion-label class="no-margin" color="primary" text-center>我的日記</ion-label>
+    <ion-label color="diary" class="segment-label" text-center>瀧的日記</ion-label>
   </ion-navbar>
 </ion-header>
 <ion-content class="segment-content" padding>

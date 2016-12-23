@@ -8,7 +8,7 @@ import { HomePage } from "../pages/home/home";
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = MainSegment;
+  rootPage = HomePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

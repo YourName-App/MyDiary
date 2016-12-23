@@ -16,8 +16,6 @@
 // automatically applied to the <body> element in the app.
 
 // iOS-specific layout
-
-
 .platform-ios {
   ion-header {
     .segment-menu {
@@ -26,15 +24,12 @@
   }
 }
 
-.rel-position {
-  position: relative;
-}
-
-.no-padding {
+// Global settings
+.app-no-padding {
   padding: 0;
 }
 
-.no-margin {
+.app-no-margin {
   margin: 0;
 }
 

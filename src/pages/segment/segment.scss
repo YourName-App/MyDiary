@@ -1,5 +1,13 @@
 main-segment {
+  .segment-buttons {
+    position: relative;
+  }
+  .segment-label {
+    font-size: 120%;
+    font-weight: bold;
+    margin: 0;
+  }
   .segment-content {
-    background-color: steelblue;
+    background-color: color($colors, diary);
   }
 }
