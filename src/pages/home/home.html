@@ -9,9 +9,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
+  <ion-list class="animated slideInDown">
     <ion-item-divider color="light"><ion-icon item-left name="book"></ion-icon>日記</ion-item-divider>
-    <button class="diary-button" ion-item lines>瀧的日記</button>
+    <button class="diary-button" ion-item (click)="pushDiarySegment()">瀧的日記</button>
 
     <ion-item-divider color="light"><ion-icon item-left name="call"></ion-icon>聯絡人</ion-item-divider>
     <button class="contact-button" ion-item>瀧的聯絡人</button>

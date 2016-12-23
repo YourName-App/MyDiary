@@ -2,10 +2,10 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 
 @Component({
-  selector: "main-segment",
+  selector: "diary-segment",
   templateUrl: "segment.html"
 })
-export class MainSegment {
+export class DiarySegment {
   segment: string;
 
   constructor(public navCtrl: NavController) {
