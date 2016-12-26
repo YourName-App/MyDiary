@@ -1,0 +1,57 @@
+entry-page {
+  ion-card {
+    height: 70px;
+  }
+
+  ion-item {
+    height: 72px;
+  }
+
+  .diary-div-left {
+    width: 35px;
+    .diary-day {
+      color: color($colors, diary);
+      font-size: 3rem;
+      padding-top: 20px;
+      margin-bottom: 0;
+    }
+    .diary-week {
+      color: color($colors, diary);
+      font-size: 1.2rem;
+      padding-bottom: 18px;
+    }
+  }
+
+  .diary-div-main {
+    .diary-time {
+      color: color($colors, diary);
+      font-size: 70%;
+      margin: 0;
+    }
+    .diary-header {
+      color: color($colors, diary);
+      font-size: 85%;
+      font-weight: bold;
+      margin: 0;
+    }
+    .diary-content {
+      color: color($colors, diary-gray);
+      font-size: 70%;
+      padding-top: 2px;
+    }
+  }
+
+  .diary-div-right {
+    width: 55px;
+    .diary-icon {
+      color: color($colors, diary);
+      transform: scale(0.7, 0.7);
+      padding-bottom: 15px;
+    }
+    .attach {
+      color: color($colors, diary);
+      transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
+      padding-left: 30px;
+    }
+  }
+}

@@ -1,1 +1,41 @@
-Diary Page
+<ion-header>
+<!--
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+  -->
+</ion-header>
+
+<ion-content>
+
+   <h1>{{title}}</h1>
+
+    <div class="diary-div-main"><label>id: </label>{{diary.id}}
+    </div>
+
+    <div class="diary-div-main"><label>name: </label>{{diary.name}}
+    </div>
+
+    <div class="diary-div-main"><label>date: </label>
+      <input [(ngModel)]="diary.date" placeholder="date">
+    </div>
+
+    <div>
+      <label>title: </label>
+      <input [(ngModel)]="diary.title" placeholder="title">
+    </div>
+
+    <div>
+      <label>content: </label>
+      <input [(ngModel)]="diary.content" placeholder="content">
+    </div>
+
+  <p>
+    <button ion-button color="primary" >Save</button>
+    <button ion-button color="primary" >Delete</button>
+    <button ion-button color="primary" >Cancel</button>
+  </p>
+</ion-content>
