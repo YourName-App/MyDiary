@@ -13,13 +13,13 @@
 <ion-content class="segment-content" padding>
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'entry'">
-      <entry-page></entry-page>
+      <page-entry></page-entry>
     </div>
     <div *ngSwitchCase="'calendar'">
-      <calendar-page></calendar-page>
+      <page-calendar></page-calendar>
     </div>
     <div *ngSwitchCase="'diary'">
-      <diary-page></diary-page>
+      <page-diary></page-diary>
     </div>
   </div>  
 </ion-content>

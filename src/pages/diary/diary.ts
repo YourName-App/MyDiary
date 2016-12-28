@@ -1,17 +1,10 @@
 import { Component } from "@angular/core";
-import { SQLite } from 'ionic-native';
-import { NavController, Platform } from 'ionic-angular';
-
-export class Diary {
-  id: number;
-  name: string;
-  title: string;
-  date: string;
-  content: string;
-}
+import { SQLite } from "ionic-native";
+import { NavController, Platform } from "ionic-angular";
+import { Diary } from "../../models/diary/diary";
 
 @Component({
-  selector: "diary-page",
+  selector: "page-diary",
   templateUrl: "diary.html"
 })
 export class DiaryPage {

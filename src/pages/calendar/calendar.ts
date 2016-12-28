@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 
 @Component({
-  selector: "calendar-page",
+  selector: "page-calendar",
   templateUrl: "calendar.html"
 })
 export class CalendarPage {

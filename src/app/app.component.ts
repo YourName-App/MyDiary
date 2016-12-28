@@ -1,20 +1,18 @@
 import { Component } from "@angular/core";
 import { Platform } from "ionic-angular";
-import { StatusBar, Splashscreen } from "ionic-native";
+import { StatusBar, Splashscreen, SQLite } from "ionic-native";
 import { HomePage } from "../pages/home/home";
-import { SQLite } from 'ionic-native';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
   rootPage = HomePage;
-  db : SQLite;
+  db: SQLite;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
 
-    // let db = new SQLite();
       this.db = new SQLite();
       this.db.openDatabase({
           name: "MyDiary.db",
