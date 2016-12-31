@@ -24,13 +24,10 @@ import { DiaryPage } from "../pages/diary/diary";
   entryComponents: [
     MyApp,
     SegmentPage,
-    HomePage,
-    EntryPage,
-    CalendarPage,
-    DiaryPage
+    HomePage
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
