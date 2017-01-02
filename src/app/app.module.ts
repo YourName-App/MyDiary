@@ -24,7 +24,10 @@ import { DiaryPage } from "../pages/diary/diary";
   entryComponents: [
     MyApp,
     SegmentPage,
-    HomePage
+    HomePage,
+    EntryPage,
+    CalendarPage,
+    DiaryPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}
