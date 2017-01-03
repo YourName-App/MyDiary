@@ -1,5 +1,9 @@
 page-home {
-  .diary-button, .contact-button, .memo-button {
-    color: color($colors, diary);
+  .item-block {
+    height: 72px;
   }
-}
+
+  .input-wrapper {
+    height: 70px;
+  }
+}  

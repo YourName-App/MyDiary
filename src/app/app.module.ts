@@ -1,33 +1,46 @@
-import { NgModule, ErrorHandler } from "@angular/core";
-import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
-import { MyApp } from "./app.component";
-import { SegmentPage } from "../pages/segment/segment";
-import { HomePage } from "../pages/home/home";
-import { EntryPage } from "../pages/entry/entry";
-import { CalendarPage } from "../pages/calendar/calendar";
-import { DiaryPage } from "../pages/diary/diary";
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { TabsPage } from '../pages/tabs/tabs';
+import { HomePage } from '../pages/home/home';
+import { DiaryPage } from '../pages/diary/diary';
+import { EntryPage } from '../pages/entry/entry';
+import { CalendarPage } from '../pages/calendar/calendar';
+import { EditPage } from '../pages/edit/edit';
+import { ContentPage } from '../pages/content/content';
+import { ContactPage } from '../pages/contact/contact';
+import { MemoPage } from '../pages/memo/memo';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    SegmentPage,
+    TabsPage,
     HomePage,
+    DiaryPage,
     EntryPage,
     CalendarPage,
-    DiaryPage
+    EditPage,
+    ContentPage,
+    ContactPage,
+    MemoPage
   ],
   imports: [
     // Set the whole app in iOS's style
-    IonicModule.forRoot(MyApp, {mode: "ios"})
+    IonicModule.forRoot(MyApp, {mode: 'ios'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SegmentPage,
+    TabsPage,
     HomePage,
+    DiaryPage,
     EntryPage,
     CalendarPage,
-    DiaryPage
+    EditPage,
+    ContentPage,
+    ContactPage,
+    MemoPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}

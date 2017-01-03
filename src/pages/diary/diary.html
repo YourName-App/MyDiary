@@ -1,28 +1,26 @@
-    <div class="diary-div-main"><label>姓名: </label>{{diary.name}}
+<ion-header>
+  <ion-navbar> 
+    <div class="segment-buttons" padding>  
+      <ion-segment color="diary" [(ngModel)]="segment">
+        <ion-segment-button value="entry">項目</ion-segment-button>
+        <ion-segment-button value="calendar">日曆</ion-segment-button>
+        <ion-segment-button value="edit">日記</ion-segment-button>
+      </ion-segment>
     </div>
+    <ion-label color="diary" class="segment-label" text-center>瀧的日記</ion-label>
+  </ion-navbar>
+</ion-header>
 
-    <div class="diary-div-main"><label>日期: </label>
-      <input [(ngModel)]="diary.date" placeholder="date">
+<ion-content class="segment-content" padding>
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'entry'">
+      <page-entry></page-entry>
     </div>
-
-    <div>
-      <label>主題: </label>
-      <input [(ngModel)]="diary.title" placeholder="title">
+    <div *ngSwitchCase="'calendar'">
+      <page-calendar></page-calendar>
     </div>
-
-    <div>
-     <ion-label>記事: </ion-label>
-     <ion-item>
-       <ion-textarea rows="10" [(ngModel)]="diary.content" placeholder="content"></ion-textarea>
-     </ion-item>
+    <div *ngSwitchCase="'edit'">
+      <page-edit></page-edit>
     </div>
-
-  <p>
-    <button ion-button color="primary" (click)="save()">Save</button>
-    <button ion-button color="primary" (click)="delete()">Delete</button>
-    <button ion-button color="primary" (click)="refresh()">Cancel</button>
-  </p>
-
-<!--
-    </ion-content>
--->
+  </div>  
+</ion-content>

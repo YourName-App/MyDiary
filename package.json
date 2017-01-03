@@ -26,7 +26,10 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "0.0.48",
-    "typescript": "^2.1.4"
+    "eslint": "^3.12.2",
+    "eslint-config-google": "^0.7.1",
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",

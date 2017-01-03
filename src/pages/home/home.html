@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary" hideBackButton="true">
+  <ion-navbar color="diary">
     <ion-item color="diary" no-lines>
       <ion-avatar item-left>
         <img src="assets/img/taki_face02.png">
@@ -8,16 +8,14 @@
     </ion-item>
   </ion-navbar>
 </ion-header>
+
 <ion-content>
-  <ion-list class="animated slideInDown">
-    <ion-item-divider color="light"><ion-icon item-left name="book"></ion-icon>日記</ion-item-divider>
-    <button class="diary-button" ion-item (click)="pushDiarySegment()">瀧的日記</button>
+  <ion-list>
+    <button class="diary-button" ion-item text-middle (click)="selectTab(1)"><ion-icon item-left name="book"></ion-icon>我的日記</button>
 
-    <ion-item-divider color="light"><ion-icon item-left name="call"></ion-icon>聯絡人</ion-item-divider>
-    <button class="contact-button" ion-item>瀧的聯絡人</button>
+    <button class="contact-button" ion-item><ion-icon item-left name="call"></ion-icon>我的聯絡人</button>
 
-    <ion-item-divider color="light"><ion-icon item-left name="information-circle"></ion-icon>備忘錄</ion-item-divider>
-    <button class="memo-button" ion-item>禁止事項Ver.5</button>
-    <button class="memo-button" ion-item>絕對禁止事項</button>
+    <button class="memo-button" ion-item><ion-icon item-left name="information-circle"></ion-icon>禁止事項Ver.5</button>
+    <button class="memo-button" ion-item><ion-icon item-left name="information-circle"></ion-icon>絕對禁止事項</button>
   </ion-list>
 </ion-content>

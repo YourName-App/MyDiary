@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { Platform } from "ionic-angular";
 import { StatusBar, Splashscreen, SQLite } from "ionic-native";
-import { HomePage } from "../pages/home/home";
+import { TabsPage } from "../pages/tabs/tabs";
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = TabsPage;
   db: SQLite;
 
   constructor(platform: Platform) {

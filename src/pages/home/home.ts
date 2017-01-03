@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
-import { SegmentPage } from "../segment/segment";
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { DiaryPage } from '../diary/diary';
 
 @Component({
-  selector: "page-home",
-  templateUrl: "home.html"
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
-  pushDiarySegment() {
-    this.navCtrl.push(SegmentPage);
+  public selectTab(tabIndex: number): void {
+    this.navCtrl.parent.select(tabIndex);
   }
 }
