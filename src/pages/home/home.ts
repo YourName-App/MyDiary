@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { DiaryPage } from '../diary/diary';
 
 @Component({
   selector: 'page-home',
