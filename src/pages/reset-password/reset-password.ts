@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthData } from '../../providers/auth-data';
+import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
 
 @Component({
@@ -13,7 +13,7 @@ export class ResetPasswordPage {
   emailChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public authData: AuthData, 
+  constructor(public navCtrl: NavController, public authServ: AuthService, 
     public formBuilder: FormBuilder, public alertCtrl: AlertController) {
 
     this.resetPasswordForm = formBuilder.group({
@@ -31,7 +31,7 @@ export class ResetPasswordPage {
     if (!this.resetPasswordForm.valid) {
       console.log(this.resetPasswordForm.value);
     } else {
-      this.authData.resetPassword(this.resetPasswordForm.value.email).then((user) => {
+      this.authServ.resetPassword(this.resetPasswordForm.value.email).then((user) => {
         const alert = this.alertCtrl.create({
           message: '重設密碼的連結已寄送至你的電子郵件',
           buttons: [{

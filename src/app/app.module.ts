@@ -19,7 +19,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 
 // Import providers
-import { AuthData } from '../providers/auth-data';
+import { AuthService } from '../providers/auth-service';
 
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -81,7 +81,7 @@ const myFirebaseAuthConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthData
+    AuthService
   ]
 })
 export class AppModule {}

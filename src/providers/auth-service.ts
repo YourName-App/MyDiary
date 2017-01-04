@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 @Injectable()
-export class AuthData {
+export class AuthService {
   fireAuth: any;
 
   constructor(public af: AngularFire) {
@@ -17,7 +17,7 @@ export class AuthData {
   }
 
   // Get the currently logged user
-  getUser(){
+  getUser() {
     return this.fireAuth;
   }
 
@@ -35,7 +35,7 @@ export class AuthData {
   }
 
   // Log-in a user anonymously
-  anonymousLogin(){
+  anonymousLogin() {
     return this.af.auth.login({
       provider: AuthProviders.Anonymous,
       method: AuthMethods.Anonymous,
@@ -43,7 +43,7 @@ export class AuthData {
   }
 
   // Link email and password credentials to an anonymous user
-  linkAccount(email, password): any {
+  linkAccount(email: string, password: string): any {
     const userProfile = firebase.database().ref('/userProfile');
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthData } from '../../providers/auth-data';
+import { AuthService } from '../../providers/auth-service';
 import { TabsPage } from '../tabs/tabs';
 import { EmailValidator } from '../../validators/email';
 
@@ -16,7 +16,7 @@ export class SignupPage {
   submitAttempt: boolean = false;
   loading;
 
-  constructor(public navCtrl: NavController, public authData: AuthData, public formBuilder: FormBuilder,
+  constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   
     this.signupForm = formBuilder.group({
@@ -36,7 +36,7 @@ export class SignupPage {
     if (!this.signupForm.valid) {
       console.log(this.signupForm.value);
     } else {
-      this.authData.linkAccount(this.signupForm.value.email, this.signupForm.value.password).then( authData => {
+      this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then( user => {
         this.navCtrl.setRoot(TabsPage);
       }, error => {
         this.loading.dismiss().then( () => {

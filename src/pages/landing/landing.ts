@@ -3,7 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
-import { AuthData } from '../../providers/auth-data';
+import { AuthService } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-landing',
@@ -11,7 +11,7 @@ import { AuthData } from '../../providers/auth-data';
 })
 export class LandingPage {
 
-  constructor(public navCtrl: NavController, public authData: AuthData, public loadingCtrl: LoadingController) {}
+  constructor(public navCtrl: NavController, public authServ: AuthService, public loadingCtrl: LoadingController) {}
 
   goToLogin(){
     this.navCtrl.push(LoginPage);
@@ -22,7 +22,7 @@ export class LandingPage {
   }
 
   goToAnonymousLogin() {
-    this.authData.anonymousLogin().then( user => {
+    this.authServ.anonymousLogin().then( user => {
       this.navCtrl.setRoot(TabsPage);
     });
 

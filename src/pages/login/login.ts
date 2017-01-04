@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthData } from '../../providers/auth-data';
+import { AuthService } from '../../providers/auth-service';
 import { TabsPage } from '../tabs/tabs';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import { EmailValidator } from '../../validators/email';
@@ -17,7 +17,7 @@ export class LoginPage {
   submitAttempt: boolean = false;
   loading: any;
 
-  constructor(public navCtrl: NavController, public authData: AuthData, public formBuilder: FormBuilder,
+  constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
       
     this.loginForm = formBuilder.group({
@@ -37,7 +37,7 @@ export class LoginPage {
     if (!this.loginForm.valid) {
       console.log(this.loginForm.value);
     } else {
-      this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
+      this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
         this.navCtrl.setRoot(TabsPage);
       }, error => {
         this.loading.dismiss().then( () => {

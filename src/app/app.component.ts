@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen, SQLite } from "ionic-native";
 
 // Import pages
 import { TabsPage } from "../pages/tabs/tabs";
-import {LandingPage} from '../pages/landing/landing';
+import { LandingPage } from '../pages/landing/landing';
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
