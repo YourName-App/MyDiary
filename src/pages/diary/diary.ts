@@ -9,6 +9,6 @@ export class DiaryPage {
   segment: string;
 
   constructor(public navCtrl: NavController) {
-    this.segment = 'entry';
+    this.segment = 'diary-list';
   }
 }

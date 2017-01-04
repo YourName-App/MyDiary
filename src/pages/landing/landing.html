@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="diary">
+    <ion-title>你的名字是？ </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="landing">
+  <form novalidate>
+    <button color="diary" ion-button block (click)="goToLogin()">
+      登入使用
+    </button>
+    <button color="diary" ion-button block (click)="goToSignup()">
+      註冊帳號
+    </button>
+  </form>
+
+  <button color="diary" ion-button block clear (click)="goToAnonymousLogin()">
+    我的名字是？我要匿名試用 🤔
+  </button>
+</ion-content>

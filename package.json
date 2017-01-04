@@ -18,6 +18,7 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "1.1.6",
+    "angularfire2": "^2.0.0-beta.6",
     "ionic-angular": "2.0.0-rc.4",
     "ionic-native": "2.2.11",
     "ionicons": "3.0.0",
@@ -32,14 +33,14 @@
     "typings": "^2.1.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-whitelist",
-    "cordova-plugin-statusbar",
-    "cordova-plugin-console",
-    "cordova-plugin-device",
-    "ionic-plugin-keyboard",
-    "cordova-plugin-splashscreen",
+    {
+      "locator": "https://github.com/apache/cordova-plugin-splashscreen.git",
+      "id": "cordova-plugin-splashscreen"
+    },
     "cordova-sqlite-storage",
-    "cordova-plugin-crosswalk-webview"
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-camera",
+    "cordova-plugin-compat"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
 import { SQLite } from 'ionic-native';
 import { NavController, Platform } from 'ionic-angular';
-import { Diary } from '../../models/diary/diary';
+
+export interface Diary {
+  id: number;
+  name: string;
+  title: string;
+  date: string;
+  content: string;
+}
 
 @Component({
-  selector: 'page-edit',
-  templateUrl: 'edit.html'
+  selector: 'page-diary-edit',
+  templateUrl: 'diary-edit.html'
 })
-export class EditPage {
+export class DiaryEditPage {
   title = 'Details of My Diary';
   diary: Diary;
   /*

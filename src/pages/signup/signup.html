@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="diary">
+    <ion-title>註冊帳號</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+    <ion-item>
+      <ion-label stacked>電子郵件</ion-label>
+      <ion-input #email formControlName="email" type="email" placeholder="你的電子郵件"
+        (change)="elementChanged(email)" [class.invalid]="!signupForm.controls.email.valid && (emailChanged || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid && (emailChanged || submitAttempt)">
+      <p>請輸入正確的電子郵件</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>密碼</ion-label>
+      <ion-input #password formControlName="password" type="password" placeholder="你的密碼"
+        (change)="elementChanged(password)" [class.invalid]="!signupForm.controls.password.valid && (passwordChanged || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid && (passwordChanged || submitAttempt)">
+      <p>密碼長度至少為 6 個字元</p>
+    </ion-item>
+
+    <button color="diary" ion-button block type="submit">註冊帳號</button>
+  </form>
+</ion-content>

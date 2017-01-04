@@ -9,7 +9,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
-  public selectTab(tabIndex: number): void {
+  selectTab(tabIndex: number) {
     this.navCtrl.parent.select(tabIndex);
   }
 }

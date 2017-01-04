@@ -2,9 +2,9 @@
   <ion-navbar> 
     <div class="segment-buttons" padding>  
       <ion-segment color="diary" [(ngModel)]="segment">
-        <ion-segment-button value="entry">項目</ion-segment-button>
+        <ion-segment-button value="diary-list">項目</ion-segment-button>
         <ion-segment-button value="calendar">日曆</ion-segment-button>
-        <ion-segment-button value="edit">日記</ion-segment-button>
+        <ion-segment-button value="diary">日記</ion-segment-button>
       </ion-segment>
     </div>
     <ion-label color="diary" class="segment-label" text-center>瀧的日記</ion-label>
@@ -13,14 +13,14 @@
 
 <ion-content class="segment-content" padding>
   <div [ngSwitch]="segment">
-    <div *ngSwitchCase="'entry'">
-      <page-entry></page-entry>
+    <div *ngSwitchCase="'diary-list'">
+      <page-diary-list></page-diary-list>
     </div>
     <div *ngSwitchCase="'calendar'">
       <page-calendar></page-calendar>
     </div>
-    <div *ngSwitchCase="'edit'">
-      <page-edit></page-edit>
+    <div *ngSwitchCase="'diary-edit'">
+      <page-diary-edit></page-diary-edit>
     </div>
   </div>  
 </ion-content>
