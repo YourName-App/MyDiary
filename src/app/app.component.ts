@@ -1,22 +1,61 @@
-import { Component } from "@angular/core";
-import { Platform } from "ionic-angular";
-import { StatusBar, Splashscreen, SQLite } from "ionic-native";
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
+import { StatusBar, Splashscreen, SQLite } from 'ionic-native';
 
 // Import pages
-import { TabsPage } from "../pages/tabs/tabs";
+import { TabsPage } from '../pages/tabs/tabs';
+import { SignupPage } from '../pages/signup/signup';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { LandingPage } from '../pages/landing/landing';
+import { SuggestPage } from '../pages/suggest/suggest';
+import { AboutPage } from '../pages/about/about';
+
+// Import providers
+import { AuthService } from '../providers/auth-service';
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
 
+export interface PageInterface {
+  title: string;
+  component: any;
+  icon: string;
+  index?: number;
+  navPush?: boolean;
+  logsOut?: boolean;
+}
+
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.html'
 })
 export class MyApp {
+  // the root nav is a child of the root app component
+  // @ViewChild(Nav) gets a reference to the app's root nav
+  @ViewChild(Nav) nav: Nav;
+  
+  // List of pages that can be navigated to from the side menu
+  tabPages: PageInterface[] = [
+    { title: '首頁', component: TabsPage, icon: 'ios-home-outline' },
+    { title: '日記', component: TabsPage, index: 1, icon: 'ios-book-outline' },
+    { title: '聯絡人', component: TabsPage, index: 2, icon: 'ios-call-outline' },
+    { title: '備忘錄', component: TabsPage, index: 3, icon: 'ios-alert-outline' }
+  ];
+
+  accountPages: PageInterface[] = [
+    { title: '註冊帳號', component: SignupPage, navPush: true, icon: 'ios-person-add-outline' },
+    { title: '重設密碼', component: ResetPasswordPage, navPush: true, icon: 'ios-refresh-circle-outline' },
+    { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
+  ];
+
+  otherPages: PageInterface[] = [
+    { title: '建議', component: SuggestPage, navPush: true, icon: 'ios-chatbubbles-outline' },
+    { title: '關於 ', component: AboutPage, navPush: true, icon: 'ios-help-circle-outline' }
+  ];
+
   rootPage: any;
   db: SQLite;
 
-  constructor(platform: Platform, public af: AngularFire) {
+  constructor(platform: Platform, public af: AngularFire, public authServ: AuthService) {
     // Listen for authentication
     af.auth.subscribe( user => {
       if (user) {
@@ -45,6 +84,25 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
+  }
+
+  openPage(page: PageInterface) {
+    if (page.navPush === true) {
+      this.nav.push(page.component);
+    } else {
+      if (page.index) {
+        this.nav.setRoot(page.component, { tabIndex: page.index });
+      } else {
+        this.nav.setRoot(page.component);
+      }
+    }
+
+    if (page.logsOut === true) {
+      // Give the menu time to close before changing to logged out
+      setTimeout(() => {
+        this.authServ.logoutUser();
+      }, 1000);
+    }
   }
 
   public create(){

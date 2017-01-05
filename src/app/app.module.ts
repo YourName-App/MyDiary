@@ -7,16 +7,19 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { DiaryPage } from '../pages/diary/diary';
 import { DiaryListPage } from '../pages/diary-list/diary-list';
-import { CalendarPage } from '../pages/calendar/calendar';
 import { DiaryEditPage } from '../pages/diary-edit/diary-edit';
 import { DiaryContentPage } from '../pages/diary-content/diary-content';
+import { CalendarPage } from '../pages/calendar/calendar';
 import { ContactPage } from '../pages/contact/contact';
 import { MemoPage } from '../pages/memo/memo';
+import { MemoEditPage } from '../pages/memo-edit/memo-edit';
 import { MemoContentPage } from '../pages/memo-content/memo-content';
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import { SuggestPage } from '../pages/suggest/suggest';
+import { AboutPage } from '../pages/about/about';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -45,16 +48,19 @@ const myFirebaseAuthConfig = {
     HomePage,
     DiaryPage,
     DiaryListPage,
-    CalendarPage,
     DiaryEditPage,
     DiaryContentPage,
+    CalendarPage,
     ContactPage,
     MemoPage,
+    MemoEditPage,
     MemoContentPage,
     LandingPage,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    SuggestPage,
+    AboutPage
   ],
   imports: [
     // Set the whole app in iOS's style
@@ -68,16 +74,19 @@ const myFirebaseAuthConfig = {
     HomePage,
     DiaryPage,
     DiaryListPage,
-    CalendarPage,
     DiaryEditPage,
     DiaryContentPage,
+    CalendarPage,
     ContactPage,
     MemoPage,
+    MemoEditPage,
     MemoContentPage,
     LandingPage,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    SuggestPage,
+    AboutPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

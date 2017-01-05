@@ -1,0 +1,31 @@
+<ion-menu id="sideMenu" side="right" [content]="content">
+  <ion-header>
+    <ion-toolbar color="diary-gray">
+      <ion-title>功能選單</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+    <ion-list>
+      <ion-list-header>頁籤</ion-list-header>
+      <button ion-item menuClose *ngFor="let p of tabPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+
+      <ion-list-header>帳號</ion-list-header>
+      <button ion-item menuClose *ngFor="let p of accountPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+
+      <ion-list-header>其他</ion-list-header>
+      <button ion-item menuClose *ngFor="let p of otherPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
