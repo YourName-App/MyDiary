@@ -3,7 +3,7 @@ import { NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { DiaryPage } from '../diary/diary';
 import { ContactPage } from '../contact/contact';
-import { MemoPage } from '../memo/memo';
+import { MemoListPage } from '../memo-list/memo-list';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -13,11 +13,10 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = DiaryPage;
   tab3Root: any = ContactPage;
-  tab4Root: any = MemoPage;
+  tab4Root: any = MemoListPage;
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }
-
 }

@@ -1,17 +1,18 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar no-border-bottom>
     <button color="diary" ion-button menuToggle end>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <div class="segment-buttons" padding>  
-      <ion-segment color="diary" [(ngModel)]="segment">
-        <ion-segment-button value="diary-list">項目</ion-segment-button>
-        <ion-segment-button value="calendar">日曆</ion-segment-button>
-        <ion-segment-button value="diary-edit">日記</ion-segment-button>
-      </ion-segment>
-    </div>
-    <ion-label color="diary" class="segment-label" text-center>我的日記</ion-label>
+    <ion-segment color="diary" [(ngModel)]="segment">
+      <ion-segment-button value="diary-list">項目</ion-segment-button>
+      <ion-segment-button value="calendar">日曆</ion-segment-button>
+      <ion-segment-button value="diary-edit">日記</ion-segment-button>
+    </ion-segment>
   </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar class="diary-searchbar" placeholder="搜尋 ">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="segment-content" padding>

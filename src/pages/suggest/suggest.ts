@@ -12,5 +12,4 @@ export class SuggestPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SuggestPage');
   }
-
 }

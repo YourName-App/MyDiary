@@ -12,5 +12,4 @@ export class MemoEditPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MemoEditPage');
   }
-
 }

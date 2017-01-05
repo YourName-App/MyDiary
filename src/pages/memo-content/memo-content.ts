@@ -8,5 +8,4 @@ import { NavController, NavParams } from 'ionic-angular';
 export class MemoContentPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
 }
