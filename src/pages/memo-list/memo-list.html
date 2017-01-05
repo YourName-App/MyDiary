@@ -1,13 +1,14 @@
 <ion-header>
   <ion-navbar color="diary" no-border-bottom>
-    <button ion-button menuToggle end>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>備忘錄</ion-title>
   </ion-navbar>
   <ion-toolbar color="diary" no-border-top>
-    <ion-searchbar class="memo-list-searchbar" placeholder="搜尋 ">
+    <ion-searchbar color="diary" class="memo-list-searchbar" placeholder="搜尋"
+                   showCancelButton=true cancelButtonText="取消">
     </ion-searchbar>
+    <button ion-button menuToggle end>
+      <ion-icon class="menu-icon" name="menu"></ion-icon>
+    </button>
   </ion-toolbar>
 </ion-header>
 

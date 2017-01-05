@@ -2,16 +2,10 @@ page-diary {
   .segment-content {
     background-color: color($colors, diary);
   }
-
   .diary-searchbar {
     margin-top: -10px;
   }
-
-  .searchbar-ios {
-    padding: 0 12px;
-  }
-
-  .searchbar-md {
-    padding: 0 12px;
+  .menu-icon {
+    padding-bottom: 5px; 
   }
 }
