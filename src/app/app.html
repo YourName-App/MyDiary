@@ -7,12 +7,6 @@
 
   <ion-content class="outer-content">
     <ion-list>
-      <ion-list-header>頁籤</ion-list-header>
-      <button ion-item menuClose *ngFor="let p of tabPages" (click)="openPage(p)">
-        <ion-icon item-left [name]="p.icon"></ion-icon>
-        {{p.title}}
-      </button>
-
       <ion-list-header>帳號</ion-list-header>
       <button ion-item menuClose *ngFor="let p of accountPages" (click)="openPage(p)">
         <ion-icon item-left [name]="p.icon"></ion-icon>

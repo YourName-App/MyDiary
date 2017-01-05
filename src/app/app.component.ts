@@ -34,13 +34,6 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   
   // List of pages that can be navigated to from the side menu
-  tabPages: PageInterface[] = [
-    { title: '首頁', component: TabsPage, icon: 'ios-home-outline' },
-    { title: '日記', component: TabsPage, index: 1, icon: 'ios-book-outline' },
-    { title: '聯絡人', component: TabsPage, index: 2, icon: 'ios-call-outline' },
-    { title: '備忘錄', component: TabsPage, index: 3, icon: 'ios-alert-outline' }
-  ];
-
   accountPages: PageInterface[] = [
     { title: '註冊帳號', component: SignupPage, navPush: true, icon: 'ios-person-add-outline' },
     { title: '重設密碼', component: ResetPasswordPage, navPush: true, icon: 'ios-refresh-circle-outline' },
@@ -90,11 +83,7 @@ export class MyApp {
     if (page.navPush === true) {
       this.nav.push(page.component);
     } else {
-      if (page.index) {
-        this.nav.setRoot(page.component, { tabIndex: page.index });
-      } else {
-        this.nav.setRoot(page.component);
-      }
+      this.nav.setRoot(page.component);
     }
 
     if (page.logsOut === true) {
