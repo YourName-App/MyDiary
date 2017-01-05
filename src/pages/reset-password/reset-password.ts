@@ -47,7 +47,7 @@ export class ResetPasswordPage {
       }, (error) => {
         var errorMessage: string = error.message;
         const errorAlert = this.alertCtrl.create({
-          message: errorMessage,
+          message: '此電子郵件尚未註冊。',
           buttons: [{
             text: '確認',
             role: 'cancel'

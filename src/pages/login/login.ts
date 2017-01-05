@@ -42,7 +42,7 @@ export class LoginPage {
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
-            message: '登入失敗，請確認你的電子郵件與密碼',
+            message: '登入失敗，請確認你的電子郵件與密碼。',
             buttons: [{
               text: '確認',
               role: 'cancel'

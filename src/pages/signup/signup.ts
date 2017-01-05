@@ -41,7 +41,7 @@ export class SignupPage {
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
-            message: '註冊帳號失敗，請稍後再試',
+            message: '註冊失敗，請稍後再試。',
             buttons: [{
               text: '確認',
               role: 'cancel'
