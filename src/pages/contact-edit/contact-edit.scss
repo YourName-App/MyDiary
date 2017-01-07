@@ -1,4 +1,4 @@
-page-login {
+page-contact-edit {
   form {
     margin-bottom: 32px;
 
@@ -22,5 +22,8 @@ page-login {
   }
   .error-message .item-inner {
     border-bottom: 0 !important;
+  }
+  .close-icon {
+    margin-right: 10px;
   }
 }

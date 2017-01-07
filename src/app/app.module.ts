@@ -6,14 +6,16 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { DiaryPage } from '../pages/diary/diary';
-import { DiaryListPage } from '../pages/diary-list/diary-list';
 import { DiaryEditPage } from '../pages/diary-edit/diary-edit';
-import { DiaryContentPage } from '../pages/diary-content/diary-content';
-import { MemoListPage } from '../pages/memo-list/memo-list';
+import { DiaryListPage } from '../pages/diary-list/diary-list';
+import { DiaryDetailPage } from '../pages/diary-detail/diary-detail';
 import { MemoEditPage } from '../pages/memo-edit/memo-edit';
-import { MemoContentPage } from '../pages/memo-content/memo-content';
+import { MemoListPage } from '../pages/memo-list/memo-list';
+import { MemoDetailPage } from '../pages/memo-detail/memo-detail';
+import { ContactEditPage } from '../pages/contact-edit/contact-edit';
+import { ContactListPage } from '../pages/contact-list/contact-list';
+import { ContactDetailPage } from '../pages/contact-detail/contact-detail';
 import { CalendarPage } from '../pages/calendar/calendar';
-import { ContactPage } from '../pages/contact/contact';
 import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -23,6 +25,8 @@ import { AboutPage } from '../pages/about/about';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
+import { MemoService } from '../providers/memo-service';
+import { ContactService } from '../providers/contact-service';
 
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -47,14 +51,16 @@ const myFirebaseAuthConfig = {
     TabsPage,
     HomePage,
     DiaryPage,
-    DiaryListPage,
     DiaryEditPage,
-    DiaryContentPage,
-    MemoListPage,
+    DiaryListPage,
+    DiaryDetailPage,
     MemoEditPage,
-    MemoContentPage,
+    MemoListPage,
+    MemoDetailPage,
+    ContactEditPage,
+    ContactListPage,
+    ContactDetailPage,
     CalendarPage,
-    ContactPage,
     LandingPage,
     LoginPage,
     SignupPage,
@@ -73,14 +79,16 @@ const myFirebaseAuthConfig = {
     TabsPage,
     HomePage,
     DiaryPage,
-    DiaryListPage,
     DiaryEditPage,
-    DiaryContentPage,
-    MemoListPage,
+    DiaryListPage,
+    DiaryDetailPage,
     MemoEditPage,
-    MemoContentPage,
+    MemoListPage,
+    MemoDetailPage,
+    ContactEditPage,
+    ContactListPage,
+    ContactDetailPage,
     CalendarPage,
-    ContactPage,
     LandingPage,
     LoginPage,
     SignupPage,
@@ -90,7 +98,9 @@ const myFirebaseAuthConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    MemoService,
+    ContactService
   ]
 })
 export class AppModule {}

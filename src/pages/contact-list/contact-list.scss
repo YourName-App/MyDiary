@@ -1,0 +1,25 @@
+page-contact-list {
+  h2.contact-name {
+    margin-top: 5px;
+  }
+  p.phone-no {
+    font-size: 1.5rem;
+  }
+  .contact-searchbar {
+    margin-top: -10px;
+  }
+  .add-icon {
+    margin-right: 10px;
+  }
+  .menu-icon {
+    margin-bottom: 5px; 
+  }
+  .item-block {
+    height: 64px;
+  }
+  .item-ios ion-avatar img {
+    width: 56px;
+    height: 56px;
+    transform: translate(0, 4px);
+  }
+}

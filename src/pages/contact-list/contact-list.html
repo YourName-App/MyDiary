@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar color="diary" no-border-bottom>
-    <ion-title>備忘錄</ion-title>
+    <ion-title>聯絡人</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="createMemo()">
+      <button ion-button icon-only (click)="createContact()">
         <ion-icon class="add-icon" name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar color="diary" no-border-top>
-    <ion-searchbar color="diary" class="memo-list-searchbar" placeholder="搜尋"
+    <ion-searchbar color="diary" class="contact-searchbar" placeholder="搜尋"
                    showCancelButton=true cancelButtonText="取消">
     </ion-searchbar>
     <button ion-button menuToggle end>
@@ -19,9 +19,12 @@
 
 <ion-content>
   <ion-list>
-    <button *ngFor="let memo of memoList | async" ion-item detail-none (click)="showMemoDetail(memo.$key)">
-      <ion-icon name="ios-list-box-outline" item-left></ion-icon>
-      <h2>{{memo.title}}</h2>
-    </button>
+    <ion-item *ngFor="let contact of contactList | async" ion-item (click)="showContactDetail(contact.$key)">
+      <ion-avatar item-left>
+        <img class="img-avatar" src="{{contact.avatar}}">
+      </ion-avatar>
+      <h2 class="contact-name">{{contact.name}}</h2>
+      <p class="phone-no">{{contact.phone}}</p>
+    </ion-item>
   </ion-list>
 </ion-content>

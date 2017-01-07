@@ -5,7 +5,7 @@
     </button>
     <ion-item color="diary" no-lines>
       <ion-avatar item-left>
-        <img src="assets/img/taki_face02.png">
+        <img src="assets/img/avatar-boy.png">
       </ion-avatar>
       <h1 class="user-name">立花 瀧</h1>
     </ion-item>
@@ -14,11 +14,17 @@
 
 <ion-content>
   <ion-list>
-    <button class="diary-button" ion-item (click)="selectTab(1)"><ion-icon class="home-icon" item-left name="book"></ion-icon>我的日記</button>
-
-    <button class="contact-button" ion-item (click)="selectTab(2)"><ion-icon class="home-icon" item-left name="call"></ion-icon>我的聯絡人</button>
-
-    <button class="memo-button" ion-item><ion-icon class="home-icon" item-left name="alert"></ion-icon>禁止事項Ver.5</button>
-    <button class="memo-button" ion-item><ion-icon class="home-icon" item-left name="alert"></ion-icon>絕對禁止事項</button>
+    <button class="diary-button" ion-item (click)="selectTab(1)">
+      <ion-icon class="home-icon" name="book" item-left></ion-icon>
+      我的日記
+    </button>
+    <button class="contact-button" ion-item (click)="selectTab(2)">
+      <ion-icon class="home-icon" name="call" item-left></ion-icon>
+      我的聯絡人
+    </button>
+    <button class="memo-button" ion-item (click)="selectTab(3)">
+      <ion-icon class="home-icon" name="alert" item-left></ion-icon>
+      我的備忘錄
+    </button>  
   </ion-list>
 </ion-content>

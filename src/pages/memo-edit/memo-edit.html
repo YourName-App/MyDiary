@@ -1,9 +1,26 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>MemoEdit</ion-title>
+  <ion-navbar color="diary">
+    <ion-title>{{memoTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="close-icon" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="memoForm" (submit)="createMemo()" novalidate>
+    <ion-item>
+      <ion-label stacked>標題</ion-label>
+      <ion-input #title formControlName="title" type="text" placeholder="備忘錄標題"
+        (change)="elementChanged(title)" [class.invalid]="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
+      <p>請輸入備忘錄標題</p>
+    </ion-item>
 
+    <button color="diary" ion-button block type="submit">確認</button>
+  </form>  
 </ion-content>
