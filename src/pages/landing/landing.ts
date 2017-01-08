@@ -10,7 +10,7 @@ import { AuthService } from '../../providers/auth-service';
   templateUrl: 'landing.html'
 })
 export class LandingPage {
-
+  
   constructor(public navCtrl: NavController, public authServ: AuthService, public loadingCtrl: LoadingController) {}
 
   goToLogin(){
@@ -26,10 +26,10 @@ export class LandingPage {
       this.navCtrl.setRoot(TabsPage);
     });
 
-    const loading = this.loadingCtrl.create({
+    const loader = this.loadingCtrl.create({
       dismissOnPageChange: true
     });
 
-    loading.present();
+    loader.present();
   }
 }

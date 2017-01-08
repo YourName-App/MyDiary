@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar color="diary">
-    <ion-title>MemoDetail</ion-title>
+    <ion-title class="nav-title">{{memo.title}}</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="createMemo()">
-        <ion-icon class="create-icon" name="md-create"></ion-icon>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="close-icon" name="close"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>

@@ -13,8 +13,9 @@ export class ContactEditPage {
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-    public contactServ: ContactService, public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public viewCtrl: ViewController, public contactServ: ContactService,
+    public formBuilder: FormBuilder) {
 
     if (this.navParams.get('name')) {
       this.contactTitle = '編輯聯絡人';
@@ -24,8 +25,7 @@ export class ContactEditPage {
 
     this.contactForm = formBuilder.group({
        name: ['', Validators.required],
-       phone: ['', Validators.required],
-       email: ['', Validators.minLength(0)]
+       phone: ['', Validators.required]
     });
   }
 
@@ -47,7 +47,6 @@ export class ContactEditPage {
       this.contactServ.createContact(
         this.contactForm.value.name, 
         this.contactForm.value.phone,
-        this.contactForm.value.email || '',
         this.contactForm.value.avatar || 'assets/img/avatar-girl.png'
       ).then( () => {
         this.dismiss();

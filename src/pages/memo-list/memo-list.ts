@@ -16,15 +16,16 @@ export class MemoListPage {
   }
 
   showMemoDetail(memoId: string): void {
-    this.navCtrl.push(MemoDetailPage, { memoId: memoId });
+    //this.navCtrl.push(MemoDetailPage, { memoId });
+    this.modalCtrl.create(MemoDetailPage, { memoId }).present();
   }
 
   createMemo(): void {
     this.modalCtrl.create(MemoEditPage).present();
   }
 
-  updateMemo(memoId: string, title: string, detail: string) {
-    this.navCtrl.push(MemoEditPage, {memoId: memoId, title: title, detail: detail});
+  updateMemo(memoId: string, title: string, items: Array<string>) {
+    this.navCtrl.push(MemoEditPage, { memoId, title, items });
   }
 
   deleteMemo(memoId: string): void {

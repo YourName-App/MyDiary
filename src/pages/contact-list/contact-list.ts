@@ -16,7 +16,8 @@ export class ContactListPage {
   }
 
   showContactDetail(contactId: string): void {
-    this.navCtrl.push(ContactDetailPage, { contactId: contactId });
+    //this.navCtrl.push(ContactDetailPage, { contactId: contactId });
+    this.modalCtrl.create(ContactDetailPage, { contactId }).present();
   }
 
   createContact(): void {
@@ -24,7 +25,7 @@ export class ContactListPage {
   }
 
   updateContact(contactId: string, userName: string, phoneNo: string, avatar?: string) {
-    this.navCtrl.push(ContactEditPage, {contactId: contactId, userName: userName, phoneNo: phoneNo, avatar: avatar});
+    this.navCtrl.push(ContactEditPage, { contactId, userName, phoneNo, avatar });
   }
 
   deleteContact(contactId: string): void {

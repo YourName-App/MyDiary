@@ -14,7 +14,7 @@ export class SignupPage {
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
-  loading;
+  loader: any;
 
   constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
@@ -39,7 +39,7 @@ export class SignupPage {
       this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then( user => {
         this.navCtrl.setRoot(TabsPage);
       }, error => {
-        this.loading.dismiss().then( () => {
+        this.loader.dismiss().then( () => {
           let alert = this.alertCtrl.create({
             message: '註冊失敗，請稍後再試。',
             buttons: [{
@@ -52,11 +52,11 @@ export class SignupPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
+      this.loader = this.loadingCtrl.create({
+        dismissOnPageChange: true
       });
 
-      this.loading.present();
+      this.loader.present();
     }
   } 
 }

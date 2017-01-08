@@ -15,7 +15,7 @@ export class LoginPage {
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
-  loading: any;
+  loader: any;
 
   constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
@@ -40,7 +40,7 @@ export class LoginPage {
       this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
         this.navCtrl.setRoot(TabsPage);
       }, error => {
-        this.loading.dismiss().then( () => {
+        this.loader.dismiss().then( () => {
           let alert = this.alertCtrl.create({
             message: '登入失敗，請確認你的電子郵件與密碼。',
             buttons: [{
@@ -53,11 +53,11 @@ export class LoginPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
+      this.loader = this.loadingCtrl.create({
+        dismissOnPageChange: true
       });
 
-      this.loading.present();
+      this.loader.present();
     }
   }
 

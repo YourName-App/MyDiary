@@ -1,19 +1,19 @@
 <ion-menu id="sideMenu" side="right" [content]="content">
   <ion-header>
-    <ion-toolbar color="diary-gray">
+    <ion-toolbar color="diary">
       <ion-title>功能選單</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="outer-content">
     <ion-list>
-      <ion-list-header>帳號</ion-list-header>
+      <ion-list-header class="menu-header"><h3>帳號</h3></ion-list-header>
       <button ion-item menuClose *ngFor="let p of accountPages" (click)="openPage(p)">
         <ion-icon item-left [name]="p.icon"></ion-icon>
         {{p.title}}
       </button>
 
-      <ion-list-header>其他</ion-list-header>
+      <ion-list-header class="menu-header"><h3>其他</h3></ion-list-header>
       <button ion-item menuClose *ngFor="let p of otherPages" (click)="openPage(p)">
         <ion-icon item-left [name]="p.icon"></ion-icon>
         {{p.title}}

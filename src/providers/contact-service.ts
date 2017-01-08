@@ -29,21 +29,20 @@ export class ContactService {
   }
 
   // Create a new contact
-  createContact(name: string, phone: string, email?: string, avatar?: string) {
+  createContact(name: string, phone: string, avatar?: string) {
     return this.contactList.push({
       name: name,
       phone: phone,
-      email: email,
       avatar: avatar
     });
   }
 
   // Update an existing contact
-  updateContact(contactId: string, name: string, phone: string, email?: string, avatar?: string) {
+  updateContact(contactId: string, name: string, phone: string, avatar?: string) {
     return this.contactList.update(contactId, {
       name: name,
       phone: phone,
-      email: email,
+    
       avatar: avatar
     });
   }

@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { ContactService } from '../../providers/contact-service';
 
-/*
-  Generated class for the ContactDetail page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-contact-detail',
   templateUrl: 'contact-detail.html'
 })
 export class ContactDetailPage {
+  public contact: any;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public viewCtrl: ViewController, public contactServ: ContactService) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactDetailPage');
+    this.contactServ.getContact(this.navParams.get('contactId')).subscribe( contactSnap => {
+      this.contact = contactSnap;
+    });
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

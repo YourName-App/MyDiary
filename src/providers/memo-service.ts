@@ -29,18 +29,18 @@ export class MemoService {
   }
 
   // Create a new memo
-  createMemo(title: string, detail: string[]) {
+  createMemo(title: string, items?: Array<string>) {
     return this.memoList.push({
       title: title,
-      detail: detail
+      items: items
     });
   }
 
   // Update an existing memo
-  updateMemo(memoId: string, title: string, detail: string[]) {
+  updateMemo(memoId: string, title: string, items: Array<string>) {
     return this.memoList.update(memoId, {
       title: title,
-      detail: detail
+      items: items
     });
   }
 
