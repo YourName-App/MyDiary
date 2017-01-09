@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="diary">
+    <ion-title>系統設定</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="close-icon" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>你的名字：</ion-label>
+    <ion-input text-right [(ngModel)]="yourName" type="text" placeholder="你的名字">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>你的性別：</ion-label>
+    <ion-select [(ngModel)]="yourGender">
+      <ion-option value="male" selected="true">男</ion-option>
+      <ion-option value="female">女</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button color="diary" ion-button block (click)="createSetting()">確認</button>
+</ion-content>

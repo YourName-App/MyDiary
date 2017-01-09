@@ -22,11 +22,13 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
+import { SettingPage } from '../pages/setting/setting';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
+import { SettingService } from '../providers/setting-service';
 
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -66,7 +68,8 @@ const myFirebaseAuthConfig = {
     SignupPage,
     ResetPasswordPage,
     SuggestPage,
-    AboutPage
+    AboutPage,
+    SettingPage
   ],
   imports: [
     // Set the whole app in iOS's style
@@ -94,13 +97,15 @@ const myFirebaseAuthConfig = {
     SignupPage,
     ResetPasswordPage,
     SuggestPage,
-    AboutPage
+    AboutPage,
+    SettingPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     MemoService,
-    ContactService
+    ContactService,
+    SettingService
   ]
 })
 export class AppModule {}

@@ -37,7 +37,7 @@ export class MemoService {
   }
 
   // Update an existing memo
-  updateMemo(memoId: string, title: string, items: Array<string>) {
+  updateMemo(memoId: string, title: string, items?: Array<string>) {
     return this.memoList.update(memoId, {
       title: title,
       items: items

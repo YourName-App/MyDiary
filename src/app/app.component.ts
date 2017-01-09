@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
+import { SettingPage } from '../pages/setting/setting';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -19,8 +20,7 @@ export interface PageInterface {
   title: string;
   component: any;
   icon: string;
-  index?: number;
-  navPush?: boolean;
+  createModal?: boolean;
   logsOut?: boolean;
 }
 
@@ -33,14 +33,18 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   
   // List of pages that can be navigated to from the side menu
+  settingPages: PageInterface[] = [
+    { title: '系統設定', component: SettingPage, createModal: true, icon: 'ios-cog-outline' }
+  ];
+
   accountPages: PageInterface[] = [
-    { title: '重設密碼', component: ResetPasswordPage, navPush: true, icon: 'ios-refresh-circle-outline' },
+    { title: '重設密碼', component: ResetPasswordPage, createModal: true, icon: 'ios-refresh-circle-outline' },
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
   otherPages: PageInterface[] = [
-    { title: '建議', component: SuggestPage, navPush: true, icon: 'ios-chatbubbles-outline' },
-    { title: '關於 ', component: AboutPage, navPush: true, icon: 'ios-help-circle-outline' }
+    { title: '建議', component: SuggestPage, createModal: true, icon: 'ios-chatbubbles-outline' },
+    { title: '關於 ', component: AboutPage, createModal: true, icon: 'ios-help-circle-outline' }
   ];
 
   rootPage: any;
@@ -80,7 +84,7 @@ export class MyApp {
   }
 
   openPage(page: PageInterface) {
-    if (page.navPush === true) {
+    if (page.createModal === true) {
       this.modalCtrl.create(page.component).present();
     } else {
       this.nav.setRoot(page.component);
