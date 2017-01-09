@@ -41,9 +41,9 @@ export class SignupPage {
     if (!this.signupForm.valid) {
       console.log(this.signupForm.value);
     } else {
-      this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then( user => {
+      this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then((user) => {
         this.navCtrl.setRoot(TabsPage);
-      }, error => {
+      }, (error) => {
         this.loader.dismiss().then( () => {
           let alert = this.alertCtrl.create({
             message: '註冊失敗，請稍後再試。',
@@ -54,6 +54,8 @@ export class SignupPage {
           });
           
           alert.present();
+        }, (error) => {
+          console.log(error);
         });
       });
 

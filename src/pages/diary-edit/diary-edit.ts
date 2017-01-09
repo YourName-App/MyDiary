@@ -38,6 +38,8 @@ export class DiaryEditPage {
       }, (error) => {
         console.log('ERROR: ', error);
       });
+    }, (error) => {
+      console.log('ERROR: ', error);
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, ModalController } from 'ionic-angular';
 import { StatusBar, Splashscreen, SQLite } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
@@ -12,6 +13,7 @@ import { SettingPage } from '../pages/setting/setting';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
+import { SettingService } from '../providers/setting-service';
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -34,7 +36,7 @@ export class MyApp {
   
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '系統設定', component: SettingPage, createModal: true, icon: 'ios-cog-outline' }
+    { title: '系統設定', component: SettingPage, createModal: true, icon: 'ios-build-outline' }
   ];
 
   accountPages: PageInterface[] = [
@@ -49,17 +51,26 @@ export class MyApp {
 
   rootPage: any;
   db: SQLite;
+  yourName: string;
+  yourGender: string;
 
-  constructor(platform: Platform, public af: AngularFire, 
-    public authServ: AuthService, public modalCtrl: ModalController) {
+  constructor(platform: Platform, storage: Storage, public af: AngularFire, 
+    public authServ: AuthService, public settingService: SettingService,
+    public modalCtrl: ModalController) {
       
+    // Get user SettingPage
+    this.yourName = this.settingService.getSetting('yourName');
+    this.yourGender = this.settingService.getSetting('yourGender');
+
     // Listen for authentication
-    af.auth.subscribe( user => {
+    af.auth.subscribe((user) => {
       if (user) {
         this.rootPage = TabsPage;
       } else {
         this.rootPage = LandingPage;
       }
+    }, (error) => {
+      console.log(error);
     });
 
     platform.ready().then(() => {
@@ -80,6 +91,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+    }, (error) => {
+      console.log(error);
     });
   }
 

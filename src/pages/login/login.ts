@@ -38,10 +38,10 @@ export class LoginPage {
     if (!this.loginForm.valid) {
       console.log(this.loginForm.value);
     } else {
-      this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
+      this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((authData) => {
         this.navCtrl.setRoot(TabsPage);
       }, error => {
-        this.loader.dismiss().then( () => {
+        this.loader.dismiss().then(() => {
           let alert = this.alertCtrl.create({
             message: '登入失敗，請確認你的電子郵件與密碼。',
             buttons: [{
@@ -51,7 +51,11 @@ export class LoginPage {
           });
           
           alert.present();
+        }, (error) => {
+          console.log(error);
         });
+      }, (error) => {
+        console.log(error)
       });
 
       this.loader = this.loadingCtrl.create({

@@ -1,45 +1,40 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class SettingService {
-  settingList: FirebaseListObservable<any>;
-  settingDetail: FirebaseObjectObservable<any>;
-  userId: string;
 
-  constructor(public af: AngularFire) {
-    this.af.auth.subscribe(auth => {
-      if (auth) {
-        this.settingList = af.database.list(`/userProfile/${auth.uid}/settingList`);
-        this.userId = auth.uid;
+  constructor(public storage: Storage) {
+    this.storage.get('yourName').then((val) => {
+      if (val === null) {
+        this.storage.set('yourName', '立花 瀧');
       }
-    });
+    }, (error) => {
+      console.log(error);
+    })
+
+    this.storage.get('yourGender').then((val) => {
+      if (val === null) {
+        this.storage.set('yourGender', 'male');
+      }
+    }, (error) => {
+      console.log(error);
+    })
   }
 
-  // Get the full list of settings
-  getSettingList() {
-    return this.settingList;
-  }
-
-  // Get a specific setting from the list
-  getSetting(settingId: string) {
-    return this.settingDetail = 
-      this.af.database.object(`/userProfile/${this.userId}/settingList/${settingId}`);
+  // Get a specific setting
+  getSetting(key: string): any {
+    this.storage.get(key);
   }
 
   // Create a new setting
-  createSetting(name: string, gender: string) {
-    return this.settingList.push({name, gender});
+  createSetting(key: string, value: any) {
+    this.storage.set(key, value);
   }
 
-  // Update an existing setting
-  updateSetting(settingId: string, name: string, gender: string) {
-    return this.settingList.update(settingId, {name, gender});
-  }
-
-  // Delete an existing setting
-  deleteSetting(settingId: string) {
-    return this.settingList.remove(settingId);
+  // Delete a specific setting
+  deleteSetting(key: string) {
+    return this.storage.remove(key);
   }
 }

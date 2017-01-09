@@ -44,7 +44,7 @@ export class MemoEditPage {
     } else {
       this.memoServ.createMemo(this.memoForm.value.title).then( () => {
         this.dismiss();
-      }, error => {
+      }, (error) => {
         console.log(error);
       });
     } 

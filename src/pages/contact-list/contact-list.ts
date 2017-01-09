@@ -11,7 +11,9 @@ import { ContactService } from '../../providers/contact-service';
 export class ContactListPage {
   public contactList: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public contactServ: ContactService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+    public contactServ: ContactService) {
+      
     this.contactList = this.contactServ.getContactList();
   }
 

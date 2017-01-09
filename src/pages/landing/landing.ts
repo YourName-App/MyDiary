@@ -28,6 +28,8 @@ export class LandingPage {
   goToAnonymousLogin() {
     this.authServ.anonymousLogin().then( user => {
       this.navCtrl.setRoot(TabsPage);
+    }, (error) => {
+      console.log(error);
     });
 
     const loader = this.loadingCtrl.create({

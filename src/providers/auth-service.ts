@@ -47,7 +47,7 @@ export class AuthService {
     const userProfile = firebase.database().ref('/userProfile');
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
 
-    return this.fireAuth.link(credential).then( (user) => {
+    return this.fireAuth.link(credential).then((user) => {
       userProfile.child(user.uid).update({
         email: email,
       });
