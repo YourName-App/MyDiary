@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { TabsPage } from '../tabs/tabs';
@@ -16,8 +16,9 @@ export class SignupPage {
   submitAttempt: boolean = false;
   loader: any;
 
-  constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
-    public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public authServ: AuthService,
+    public formBuilder: FormBuilder, public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController, public viewCtrl: ViewController) {
   
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -25,6 +26,10 @@ export class SignupPage {
     });
   }    
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+  
   elementChanged(input) {
     let field = input.inputControl.name;
     this[field + "Changed"] = true;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
@@ -11,7 +11,11 @@ import { AuthService } from '../../providers/auth-service';
 })
 export class LandingPage {
   
-  constructor(public navCtrl: NavController, public authServ: AuthService, public loadingCtrl: LoadingController) {}
+  constructor(public navCtrl: NavController, public authServ: AuthService, 
+    public loadingCtrl: LoadingController, public menu: MenuController) {
+
+      this.menu.swipeEnable(false);
+  }
 
   goToLogin(){
     this.navCtrl.push(LoginPage);

@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, ModalController } from 'ionic-angular';
 import { StatusBar, Splashscreen, SQLite } from 'ionic-native';
 
 // Import pages
-import { TabsPage } from '../pages/tabs/tabs';
-import { SignupPage } from '../pages/signup/signup';
-import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { LandingPage } from '../pages/landing/landing';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
 
@@ -35,7 +34,6 @@ export class MyApp {
   
   // List of pages that can be navigated to from the side menu
   accountPages: PageInterface[] = [
-    { title: '註冊帳號', component: SignupPage, navPush: true, icon: 'ios-person-add-outline' },
     { title: '重設密碼', component: ResetPasswordPage, navPush: true, icon: 'ios-refresh-circle-outline' },
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
@@ -48,7 +46,9 @@ export class MyApp {
   rootPage: any;
   db: SQLite;
 
-  constructor(platform: Platform, public af: AngularFire, public authServ: AuthService) {
+  constructor(platform: Platform, public af: AngularFire, 
+    public authServ: AuthService, public modalCtrl: ModalController) {
+      
     // Listen for authentication
     af.auth.subscribe( user => {
       if (user) {
@@ -81,7 +81,7 @@ export class MyApp {
 
   openPage(page: PageInterface) {
     if (page.navPush === true) {
-      this.nav.push(page.component);
+      this.modalCtrl.create(page.component).present();
     } else {
       this.nav.setRoot(page.component);
     }

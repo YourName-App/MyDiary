@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { TabsPage } from '../tabs/tabs';
@@ -17,8 +17,9 @@ export class LoginPage {
   submitAttempt: boolean = false;
   loader: any;
 
-  constructor(public navCtrl: NavController, public authServ: AuthService, public formBuilder: FormBuilder,
-    public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public authServ: AuthService,
+    public formBuilder: FormBuilder, public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
       
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -62,6 +63,6 @@ export class LoginPage {
   }
 
   goToResetPassword() {
-    this.navCtrl.push(ResetPasswordPage);
+    this.modalCtrl.create(ResetPasswordPage).present();
   }
 }

@@ -8,15 +8,15 @@
   <ion-content class="outer-content">
     <ion-list>
       <ion-list-header class="menu-header"><h3>帳號</h3></ion-list-header>
-      <button ion-item menuClose *ngFor="let p of accountPages" (click)="openPage(p)">
-        <ion-icon item-left [name]="p.icon"></ion-icon>
-        {{p.title}}
+      <button ion-item menuClose *ngFor="let page of accountPages" (click)="openPage(page)">
+        <ion-icon item-left [name]="page.icon"></ion-icon>
+        {{page.title}}
       </button>
 
       <ion-list-header class="menu-header"><h3>其他</h3></ion-list-header>
-      <button ion-item menuClose *ngFor="let p of otherPages" (click)="openPage(p)">
-        <ion-icon item-left [name]="p.icon"></ion-icon>
-        {{p.title}}
+      <button ion-item menuClose *ngFor="let page of otherPages" (click)="openPage(page)">
+        <ion-icon item-left [name]="page.icon"></ion-icon>
+        {{page.title}}
       </button>
     </ion-list>
   </ion-content>
