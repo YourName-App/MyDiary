@@ -10,7 +10,6 @@
 </ion-header>
 
 <ion-content padding>
-
   <ion-item>
     <ion-label>你的名字：</ion-label>
     <ion-input text-right [(ngModel)]="yourName" type="text" placeholder="你的名字">
@@ -20,7 +19,7 @@
   <ion-item>
     <ion-label>你的性別：</ion-label>
     <ion-select [(ngModel)]="yourGender">
-      <ion-option value="male" selected="true">男</ion-option>
+      <ion-option value="male">男</ion-option>
       <ion-option value="female">女</ion-option>
     </ion-select>
   </ion-item>

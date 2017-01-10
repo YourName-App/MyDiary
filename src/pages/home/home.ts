@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
   yourName: string;
+  yourGender: string;
   yourAvatar: string;
 
   constructor(public navCtrl: NavController, public menu: MenuController,
@@ -18,12 +19,30 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.storage.get('yourName').then((val) => {
+      if (val === null || val.trim().length === 0) {
+        val = '你的名字是？';
+      }
+
       this.yourName = val;
     }, (error) => {
       console.log(error);
     })
 
+    this.storage.get('yourGender').then((val) => {
+      if (val === null || val.trim().length === 0) {
+        val = 'male';
+      }
+
+      this.yourGender = val;
+    }, (error) => {
+      console.log(error);
+    })
+
     this.storage.get('yourAvatar').then((val) => {
+      if (val === null || val.trim().length === 0) {
+        val = 'assets/img/avatar-male.png';
+      }
+
       this.yourAvatar = val;
     }, (error) => {
       console.log(error);
