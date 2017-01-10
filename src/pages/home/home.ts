@@ -10,11 +10,13 @@ export class HomePage {
   yourName: string;
 
   constructor(public navCtrl: NavController, public menu: MenuController,
-    storage: Storage) {
+    public storage: Storage) {
 
     this.menu.swipeEnable(true);
-    
-    storage.get('yourName').then((val) => {
+  }
+
+  ionViewWillEnter() {
+    this.storage.get('yourName').then((val) => {
       this.yourName = val;
     }, (error) => {
       console.log(error);

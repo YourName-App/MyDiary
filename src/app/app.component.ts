@@ -65,6 +65,24 @@ export class MyApp {
       console.log(error);
     });
 
+    // Set default user name
+    storage.get('yourName').then((val) => {
+      if (val === null) {
+        storage.set('yourName', '你的名字是？');
+      }
+    }, (error) => {
+      console.log(error);
+    })
+
+    // Set default user gender
+    storage.get('yourGender').then((val) => {
+      if (val === null) {
+        storage.set('yourGender', 'male');
+      }
+    }, (error) => {
+      console.log(error);
+    })
+
     platform.ready().then(() => {
       this.db = new SQLite();
       this.db.openDatabase({
