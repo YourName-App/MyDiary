@@ -29,7 +29,6 @@ import { SettingPage } from '../pages/setting/setting';
 import { AuthService } from '../providers/auth-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
-import { SettingService } from '../providers/setting-service';
 
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -106,8 +105,7 @@ const myFirebaseAuthConfig = {
     Storage,
     AuthService,
     MemoService,
-    ContactService,
-    SettingService
+    ContactService
   ]
 })
 export class AppModule {}

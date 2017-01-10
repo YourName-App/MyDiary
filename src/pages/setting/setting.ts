@@ -1,29 +1,39 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
-import { SettingService } from '../../providers/setting-service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html'
 })
 export class SettingPage {
-  public yourName: string;
-  public yourGender: string;
+  yourName: string;
+  yourGender: string;
 
-  constructor(public navCtrl: NavController, public settingServ: SettingService,
-    public viewCtrl: ViewController) {}
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public storage: Storage) {
+
+    // Get user name
+    storage.get('yourName').then((val) => {
+      this.yourName = val;
+    }, (error) => {
+      console.log(error);
+    })
+
+    // Get user gender
+    storage.get('yourGender').then((val) => {
+      this.yourGender = val;
+    }, (error) => {
+      console.log(error);
+    })
+  }
 
   dismiss() {
     this.viewCtrl.dismiss();
   }
 
-  createSetting() {
-    /*
-    this.settingServ.createSetting(this.yourName || '你的名字', this.yourGender || 'male').then((user) => {
-      this.dismiss();
-    }, (error) => {
-      console.log(error);
-    });
-    */
+  updateSetting() {
+    this.storage.set('yourName', this.yourName);
+    this.storage.set('yourGender', this.yourGender);
+    this.dismiss();
   }  
 }

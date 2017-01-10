@@ -13,7 +13,6 @@ import { SettingPage } from '../pages/setting/setting';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
-import { SettingService } from '../providers/setting-service';
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -51,16 +50,9 @@ export class MyApp {
 
   rootPage: any;
   db: SQLite;
-  yourName: string;
-  yourGender: string;
 
   constructor(platform: Platform, storage: Storage, public af: AngularFire, 
-    public authServ: AuthService, public settingService: SettingService,
-    public modalCtrl: ModalController) {
-      
-    // Get user SettingPage
-    this.yourName = this.settingService.getSetting('yourName');
-    this.yourGender = this.settingService.getSetting('yourGender');
+    public authServ: AuthService, public modalCtrl: ModalController) {
 
     // Listen for authentication
     af.auth.subscribe((user) => {
