@@ -83,6 +83,9 @@ export class MyApp {
       console.log(error);
     })
 
+    // Ser default user avatar
+    storage.set('yourAvatar', 'assets/img/avatar-male.png');
+
     platform.ready().then(() => {
       this.db = new SQLite();
       this.db.openDatabase({

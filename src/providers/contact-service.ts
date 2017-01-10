@@ -42,7 +42,6 @@ export class ContactService {
     return this.contactList.update(contactId, {
       name: name,
       phone: phone,
-    
       avatar: avatar
     });
   }

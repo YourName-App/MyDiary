@@ -10,7 +10,7 @@ import { TabsPage } from '../../pages/tabs/tabs';
 export class SettingPage {
   yourName: string;
   yourGender: string;
-
+  
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,
     public appCtrl: App, public storage: Storage) {
 
@@ -34,15 +34,13 @@ export class SettingPage {
   }
 
   updateSetting() {
-    console.log(this.yourName);
-    console.log(this.yourName.trim);
-    console.log(this.yourName.trim().length);
     if (this.yourName == null || this.yourName.trim().length === 0) {
       this.yourName = '你的名字是？';
     }
 
     this.storage.set('yourName', this.yourName);
     this.storage.set('yourGender', this.yourGender);
+    this.storage.set('yourAvatar', 'assets/img/avatar-' + this.yourGender + '.png');
     this.dismiss();
     this.appCtrl.getRootNav().setRoot(TabsPage);
   }  

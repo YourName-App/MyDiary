@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
   yourName: string;
+  yourAvatar: string;
 
   constructor(public navCtrl: NavController, public menu: MenuController,
     public storage: Storage) {
@@ -18,6 +19,12 @@ export class HomePage {
   ionViewWillEnter() {
     this.storage.get('yourName').then((val) => {
       this.yourName = val;
+    }, (error) => {
+      console.log(error);
+    })
+
+    this.storage.get('yourAvatar').then((val) => {
+      this.yourAvatar = val;
     }, (error) => {
       console.log(error);
     })

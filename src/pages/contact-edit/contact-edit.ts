@@ -47,7 +47,7 @@ export class ContactEditPage {
       this.contactServ.createContact(
         this.contactForm.value.name, 
         this.contactForm.value.phone,
-        this.contactForm.value.avatar || 'assets/img/avatar-girl.png'
+        this.contactForm.value.avatar || 'assets/img/avatar-female.png'
       ).then( () => {
         this.dismiss();
       }, error => {
