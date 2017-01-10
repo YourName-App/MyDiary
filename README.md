@@ -33,12 +33,8 @@ $ ionic serve
 
 ## Screenshot
 
-![Imgur](http://i.imgur.com/n1UCVYJ.png)
-![Imgur](http://i.imgur.com/lmYtaGT.png)
-![Imgur](http://i.imgur.com/jWYuWOX.png)
-![Imgur](http://i.imgur.com/sapALAR.png)
-![Imgur](http://i.imgur.com/rutrpQE.png)
-![Imgur](http://i.imgur.com/oQvu5yR.png)
+![Imgur](http://i.imgur.com/3Wq7edK.png)![Imgur](http://i.imgur.com/8Mt07UH.png)![Imgur](http://i.imgur.com/aiTtn0S.png)
+![Imgur](http://i.imgur.com/3SXD324.png)![Imgur](http://i.imgur.com/hT77d5e.png)![Imgur](http://i.imgur.com/8qMaQlp.png)
 
 
 [1]: http://www.kiminona.com/index.html
