@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="contactForm" (submit)="createContact()" novalidate>
+  <form [formGroup]="contactForm" novalidate>
     <ion-item>
       <ion-label stacked>姓名</ion-label>
       <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名"
@@ -30,7 +30,19 @@
     <ion-item class="error-message" *ngIf="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
       <p>請輸入聯絡人電話</p>
     </ion-item>
-
-    <button color="diary" ion-button block type="submit">確認</button>
   </form>  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="diary" class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-10 offset-80>
+          <button color="diary" type="button" (click)="createContact()" ion-button icon-only>
+            <ion-icon name="folder"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

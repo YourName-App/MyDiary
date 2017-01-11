@@ -28,10 +28,19 @@ export class MemoService {
       this.af.database.object(`/userProfile/${this.userId}/memoList/${memoId}`);
   }
 
-  // Create a new memo
-  createMemo(title: string, items?: Array<string>) {
+  // Create a new memo title
+  createMemoTitle(title: string) {
     return this.memoList.push({
-      title: title,
+      title: title
+    });
+  }
+
+  // Create a new memo item
+  createMemoItem(item: string) {
+    let items: Array<string>;
+    items.push(item);
+
+    return this.memoList.push({
       items: items
     });
   }

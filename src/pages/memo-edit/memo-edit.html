@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="memoForm" (submit)="createMemo()" novalidate>
+  <form [formGroup]="memoForm" novalidate>
     <ion-item>
       <ion-label stacked>標題</ion-label>
       <ion-input #title formControlName="title" type="text" placeholder="備忘錄標題"
@@ -20,7 +20,19 @@
     <ion-item class="error-message" *ngIf="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
       <p>請輸入備忘錄標題</p>
     </ion-item>
-
-    <button color="diary" ion-button block type="submit">確認</button>
   </form>  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="diary" class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-10 offset-80>
+          <button color="diary" type="button" (click)="createMemoTitle()" ion-button icon-only>
+            <ion-icon name="folder"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
