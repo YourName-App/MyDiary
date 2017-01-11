@@ -9,7 +9,7 @@ import { ContactService } from '../../providers/contact-service';
 })
 export class ContactEditPage {
   public contactForm;
-  public contactTitle;
+  contactTitle: string;
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 

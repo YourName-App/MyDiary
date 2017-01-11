@@ -5,4 +5,13 @@ page-contact-detail {
   .close-icon {
     margin-right: 10px;
   }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
+  .phone-button {
+    font-size: 11px;
+  }
+  .contact-name, .phone-no {
+    transform: translate(0, 2px);
+  }
 }

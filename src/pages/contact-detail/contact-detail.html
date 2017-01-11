@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="diary">
-    <ion-title>聯絡人資訊</ion-title>
+    <ion-title>聯絡人</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon class="close-icon" name="close"></ion-icon>
@@ -10,7 +10,42 @@
 </ion-header>
 
 <ion-content padding>
-  Name: {{contact.name}}
-  Phone: {{contact.phone}}
-  Avatar: {{contact?.avatar}}
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-left>
+          <img class="img-avatar" src="{{contact.avatar}}">
+        </ion-avatar>
+        <h2 class="contact-name">{{contact.name}}</h2>
+        <p class="phone-no">{{contact.phone}}</p>
+      </ion-item>
+      <ion-buttons end>
+        <button color="diary" class="phone-button" type="button" (click)="dismiss()" ion-button icon-only outline round>
+          <ion-icon name="chatboxes"> 簡訊</ion-icon>
+        </button>
+        <button color="diary" class="phone-button" type="button" (click)="dismiss()" ion-button icon-only outline round>
+          <ion-icon name="call"> 撥號</ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-list>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="diary" class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button color="diary" type="button" (click)="dismiss()" ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col offset-67>
+          <button color="diary" type="button" (click)="deleteContact(contactId)" ion-button icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
