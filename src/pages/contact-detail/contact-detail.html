@@ -16,17 +16,39 @@
         <ion-avatar item-left>
           <img class="img-avatar" src="{{contact.avatar}}">
         </ion-avatar>
-        <h2 class="contact-name">{{contact.name}}</h2>
+        <h1 class="contact-name">{{contact.name}}</h1>
         <p class="phone-no">{{contact.phone}}</p>
       </ion-item>
+
       <ion-buttons end>
-        <button color="diary" class="phone-button" type="button" (click)="dismiss()" ion-button icon-only outline round>
+        <button color="diary" class="sms-button" type="button" *ngIf="!enableSms" (click)="toggleSms()"
+                ion-button icon-only outline>
           <ion-icon name="chatboxes"> 簡訊</ion-icon>
         </button>
-        <button color="diary" class="phone-button" type="button" (click)="dismiss()" ion-button icon-only outline round>
+        <button color="diary" class="phone-button" type="button" *ngIf="!enableSms" (click)="dismiss()"
+                ion-button icon-only outline>
           <ion-icon name="call"> 撥號</ion-icon>
         </button>
       </ion-buttons>
+
+      <ion-textarea class="smsText" rows="2" placeholder="簡訊內容" 
+                    *ngIf="enableSms" (change)="smsChanged()" [(ngModel)]="smsText">
+      </ion-textarea>
+      <ion-item class="error-message" *ngIf="!smsTextValid && (smsTextChanged || submitAttempt)">
+        <p>請輸入簡訊內容</p>
+      </ion-item>
+
+      <ion-buttons end>
+        <button color="diary" class="sms-button" type="button" *ngIf="enableSms" (click)="sendSms(smsText)"
+                ion-button icon-only outline>
+          <ion-icon name="checkmark"> 確認</ion-icon>
+        </button>
+        <button color="diary" class="phone-button" type="button" *ngIf="enableSms" (click)="cancelSms()"
+                ion-button icon-only outline>
+          <ion-icon name="close"> 取消</ion-icon>
+        </button>
+      </ion-buttons>
+
     </ion-list>
   </ion-card>
 </ion-content>
@@ -35,12 +57,18 @@
   <ion-toolbar color="diary" class="footer-toolbar">
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
           <button color="diary" type="button" (click)="dismiss()" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>
-        <ion-col offset-67>
+        <ion-col width-20>
           <button color="diary" type="button" (click)="deleteContact(contactId)" ion-button icon-only>
             <ion-icon name="trash"></ion-icon>
           </button>
