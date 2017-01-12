@@ -9,7 +9,11 @@ import { ContactService } from '../../providers/contact-service';
 })
 export class ContactEditPage {
   public contactForm;
-  contactTitle: string;
+  contactTitle: string = '';
+  contactId: string = '';
+  inputName: string = '';
+  inputPhone: string = '';
+  mode: string = '';
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 
@@ -17,16 +21,24 @@ export class ContactEditPage {
     public viewCtrl: ViewController, public contactServ: ContactService,
     public formBuilder: FormBuilder) {
 
-    if (this.navParams.get('name')) {
-      this.contactTitle = '編輯聯絡人';
-    } else {
-      this.contactTitle = '新增聯絡人';
-    }
+    this.contactId = this.navParams.get('contactId') || '';
+    this.inputName = this.navParams.get('name') || '';
+    this.inputPhone = this.navParams.get('phone') || '';
 
     this.contactForm = formBuilder.group({
        name: ['', Validators.required],
        phone: ['', Validators.required]
     });
+
+    if (this.contactId) {
+      this.mode = 'update';
+      this.contactTitle = '編輯聯絡人';
+      this.contactForm.controls['name'].patchValue(this.inputName);
+      this.contactForm.controls['phone'].patchValue(this.inputPhone);
+    } else {
+      this.mode = 'create';
+      this.contactTitle = '新增聯絡人';
+    }
   }
 
   dismiss() {
@@ -38,21 +50,32 @@ export class ContactEditPage {
      this[field + "Changed"] = true;
   }
 
-  createContact() {
+  editContact() {
     this.submitAttempt = true;
 
     if (!this.contactForm.valid) {
       console.log(this.contactForm.value);
     } else {
-      this.contactServ.createContact(
-        this.contactForm.value.name, 
-        this.contactForm.value.phone,
-        this.contactForm.value.avatar || 'assets/img/avatar-female.png'
-      ).then( () => {
-        this.dismiss();
-      }, error => {
-        console.log(error);
-      });
+      if (this.mode === 'create') {
+        this.contactServ.createContact(
+          this.contactForm.value.name, 
+          this.contactForm.value.phone,
+          this.contactForm.value.avatar || 'assets/img/avatar-female.png'
+        ).then(
+          () => {this.dismiss();}, 
+          error => {console.log(error);}
+        );
+      } else if (this.mode === 'update') {
+        this.contactServ.updateContact(
+          this.contactId,
+          this.contactForm.value.name, 
+          this.contactForm.value.phone,
+          this.contactForm.value.avatar || 'assets/img/avatar-female.png'
+        ).then(
+          () => {this.dismiss();}, 
+          error => {console.log(error);}
+        );
+      }
     } 
   }
 }

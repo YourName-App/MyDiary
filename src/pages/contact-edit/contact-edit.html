@@ -13,7 +13,7 @@
   <form [formGroup]="contactForm" novalidate>
     <ion-item>
       <ion-label stacked>姓名</ion-label>
-      <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名"
+      <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名" value={{inputName}}
         (change)="elementChanged(name)" [class.invalid]="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       </ion-input>
     </ion-item>
@@ -23,7 +23,7 @@
 
     <ion-item>
       <ion-label stacked>電話</ion-label>
-      <ion-input #phone formControlName="phone" type="text" placeholder="聯絡人電話"
+      <ion-input #phone formControlName="phone" type="text" placeholder="聯絡人電話" value={{inputPhone}}
         (change)="elementChanged(phone)" [class.invalid]="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
       </ion-input>
     </ion-item>
@@ -38,8 +38,8 @@
     <ion-grid>
       <ion-row>
         <ion-col offset-80>
-          <button color="diary" type="button" (click)="createContact()" ion-button icon-only>
-            <ion-icon name="folder"></ion-icon>
+          <button color="diary" type="button" (click)="editContact()" ion-button icon-only>
+            <ion-icon name="archive"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

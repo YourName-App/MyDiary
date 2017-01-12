@@ -18,7 +18,6 @@ export class ContactListPage {
   }
 
   showContactDetail(contactId: string): void {
-    //this.navCtrl.push(ContactDetailPage, { contactId: contactId });
     this.modalCtrl.create(ContactDetailPage, { contactId }).present();
   }
 

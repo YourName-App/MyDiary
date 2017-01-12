@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { ContactService } from '../../providers/contact-service';
 import { CallNumber, SocialSharing } from 'ionic-native';
+import { ContactEditPage } from '../contact-edit/contact-edit';
 
 @Component({
   selector: 'page-contact-detail',
@@ -15,7 +16,7 @@ export class ContactDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,
-    public contactServ: ContactService) {
+    public modalCtrl: ModalController, public contactServ: ContactService) {
 
     this.contactServ.getContact(this.navParams.get('contactId')).subscribe( contactSnap => {
       this.contact = contactSnap;
@@ -27,6 +28,10 @@ export class ContactDetailPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  updateContact(contactId: string, name: string, phone: string, avatar?: string): void {
+    this.modalCtrl.create(ContactEditPage, { contactId, name, phone, avatar }).present();
   }
 
   deleteContact(contactId: string): void {
