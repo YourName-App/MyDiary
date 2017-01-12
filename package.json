@@ -39,7 +39,9 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-splashscreen",
     "cordova-sqlite-storage",
-    "cordova-plugin-crosswalk-webview"
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-x-socialsharing",
+    "mx.ferreyra.callnumber"
   ],
   "cordovaPlatforms": [
     "ios",

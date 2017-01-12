@@ -17,38 +17,19 @@
           <img class="img-avatar" src="{{contact.avatar}}">
         </ion-avatar>
         <h1 class="contact-name">{{contact.name}}</h1>
-        <p class="phone-no">{{contact.phone}}</p>
+        <p class="contact-phone">{{contact.phone}}</p>
       </ion-item>
 
       <ion-buttons end>
-        <button color="diary" class="sms-button" type="button" *ngIf="!enableSms" (click)="toggleSms()"
-                ion-button icon-only outline>
+        <button color="diary" class="sms-button" type="button" (click)="sendSms()"
+                ion-button icon-only outline round>
           <ion-icon name="chatboxes"> 簡訊</ion-icon>
         </button>
-        <button color="diary" class="phone-button" type="button" *ngIf="!enableSms" (click)="dismiss()"
-                ion-button icon-only outline>
+        <button color="diary" class="phone-button" type="button" (click)="dial()"
+                ion-button icon-only outline round>
           <ion-icon name="call"> 撥號</ion-icon>
         </button>
       </ion-buttons>
-
-      <ion-textarea class="smsText" rows="2" placeholder="簡訊內容" 
-                    *ngIf="enableSms" (change)="smsChanged()" [(ngModel)]="smsText">
-      </ion-textarea>
-      <ion-item class="error-message" *ngIf="!smsTextValid && (smsTextChanged || submitAttempt)">
-        <p>請輸入簡訊內容</p>
-      </ion-item>
-
-      <ion-buttons end>
-        <button color="diary" class="sms-button" type="button" *ngIf="enableSms" (click)="sendSms(smsText)"
-                ion-button icon-only outline>
-          <ion-icon name="checkmark"> 確認</ion-icon>
-        </button>
-        <button color="diary" class="phone-button" type="button" *ngIf="enableSms" (click)="cancelSms()"
-                ion-button icon-only outline>
-          <ion-icon name="close"> 取消</ion-icon>
-        </button>
-      </ion-buttons>
-
     </ion-list>
   </ion-card>
 </ion-content>

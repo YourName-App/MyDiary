@@ -8,24 +8,14 @@ page-contact-detail {
   ion-toolbar.footer-toolbar {
     height: 50px;
   }
-  p.phone-no {
+  p.contact-phone {
     font-size: 16px;
   }
   .phone-button, .sms-button {
     font-size: 11px;
     transform: translate(-6px, -6px);
   }
-  .contact-name, .phone-no {
+  .contact-name, .contact-phone {
     transform: translate(0, 2px);
-  }
-  .smsText {
-    padding: 16px;
-    font-size: 16px;
-  }
-  .error-message .item-inner {
-    border-bottom: 0 !important;  
-  }
-  .error-message p {
-    color: #FF6153;
   }
 }

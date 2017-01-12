@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ContactService } from '../../providers/contact-service';
-import { SMS } from 'ionic-native';
+import { CallNumber, SocialSharing } from 'ionic-native';
 
 @Component({
   selector: 'page-contact-detail',
@@ -10,12 +10,8 @@ import { SMS } from 'ionic-native';
 export class ContactDetailPage {
   contact: any;
   contactId: string;
-  smsTextChanged: boolean = false;
-  smsTextValid: boolean = true;
-  submitAttempt: boolean = false;
-  enableSms: boolean = false;
   phone: string = '';
-  smsText: string = '';
+  smsMsg: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,
@@ -51,51 +47,11 @@ export class ContactDetailPage {
     confirm.present();
   }
 
-  smsChanged() {
-    this.smsTextChanged = true;
+  sendSms() {
+    SocialSharing.shareViaSMS(this.smsMsg, this.phone);
   }
 
-  toggleSms() {
-    this.enableSms = !this.enableSms;
-  }
-
-  sendSms(smsText: string) {
-    this.submitAttempt = true;
-
-    if (smsText === null || smsText.trim().length === 0) {
-      this.smsTextValid = false;
-      return;
-    }
-
-    let options = {
-      replaceLineBreaks: false,
-      android: { intent: 'INTENT' }
-    }
-
-    SMS.send(this.phone, smsText, options).then(() => {
-      let alert = this.alertCtrl.create({
-        message: '簡訊傳送成功',
-        buttons: [{
-          text: '確認',
-          role: 'cancel'
-        }]
-      });
-      alert.present();
-    }, (error) => {
-      let alert = this.alertCtrl.create({
-        message: '簡訊傳送失敗',
-        buttons: [{
-          text: '確認',
-          role: 'cancel'
-        }]
-      });
-      alert.present();
-    });
-  }
-
-  cancelSms() {
-    this.smsText = '';
-    this.smsTextValid = true;
-    this.enableSms = !this.enableSms;
+  dial() {
+    CallNumber.callNumber(this.phone, true);
   }
 }
