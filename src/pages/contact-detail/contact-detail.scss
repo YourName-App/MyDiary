@@ -1,7 +1,4 @@
 page-contact-detail {
-  ion-navbar.toolbar {
-    height: 88px;
-  }
   .close-icon {
     margin-right: 10px;
   }
@@ -12,8 +9,8 @@ page-contact-detail {
     font-size: 16px;
   }
   .phone-button, .sms-button {
-    font-size: 11px;
-    transform: translate(-6px, -6px);
+    font-size: 10px;
+    transform: translate(-5px, -5px);
   }
   .contact-name, .contact-phone {
     transform: translate(0, 2px);
