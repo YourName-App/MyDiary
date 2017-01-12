@@ -36,21 +36,7 @@ export class SuggestPage {
     } else {
       SocialSharing.canShareViaEmail().then(() => {
         SocialSharing.shareViaEmail(this.suggestForm.value.suggest, 'MyDiary 使用者建議',
-          ['yourname.ionic.app@gmail.com']).then(() => {
-
-          const alert = this.alertCtrl.create({
-            message: '訊息已送出',
-            buttons: [{
-              text: '確認',
-              role: 'cancel',
-              handler: () => {
-                this.dismiss();
-              }
-            }]
-          });
-
-          alert.present();
-        });
+          ['yourname.ionic.app@gmail.com']);
       }).catch(() => {
         const alert = this.alertCtrl.create({
           message: '你的手機不支援此功能',
