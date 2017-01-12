@@ -10,5 +10,17 @@
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="suggestForm" (submit)="sendSuggestion()" novalidate>
+    <ion-item>
+      <ion-label stacked>建議（<font color="#FF6153">注意，你將發送訊息給三年後的作者</font>）</ion-label>
+      <ion-textarea #suggest formControlName="suggest" rows="5" placeholder="你的建議"
+        (change)="elementChanged(suggest)" [class.invalid]="!suggestForm.controls.suggest.valid && (suggestChanged || submitAttempt)">
+      </ion-textarea>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!suggestForm.controls.suggest.valid && (suggestChanged || submitAttempt)">
+      <p>請輸入你的建議</p>
+    </ion-item>
 
+    <button color="diary" ion-button block type="submit">確認送出</button>
+  </form>
 </ion-content>

@@ -8,8 +8,8 @@ import { MemoService } from '../../providers/memo-service';
   templateUrl: 'memo-edit.html'
 })
 export class MemoEditPage {
-  public memoForm;
-  public memoTitle;
+  memoForm: any;
+  memoTitle: string = '';
   titleChanged: boolean = false;
   submitAttempt: boolean = false;
 

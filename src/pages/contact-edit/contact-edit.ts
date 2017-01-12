@@ -8,7 +8,7 @@ import { ContactService } from '../../providers/contact-service';
   templateUrl: 'contact-edit.html'
 })
 export class ContactEditPage {
-  public contactForm;
+  contactForm: any;
   contactTitle: string = '';
   contactId: string = '';
   inputName: string = '';
