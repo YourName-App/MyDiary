@@ -35,17 +35,16 @@ export class MyApp {
   
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '系統設定', component: SettingPage, createModal: true, icon: 'ios-build-outline' }
-  ];
-
-  accountPages: PageInterface[] = [
-    { title: '重設密碼', component: ResetPasswordPage, createModal: true, icon: 'ios-refresh-circle-outline' },
-    { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
+    { title: '設定', component: SettingPage, createModal: true, icon: 'ios-build-outline' }
   ];
 
   otherPages: PageInterface[] = [
     { title: '建議', component: SuggestPage, createModal: true, icon: 'ios-chatbubbles-outline' },
     { title: '關於 ', component: AboutPage, createModal: true, icon: 'ios-help-circle-outline' }
+  ];
+
+  accountPages: PageInterface[] = [
+    { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
   rootPage: any;

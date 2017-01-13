@@ -41,7 +41,7 @@
     "cordova-sqlite-storage",
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-x-socialsharing",
-    "mx.ferreyra.callnumber"
+    "call-number"
   ],
   "cordovaPlatforms": [
     "ios",
