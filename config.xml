@@ -19,18 +19,16 @@
     <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png"/>
     <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png"/>
     <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png"/>
-    <splash density="port-ldpi" src="resources/android/splash/drawable-port-ldpi-screen.png"/>
+    <splash src="resources/android/splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="resources/android/splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="resources/android/splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
+    <splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
-    <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640"/>
-    <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750"/>
-    <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242"/>
-    <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536"/>
-    <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768"/>
-    <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640"/>
-    <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320"/>
     <icon height="57" src="resources/ios/icon/icon.png" width="57"/>
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114"/>
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40"/>
@@ -49,6 +47,13 @@
     <icon height="29" src="resources/ios/icon/icon-small.png" width="29"/>
     <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58"/>
     <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87"/>
+    <splash src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" height="1136"/>
+    <splash src="resources/ios/splash/Default-667h.png" width="750" height="1334"/>
+    <splash src="resources/ios/splash/Default-736h.png" width="1242" height="2208"/>
+    <splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+    <splash src="resources/ios/splash/Default-Portrait~ipad.png" width="768" height="1024"/>
+    <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
+    <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
@@ -59,9 +64,9 @@
   <preference name="SplashMaintainAspectRatio" value="true"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="0"/>
+  <preference name="ShowSplashScreenSpinner" value="true"/>
   <preference name="FadeSplashScreen" value="true"/>
   <preference name="FadeSplashScreenDuration" value="0"/>
-  <preference name="ShowSplashScreenSpinner" value="true"/>
   <preference name="LoadUrlTimeoutValue" value="60000"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>

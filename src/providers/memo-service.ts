@@ -28,11 +28,9 @@ export class MemoService {
       this.af.database.object(`/userProfile/${this.userId}/memoList/${memoId}`);
   }
 
-  // Create a new memo title
-  createMemoTitle(title: string) {
-    return this.memoList.push({
-      title: title
-    });
+  // Create a new memo
+  createMemo(title: string) {
+    return this.memoList.push({title});
   }
 
   // Create a new memo item
@@ -40,17 +38,12 @@ export class MemoService {
     let items: Array<string>;
     items.push(item);
 
-    return this.memoList.push({
-      items: items
-    });
+    return this.memoList.push({items});
   }
 
   // Update an existing memo
   updateMemo(memoId: string, title: string, items?: Array<string>) {
-    return this.memoList.update(memoId, {
-      title: title,
-      items: items
-    });
+    return this.memoList.update(memoId, {title, items});
   }
 
   // Delete an existing memo

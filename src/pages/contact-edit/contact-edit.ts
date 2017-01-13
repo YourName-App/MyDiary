@@ -9,11 +9,11 @@ import { ContactService } from '../../providers/contact-service';
 })
 export class ContactEditPage {
   contactForm: any;
-  contactTitle: string = '';
   contactId: string = '';
   inputName: string = '';
   inputPhone: string = '';
   mode: string = '';
+  modeDesc: string = '';
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 
@@ -32,12 +32,12 @@ export class ContactEditPage {
 
     if (this.contactId) {
       this.mode = 'update';
-      this.contactTitle = '編輯聯絡人';
+      this.modeDesc = '編輯聯絡人';
       this.contactForm.controls['name'].patchValue(this.inputName);
       this.contactForm.controls['phone'].patchValue(this.inputPhone);
     } else {
       this.mode = 'create';
-      this.contactTitle = '新增聯絡人';
+      this.modeDesc = '新增聯絡人';
     }
   }
 

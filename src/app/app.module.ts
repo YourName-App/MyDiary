@@ -11,6 +11,7 @@ import { DiaryEditPage } from '../pages/diary-edit/diary-edit';
 import { DiaryListPage } from '../pages/diary-list/diary-list';
 import { DiaryDetailPage } from '../pages/diary-detail/diary-detail';
 import { MemoEditPage } from '../pages/memo-edit/memo-edit';
+import { MemoItemEditPage } from '../pages/memo-item-edit/memo-item-edit';
 import { MemoListPage } from '../pages/memo-list/memo-list';
 import { MemoDetailPage } from '../pages/memo-detail/memo-detail';
 import { ContactEditPage } from '../pages/contact-edit/contact-edit';
@@ -57,6 +58,7 @@ const myFirebaseAuthConfig = {
     DiaryListPage,
     DiaryDetailPage,
     MemoEditPage,
+    MemoItemEditPage,
     MemoListPage,
     MemoDetailPage,
     ContactEditPage,
@@ -86,6 +88,7 @@ const myFirebaseAuthConfig = {
     DiaryListPage,
     DiaryDetailPage,
     MemoEditPage,
+    MemoItemEditPage,
     MemoListPage,
     MemoDetailPage,
     ContactEditPage,

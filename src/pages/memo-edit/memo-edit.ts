@@ -36,13 +36,13 @@ export class MemoEditPage {
      this[field + "Changed"] = true;
   }
 
-  createMemoTitle() {
+  createMemo() {
     this.submitAttempt = true;
 
     if (!this.memoForm.valid) {
       console.log(this.memoForm.value);
     } else {
-      this.memoServ.createMemoTitle(this.memoForm.value.title).then(() => {
+      this.memoServ.createMemo(this.memoForm.value.title).then(() => {
         this.dismiss();
       }, (error) => {
         console.log(error);

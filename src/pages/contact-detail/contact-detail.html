@@ -1,9 +1,14 @@
 <ion-header>
   <ion-navbar color="diary">
     <ion-title>聯絡人</ion-title>
-    <ion-buttons end>
+    <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="close-icon" name="close"></ion-icon>
+        <ion-icon class="close-icon" name="arrow-back"></ion-icon>返回
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon class="add-icon"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -22,11 +27,11 @@
 
       <ion-buttons end>
         <button color="diary" class="sms-button" type="button" (click)="sendSms()"
-                ion-button icon-only outline round>
+                ion-button icon-only round>
           <ion-icon name="chatboxes"> 簡訊</ion-icon>
         </button>
         <button color="diary" class="phone-button" type="button" (click)="dial()"
-                ion-button icon-only outline round>
+                ion-button icon-only round>
           <ion-icon name="call"> 撥號</ion-icon>
         </button>
       </ion-buttons>

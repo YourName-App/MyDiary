@@ -22,11 +22,8 @@ export class AuthService {
   }
 
   // Log-in a user with email and password
-  loginUser(userEmail: string, userPassword: string): any {
-    return this.af.auth.login({ 
-      email: userEmail, 
-      password: userPassword
-    });
+  loginUser(email: string, password: string): any {
+    return this.af.auth.login({email, password});
   }
 
   // Register a user with email and password
@@ -48,9 +45,7 @@ export class AuthService {
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
 
     return this.fireAuth.link(credential).then((user) => {
-      userProfile.child(user.uid).update({
-        email: email,
-      });
+      userProfile.child(user.uid).update({email});
     }, (error) => {
       console.log("Account linking error", error);
     });

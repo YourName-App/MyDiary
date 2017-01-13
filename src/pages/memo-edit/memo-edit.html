@@ -1,9 +1,14 @@
 <ion-header>
   <ion-navbar color="diary">
     <ion-title>{{memoTitle}}</ion-title>
-    <ion-buttons end>
+    <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="close-icon" name="close"></ion-icon>
+        <ion-icon class="close-icon" name="arrow-back"></ion-icon>返回
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon class="add-icon"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -28,7 +33,7 @@
     <ion-grid>
       <ion-row>
         <ion-col width-10 offset-80>
-          <button color="diary" type="button" (click)="createMemoTitle()" ion-button icon-only>
+          <button color="diary" type="button" (click)="createMemo()" ion-button icon-only>
             <ion-icon name="archive"></ion-icon>
           </button>
         </ion-col>

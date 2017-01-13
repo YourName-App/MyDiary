@@ -1,9 +1,14 @@
 <ion-header>
   <ion-navbar color="diary">
-    <ion-title>{{contactTitle}}</ion-title>
-    <ion-buttons end>
+    <ion-title>{{modeDesc}}</ion-title>
+    <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="close-icon" name="close"></ion-icon>
+        <ion-icon class="close-icon" name="arrow-back"></ion-icon>返回
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon class="add-icon"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
