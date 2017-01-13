@@ -18,9 +18,14 @@ $ npm install -g ionic cordova
 $ git clone https://github.com/YourName-App/MyDiary.git
 ```
 
-##### Enter the MyDiary directory and install all dependencies:
+##### Enter the MyDiary directory:
 ```
-$ cd MyDiary && npm install
+$ cd MyDiary
+```
+
+##### Install all dependencies and plugins:
+```
+$ npm install && ionic state restore
 ```
 
 ##### Run the app in the browser:
