@@ -18,7 +18,7 @@ export class ContactDetailPage {
     public viewCtrl: ViewController, public alertCtrl: AlertController,
     public modalCtrl: ModalController, public contactServ: ContactService) {
 
-    this.contactServ.getContact(this.navParams.get('contactId')).subscribe( contactSnap => {
+    this.contactServ.getContact(this.navParams.get('contactId')).subscribe((contactSnap) => {
       this.contact = contactSnap;
     });
 
@@ -31,7 +31,7 @@ export class ContactDetailPage {
   }
 
   updateContact(contactId: string, name: string, phone: string, avatar?: string): void {
-    this.modalCtrl.create(ContactEditPage, { contactId, name, phone, avatar }).present();
+    this.modalCtrl.create(ContactEditPage, {contactId, name, phone, avatar}).present();
   }
 
   deleteContact(contactId: string): void {

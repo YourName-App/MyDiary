@@ -14,7 +14,7 @@ export class LandingPage {
   constructor(public navCtrl: NavController, public authServ: AuthService, 
     public loadingCtrl: LoadingController, public menu: MenuController) {
 
-      this.menu.swipeEnable(false);
+    this.menu.swipeEnable(false);
   }
 
   goToLogin(){

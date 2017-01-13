@@ -34,15 +34,12 @@ export class MemoService {
   }
 
   // Create a new memo item
-  createMemoItem(item: string) {
-    let items: Array<string>;
-    items.push(item);
-
-    return this.memoList.push({items});
+  createMemoItem(memoId: string, items: Array<any>) {
+    return this.memoList.update(memoId, {items});
   }
 
   // Update an existing memo
-  updateMemo(memoId: string, title: string, items?: Array<string>) {
+  updateMemo(memoId: string, title: string, items?: Array<any>) {
     return this.memoList.update(memoId, {title, items});
   }
 

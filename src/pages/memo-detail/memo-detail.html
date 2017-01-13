@@ -7,7 +7,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button icon-only (click)="dismiss()">
+      <button ion-button icon-only (click)="createMemoItem()">
         <ion-icon class="add-icon" name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -15,7 +15,10 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item *ngFor="let item of items" ion-item>
+    <ion-label>{{item.entry}}</ion-label>
+    <ion-checkbox color="diary" [checked]="item.checked" (click)="toggleItem(item)"></ion-checkbox>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
