@@ -17,7 +17,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="segment-content" padding>
+<ion-content [class.segment-content]="segment==='diary-list'" padding>
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'diary-list'">
       <page-diary-list></page-diary-list>

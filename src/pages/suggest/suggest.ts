@@ -36,10 +36,7 @@ export class SuggestPage {
     } else {
       SocialSharing.canShareViaEmail()
         .then(() => {
-          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, 'MyDiary 使用者建議', ['yourname.ionic.app@gmail.com'])
-            .then(() => {
-              this.dismiss();
-            });
+          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, 'MyDiary 使用者建議', ['yourname.ionic.app@gmail.com']);
         })
         .catch(() => {
           const alert = this.alertCtrl.create({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ViewController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
@@ -14,16 +14,11 @@ export class ResetPasswordPage {
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public authServ: AuthService, 
-    public formBuilder: FormBuilder, public alertCtrl: AlertController,
-    public viewCtrl: ViewController) {
+    public formBuilder: FormBuilder, public alertCtrl: AlertController) {
 
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])]
     });
-  }
-
-  dismiss() {
-    this.viewCtrl.dismiss();
   }
   
   elementChanged(input){

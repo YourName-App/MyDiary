@@ -75,7 +75,7 @@ const myFirebaseAuthConfig = {
   ],
   imports: [
     // Set the whole app in iOS's style
-    IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: '返回',}),
+    IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: '',}),
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   bootstrap: [IonicApp],

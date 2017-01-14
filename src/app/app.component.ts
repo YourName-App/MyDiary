@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage';
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';

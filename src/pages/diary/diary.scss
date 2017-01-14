@@ -1,6 +1,9 @@
 page-diary {
   .segment-content {
-    background-color: color($colors, diary);
+    //background-color: color($colors, diary);
+    background-image: url('../assets/img/bg-sky01.png');
+    background-repeat: no-repeat;
+    background-size:cover;
   }
   .diary-searchbar {
     margin-top: -10px;

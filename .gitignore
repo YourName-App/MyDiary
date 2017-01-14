@@ -24,14 +24,8 @@ temp/
 hooks/
 platforms/
 plugins/
-plugins/android.json
-plugins/ios.json
 typings/
-www/build/
-www/lib/
-www/index.html
-www/manifest.json
-www/service-worker.js
+www/
 $RECYCLE.BIN/
 
 .DS_Store
