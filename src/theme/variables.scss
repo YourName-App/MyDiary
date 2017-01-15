@@ -29,7 +29,8 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  diary:      #4682b4,
+  clean:      #fff,
+  diary:      #5DADE2,
   diary-gray: #708090
 );
 
@@ -43,7 +44,7 @@ $card-ios-margin-right: 0;
 $item-ios-avatar-size: 64px;
 $tabs-ios-tab-icon-color-active: color($colors, diary);
 $tabs-ios-tab-text-color-active: color($colors, diary);
-
+$segment-button-ios-toolbar-button-max-width: 75px;
 
 // App Material Design Variables
 // --------------------------------------------------

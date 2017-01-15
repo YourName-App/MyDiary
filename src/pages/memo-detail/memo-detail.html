@@ -6,19 +6,32 @@
         <ion-icon class="close-icon" name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="createMemoItem()">
+    <ion-buttons *ngIf="!createMode" end>
+      <button ion-button icon-only (click)="toggleCreateMode()">
         <ion-icon class="add-icon" name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons *ngIf="createMode" end>
+      <button ion-button icon-only (click)="reset()">
+        <ion-icon class="refresh-icon" name="refresh"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let item of items" ion-item>
+  <ion-item *ngFor="let item of itemList | async">
     <ion-label>{{item.entry}}</ion-label>
-    <ion-checkbox color="diary" [checked]="item.checked" (click)="toggleItem(item)"></ion-checkbox>
+    <ion-checkbox color="diary" [checked]="item.checked" (click)="toggleItem(item.$key, item)"></ion-checkbox>
   </ion-item>
+  <ion-item *ngIf="createMode">
+    <ion-input type="text" placeholder="新增備忘錄項目" [(ngModel)]="entry"
+      (keyup)="entryChange()" [class.invalid]="!entryValid && (entryChanged || submitAttempt)">
+    </ion-input>
+  </ion-item>
+  <ion-item class="error-message" *ngIf="!entryValid && (entryChanged || submitAttempt)">
+    <p>請輸入備忘錄項目</p>
+  </ion-item> 
 </ion-content>
 
 <ion-footer>
@@ -31,14 +44,23 @@
         </ion-col>
         <ion-col width-20>
         </ion-col>
-        <ion-col width-20>
+
+        <ion-col width-20 *ngIf="!createMode">
           <button color="diary" type="button" (click)="dismiss()" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>
-        <ion-col width-20>
-          <button color="diary" type="button" (click)="dismiss()" ion-button icon-only>
+        <ion-col width-20 *ngIf="!createMode">
+          <button color="diary" type="button" (click)="deleteAllItems()" ion-button icon-only>
             <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col width-20 *ngIf="createMode">
+        </ion-col>
+        <ion-col width-20 *ngIf="createMode">
+          <button color="diary" type="button" (click)="createItem()" ion-button icon-only>
+            <ion-icon name="ios-checkbox-outline"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

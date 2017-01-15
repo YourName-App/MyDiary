@@ -5,6 +5,11 @@
       <ion-segment-button value="calendar">日曆</ion-segment-button>
       <ion-segment-button value="diary-edit">日記</ion-segment-button>
     </ion-segment>
+    <ion-buttons end>
+      <button color="diary" ion-button icon-only (click)="createContact()">
+        <ion-icon class="add-icon" name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   <ion-toolbar no-border-top>
@@ -17,7 +22,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [class.segment-content]="segment==='diary-list'" padding>
+<ion-content [class.diary-list]="segment==='diary-list'" padding>
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'diary-list'">
       <page-diary-list></page-diary-list>

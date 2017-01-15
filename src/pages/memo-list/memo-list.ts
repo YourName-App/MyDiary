@@ -11,7 +11,9 @@ import { MemoService } from '../../providers/memo-service';
 export class MemoListPage {
   public memoList: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public memoServ: MemoService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+    public memoServ: MemoService) {
+
     this.memoList = this.memoServ.getMemoList();
   }
 

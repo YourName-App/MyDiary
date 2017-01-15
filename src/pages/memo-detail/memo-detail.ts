@@ -1,3 +1,4 @@
+import { MemoItemEditPage } from './../memo-item-edit/memo-item-edit';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MemoService } from '../../providers/memo-service';
@@ -8,8 +9,13 @@ import { MemoService } from '../../providers/memo-service';
 })
 export class MemoDetailPage {
   memo: any;
+  itemList: any;
   memoId: string = '';
-  items: Array<any> = [];
+  entry: string = '';
+  entryValid: boolean = true;
+  entryChanged: boolean = false;
+  createMode: boolean = false;
+  submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,
@@ -19,49 +25,73 @@ export class MemoDetailPage {
       this.memo = memoSnap;
     });
 
+    this.itemList = this.memoServ.getItemList(this.navParams.get('memoId'));
     this.memoId = this.navParams.get('memoId');
-    this.items = this.memo.items || [];
   }
 
-  dismiss() {
+  dismiss(): void {
     this.viewCtrl.dismiss();
   }
 
-  createMemoItem() {
-    let alert = this.alertCtrl.create({
-      title: '新增備忘錄項目',
-      inputs: [{
-        name: 'entry',
-        placeholder: '備忘錄項目'
-      }],
-      buttons: [
-        {
-          text: '確認',
-          handler: data => {
-            if (data.entry.trim().length === 0) {
-              let alert = this.alertCtrl.create({
-                title: '新增失敗',
-                subTitle: '請輸入備忘錄項目',
-                buttons: ['確認']
-              });
-              alert.present();
-            } else {
-              this.items.push({entry: data.entry, checked: false});
-              this.memoServ.createMemoItem(this.memoId, this.items);
-            }
-          }
-        },
-        {
-          text: '取消',
-          role: 'cancel'
-        }
-      ]
-    });
-
-    alert.present();
+  toggleCreateMode(): void {
+    this.createMode = !this.createMode;
   }
 
-  toggleItem(item) {
-    console.log(item);
+  reset(): void {
+    this.createMode = !this.createMode;
+    this.entryValid = true;
+    this.entry = '';
+  }
+
+  entryChange(): void {
+    this.entryChanged = true;
+
+    if (this.entry.trim().length === 0) {
+      this.entryValid = false;
+    } else {
+      this.entryValid = true;
+    }  
+  }
+
+  createItem(): void {
+    this.submitAttempt = true;
+
+    if (this.entry.trim().length === 0) {
+      this.entryValid = false;
+    } else {
+      this.entryValid = true;
+      this.memoServ.createItem(this.memoId, {entry: this.entry, checked: false});
+      this.entry = '';
+    } 
+  }
+
+  deleteItem(itemId: string): void {
+    this.memoServ.deleteItem(this.memoId, itemId);
+  }
+
+  deleteAllItems(): void {
+    let confirm = this.alertCtrl.create({
+      title: '刪除所有備忘錄項目',
+      message: '確認刪除？',
+      buttons: [{
+        text: '確認',
+        handler: () => {
+          this.itemList.subscribe(itemSnaps => {
+            itemSnaps.forEach(item => {
+              this.deleteItem(item.$key);
+            });
+          });
+        }
+      }, {
+        text: '取消',
+        role: 'cancel'
+      }]
+    });
+    
+    confirm.present();
+  }
+
+  toggleItem(key: string, item: any): void {
+    this.memoServ.updateItem(this.memoId, key, {entry: item.entry, checked: !item.checked});
   }
 }

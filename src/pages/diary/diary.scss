@@ -1,5 +1,5 @@
 page-diary {
-  .segment-content {
+  .diary-list {
     //background-color: color($colors, diary);
     background-image: url('../assets/img/bg-sky01.png');
     background-repeat: no-repeat;
@@ -7,6 +7,9 @@ page-diary {
   }
   .diary-searchbar {
     margin-top: -10px;
+  }
+  .add-icon {
+    margin-right: 10px;
   }
   .menu-icon {
     padding-bottom: 5px; 

@@ -64,6 +64,7 @@ export class MyApp {
     });
 
     platform.ready().then(() => {
+      /*
       this.db = new SQLite();
       this.db.openDatabase({
         name: "MyDiary.db",
@@ -77,6 +78,7 @@ export class MyApp {
       }, (error) => {
         console.error("Unable to open database", error);
       });
+      */
 
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
@@ -101,6 +103,7 @@ export class MyApp {
     }
   }
 
+  /*
   public create(){
     this.db.executeSql("CREATE TABLE IF NOT EXISTS dairy (name TEXT, title TEXT, date TEXT PRIMARY KEY, content TEXT)", {})
       .then((data) => {
@@ -118,4 +121,5 @@ export class MyApp {
         console.log("ERROR: " + JSON.stringify(error.err));
       });
   }
+  */
 }

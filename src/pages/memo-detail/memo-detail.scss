@@ -1,5 +1,14 @@
 page-memo-detail {
-  .add-icon {
+  .invalid {
+    border-bottom: 1px solid #FF6153;
+  }
+  .error-message p {
+    color: #FF6153;
+  }
+  .error-message .item-inner {
+    border-bottom: 0 !important;
+  }
+  .add-icon, .refresh-icon {
     margin-right: 10px;
   }
   ion-toolbar.footer-toolbar {

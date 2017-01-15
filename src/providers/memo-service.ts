@@ -5,6 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 @Injectable()
 export class MemoService {
   memoList: FirebaseListObservable<any>;
+  itemList: FirebaseListObservable<any>;
   memoDetail: FirebaseObjectObservable<any>;
   userId: string;
 
@@ -33,18 +34,40 @@ export class MemoService {
     return this.memoList.push({title});
   }
 
-  // Create a new memo item
-  createMemoItem(memoId: string, items: Array<any>) {
-    return this.memoList.update(memoId, {items});
-  }
-
   // Update an existing memo
-  updateMemo(memoId: string, title: string, items?: Array<any>) {
-    return this.memoList.update(memoId, {title, items});
+  updateMemo(memoId: string, title: string,) {
+    return this.memoList.update(memoId, {title});
   }
 
   // Delete an existing memo
   deleteMemo(memoId: string) {
     return this.memoList.remove(memoId);
+  }
+
+  // Get the full list of items
+  getItemList(memoId: string) {
+    return this.itemList = 
+      this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`);
+  }
+
+  // Get a specific item from the list
+  getItem(memoId: string, itemId: string) {
+    return this.memoDetail = 
+      this.af.database.object(`/userProfile/${this.userId}/memoList/${memoId}/itemList/${itemId}`);
+  }
+
+  // Create a new memo item
+  createItem(memoId: string, item: any) {
+    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).push(item);
+  }
+
+  // Update an existing memo item
+  updateItem(memoId: string, itemId: string, item: any) {
+    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).update(itemId, item);
+  }
+
+  // Delete an existing memo item
+  deleteItem(memoId: string, itemId: string) {
+    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).remove(itemId);
   }
 }

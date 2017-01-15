@@ -26,7 +26,7 @@ export class ContactDetailPage {
     this.phone = this.contact.phone;
   }
 
-  dismiss() {
+  dismiss(): void {
     this.viewCtrl.dismiss();
   }
 
@@ -36,12 +36,13 @@ export class ContactDetailPage {
 
   deleteContact(contactId: string): void {
     let confirm = this.alertCtrl.create({
+      title: '刪除聯絡人',
       message: '確認刪除？',
       buttons: [{
         text: '確認',
         handler: () => {
-          this.dismiss();
           this.contactServ.deleteContact(contactId);
+          this.dismiss();
         }
       }, {
         text: '取消',
@@ -52,11 +53,11 @@ export class ContactDetailPage {
     confirm.present();
   }
 
-  sendSms() {
+  sendSms(): void {
     SocialSharing.shareViaSMS(this.smsMsg, this.phone);
   }
 
-  dial() {
+  dial(): void {
     CallNumber.callNumber(this.phone, true);
   }
 }
