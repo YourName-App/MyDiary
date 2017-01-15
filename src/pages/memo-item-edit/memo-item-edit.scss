@@ -1,3 +1,20 @@
 page-memo-item-edit {
-
+  .error-message p {
+    color: color($colors, danger);
+  }
+  .error-message .item-inner {
+    border-bottom: 0 !important;
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
+  .text-input::-moz-placeholder {
+    color: color($colors, danger);;
+  }
+  .text-input:-ms-input-placeholder {
+    color: color($colors, danger);;
+  }
+  .text-input::-webkit-input-placeholder {
+    color: color($colors, danger);;
+  }
 }

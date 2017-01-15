@@ -62,8 +62,9 @@ export class MemoService {
   }
 
   // Update an existing memo item
-  updateItem(memoId: string, itemId: string, item: any) {
-    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).update(itemId, item);
+  updateItem(memoId: string, itemId: string, entry: string, checked?: boolean) {
+    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`)
+      .update(itemId, {entry, checked});
   }
 
   // Delete an existing memo item

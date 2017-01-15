@@ -1,6 +1,6 @@
-import { MemoItemEditPage } from './../memo-item-edit/memo-item-edit';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { MemoItemEditPage } from '../memo-item-edit/memo-item-edit';
 import { MemoService } from '../../providers/memo-service';
 
 @Component({
@@ -19,7 +19,7 @@ export class MemoDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,
-    public memoServ: MemoService) {
+    public modalCtrl: ModalController, public memoServ: MemoService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -31,6 +31,10 @@ export class MemoDetailPage {
 
   dismiss(): void {
     this.viewCtrl.dismiss();
+  }
+
+  toggleItem(itemId: string, item: any): void {
+    this.memoServ.updateItem(this.memoId, itemId, item.entry, !item.checked);
   }
 
   toggleCreateMode(): void {
@@ -65,6 +69,10 @@ export class MemoDetailPage {
     } 
   }
 
+  updateItem(): void {
+    this.modalCtrl.create(MemoItemEditPage, { memoId: this.memoId }).present();
+  }
+
   deleteItem(itemId: string): void {
     this.memoServ.deleteItem(this.memoId, itemId);
   }
@@ -76,11 +84,13 @@ export class MemoDetailPage {
       buttons: [{
         text: '確認',
         handler: () => {
-          this.itemList.subscribe(itemSnaps => {
+          let deleteEvent = this.itemList.subscribe(itemSnaps => {
             itemSnaps.forEach(item => {
               this.deleteItem(item.$key);
             });
           });
+
+          deleteEvent.unsubscribe();
         }
       }, {
         text: '取消',
@@ -89,9 +99,5 @@ export class MemoDetailPage {
     });
     
     confirm.present();
-  }
-
-  toggleItem(key: string, item: any): void {
-    this.memoServ.updateItem(this.memoId, key, {entry: item.entry, checked: !item.checked});
   }
 }

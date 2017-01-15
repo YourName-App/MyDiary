@@ -18,10 +18,10 @@ page-login {
     padding: 5px;
   }
   .invalid {
-    border-bottom: 1px solid #FF6153;
+    border-bottom: 1px solid color($colors, danger);
   }
   .error-message p {
-    color: #FF6153;
+    color: color($colors, danger);
   }
   .error-message .item-inner {
     border-bottom: 0 !important;

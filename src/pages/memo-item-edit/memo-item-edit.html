@@ -1,9 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>MemoItemEdit</ion-title>
+  <ion-navbar color="diary">
+    <ion-title >編輯{{memo.title}}</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="close-icon" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item *ngFor="let item of itemList | async">
+    <ion-input #entry type='text' placeholder="請輸入備忘錄項目" [value]="item.entry" (blur)="updateItem(item.$key, item, entry)"></ion-input>
+    <button color="danger" item-right ion-button icon-only clear (click)='deleteItem(item.$key)'>
+      <ion-icon name="close-circle"></ion-icon>
+    </button>
+  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="diary" class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color="diary" (click)="dismiss()" ion-button icon-only>
+            <ion-icon name="ios-checkbox-outline"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

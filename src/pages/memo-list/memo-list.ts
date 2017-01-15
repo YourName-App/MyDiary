@@ -18,7 +18,6 @@ export class MemoListPage {
   }
 
   showMemoDetail(memoId: string): void {
-    //this.navCtrl.push(MemoDetailPage, { memoId });
     this.modalCtrl.create(MemoDetailPage, { memoId }).present();
   }
 
