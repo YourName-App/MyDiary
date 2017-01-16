@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
-import { TabsPage } from '../tabs/tabs';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import { EmailValidator } from '../../validators/email';
 
@@ -38,8 +37,8 @@ export class LoginPage {
     if (!this.loginForm.valid) {
       console.log(this.loginForm.value);
     } else {
-      this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((authData) => {
-        this.navCtrl.setRoot(TabsPage);
+      this.authServ.loginUser(this.loginForm.value.email, this.loginForm.value.password).then(() => {
+        this.loader.dismiss();
       }, error => {
         this.loader.dismiss().then(() => {
           let alert = this.alertCtrl.create({
@@ -49,19 +48,12 @@ export class LoginPage {
               role: 'cancel'
             }]
           });
-          
+        
           alert.present();
-        }, (error) => {
-          console.log(error);
         });
-      }, (error) => {
-        console.log(error)
       });
 
-      this.loader = this.loadingCtrl.create({
-        dismissOnPageChange: true
-      });
-
+      this.loader = this.loadingCtrl.create();
       this.loader.present();
     }
   }

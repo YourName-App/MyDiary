@@ -32,7 +32,7 @@ export class ResetPasswordPage {
       console.log(this.resetPasswordForm.value);
     } else {
       this.authServ.resetPassword(this.resetPasswordForm.value.email).then((user) => {
-        const alert = this.alertCtrl.create({
+        let alert = this.alertCtrl.create({
           message: '重設密碼的連結已寄送至你的電子郵件',
           buttons: [{
             text: '確認',
@@ -45,7 +45,7 @@ export class ResetPasswordPage {
 
         alert.present();
       }, (error) => {
-        const errorAlert = this.alertCtrl.create({
+        let errorAlert = this.alertCtrl.create({
           message: '此電子郵件尚未註冊。',
           buttons: [{
             text: '確認',

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
-import { TabsPage } from '../tabs/tabs';
 import { EmailValidator } from '../../validators/email';
 
 @Component({
@@ -41,8 +40,8 @@ export class SignupPage {
     if (!this.signupForm.valid) {
       console.log(this.signupForm.value);
     } else {
-      this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then((user) => {
-        this.navCtrl.setRoot(TabsPage);
+      this.authServ.registerUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
+        this.loader.dismiss();
       }, (error) => {
         this.loader.dismiss().then( () => {
           let alert = this.alertCtrl.create({
@@ -54,15 +53,10 @@ export class SignupPage {
           });
           
           alert.present();
-        }, (error) => {
-          console.log(error);
         });
       });
 
-      this.loader = this.loadingCtrl.create({
-        dismissOnPageChange: true
-      });
-
+      this.loader = this.loadingCtrl.create();
       this.loader.present();
     }
   } 

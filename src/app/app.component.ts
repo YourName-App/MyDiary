@@ -99,7 +99,7 @@ export class MyApp {
       // Give the menu time to close before changing to logged out
       setTimeout(() => {
         this.authServ.logoutUser();
-      }, 1000);
+      }, 200);
     }
   }
 
