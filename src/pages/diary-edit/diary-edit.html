@@ -1,25 +1,14 @@
-    <div class="diary-div-main"><label>姓名: </label>{{diary.name}}
-    </div>
+<ion-header>
+  <ion-navbar color="diary">
+    <h5 text-center>一 月</h5>
+    <h1 text-center>16</h1>
+    <ion-row>
+      <ion-col text-right><h6>星期一</h6></ion-col>
+      <ion-col text-left><h6>22:00</h6></ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
 
-    <div class="diary-div-main"><label>日期: </label>
-      <input [(ngModel)]="diary.date" placeholder="date">
-    </div>
+<ion-content padding>
 
-    <div>
-      <label>主題: </label>
-      <input [(ngModel)]="diary.title" placeholder="title">
-    </div>
-
-    <div>
-     <ion-label>記事: </ion-label>
-     <ion-item>
-       <ion-textarea rows="10" [(ngModel)]="diary.content" placeholder="content"></ion-textarea>
-     </ion-item>
-    </div>
-
-  <p>
-    <button ion-button color="primary" (click)="save()">Save</button>
-    <button ion-button color="primary" (click)="delete()">Delete</button>
-    <button ion-button color="primary" (click)="refresh()">Cancel</button>
-  </p>
-
+</ion-content>  

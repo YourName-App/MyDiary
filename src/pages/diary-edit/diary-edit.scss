@@ -1,3 +1,28 @@
 page-diary-edit {
-
+  ion-navbar {
+    h1 {
+      font-size: 66px;
+      color: color($colors, clean);
+      margin: 0;
+      transform: translate(0, -8px);
+    }
+    h5 {
+      font-size: 18px;
+      color: color($colors, clean);
+      margin: 0;
+      padding-top: 4px;
+    }
+    h6 {
+      font-size: 14px;
+      color: color($colors, clean);
+      margin: 0;
+      transform: translate(3px, -14px);
+    }
+    ion-col {
+      height: 10px;
+    }
+    .toolbar {
+      border-style: dotted;
+    }
+  }
 }

@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-navbar no-border-bottom>
+  <ion-navbar no-border-bottom hideBackButton="true">
     <ion-segment color="diary" [(ngModel)]="segment">
       <ion-segment-button value="diary-list">項目</ion-segment-button>
       <ion-segment-button value="calendar">日曆</ion-segment-button>
       <ion-segment-button value="diary-edit">日記</ion-segment-button>
     </ion-segment>
-    <ion-buttons end>
-      <button color="diary" ion-button icon-only (click)="createContact()">
-        <ion-icon class="add-icon" name="add"></ion-icon>
+    <ion-buttons start>
+      <button color="diary" ion-button icon-only (click)="goBack()">
+        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>

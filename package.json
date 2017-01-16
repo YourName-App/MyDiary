@@ -34,14 +34,13 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
+    "cordova-plugin-crosswalk-webview",
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
     "cordova-plugin-console",
     "cordova-plugin-device",
     "ionic-plugin-keyboard",
     "cordova-plugin-splashscreen",
-    "cordova-sqlite-storage",
-    "cordova-plugin-crosswalk-webview",
     "cordova-plugin-x-socialsharing",
     "call-number"
   ],

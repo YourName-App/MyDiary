@@ -11,4 +11,8 @@ export class DiaryPage {
   constructor(public navCtrl: NavController) {
     this.segment = 'diary-list';
   }
+
+  goBack() {
+    this.navCtrl.pop();
+  }
 }

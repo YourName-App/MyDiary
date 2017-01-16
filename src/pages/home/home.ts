@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { DiaryPage } from '../../pages/diary/diary';
+import { ContactListPage } from '../../pages/contact-list/contact-list';
+import { MemoListPage } from '../../pages/memo-list/memo-list';
 
 @Component({
   selector: 'page-home',
@@ -51,5 +54,17 @@ export class HomePage {
 
   selectTab(tabIndex: number) {
     this.navCtrl.parent.select(tabIndex);
+  }
+
+  goToDiary() {
+    this.navCtrl.push(DiaryPage);
+  }
+
+  goToContact() {
+    this.navCtrl.push(ContactListPage);
+  }
+
+  goToMemo() {
+    this.navCtrl.push(MemoListPage);
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { TabsPage } from '../../pages/tabs/tabs';
+import { HomePage } from '../../pages/home/home';
 
 @Component({
   selector: 'page-setting',
@@ -48,6 +48,6 @@ export class SettingPage {
     }
 
     this.dismiss();
-    this.appCtrl.getRootNav().setRoot(TabsPage);
+    this.appCtrl.getRootNav().setRoot(HomePage);
   }  
 }
