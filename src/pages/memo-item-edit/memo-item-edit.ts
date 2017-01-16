@@ -1,4 +1,3 @@
-import { EntryPage } from './../../../.tmp/pages/entry/entry';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MemoService } from '../../providers/memo-service';
@@ -15,6 +14,7 @@ export class MemoItemEditPage {
   entryChanged: boolean = false;
   createMode: boolean = false;
   submitAttempt: boolean = false;
+  itemBuffer = new Object();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public viewCtrl: ViewController, public alertCtrl: AlertController,
@@ -32,12 +32,18 @@ export class MemoItemEditPage {
     this.viewCtrl.dismiss();
   }
 
-  updateItem(itemId: string, item: any, entry: any): void {
-    if (entry === null || entry.value.trim().length === 0) {
-      return;
-    } else {
-      this.memoServ.updateItem(this.memoId, itemId, entry.value, item.checked);
+  bufferItem(itemId: string, item: any, entry: any): void {
+    if (entry !== null && entry.value.trim().length !== 0) {
+      this.itemBuffer[itemId] = {entry: entry.value, checked: item.checked};
     }
+  }
+
+  updateAllItems() {
+    for (let key in this.itemBuffer) {
+      this.memoServ.updateItem(this.memoId, key, this.itemBuffer[key]['entry'], this.itemBuffer[key]['checked']);
+    }
+
+    this.dismiss();
   }
 
   deleteItem(itemId: string): void {
