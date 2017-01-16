@@ -9,22 +9,31 @@ import { MemoService } from '../../providers/memo-service';
 })
 export class MemoEditPage {
   memoForm: any;
-  memoTitle: string = '';
+  memoId: string = '';
+  inputTitle: string = '';
+  mode: string = '';
+  modeDesc: string = '';
   titleChanged: boolean = false;
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
     public memoServ: MemoService, public formBuilder: FormBuilder) {
 
-    if (this.navParams.get('memoId')) {
-      this.memoTitle = '編輯備忘錄';
-    } else {
-      this.memoTitle = '新增備忘錄';
-    }
+    this.memoId = this.navParams.get('memoId') || '';
+    this.inputTitle = this.navParams.get('title') || '';
 
     this.memoForm = formBuilder.group({
        title: ['', Validators.required]
     });
+
+    if (this.navParams.get('memoId')) {
+      this.mode = 'update';
+      this.modeDesc = '編輯備忘錄';
+      this.memoForm.controls['title'].patchValue(this.inputTitle);
+    } else {
+      this.mode = 'create';
+      this.modeDesc = '新增備忘錄';
+    }
   }
 
   dismiss() {
@@ -36,17 +45,23 @@ export class MemoEditPage {
      this[field + "Changed"] = true;
   }
 
-  createMemo() {
+  editMemo() {
     this.submitAttempt = true;
 
     if (!this.memoForm.valid) {
       console.log(this.memoForm.value);
     } else {
-      this.memoServ.createMemo(this.memoForm.value.title).then(() => {
-        this.dismiss();
-      }, (error) => {
-        console.log(error);
-      });
+      if (this.mode === 'create') {
+        this.memoServ.createMemo(this.memoForm.value.title).then(
+          () => {this.dismiss();}, 
+          (error) => {console.log(error);}
+        );
+      } else if (this.mode === 'update') {
+        this.memoServ.updateMemo(this.memoId, this.memoForm.value.title).then(
+          () => {this.dismiss();}, 
+          (error) => {console.log(error);}
+        );
+      }
     } 
   }
 }

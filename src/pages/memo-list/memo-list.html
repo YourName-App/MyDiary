@@ -25,10 +25,10 @@
         <h2>{{memo.title}}</h2>
       </ion-item>
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="print()">
+        <button ion-button icon-only color="cloud" (click)="updateMemo(memo.$key, memo.title)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="print()">
+        <button ion-button icon-only color="danger" (click)="deleteMemo(memo.$key)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

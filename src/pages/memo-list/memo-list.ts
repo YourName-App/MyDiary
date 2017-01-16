@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
@@ -11,29 +11,39 @@ import { MemoService } from '../../providers/memo-service';
 export class MemoListPage {
   public memoList: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-    public memoServ: MemoService) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
+    public modalCtrl: ModalController, public memoServ: MemoService) {
 
     this.memoList = this.memoServ.getMemoList();
   }
 
   showMemoDetail(memoId: string): void {
-    this.modalCtrl.create(MemoDetailPage, { memoId }).present();
+    this.modalCtrl.create(MemoDetailPage, {memoId}).present();
   }
 
   createMemo(): void {
     this.modalCtrl.create(MemoEditPage).present();
   }
 
-  updateMemo(memoId: string, title: string, items: Array<string>) {
-    this.navCtrl.push(MemoEditPage, { memoId, title, items });
+  updateMemo(memoId: string, title: string) {
+    this.modalCtrl.create(MemoEditPage, {memoId, title}).present();
   }
 
   deleteMemo(memoId: string): void {
-    this.memoServ.deleteMemo(memoId);
-  }
-
-  print() {
-    console.log('Hi');
+    let confirm = this.alertCtrl.create({
+      title: '刪除備忘錄',
+      message: '確認刪除？',
+      buttons: [{
+        text: '確認',
+        handler: () => {
+          this.memoServ.deleteMemo(memoId);
+        }
+      }, {
+        text: '取消',
+        role: 'cancel'
+      }]
+    });
+    
+    confirm.present();
   }
 }

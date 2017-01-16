@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
 import { ContactService } from '../../providers/contact-service';
@@ -11,29 +11,39 @@ import { ContactService } from '../../providers/contact-service';
 export class ContactListPage {
   public contactList: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-    public contactServ: ContactService) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
+    public modalCtrl: ModalController, public contactServ: ContactService) {
       
     this.contactList = this.contactServ.getContactList();
   }
 
   showContactDetail(contactId: string): void {
-    this.modalCtrl.create(ContactDetailPage, { contactId }).present();
+    this.modalCtrl.create(ContactDetailPage, {contactId}).present();
   }
 
   createContact(): void {
     this.modalCtrl.create(ContactEditPage).present();
   }
 
-  updateContact(contactId: string, userName: string, phoneNo: string, avatar?: string) {
-    this.navCtrl.push(ContactEditPage, { contactId, userName, phoneNo, avatar });
+  updateContact(contactId: string, name: string, phone: string, avatar?: string) {
+    this.modalCtrl.create(ContactEditPage, {contactId, name, phone, avatar}).present();
   }
 
   deleteContact(contactId: string): void {
-    this.contactServ.deleteContact(contactId);
-  }
-
-  print() {
-    console.log('Hi');
+    let confirm = this.alertCtrl.create({
+      title: '刪除聯絡人',
+      message: '確認刪除？',
+      buttons: [{
+        text: '確認',
+        handler: () => {
+          this.contactServ.deleteContact(contactId);
+        }
+      }, {
+        text: '取消',
+        role: 'cancel'
+      }]
+    });
+    
+    confirm.present();
   }
 }
