@@ -15,13 +15,6 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-// iOS-specific layout
-.platform-ios {
-  .home-icon {
-    padding-top: 13px;
-  }
-}
-
 ion-list-header.menu-header {
   height: 45px;
   font-size: 12px;

@@ -32,4 +32,8 @@ export class MemoListPage {
   deleteMemo(memoId: string): void {
     this.memoServ.deleteMemo(memoId);
   }
+
+  print() {
+    console.log('Hi');
+  }
 }

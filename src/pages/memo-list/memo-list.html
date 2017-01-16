@@ -19,9 +19,19 @@
 
 <ion-content>
   <ion-list>
-    <button *ngFor="let memo of memoList | async" ion-item detail-none (click)="showMemoDetail(memo.$key)">
-      <ion-icon name="ios-list-box-outline" item-left></ion-icon>
-      <h2>{{memo.title}}</h2>
-    </button>
+    <ion-item-sliding *ngFor="let memo of memoList | async">
+      <ion-item tabbable (click)="showMemoDetail(memo.$key)">
+        <ion-icon name="ios-list-box-outline" item-left ></ion-icon>
+        <h2>{{memo.title}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button icon-only color="cloud" (click)="print()">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="print()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

@@ -32,4 +32,8 @@ export class ContactListPage {
   deleteContact(contactId: string): void {
     this.contactServ.deleteContact(contactId);
   }
+
+  print() {
+    console.log('Hi');
+  }
 }

@@ -14,17 +14,17 @@
 
 <ion-content>
   <ion-list>
-    <button class="diary-button" ion-item (click)="selectTab(1)">
-      <ion-icon class="home-icon" name="book" item-left></ion-icon>
-      我的日記
-    </button>
-    <button class="contact-button" ion-item (click)="selectTab(2)">
-      <ion-icon class="home-icon" name="call" item-left></ion-icon>
-      我的聯絡人
-    </button>
-    <button class="memo-button" ion-item (click)="selectTab(3)">
-      <ion-icon class="home-icon" name="alert" item-left></ion-icon>
-      我的備忘錄
-    </button>  
+    <ion-item tabbable detail-push (click)="selectTab(1)">
+      <ion-icon name="book" item-left></ion-icon>
+      <h2>我的日記</h2>
+    </ion-item>
+    <ion-item tabbable detail-push (click)="selectTab(2)">
+      <ion-icon name="call" item-left></ion-icon>
+      <h2>我的聯絡人</h2>
+    </ion-item>
+    <ion-item tabbable detail-push (click)="selectTab(3)">
+      <ion-icon name="alert" item-left></ion-icon>
+      <h2>我的備忘錄</h2>
+    </ion-item> 
   </ion-list>
 </ion-content>
