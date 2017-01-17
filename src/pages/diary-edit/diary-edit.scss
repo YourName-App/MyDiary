@@ -5,20 +5,17 @@ page-diary-edit {
     .diary-month {
       font-size: 18px;
       color: color($colors, clean);
-      margin: 0;
-      transform: translate(0, 18px);
+      transform: translate(0, 35px);
     }
-    .diary-day {
-      font-size: 66px;
+    .diary-date {
+      font-size: 70px;
       color: color($colors, clean);
-      margin: 0;
-      transform: translate(0, -3px);
+      transform: translate(0, -5px);
     }
-    .diary-week, .diary-time {
+    .diary-day, .diary-time {
       font-size: 14px;
       color: color($colors, clean);
-      margin: 0;
-      transform: translate(3px, -20px);
+      transform: translate(3px, -40px);
     }
   }
 }

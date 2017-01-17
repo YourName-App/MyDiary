@@ -1,23 +1,24 @@
 <ion-header>
   <ion-navbar color="diary">
     <ion-row>
-      <ion-col text-center>
-        <ion-label class="diary-month">{{diaryMonth}}</ion-label>
+      <ion-col>
+        <ion-input class="diary-month" text-center readonly [(ngModel)]="diaryMonth"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-center>
-        <ion-label class="diary-day">{{diaryDay}}</ion-label>
+      <ion-col>
+        <ion-input class="diary-date" text-center readonly [(ngModel)]="diaryDate" (click)="openDatePicker()"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-right>
-        <ion-label class="diary-week">{{diaryWeek}}</ion-label>
+      <ion-col>
+        <ion-input class="diary-day" text-right readonly [(ngModel)]="diaryDay"></ion-input>
       </ion-col>
-      <ion-col text-left>
-        <ion-label class="diary-time">{{diaryTime}}</ion-label>
+      <ion-col>
+        <ion-input class="diary-time" text-left readonly [(ngModel)]="diaryTime"></ion-input>
       </ion-col>
     </ion-row>
+
   </ion-navbar>
 </ion-header>
 
