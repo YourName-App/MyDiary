@@ -9,7 +9,8 @@ export class DiaryPage {
   segment: string;
 
   constructor(public navCtrl: NavController) {
-    this.segment = 'diary-list';
+    //this.segment = 'diary-list';
+    this.segment = 'diary-edit';
   }
 
   goBack() {

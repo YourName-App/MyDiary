@@ -1,26 +1,38 @@
 <ion-card>
   <ion-list>
-    <ion-item tappable>
-      <div class="diary-div-left" item-left text-center>
-        <h1 class="diary-day">12</h1>
-        <h3 class="diary-week">Mon.</h3>
-      </div>
-      <div class="diary-div-main">
-        <h3 class="diary-time">23:15</h3>
-        <h2 class="diary-header">東京生活4💕</h2>
-        <h3 class="diary-content">展望台巡りとフリーマーケット💐❤️</h3>
-      </div>  
-      <div class="diary-div-right" item-right>
-        <div>
-          <ion-icon class="diary-icon" name="ios-sunny-outline"></ion-icon>
-          <ion-icon class="diary-icon" name="ios-happy-outline"></ion-icon>
-          <ion-icon class="diary-icon" name="ios-bookmark-outline"></ion-icon>
+    <ion-item-sliding>
+      <ion-item tappable>
+        <div class="diary-div-left" item-left text-center>
+          <h1 class="diary-day">12</h1>
+          <h3 class="diary-week">Mon.</h3>
         </div>
-        <ion-icon class="attach" name="ios-attach-outline"></ion-icon>
-      </div>
-    </ion-item>
+        <div class="diary-div-main">
+          <h3 class="diary-time">23:15</h3>
+          <h2 class="diary-title">東京生活4💕</h2>
+          <h3 class="diary-content">展望台巡りとフリーマーケット💐❤️</h3>
+        </div>  
+        <div class="diary-div-right" item-right>
+          <div>
+            <ion-icon class="diary-icon" name="ios-sunny-outline"></ion-icon>
+            <ion-icon class="diary-icon" name="ios-happy-outline"></ion-icon>
+            <ion-icon class="diary-icon" name="ios-bookmark-outline"></ion-icon>
+          </div>
+          <ion-icon class="attach" name="ios-attach-outline"></ion-icon>
+        </div>
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-only color="cloud" (click)="print()">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="print()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>  
   </ion-list>
 </ion-card>
+
 <ion-card>
   <ion-list>
     <ion-item tappable>
@@ -30,7 +42,7 @@
       </div>
       <div class="diary-div-main">
         <h3 class="diary-time">16:21</h3>
-        <h2 class="diary-header">バイト</h2>
+        <h2 class="diary-title">バイト</h2>
         <h3 class="diary-content">&nbsp;</h3>
       </div>  
       <div class="diary-div-right" item-right>

@@ -9,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
-import { DiaryEditPage } from '../pages/diary-edit//diary-edit';
+import { DiaryPage } from '../pages/diary/diary';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -55,8 +55,8 @@ export class MyApp {
     // Listen for authentication
     af.auth.subscribe((user) => {
       if (user) {
-        this.rootPage = HomePage;
-        //this.rootPage = DiaryEditPage;
+        //this.rootPage = HomePage;
+        this.rootPage = DiaryPage;
       } else {
         this.rootPage = LandingPage;
       }

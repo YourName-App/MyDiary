@@ -1,28 +1,24 @@
 page-diary-edit {
   ion-navbar {
-    h1 {
-      font-size: 66px;
-      color: color($colors, clean);
-      margin: 0;
-      transform: translate(0, -8px);
-    }
-    h5 {
+    height: 120px;
+
+    .diary-month {
       font-size: 18px;
       color: color($colors, clean);
       margin: 0;
-      padding-top: 4px;
+      transform: translate(0, 18px);
     }
-    h6 {
+    .diary-day {
+      font-size: 66px;
+      color: color($colors, clean);
+      margin: 0;
+      transform: translate(0, -3px);
+    }
+    .diary-week, .diary-time {
       font-size: 14px;
       color: color($colors, clean);
       margin: 0;
-      transform: translate(3px, -14px);
-    }
-    ion-col {
-      height: 10px;
-    }
-    .toolbar {
-      border-style: dotted;
+      transform: translate(3px, -20px);
     }
   }
 }

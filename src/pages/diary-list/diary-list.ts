@@ -8,4 +8,8 @@ import { NavController } from 'ionic-angular';
 export class DiaryListPage {
 
   constructor(public navCtrl: NavController) {}
+
+  print() {
+    console.log('SlidingItem');
+  }
 }
