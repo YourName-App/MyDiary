@@ -35,17 +35,15 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
+    "call-number",
     "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-camera",
-    "cordova-plugin-compat",
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
     "cordova-plugin-console",
     "cordova-plugin-device",
-    "ionic-plugin-keyboard",
     "cordova-plugin-x-socialsharing",
-    "call-number",
-    "cordova-plugin-splashscreen"
+    "cordova-plugin-splashscreen",
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "ios",
