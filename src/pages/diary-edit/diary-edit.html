@@ -22,8 +22,7 @@
 
 <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
   <ion-item>
-    <ion-label stacked>日記主題</ion-label>
-    <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
+    <ion-input #title formControlName="title" type="text" placeholder="日記主題（點選日期兩次可調整設定）" value={{inputTitle}}
       (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
     </ion-input>
   </ion-item>
@@ -46,7 +45,7 @@
     <ion-grid>
       <ion-row>
         <ion-col offset-80>
-          <button color="diary" (click)="dismiss()" ion-button icon-only>
+          <button color="diary" (click)="test()" ion-button icon-only>
             <ion-icon name="ios-checkbox-outline"></ion-icon>
           </button>
         </ion-col>
