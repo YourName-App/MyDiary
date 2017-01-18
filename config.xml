@@ -63,14 +63,13 @@
   <preference name="Orientation" value="portrait"/>
   <preference name="SplashMaintainAspectRatio" value="true"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="4500"/>
-  <preference name="FadeSplashScreenDuration" value="2000"/>
+  <preference name="SplashScreenDelay" value="5000"/>
+  <preference name="FadeSplashScreenDuration" value="2500"/>
   <preference name="LoadUrlTimeoutValue" value="60000"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-  <plugin name="cordova-sqlite-storage" spec="~2.0.0"/>
   <plugin name="cordova-plugin-crosswalk-webview" spec="~2.2.0">
     <variable name="XWALK_VERSION" value="22+"/>
     <variable name="XWALK_LITEVERSION" value="xwalk_core_library_canary:17+"/>

@@ -26,11 +26,11 @@
       </ion-item>
 
       <ion-buttons end>
-        <button color="diary" class="sms-button" (click)="sendSms()"
+        <button color="diary" class="sms-button" (click)="sendSms(contact.phone)"
                 ion-button icon-only round>
           <ion-icon name="chatboxes"> 簡訊</ion-icon>
         </button>
-        <button color="diary" class="phone-button" (click)="dial()"
+        <button color="diary" class="phone-button" (click)="dial(contact.phone)"
                 ion-button icon-only round>
           <ion-icon name="call"> 撥號</ion-icon>
         </button>

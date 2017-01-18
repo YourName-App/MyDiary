@@ -1,4 +1,7 @@
 page-diary {
+  .diary-content .scroll-content {
+    padding: 0!important;
+  }
   .diary-list {
     //background-color: color($colors, diary);
     background-image: url('../assets/img/bg-sky01.png');

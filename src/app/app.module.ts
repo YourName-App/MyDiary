@@ -26,6 +26,9 @@ import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
 
+// Import custom components
+import { Autoresize } from '../components/autoresize/autoresize';
+
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { MemoService } from '../providers/memo-service';
@@ -71,7 +74,8 @@ const myFirebaseAuthConfig = {
     ResetPasswordPage,
     SuggestPage,
     AboutPage,
-    SettingPage
+    SettingPage,
+    Autoresize
   ],
   imports: [
     // Set the whole app in iOS's style

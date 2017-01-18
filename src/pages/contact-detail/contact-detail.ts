@@ -25,7 +25,7 @@ export class ContactDetailPage {
     this.contactId = this.navParams.get('contactId');
     this.phone = this.contact.phone;
   }
-
+  
   dismiss(): void {
     this.viewCtrl.dismiss();
   }
@@ -53,11 +53,11 @@ export class ContactDetailPage {
     confirm.present();
   }
 
-  sendSms(): void {
-    SocialSharing.shareViaSMS(this.smsMsg, this.phone);
+  sendSms(phone: string): void {
+    SocialSharing.shareViaSMS(this.smsMsg, phone);
   }
 
-  dial(): void {
-    CallNumber.callNumber(this.phone, true);
+  dial(phone: string): void {
+    CallNumber.callNumber(phone, true);
   }
 }

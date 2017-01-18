@@ -35,7 +35,6 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
-    "call-number",
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
@@ -43,7 +42,9 @@
     "cordova-plugin-device",
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "cordova-plugin-datepicker",
+    "ionic-plugin-keyboard",
+    "call-number"
   ],
   "cordovaPlatforms": [
     "ios",
