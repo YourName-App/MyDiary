@@ -25,6 +25,7 @@ hooks/
 platforms/
 plugins/
 typings/
+src/app/app.module.ts
 www/
 $RECYCLE.BIN/
 
