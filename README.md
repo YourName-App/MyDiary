@@ -28,6 +28,18 @@ $ cd MyDiary
 $ npm install && ionic state restore
 ```
 
+##### Use your own AngularFire2 settings in src/app/app.module.ts:
+```
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
+```
+
 ##### Run the app in the browser:
 ```
 $ ionic serve
