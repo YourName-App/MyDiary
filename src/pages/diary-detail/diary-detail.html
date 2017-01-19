@@ -1,9 +1,63 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>DiaryDetail</ion-title>
+  <ion-navbar color="diary">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-month" text-center readonly value={{diary.month}}></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-input class="diary-date" text-center readonly value={{diary.date}}></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-day" text-right readonly value={{diary.day}}></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input class="diary-time" text-left readonly value={{diary.time}}></ion-input>
+      </ion-col>
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-item no-lines>
+    <ion-input class="diary-title" text-center value={{diary.title}} readonly></ion-input>
+  </ion-item>
 
+  <ion-item no-lines>
+    <ion-textarea class="content-area" value={{diary.content}} autoresize readonly>
+    </ion-textarea>
+  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="diary" class="footer-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+          <button color="diary" (click)="updateDiary(diaryId, diary)" ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20>
+          <button color="diary" (click)="deleteDiary(diaryId)" ion-button icon-only>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -3,12 +3,7 @@
     <ion-title>聯絡人</ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="close-icon" name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon class="add-icon"></ion-icon>
+        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -50,7 +45,7 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color="diary" (click)="updateContact(contactId, contact.name, contact.phone)" ion-button icon-only>
+          <button color="diary" (click)="updateContact(contactId, contact)" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>

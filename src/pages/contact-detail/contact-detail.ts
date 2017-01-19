@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
-import { ContactService } from '../../providers/contact-service';
-import { CallNumber, SocialSharing } from 'ionic-native';
 import { ContactEditPage } from '../contact-edit/contact-edit';
+import { IContact, ContactService } from '../../providers/contact-service';
+import { CallNumber, SocialSharing } from 'ionic-native';
 
 @Component({
   selector: 'page-contact-detail',
@@ -32,8 +32,8 @@ export class ContactDetailPage {
     this.viewCtrl.dismiss();
   }
 
-  updateContact(contactId: string, name: string, phone: string, avatar?: string): void {
-    this.modalCtrl.create(ContactEditPage, {contactId, name, phone, avatar}).present();
+  updateContact(contactId: string, contact: IContact): void {
+    this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
   }
 
   deleteContact(contactId: string): void {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ContactService } from '../../providers/contact-service';
+import { IContact, ContactService } from '../../providers/contact-service';
 
 @Component({
   selector: 'page-contact-edit',
@@ -11,8 +11,10 @@ export class ContactEditPage {
   
   contactForm: any;
   contactId: string = '';
+  inputContact: IContact;
   inputName: string = '';
   inputPhone: string = '';
+  inputAvatar: string = '';
   mode: string = '';
   modeDesc: string = '';
   nameChanged: boolean = false;
@@ -24,8 +26,10 @@ export class ContactEditPage {
     public formBuilder: FormBuilder) {
 
     this.contactId = this.navParams.get('contactId') || '';
-    this.inputName = this.navParams.get('name') || '';
-    this.inputPhone = this.navParams.get('phone') || '';
+    this.inputContact = this.navParams.get('contact') || {};
+    this.inputName = this.inputContact.name || '';
+    this.inputPhone = this.inputContact.phone || '';
+    this.inputAvatar = this.inputContact.avatar || '';
 
     this.contactForm = formBuilder.group({
        name: ['', Validators.required],
@@ -58,22 +62,21 @@ export class ContactEditPage {
     if (!this.contactForm.valid) {
       console.log(this.contactForm.value);
     } else {
+      let contact: IContact = {
+        name: this.contactForm.value.name,
+        phone: this.contactForm.value.phone,
+        avatar: this.contactForm.value.avatar || 'assets/img/avatar-female.png'
+      }
+      
       if (this.mode === 'create') {
-        this.contactServ.createContact(
-          this.contactForm.value.name, 
-          this.contactForm.value.phone,
-          this.contactForm.value.avatar || 'assets/img/avatar-female.png'
-        ).then(
+        this.contactServ.createContact(contact)
+        .then(
           () => {this.dismiss();}, 
           error => {console.log(error);}
         );
       } else if (this.mode === 'update') {
-        this.contactServ.updateContact(
-          this.contactId,
-          this.contactForm.value.name, 
-          this.contactForm.value.phone,
-          this.contactForm.value.avatar || 'assets/img/avatar-female.png'
-        ).then(
+        this.contactServ.updateContact(this.contactId, contact)
+        .then(
           () => {this.dismiss();}, 
           error => {console.log(error);}
         );

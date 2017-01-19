@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
-import { IDiary, DiaryService } from '../../providers/diary-service';
 
 @Component({
   selector: 'page-diary-list',
@@ -28,7 +28,7 @@ export class DiaryListPage {
   }
 
   updateDiary(diaryId: string, diary: IDiary) {
-    this.modalCtrl.create(DiaryEditPage, diary).present();
+    this.modalCtrl.create(DiaryEditPage, {diaryId, diary}).present();
   }
 
   deleteDiary(diaryId: string): void {

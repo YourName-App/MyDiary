@@ -1,7 +1,7 @@
 <ion-card *ngFor="let diary of diaryList | async">
   <ion-list>
     <ion-item-sliding>
-      <ion-item tappable>
+      <ion-item tappable (click)="showDiaryDetail(diary.$key)">
         <div class="diary-div-left" item-left text-center>
           <h1 class="diary-date">{{diary.date}}</h1>
           <h3 class="diary-day">{{diary.day | ChineseDay:'medium'}}</h3>
@@ -22,10 +22,10 @@
       </ion-item>
 
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="print()">
+        <button ion-button icon-only color="cloud" (click)="updateDiary(diary.$key, diary)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="print()">
+        <button ion-button icon-only color="danger" (click)="deleteDiary(diary.$key)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

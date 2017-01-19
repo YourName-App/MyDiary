@@ -22,6 +22,9 @@ page-diary-edit {
   ion-toolbar.footer-toolbar {
     height: 50px;
   }
+  .back-icon {
+    transform: translate(0, -25px);
+  }
   .invalid {
     border-bottom: 1px solid color($colors, danger);
   }
@@ -30,8 +33,5 @@ page-diary-edit {
   }
   .error-message .item-inner {
     border-bottom: 0 !important;
-  }
-  .back-icon {
-    transform: translate(0, -25px);
   }
 }

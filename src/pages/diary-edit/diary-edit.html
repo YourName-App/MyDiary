@@ -11,8 +11,8 @@
       </ion-col>
     </ion-row>
     <ion-row >
-      <ion-col>
-        <ion-input class="diary-date" text-center readonly [(ngModel)]="diaryDate" tappable (click)="openDatePicker()"></ion-input>
+      <ion-col tappable (click)="openDatePicker()">
+        <ion-input class="diary-date" text-center readonly [(ngModel)]="diaryDate"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -38,9 +38,12 @@
     </ion-item>
 
     <ion-item no-lines>
-      <ion-textarea class="content-area" #content formControlName="content" placeholder="日記內容" rows="10" autoresize
-        (change)="elementChanged(content)">
+      <ion-textarea class="content-area" #content formControlName="content" placeholder="日記內容" rows="10" autoresize value={{inputContent}}
+        (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
+      <p>請輸入日記內容</p>
     </ion-item>
   </form>
 </ion-content>

@@ -28,7 +28,7 @@
         <p class="phone-no">{{contact.phone}}</p>
       </ion-item>
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="updateContact(contact.$key, contact.name, contact.phone, contact.avatar)">
+        <button ion-button icon-only color="cloud" (click)="updateContact(contact.$key, contact)">
           <ion-icon name="create"></ion-icon>
         </button>
         <button ion-button icon-only color="danger" (click)="deleteContact(contact.$key)">

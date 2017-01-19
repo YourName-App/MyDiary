@@ -43,7 +43,7 @@ export class DiaryEditPage {
 
     this.diaryForm = formBuilder.group({
       title: ['', Validators.required],
-      content: ['', Validators.minLength(0)]
+      content: ['', Validators.required]
     });
 
     moment.locale('zh-tw');
@@ -52,7 +52,7 @@ export class DiaryEditPage {
       this.mode = 'update';
       this.modeDesc = '編輯日記';
       this.diaryForm.controls['title'].patchValue(this.inputTitle);
-      this.diaryForm.controls['conten'].patchValue(this.inputContent);
+      this.diaryForm.controls['content'].patchValue(this.inputContent);
       this.timestamp = this.inputTimeStamp;
     } else {
       this.mode = 'create';

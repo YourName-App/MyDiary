@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
-import { ContactService } from '../../providers/contact-service';
+import { IContact, ContactService } from '../../providers/contact-service';
 
 @Component({
   selector: 'page-contact-list',
@@ -27,8 +27,8 @@ export class ContactListPage {
     this.modalCtrl.create(ContactEditPage).present();
   }
 
-  updateContact(contactId: string, name: string, phone: string, avatar?: string) {
-    this.modalCtrl.create(ContactEditPage, {contactId, name, phone, avatar}).present();
+  updateContact(contactId: string, contact: IContact) {
+    this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
   }
 
   deleteContact(contactId: string): void {

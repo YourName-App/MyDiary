@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
+export interface IContact {
+  name: string;
+  phone: string;
+  avatar?: string;
+}
+
 @Injectable()
 export class ContactService {
 
@@ -31,13 +37,13 @@ export class ContactService {
   }
 
   // Create a new contact
-  createContact(name: string, phone: string, avatar?: string) {
-    return this.contactList.push({name, phone, avatar});
+  createContact(contact: IContact) {
+    return this.contactList.push(contact);
   }
 
   // Update an existing contact
-  updateContact(contactId: string, name: string, phone: string, avatar?: string) {
-    return this.contactList.update(contactId, {name, phone, avatar});
+  updateContact(contactId: string, contact: IContact) {
+    return this.contactList.update(contactId, contact);
   }
 
   // Delete an existing contact
