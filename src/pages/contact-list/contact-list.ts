@@ -9,7 +9,9 @@ import { ContactService } from '../../providers/contact-service';
   templateUrl: 'contact-list.html'
 })
 export class ContactListPage {
+  
   public contactList: any;
+
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public modalCtrl: ModalController, public contactServ: ContactService) {

@@ -31,8 +31,10 @@ import { Autoresize } from '../components/autoresize/autoresize';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
+import { DiaryService } from '../providers/diary-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
+import { ChineseDay } from '../pipes/chinese-day';
 
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -75,7 +77,8 @@ const myFirebaseAuthConfig = {
     SuggestPage,
     AboutPage,
     SettingPage,
-    Autoresize
+    Autoresize,
+    ChineseDay
   ],
   imports: [
     // Set the whole app in iOS's style
@@ -111,6 +114,7 @@ const myFirebaseAuthConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Storage,
     AuthService,
+    DiaryService,
     MemoService,
     ContactService
   ]

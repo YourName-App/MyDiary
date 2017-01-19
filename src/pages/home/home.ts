@@ -10,9 +10,11 @@ import { MemoListPage } from '../../pages/memo-list/memo-list';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   yourName: string;
   yourGender: string;
   yourAvatar: string;
+
 
   constructor(public navCtrl: NavController, public menu: MenuController,
     public storage: Storage) {

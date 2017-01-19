@@ -1,15 +1,15 @@
-<ion-card>
+<ion-card *ngFor="let diary of diaryList | async">
   <ion-list>
     <ion-item-sliding>
       <ion-item tappable>
         <div class="diary-div-left" item-left text-center>
-          <h1 class="diary-day">12</h1>
-          <h3 class="diary-week">Mon.</h3>
+          <h1 class="diary-date">{{diary.date}}</h1>
+          <h3 class="diary-day">{{diary.day | ChineseDay:'medium'}}</h3>
         </div>
         <div class="diary-div-main">
-          <h3 class="diary-time">23:15</h3>
-          <h2 class="diary-title">東京生活4💕</h2>
-          <h3 class="diary-content">展望台巡りとフリーマーケット💐❤️</h3>
+          <h3 class="diary-time">{{diary.time}}</h3>
+          <h2 class="diary-title">{{diary.title}}</h2>
+          <h3 class="diary-content">{{diary.content}}</h3>
         </div>  
         <div class="diary-div-right" item-right>
           <div>
@@ -32,28 +32,3 @@
     </ion-item-sliding>  
   </ion-list>
 </ion-card>
-
-<ion-card>
-  <ion-list>
-    <ion-item tappable>
-      <div class="diary-div-left" item-left text-center>
-        <h1 class="diary-day">11</h1>
-        <h3 class="diary-week">Sun.</h3>
-      </div>
-      <div class="diary-div-main">
-        <h3 class="diary-time">16:21</h3>
-        <h2 class="diary-title">バイト</h2>
-        <h3 class="diary-content">&nbsp;</h3>
-      </div>  
-      <div class="diary-div-right" item-right>
-        <div>
-          <ion-icon class="diary-icon" name="ios-cloudy-outline"></ion-icon>
-          <ion-icon class="diary-icon" name="ios-happy-outline"></ion-icon>
-          <ion-icon class="diary-icon" name="ios-bookmark-outline"></ion-icon>
-        </div>
-        <ion-icon class="attach"></ion-icon>
-      </div>
-    </ion-item>
-  </ion-list>
-</ion-card>
-

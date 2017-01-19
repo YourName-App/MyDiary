@@ -8,9 +8,11 @@ import { SocialSharing } from 'ionic-native';
   templateUrl: 'suggest.html'
 })
 export class SuggestPage {
+
   suggestForm: any;
   suggestChanged: boolean = false;
   submitAttempt: boolean = false;
+
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public formBuilder: FormBuilder, public viewCtrl: ViewController) {

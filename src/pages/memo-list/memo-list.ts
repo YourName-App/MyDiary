@@ -9,7 +9,9 @@ import { MemoService } from '../../providers/memo-service';
   templateUrl: 'memo-list.html'
 })
 export class MemoListPage {
+
   public memoList: any;
+
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public modalCtrl: ModalController, public memoServ: MemoService) {

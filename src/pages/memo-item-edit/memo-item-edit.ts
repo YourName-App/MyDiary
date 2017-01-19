@@ -7,6 +7,7 @@ import { MemoService } from '../../providers/memo-service';
   templateUrl: 'memo-item-edit.html'
 })
 export class MemoItemEditPage {
+
   memo: any;
   itemList: any;
   memoId: string = '';
@@ -15,6 +16,7 @@ export class MemoItemEditPage {
   createMode: boolean = false;
   submitAttempt: boolean = false;
   itemBuffer = new Object();
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public viewCtrl: ViewController, public alertCtrl: AlertController,

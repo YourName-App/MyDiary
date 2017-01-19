@@ -8,6 +8,7 @@ import { ContactService } from '../../providers/contact-service';
   templateUrl: 'contact-edit.html'
 })
 export class ContactEditPage {
+  
   contactForm: any;
   contactId: string = '';
   inputName: string = '';
@@ -16,6 +17,7 @@ export class ContactEditPage {
   modeDesc: string = '';
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public viewCtrl: ViewController, public contactServ: ContactService,

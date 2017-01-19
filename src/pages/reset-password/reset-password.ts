@@ -9,9 +9,11 @@ import { EmailValidator } from '../../validators/email';
   templateUrl: 'reset-password.html'
 })
 export class ResetPasswordPage {
+
   resetPasswordForm: any;
   emailChanged: boolean = false;
   submitAttempt: boolean = false;
+
 
   constructor(public navCtrl: NavController, public authServ: AuthService, 
     public formBuilder: FormBuilder, public alertCtrl: AlertController) {

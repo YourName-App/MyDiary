@@ -8,6 +8,7 @@ import { MemoService } from '../../providers/memo-service';
   templateUrl: 'memo-edit.html'
 })
 export class MemoEditPage {
+
   memoForm: any;
   memoId: string = '';
   inputTitle: string = '';
@@ -15,6 +16,7 @@ export class MemoEditPage {
   modeDesc: string = '';
   titleChanged: boolean = false;
   submitAttempt: boolean = false;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
     public memoServ: MemoService, public formBuilder: FormBuilder) {

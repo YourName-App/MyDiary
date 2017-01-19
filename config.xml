@@ -77,5 +77,4 @@
     <variable name="XWALK_MODE" value="embedded"/>
     <variable name="XWALK_MULTIPLEAPK" value="true"/>
   </plugin>
-  <allow-navigation href="http://192.168.1.42:8100"/>
 </widget>

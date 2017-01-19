@@ -1,51 +1,56 @@
+<ion-header>
+  <ion-navbar color="diary">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-month" text-center readonly [(ngModel)]="diaryMonth"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-input class="diary-date" text-center readonly [(ngModel)]="diaryDate" tappable (click)="openDatePicker()"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input class="diary-day" text-right readonly [(ngModel)]="diaryDay"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input class="diary-time" text-left readonly [(ngModel)]="diaryTime"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
 
-<ion-navbar color="diary" tappable (click)="openDatePicker()">
-  <ion-row>
-    <ion-col>
-      <ion-input class="diary-month" text-center readonly [(ngModel)]="diaryMonth"></ion-input>
-    </ion-col>
-  </ion-row>
-  <ion-row >
-    <ion-col>
-      <ion-input class="diary-date" text-center readonly [(ngModel)]="diaryDate"></ion-input>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-input class="diary-day" text-right readonly [(ngModel)]="diaryDay"></ion-input>
-    </ion-col>
-    <ion-col>
-      <ion-input class="diary-time" text-left readonly [(ngModel)]="diaryTime"></ion-input>
-    </ion-col>
-  </ion-row>
-</ion-navbar>
+<ion-content padding>
+  <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
+    <ion-item>
+      <ion-input #title formControlName="title" type="text" placeholder="日記主題(點選日期兩次開啟設定)" value={{inputTitle}}
+        (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
+      <p>請輸入日記主題</p>
+    </ion-item>
 
-<form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
-  <ion-item>
-    <ion-input #title formControlName="title" type="text" placeholder="日記主題（點選日期兩次可調整設定）" value={{inputTitle}}
-      (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
-    </ion-input>
-  </ion-item>
-  <ion-item class="error-message" *ngIf="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
-    <p>請輸入日記主題</p>
-  </ion-item>
-
-  <ion-item no-lines>
-    <ion-textarea class="content-area" #content formControlName="content" placeholder="日記內容" rows="10" autoresize
-      (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
-    </ion-textarea>
-  </ion-item>
-  <ion-item class="error-message" *ngIf="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
-    <p>請輸入日記內容</p>
-  </ion-item>
-</form>
+    <ion-item no-lines>
+      <ion-textarea class="content-area" #content formControlName="content" placeholder="日記內容" rows="10" autoresize
+        (change)="elementChanged(content)">
+      </ion-textarea>
+    </ion-item>
+  </form>
+</ion-content>
 
 <ion-footer>
   <ion-toolbar color="diary" class="footer-toolbar">
     <ion-grid>
       <ion-row>
         <ion-col offset-80>
-          <button color="diary" (click)="test()" ion-button icon-only>
+          <button color="diary" (click)="editDiary()" ion-button icon-only>
             <ion-icon name="ios-checkbox-outline"></ion-icon>
           </button>
         </ion-col>

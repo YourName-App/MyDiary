@@ -9,11 +9,13 @@ import { EmailValidator } from '../../validators/email';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
+
   public signupForm;
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
   loader: any;
+
 
   constructor(public navCtrl: NavController, public authServ: AuthService,
     public formBuilder: FormBuilder, public alertCtrl: AlertController,

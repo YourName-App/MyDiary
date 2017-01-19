@@ -3,11 +3,15 @@
     <ion-segment color="diary" [(ngModel)]="segment">
       <ion-segment-button value="diary-list">項目</ion-segment-button>
       <ion-segment-button value="calendar">日曆</ion-segment-button>
-      <ion-segment-button value="diary-edit">日記</ion-segment-button>
     </ion-segment>
     <ion-buttons start>
       <button color="diary" ion-button icon-only (click)="goBack()">
         <ion-icon class="back-icon" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="createDiary()">
+        <ion-icon class="add-icon" name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -22,17 +26,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding [class.diary-list]="segment==='diary-list'"
-  [class.diary-content]="segment==='calendar' || segment==='diary-edit'">
+<ion-content padding [class.diary-list]="segment==='diary-list'" [class.diary-content]="segment==='calendar'">
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'diary-list'">
       <page-diary-list></page-diary-list>
     </div>
     <div *ngSwitchCase="'calendar'">
       <page-calendar></page-calendar>
-    </div>
-    <div *ngSwitchCase="'diary-edit'">
-      <page-diary-edit></page-diary-edit>
     </div>
   </div>  
 </ion-content>

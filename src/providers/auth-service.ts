@@ -6,7 +6,9 @@ import firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
+
   fireAuth: any;
+  
 
   constructor(public af: AngularFire) {
     af.auth.subscribe( user => {

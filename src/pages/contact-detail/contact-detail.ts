@@ -9,10 +9,12 @@ import { ContactEditPage } from '../contact-edit/contact-edit';
   templateUrl: 'contact-detail.html'
 })
 export class ContactDetailPage {
+  
   contact: any;
   contactId: string;
   phone: string = '';
   smsMsg: string = '';
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,

@@ -8,8 +8,10 @@ import { HomePage } from '../../pages/home/home';
   templateUrl: 'setting.html'
 })
 export class SettingPage {
+
   yourName: string;
   yourGender: string;
+  
   
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,
     public appCtrl: App, public storage: Storage) {

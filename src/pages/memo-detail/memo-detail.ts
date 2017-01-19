@@ -8,6 +8,7 @@ import { MemoService } from '../../providers/memo-service';
   templateUrl: 'memo-detail.html'
 })
 export class MemoDetailPage {
+
   memo: any;
   itemList: any;
   memoId: string = '';
@@ -16,6 +17,7 @@ export class MemoDetailPage {
   entryChanged: boolean = false;
   createMode: boolean = false;
   submitAttempt: boolean = false;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public alertCtrl: AlertController,

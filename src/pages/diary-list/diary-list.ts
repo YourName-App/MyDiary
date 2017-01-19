@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { DiaryEditPage } from '../diary-edit/diary-edit';
+import { DiaryDetailPage } from '../diary-detail/diary-detail';
+import { IDiary, DiaryService } from '../../providers/diary-service';
 
 @Component({
   selector: 'page-diary-list',
@@ -7,9 +10,42 @@ import { NavController } from 'ionic-angular';
 })
 export class DiaryListPage {
 
-  constructor(public navCtrl: NavController) {}
+  public diaryList: any;
 
-  print() {
-    console.log('SlidingItem');
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
+    public modalCtrl: ModalController, public diaryServ: DiaryService) {
+      
+    this.diaryList = this.diaryServ.getDiaryList();
+  }
+
+  showDiaryDetail(diaryId: string): void {
+    this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();
+  }
+
+  createDiary(): void {
+    this.modalCtrl.create(DiaryEditPage).present();
+  }
+
+  updateDiary(diaryId: string, diary: IDiary) {
+    this.modalCtrl.create(DiaryEditPage, diary).present();
+  }
+
+  deleteDiary(diaryId: string): void {
+    let confirm = this.alertCtrl.create({
+      title: '刪除日記',
+      message: '確認刪除？',
+      buttons: [{
+        text: '確認',
+        handler: () => {
+          this.diaryServ.deleteDiary(diaryId);
+        }
+      }, {
+        text: '取消',
+        role: 'cancel'
+      }]
+    });
+    
+    confirm.present();
   }
 }

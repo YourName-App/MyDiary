@@ -4,9 +4,11 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 
 @Injectable()
 export class ContactService {
+
   contactList: FirebaseListObservable<any>;
   contactDetail: FirebaseObjectObservable<any>;
   userId: string;
+
 
   constructor(public af: AngularFire) {
     this.af.auth.subscribe(auth => {

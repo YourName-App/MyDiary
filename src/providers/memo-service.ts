@@ -4,10 +4,12 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 
 @Injectable()
 export class MemoService {
+
   memoList: FirebaseListObservable<any>;
   itemList: FirebaseListObservable<any>;
   memoDetail: FirebaseObjectObservable<any>;
   userId: string;
+
 
   constructor(public af: AngularFire) {
     this.af.auth.subscribe(auth => {

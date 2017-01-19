@@ -1,6 +1,6 @@
 page-diary-edit {
   ion-navbar {
-    height: 88px;
+    height: 110px;
 
     .diary-month {
       font-size: 18px;
@@ -19,6 +19,9 @@ page-diary-edit {
     }
   }
 
+  ion-toolbar.footer-toolbar {
+    height: 50px;
+  }
   .invalid {
     border-bottom: 1px solid color($colors, danger);
   }
@@ -28,7 +31,7 @@ page-diary-edit {
   .error-message .item-inner {
     border-bottom: 0 !important;
   }
-  ion-toolbar.footer-toolbar {
-    height: 50px;
+  .back-icon {
+    transform: translate(0, -25px);
   }
 }

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePicker } from 'ionic-native';
-import { DiaryPage } from '../diary/diary';
-import { Autoresize } from '../../components/autoresize/autoresize';
+import { IDiary, DiaryService } from '../../providers/diary-service';
 import * as moment from 'moment';
 
 @Component({
@@ -11,50 +10,61 @@ import * as moment from 'moment';
   templateUrl: 'diary-edit.html'
 })
 export class DiaryEditPage {
+  
   diaryForm: any;
   diaryId: string = '';
+  inputDiary: IDiary;
+  inputTimeStamp: string = '';
   inputTitle: string = '';
   inputContent: string = '';
-  mode: string = '';
-  modeDesc: string = '';
-  contentChanged: boolean = false;
-  submitAttempt: boolean = false;
-
-  now: any;
+  
+  timestamp: string;
+  diaryYear: string;
   diaryMonth: string;
   diaryDay: string;
   diaryDate: string;
   diaryTime: string;
 
+  mode: string = '';
+  modeDesc: string = '';
+  contentChanged: boolean = false;
+  submitAttempt: boolean = false;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public viewCtrl: ViewController,
-    public formBuilder: FormBuilder) {
+    public diaryServ: DiaryService, public formBuilder: FormBuilder) {
 
     this.diaryId = this.navParams.get('diaryId') || '';
-    this.inputTitle = this.navParams.get('title') || '';
-    this.inputContent = this.navParams.get('content') || '';
+    this.inputDiary = this.navParams.get('diary') || {};
+    this.inputTimeStamp = this.inputDiary.timestamp || '';
+    this.inputTitle = this.inputDiary.title || '';
+    this.inputContent = this.inputDiary.content || '';
 
     this.diaryForm = formBuilder.group({
       title: ['', Validators.required],
-      content: ['', Validators.compose([Validators.minLength(0), Validators.required])]
+      content: ['', Validators.minLength(0)]
     });
+
+    moment.locale('zh-tw');
 
     if (this.diaryId) {
       this.mode = 'update';
       this.modeDesc = '編輯日記';
       this.diaryForm.controls['title'].patchValue(this.inputTitle);
       this.diaryForm.controls['conten'].patchValue(this.inputContent);
+      this.timestamp = this.inputTimeStamp;
     } else {
       this.mode = 'create';
       this.modeDesc = '新增日記';
+      this.timestamp = moment().format();
     }
 
-    moment.locale('zh-tw');
-    this.now = moment();
-    this.diaryMonth = moment(this.now).format('MMMM');
-    this.diaryDay = moment(this.now).format('dddd');
-    this.diaryDate = moment(this.now).format('D');
-    this.diaryTime = moment(this.now).format('HH:mm');
+    this.diaryYear = moment(this.timestamp).format('YYYY');
+    this.diaryMonth = moment(this.timestamp).format('MMMM');
+    this.diaryDay = moment(this.timestamp).format('dddd');
+    this.diaryDate = moment(this.timestamp).format('D');
+    this.diaryTime = moment(this.timestamp).format('HH:mm');
   }
 
   dismiss() {
@@ -68,7 +78,7 @@ export class DiaryEditPage {
 
   openDatePicker() {
     DatePicker.show({
-      date: this.now,
+      date: moment(this.timestamp).toDate(),
       mode: 'datetime',
       locale: 'zh-tw',
       doneButtonLabel: '確認',
@@ -77,7 +87,8 @@ export class DiaryEditPage {
     }).then(
       pickDate => {
         if (pickDate !== null && pickDate !== undefined) {
-          this.now = pickDate;
+          this.timestamp = moment(pickDate).format();
+          this.diaryYear = moment(pickDate).format('YYYY');
           this.diaryMonth = moment(pickDate).format('MMMM');
           this.diaryDay = moment(pickDate).format('dddd');
           this.diaryDate = moment(pickDate).format('D');
@@ -88,43 +99,36 @@ export class DiaryEditPage {
     );
   }
 
-  test() {
-    //this.appCtrl.getActiveNav().last();
-    //this.appCtrl.getRootNav().;
-    //this.navCtrl.pop();
-    //this.navCtrl.push(DiaryPage);
-    //this.events.publish('reloadDiaryPage');
-    //this.navCtrl.pop();
-    this.viewCtrl._didLoad();
-    //console.log(this.viewCtrl.getNav());
-  }
-
-  editContact() {
+  editDiary() {
     this.submitAttempt = true;
-    /*
+    
     if (!this.diaryForm.valid) {
       console.log(this.diaryForm.value);
     } else {
+      let diary: IDiary = {
+        timestamp: this.timestamp,
+        year: this.diaryYear,
+        month: this.diaryMonth,
+        day: this.diaryDay,
+        date: this.diaryDate,
+        time: this.diaryTime,
+        title: this.diaryForm.value.title,
+        content: this.diaryForm.value.content.trim()
+      }
+
       if (this.mode === 'create') {
-        this.diaryServ.createContact(
-          this.diaryForm.value.name, 
-          this.diaryForm.value.phone,
-          this.diaryForm.value.avatar || 'assets/img/avatar-female.png'
-        ).then(
+        this.diaryServ.createDiary(diary)
+        .then(
           () => {this.dismiss();}, 
           error => {console.log(error);}
         );
       } else if (this.mode === 'update') {
-        this.diaryServ.updateContact(
-          this.diarytId,
-          this.diaryForm.value.name, 
-          this.diaryForm.value.phone,
-          this.diaryForm.value.avatar || 'assets/img/avatar-female.png'
-        ).then(
+        this.diaryServ.updateDiary(this.diaryId, diary)
+        .then(
           () => {this.dismiss();}, 
           error => {console.log(error);}
         );
       }
-  } */
+    } 
   }
 }
