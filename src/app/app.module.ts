@@ -41,11 +41,11 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 // AF2 Settings
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  storageBucket: "",
-  messagingSenderId: ""
+  apiKey: "AIzaSyDjNlZc4roJUyMZR_5wRoflvWr6kcUnzEw",
+  authDomain: "mydiary-1b17a.firebaseapp.com",
+  databaseURL: "https://mydiary-1b17a.firebaseio.com",
+  storageBucket: "mydiary-1b17a.appspot.com",
+  messagingSenderId: "647185474664"
 };
 
 const myFirebaseAuthConfig = {
