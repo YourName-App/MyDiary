@@ -105,7 +105,10 @@ export class DiaryEditPage {
     if (!this.diaryForm.valid) {
       console.log(this.diaryForm.value);
     } else {
+      let sortstamp = Number(moment(this.timestamp).format('YYYYMMDDHHmm')) * (-1);
+
       let diary: IDiary = {
+        ".priority": sortstamp,
         timestamp: this.timestamp,
         year: this.diaryYear,
         month: this.diaryMonth,

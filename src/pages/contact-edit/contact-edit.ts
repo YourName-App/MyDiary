@@ -65,7 +65,7 @@ export class ContactEditPage {
       let contact: IContact = {
         name: this.contactForm.value.name,
         phone: this.contactForm.value.phone,
-        avatar: this.contactForm.value.avatar || 'assets/img/avatar-female.png'
+        avatar: this.contactForm.value.avatar || 'assets/img/avatar-contact.png'
       }
       
       if (this.mode === 'create') {

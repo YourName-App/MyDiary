@@ -4,7 +4,7 @@
       <ion-item tappable (click)="showDiaryDetail(diary.$key)">
         <div class="diary-div-left" item-left text-center>
           <h1 class="diary-date">{{diary.date}}</h1>
-          <h3 class="diary-day">{{diary.day | ChineseDay:'medium'}}</h3>
+          <h3 class="diary-day">{{diary.day | chineseDay:'medium'}}</h3>
         </div>
         <div class="diary-div-main">
           <h3 class="diary-time">{{diary.time}}</h3>

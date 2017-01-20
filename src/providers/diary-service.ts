@@ -4,6 +4,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 import { IDiary } from '../models/diary';
 
 export interface IDiary {
+  ".priority": any;
   timestamp: string;
   year: string;
   month: string;

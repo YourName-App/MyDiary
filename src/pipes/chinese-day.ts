@@ -1,7 +1,7 @@
 import { Injectable, Pipe } from '@angular/core';
 
 @Pipe({
-  name: 'ChineseDay'
+  name: 'chineseDay'
 })
 @Injectable()
 export class ChineseDay {

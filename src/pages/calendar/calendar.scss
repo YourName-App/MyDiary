@@ -1,3 +1,21 @@
 page-calendar {
+  ion-navbar {
+    height: 320px;
 
+    .diary-month {
+      font-size: 34px;
+      color: color($colors, clean);
+      transform: translate(0, 20px);
+    }
+    .diary-date {
+      font-size: 110px;
+      color: color($colors, clean);
+      transform: translate(0, -16px);
+    }
+    .diary-day, .diary-time {
+      font-size: 30px;
+      color: color($colors, clean);
+      transform: translate(0, -40px);
+    }
+  }
 }
