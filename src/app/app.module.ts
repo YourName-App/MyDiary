@@ -39,7 +39,7 @@ import { ChineseDay } from '../pipes/chinese-day';
 // Import AF2 Module
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
-// AF2 Settings
+// AF2 Settings (test env)
 export const firebaseConfig = {
   apiKey: "AIzaSyDjNlZc4roJUyMZR_5wRoflvWr6kcUnzEw",
   authDomain: "mydiary-1b17a.firebaseapp.com",
