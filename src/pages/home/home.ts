@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { DiaryPage } from '../../pages/diary/diary';
 import { ContactListPage } from '../../pages/contact-list/contact-list';
@@ -16,11 +16,7 @@ export class HomePage {
   yourAvatar: string;
 
 
-  constructor(public navCtrl: NavController, public menu: MenuController,
-    public storage: Storage) {
-
-    this.menu.swipeEnable(true);
-  }
+  constructor(public navCtrl: NavController, public storage: Storage) {}
 
   ionViewWillEnter() {
     this.storage.get('yourName').then((val) => {
