@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.mydiary307271"
-        version="1.0.2"
-        android-versionCode="10020"
+        version="1.0.3"
+        android-versionCode="10030"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>MyDiary</name>
+  <name>My Diary</name>
   <description>An awesome Ionic/Cordova app.</description>
   <author email="kuolung.cheng@gmail.com">KuolungCheng</author>
   <content src="index.html"/>

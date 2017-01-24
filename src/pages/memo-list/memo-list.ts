@@ -16,6 +16,10 @@ export class MemoListPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public modalCtrl: ModalController, public memoServ: MemoService) {
 
+    this.initializeMemo();
+  }
+
+  initializeMemo() {
     this.memoList = this.memoServ.getMemoList();
   }
 
@@ -47,5 +51,20 @@ export class MemoListPage {
     });
     
     confirm.present();
+  }
+
+  searchMemo(ev) {
+    this.initializeMemo();
+    let targetVal = ev.target.value;
+
+    if (targetVal && targetVal.trim() != '') {
+      this.memoList = this.memoList.map((memos) => {
+        let result = memos.filter(
+          memo => memo.title.toLowerCase().indexOf(targetVal.toLowerCase()) > -1
+        );
+        
+        return result;
+      })
+    }
   }
 }

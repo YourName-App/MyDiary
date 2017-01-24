@@ -17,8 +17,8 @@
   </ion-navbar>
 
   <ion-toolbar no-border-top>
-    <ion-searchbar color="diary" class="diary-searchbar" placeholder="搜尋"
-                   showCancelButton=true cancelButtonText="取消">
+    <ion-searchbar color="diary" class="diary-searchbar" (ionInput)="searchDiary($event)"
+                   placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
     </ion-searchbar>
     <button color="diary" ion-button menuToggle end>
       <ion-icon class="menu-icon" name="menu"></ion-icon>
@@ -29,7 +29,7 @@
 <ion-content padding [class.diary-list]="segment==='diary-list'" [class.diary-content]="segment==='calendar'">
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'diary-list'">
-      <page-diary-list></page-diary-list>
+      <page-diary-list [diaryList]="diaryList"></page-diary-list>
     </div>
     <div *ngSwitchCase="'calendar'">
       <page-calendar></page-calendar>

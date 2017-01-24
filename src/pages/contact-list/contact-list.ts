@@ -3,6 +3,8 @@ import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
 import { IContact, ContactService } from '../../providers/contact-service';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-contact-list',
@@ -16,6 +18,10 @@ export class ContactListPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public modalCtrl: ModalController, public contactServ: ContactService) {
       
+    this.initializeContact();
+  }
+
+  initializeContact() {
     this.contactList = this.contactServ.getContactList();
   }
 
@@ -47,5 +53,21 @@ export class ContactListPage {
     });
     
     confirm.present();
+  }
+
+  searchContact(ev) {
+    this.initializeContact();
+    let targetVal = ev.target.value;
+
+    if (targetVal && targetVal.trim() != '') {
+      this.contactList = this.contactList.map((contacts) => {
+        let result = contacts.filter(
+          contact => contact.name.toLowerCase().indexOf(targetVal.toLowerCase()) > -1 ||
+                     contact.phone.indexOf(targetVal) > -1 
+        );
+        
+        return result;
+      })
+    }
   }
 }

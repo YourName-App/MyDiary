@@ -1,4 +1,4 @@
-<ion-card *ngFor="let diary of diaryList | async">
+<ion-card *ngFor="let diary of _diaryList | async">
   <ion-list>
     <ion-item-sliding>
       <ion-item tappable (click)="showDiaryDetail(diary.$key)">

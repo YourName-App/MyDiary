@@ -8,8 +8,8 @@
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar color="diary" no-border-top>
-    <ion-searchbar class="contact-searchbar" placeholder="搜尋"
-                   showCancelButton=true cancelButtonText="取消">
+    <ion-searchbar class="contact-searchbar" (ionInput)="searchContact($event)"
+                   placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
     </ion-searchbar>
     <button ion-button menuToggle end>
       <ion-icon class="menu-icon" name="menu"></ion-icon>

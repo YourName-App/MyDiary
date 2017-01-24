@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
@@ -10,14 +10,16 @@ import { DiaryDetailPage } from '../diary-detail/diary-detail';
 })
 export class DiaryListPage {
 
-  public diaryList: any;
+  _diaryList: any;
 
+
+  @Input()
+  set diaryList(diaryList: any) {
+    this._diaryList = diaryList;
+  }
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public modalCtrl: ModalController, public diaryServ: DiaryService) {
-      
-    this.diaryList = this.diaryServ.getDiaryList();
-  }
+    public modalCtrl: ModalController, public diaryServ: DiaryService) {}
 
   showDiaryDetail(diaryId: string): void {
     this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();
