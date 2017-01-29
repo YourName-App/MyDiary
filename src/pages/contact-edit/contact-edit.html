@@ -21,6 +21,10 @@
       <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名" value={{inputName}}
         (change)="elementChanged(name)" [class.invalid]="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       </ion-input>
+      <button color="diary" ion-button icon-only clear large item-right
+              *ngIf="mode==='create'" (click)="pickContact()">
+        <ion-icon class="contact-icon" name="contact"></ion-icon>
+      </button>
     </ion-item>
     <ion-item class="error-message" *ngIf="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       <p>請輸入聯絡人姓名</p>
@@ -28,14 +32,14 @@
 
     <ion-item>
       <ion-label stacked>電話</ion-label>
-      <ion-input #phone formControlName="phone" type="text" placeholder="聯絡人電話" value={{inputPhone}}
+      <ion-input #phone formControlName="phone" type="tel" placeholder="聯絡人電話" value={{inputPhone}}
         (change)="elementChanged(phone)" [class.invalid]="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
       <p>請輸入聯絡人電話</p>
     </ion-item>
-  </form>  
+  </form>
 </ion-content>
 
 <ion-footer>

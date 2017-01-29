@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IContact, ContactService } from '../../providers/contact-service';
+import { Contacts } from 'ionic-native';
 
 @Component({
   selector: 'page-contact-edit',
@@ -82,5 +83,16 @@ export class ContactEditPage {
         );
       }
     } 
+  }
+
+  pickContact() {
+    Contacts.pickContact()
+      .then(contact => {
+        this.contactForm.controls['name'].patchValue(contact.displayName);
+        this.contactForm.controls['phone'].patchValue(contact.phoneNumbers[0].value);
+      })
+      .catch(error => {
+        // Ignore; user didn't select a contact
+      });
   }
 }
