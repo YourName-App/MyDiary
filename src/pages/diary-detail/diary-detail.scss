@@ -2,32 +2,39 @@ page-diary-detail {
   ion-navbar {
     height: 110px;
 
+    .back-icon {
+      transform: translate(0, -25px);
+    }
     .diary-month {
       font-size: 18px;
       color: color($colors, clean);
-      transform: translate(0, 38px);
+      transform: translate(0, 32px);
     }
     .diary-date {
       font-size: 50px;
       color: color($colors, clean);
       transform: translate(0, -3px);
     }
-    .diary-day, .diary-time {
-      font-size: 12px;
+    .diary-day {
+      font-size: 13px;
       color: color($colors, clean);
-      transform: translate(3px, -42px);
+      transform: translate(3px, -36px);
+    }
+    .diary-time {
+      font-size: 13px;
+      color: color($colors, clean);
+      transform: translate(-3px, -36px);
     }
   }
-
   .diary-title {
     color: color($colors, diary);
     font-size: 125%;
     font-weight: bold;
   }
+  textarea.text-input {
+    padding-bottom: 12px;
+  }
   ion-toolbar.footer-toolbar {
     height: 50px;
-  }
-  .back-icon {
-    transform: translate(0, -25px);
   }
 }

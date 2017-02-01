@@ -39,9 +39,11 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-console",
     "cordova-plugin-device",
-    "cordova-plugin-x-socialsharing",
     "cordova-plugin-splashscreen",
+    "cordova-plugin-x-socialsharing",
     "cordova-plugin-datepicker",
+    "cordova-plugin-contacts",
+    "cordova-plugin-compat",
     "ionic-plugin-keyboard",
     "call-number"
   ],
