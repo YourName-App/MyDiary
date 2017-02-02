@@ -7,8 +7,8 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public viewCtrl: ViewController) {}
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+    private viewCtrl: ViewController) {}
 
   dismiss() {
     this.viewCtrl.dismiss();

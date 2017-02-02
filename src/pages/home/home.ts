@@ -16,7 +16,7 @@ export class HomePage {
   yourAvatar: string;
 
 
-  constructor(public navCtrl: NavController, public storage: Storage) {}
+  constructor(private navCtrl: NavController, private storage: Storage) {}
 
   ionViewWillEnter() {
     this.storage.get('yourName').then((val) => {

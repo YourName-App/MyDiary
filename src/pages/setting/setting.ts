@@ -13,8 +13,8 @@ export class SettingPage {
   yourGender: string;
   
   
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController,
-    public appCtrl: App, public storage: Storage) {
+  constructor(private navCtrl: NavController, private viewCtrl: ViewController,
+    private appCtrl: App, private storage: Storage) {
 
     // Get user name
     storage.get('yourName').then((val) => {

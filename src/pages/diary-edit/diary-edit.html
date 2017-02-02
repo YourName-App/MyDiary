@@ -38,7 +38,7 @@
     </ion-item>
 
     <ion-item no-lines>
-      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容" value={{inputContent}} rows="16" autoresize
+      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容" value={{inputContent}} rows="10" autoresize
         (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>
     </ion-item>

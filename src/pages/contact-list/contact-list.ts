@@ -15,8 +15,8 @@ export class ContactListPage {
   public contactList: any;
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public modalCtrl: ModalController, public contactServ: ContactService) {
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController,
+    private modalCtrl: ModalController, private contactServ: ContactService) {
       
     this.initializeContact();
   }

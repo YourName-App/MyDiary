@@ -48,8 +48,8 @@ export class MyApp {
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  constructor(platform: Platform, storage: Storage, public af: AngularFire, 
-    public authServ: AuthService, public modalCtrl: ModalController) {
+  constructor(platform: Platform, storage: Storage, private af: AngularFire, 
+    private authServ: AuthService, private modalCtrl: ModalController) {
 
     // Listen for authentication
     af.auth.subscribe((user) => {

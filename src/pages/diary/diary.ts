@@ -10,11 +10,11 @@ import { DiaryEditPage } from '../diary-edit/diary-edit';
 export class DiaryPage {
 
   segment: string;
-  public diaryList: any;
+  diaryList: any;
 
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
-              public diaryServ: DiaryService) {
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController,
+    private diaryServ: DiaryService) {
 
     this.segment = 'diary-list';
     this.initializeDiary();

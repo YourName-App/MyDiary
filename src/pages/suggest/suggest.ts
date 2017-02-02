@@ -14,8 +14,8 @@ export class SuggestPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public formBuilder: FormBuilder, public viewCtrl: ViewController) {
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController,
+    private formBuilder: FormBuilder, private viewCtrl: ViewController) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]

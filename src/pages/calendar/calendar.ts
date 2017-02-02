@@ -14,7 +14,7 @@ export class CalendarPage {
   date: string;
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController) {
     moment.locale('zh-tw');
     this.timestamp = moment().format();
     this.month = moment(this.timestamp).format('MMMM');

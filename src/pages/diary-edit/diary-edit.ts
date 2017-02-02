@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePicker } from 'ionic-native';
@@ -31,9 +31,10 @@ export class DiaryEditPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public alertCtrl: AlertController, public viewCtrl: ViewController,
-    public diaryServ: DiaryService, public formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+    private alertCtrl: AlertController, private viewCtrl: ViewController,
+    private diaryServ: DiaryService, private formBuilder: FormBuilder,
+    private element: ElementRef) {
 
     this.diaryId = this.navParams.get('diaryId') || '';
     this.inputDiary = this.navParams.get('diary') || {};
@@ -66,6 +67,18 @@ export class DiaryEditPage {
     this.diaryDate = moment(this.timestamp).format('D');
     this.diaryTime = moment(this.timestamp).format('HH:mm');
   }
+
+  ionViewWillEnter() {
+    this.adjustTextarea();
+  }
+
+	adjustTextarea(): void {
+		let area = this.element.nativeElement.querySelector("textarea");
+
+    if (area !== null && area !== undefined) {
+      area.style.height = area.scrollHeight + "px";
+    }
+	}
 
   dismiss() {
     this.viewCtrl.dismiss();

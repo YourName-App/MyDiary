@@ -16,9 +16,9 @@ export class ContactDetailPage {
   smsMsg: string = '';
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public viewCtrl: ViewController, public alertCtrl: AlertController,
-    public modalCtrl: ModalController, public contactServ: ContactService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, 
+    private viewCtrl: ViewController, private alertCtrl: AlertController,
+    private modalCtrl: ModalController, private contactServ: ContactService) {
 
     this.contactServ.getContact(this.navParams.get('contactId')).subscribe((contactSnap) => {
       this.contact = contactSnap;

@@ -10,16 +10,16 @@ import { EmailValidator } from '../../validators/email';
 })
 export class SignupPage {
 
-  public signupForm;
+  signupForm: any;
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
   loader: any;
 
 
-  constructor(public navCtrl: NavController, public authServ: AuthService,
-    public formBuilder: FormBuilder, public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController, public viewCtrl: ViewController) {
+  constructor(private navCtrl: NavController, private authServ: AuthService,
+    private formBuilder: FormBuilder, private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController, private viewCtrl: ViewController) {
   
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],

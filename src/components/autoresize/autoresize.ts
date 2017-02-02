@@ -11,19 +11,19 @@ export class Autoresize {
 	}
 
 
-	constructor(public element: ElementRef) {}
+	constructor(private element: ElementRef) {}
 
 	ngOnInit(): void {
 		this.adjust();
 	}
 
 	adjust(): void {
-		let ta = this.element.nativeElement.querySelector("textarea");
+		let area = this.element.nativeElement.querySelector("textarea");
 
-    if (ta !== null && ta !== undefined) {
-      ta.style.overflow = "hidden";
-      ta.style.height = "auto";
-      ta.style.height = ta.scrollHeight + "px";
+    if (area !== null && area !== undefined) {
+      area.style.overflow = "hidden";
+      area.style.height = "auto";
+      area.style.height = area.scrollHeight + "px";
     }
 	}
 }

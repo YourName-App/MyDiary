@@ -15,8 +15,8 @@ export class ResetPasswordPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public authServ: AuthService, 
-    public formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, private authServ: AuthService, 
+    private formBuilder: FormBuilder, private alertCtrl: AlertController) {
 
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])]

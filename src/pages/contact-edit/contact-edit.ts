@@ -22,9 +22,9 @@ export class ContactEditPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public viewCtrl: ViewController, public contactServ: ContactService,
-    public formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+    private viewCtrl: ViewController, private contactServ: ContactService,
+    private formBuilder: FormBuilder) {
 
     this.contactId = this.navParams.get('contactId') || '';
     this.inputContact = this.navParams.get('contact') || {};

@@ -18,8 +18,8 @@ export class DiaryListPage {
     this._diaryList = diaryList;
   }
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public modalCtrl: ModalController, public diaryServ: DiaryService) {}
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController,
+    private modalCtrl: ModalController, private diaryServ: DiaryService) {}
 
   showDiaryDetail(diaryId: string): void {
     this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();

@@ -11,8 +11,8 @@ import { AuthService } from '../../providers/auth-service';
 })
 export class LandingPage {
   
-  constructor(public navCtrl: NavController, public authServ: AuthService, 
-    public loadingCtrl: LoadingController, public menu: MenuController) {
+  constructor(private navCtrl: NavController, private authServ: AuthService, 
+    private loadingCtrl: LoadingController, private menu: MenuController) {
 
     this.menu.swipeEnable(false);
   }

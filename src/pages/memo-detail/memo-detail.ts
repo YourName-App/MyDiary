@@ -19,9 +19,9 @@ export class MemoDetailPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public viewCtrl: ViewController, public alertCtrl: AlertController,
-    public modalCtrl: ModalController, public memoServ: MemoService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, 
+    private viewCtrl: ViewController, private alertCtrl: AlertController,
+    private modalCtrl: ModalController, private memoServ: MemoService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;

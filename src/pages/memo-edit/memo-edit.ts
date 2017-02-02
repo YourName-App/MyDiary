@@ -18,8 +18,9 @@ export class MemoEditPage {
   submitAttempt: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-    public memoServ: MemoService, public formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+    private viewCtrl: ViewController, private memoServ: MemoService,
+    private formBuilder: FormBuilder) {
 
     this.memoId = this.navParams.get('memoId') || '';
     this.inputTitle = this.navParams.get('title') || '';

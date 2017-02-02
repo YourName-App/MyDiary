@@ -18,9 +18,9 @@ export class MemoItemEditPage {
   itemBuffer = new Object();
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public viewCtrl: ViewController, public alertCtrl: AlertController,
-    public memoServ: MemoService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+    private viewCtrl: ViewController, private alertCtrl: AlertController,
+    private memoServ: MemoService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
