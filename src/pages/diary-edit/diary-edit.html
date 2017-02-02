@@ -29,7 +29,8 @@
 <ion-content padding>
   <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
     <ion-item>
-      <ion-input #title formControlName="title" type="text" placeholder="日記主題(點選日期兩次開啟設定)" value={{inputTitle}}
+      <ion-img src="'assets/img/smile.png'"></ion-img>
+      <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
         (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
       </ion-input>
     </ion-item>
@@ -38,7 +39,7 @@
     </ion-item>
 
     <ion-item no-lines>
-      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容" value={{inputContent}} rows="10" autoresize
+      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)" value={{inputContent}} rows="10" autoresize
         (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>
     </ion-item>
@@ -46,6 +47,26 @@
       <p>請輸入日記內容</p>
     </ion-item>
   </form>
+  <ion-fab class="fab-mood" right top edge>
+    <button ion-fab mini color="light"><img height="24" width="24" src="../assets/img/img-happy.svg"></button>
+    <ion-fab-list side="bottom">
+      <button ion-fab><img height="24" width="24" src="../assets/img/img-happy.svg"></button>
+      <button ion-fab><img height="24" width="24" src="../assets/img/img-smile.svg"></button>
+      <button ion-fab><img height="24" width="24" src="../assets/img/img-neutral.svg"></button>
+      <button ion-fab><img height="24" width="24" src="../assets/img/img-sad.svg"></button>
+      <button ion-fab><img height="24" width="24" src="../assets/img/img-cry.svg"></button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab class="fab-weather" right top edge>
+    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-sunny"></ion-icon></button>
+    <ion-fab-list side="bottom">
+      <button ion-fab><ion-icon color="diary" name="ios-sunny"></ion-icon></button>
+      <button ion-fab><ion-icon color="diary" name="ios-cloudy"></ion-icon></button>
+      <button ion-fab><ion-icon color="diary" name="ios-rainy"></ion-icon></button>
+      <button ion-fab><ion-icon color="diary" name="ios-thunderstorm"></ion-icon></button>
+      <button ion-fab><ion-icon color="diary" name="ios-cloudy-night"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
 
 <ion-footer>
