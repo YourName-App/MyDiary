@@ -13,8 +13,8 @@
         </div>  
         <div class="diary-div-right" item-right>
           <div>
-            <ion-icon class="diary-icon" name="ios-sunny-outline"></ion-icon>
-            <ion-icon class="diary-icon" name="ios-happy-outline"></ion-icon>
+            <img class="diary-img" src="assets/img/img-{{diary.mood || 'happy'}}.svg">
+            <ion-icon class="diary-icon" name="ios-{{diary.weather || 'sunny'}}"></ion-icon>
             <ion-icon class="diary-icon" name="ios-bookmark-outline"></ion-icon>
           </div>
           <ion-icon class="attach" name="ios-attach-outline"></ion-icon>

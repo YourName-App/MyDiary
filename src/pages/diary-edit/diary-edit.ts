@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ViewController, FabContainer } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
@@ -24,6 +24,8 @@ export class DiaryEditPage {
   diaryDay: string;
   diaryDate: string;
   diaryTime: string;
+  mood: string;
+  weather: string;
 
   mode: string = '';
   modeDesc: string = '';
@@ -41,6 +43,8 @@ export class DiaryEditPage {
     this.inputTimeStamp = this.inputDiary.timestamp || '';
     this.inputTitle = this.inputDiary.title || '';
     this.inputContent = this.inputDiary.content || '';
+    this.mood = this.inputDiary.mood || 'happy';
+    this.weather = this.inputDiary.weather || 'sunny';
 
     this.diaryForm = formBuilder.group({
       title: ['', Validators.required],
@@ -80,16 +84,16 @@ export class DiaryEditPage {
     }
 	}
 
-  dismiss() {
+  dismiss(): void {
     this.viewCtrl.dismiss();
   }
 
-  elementChanged(input) {
+  elementChanged(input): void {
     let field = input.inputControl.name;
     this[field + "Changed"] = true;
   }
 
-  openDatePicker() {
+  openDatePicker(): void {
     DatePicker.show({
       date: moment(this.timestamp).toDate(),
       mode: 'datetime',
@@ -112,7 +116,7 @@ export class DiaryEditPage {
     );
   }
 
-  editDiary() {
+  editDiary(): void {
     this.submitAttempt = true;
     
     if (!this.diaryForm.valid) {
@@ -129,7 +133,9 @@ export class DiaryEditPage {
         date: this.diaryDate,
         time: this.diaryTime,
         title: this.diaryForm.value.title,
-        content: this.diaryForm.value.content.trim()
+        content: this.diaryForm.value.content.trim(),
+        mood: this.mood,
+        weather: this.weather
       }
 
       if (this.mode === 'create') {
@@ -146,5 +152,15 @@ export class DiaryEditPage {
         );
       }
     } 
+  }
+
+  selectMood(mood: string, fab: FabContainer): void {
+    this.mood = mood;
+    fab.close();
+  }
+
+  selectWeather(weather: string, fab: FabContainer): void {
+    this.weather = weather;
+    fab.close();
   }
 }

@@ -49,6 +49,11 @@ page-diary-list {
       transform: scale(0.7, 0.7);
       padding-bottom: 15px;
     }
+    .diary-img {
+      height: 12px!important;
+      width: 12px!important;
+      display: inline;
+    }
     .attach {
       color: color($colors, diary);
       transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);

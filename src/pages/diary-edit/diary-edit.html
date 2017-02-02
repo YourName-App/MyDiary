@@ -29,7 +29,6 @@
 <ion-content padding>
   <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
     <ion-item>
-      <ion-img src="'assets/img/smile.png'"></ion-img>
       <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
         (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
       </ion-input>
@@ -37,7 +36,6 @@
     <ion-item class="error-message" *ngIf="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
       <p>請輸入日記主題</p>
     </ion-item>
-
     <ion-item no-lines>
       <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)" value={{inputContent}} rows="10" autoresize
         (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
@@ -47,24 +45,46 @@
       <p>請輸入日記內容</p>
     </ion-item>
   </form>
-  <ion-fab class="fab-mood" right top edge>
-    <button ion-fab mini color="light"><img height="24" width="24" src="../assets/img/img-happy.svg"></button>
+
+  <ion-fab class="fab-weather" right top edge #fabWeather>
+    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-{{weather}}"></ion-icon></button>
     <ion-fab-list side="bottom">
-      <button ion-fab><img height="24" width="24" src="../assets/img/img-happy.svg"></button>
-      <button ion-fab><img height="24" width="24" src="../assets/img/img-smile.svg"></button>
-      <button ion-fab><img height="24" width="24" src="../assets/img/img-neutral.svg"></button>
-      <button ion-fab><img height="24" width="24" src="../assets/img/img-sad.svg"></button>
-      <button ion-fab><img height="24" width="24" src="../assets/img/img-cry.svg"></button>
+      <button ion-fab (click)="selectWeather('sunny', fabWeather)">
+        <ion-icon color="diary" name="ios-sunny"></ion-icon>
+      </button>
+      <button ion-fab (click)="selectWeather('cloudy', fabWeather)">
+        <ion-icon color="diary" name="ios-cloudy"></ion-icon>
+      </button>
+      <button ion-fab (click)="selectWeather('rainy', fabWeather)">
+        <ion-icon color="diary" name="ios-rainy"></ion-icon>
+      </button>
+      <button ion-fab (click)="selectWeather('thunderstorm', fabWeather)">
+        <ion-icon color="diary" name="ios-thunderstorm"></ion-icon>
+      </button>
+      <button ion-fab (click)="selectWeather('cloudy-night', fabWeather)">
+        <ion-icon color="diary" name="ios-cloudy-night"></ion-icon>
+      </button>
     </ion-fab-list>
   </ion-fab>
-  <ion-fab class="fab-weather" right top edge>
-    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-sunny"></ion-icon></button>
+
+  <ion-fab class="fab-mood" right top edge #fabMood>
+    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/img-{{mood}}.svg"></button>
     <ion-fab-list side="bottom">
-      <button ion-fab><ion-icon color="diary" name="ios-sunny"></ion-icon></button>
-      <button ion-fab><ion-icon color="diary" name="ios-cloudy"></ion-icon></button>
-      <button ion-fab><ion-icon color="diary" name="ios-rainy"></ion-icon></button>
-      <button ion-fab><ion-icon color="diary" name="ios-thunderstorm"></ion-icon></button>
-      <button ion-fab><ion-icon color="diary" name="ios-cloudy-night"></ion-icon></button>
+      <button ion-fab (click)="selectMood('happy', fabMood)">
+        <img height="24" width="24" src="assets/img/img-happy.svg">
+      </button>
+      <button ion-fab (click)="selectMood('smile', fabMood)">
+        <img height="24" width="24" src="assets/img/img-smile.svg">
+      </button>
+      <button ion-fab (click)="selectMood('neutral', fabMood)">
+        <img height="24" width="24" src="assets/img/img-neutral.svg">
+      </button>
+      <button ion-fab (click)="selectMood('sad', fabMood)">
+        <img height="24" width="24" src="assets/img/img-sad.svg">
+      </button>
+      <button ion-fab (click)="selectMood('cry', fabMood)">
+        <img height="24" width="24" src="assets/img/img-cry.svg">
+      </button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

@@ -30,11 +30,17 @@
   <ion-item no-lines>
     <ion-input class="diary-title" text-center value={{diary.title}} readonly></ion-input>
   </ion-item>
-
   <ion-item no-lines>
     <ion-textarea class="diary-content" value={{diary.content}} readonly>
     </ion-textarea>
   </ion-item>
+
+  <ion-fab class="fab-weather" right top edge #fabWeather>
+    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-{{diary.weather || 'sunny'}}"></ion-icon></button>
+  </ion-fab>
+  <ion-fab class="fab-mood" right top edge #fabMood>
+    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/img-{{diary.mood || 'happy'}}.svg"></button>
+  </ion-fab>
 </ion-content>
 
 <ion-footer>

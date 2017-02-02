@@ -14,8 +14,8 @@ export interface IDiary {
   title: string;
   content: string;
   mood?: string;
+  weather?: string;
   location?: any;
-  weather?: any;
   tag?: Array<any>;
   photo?: Array<any>;
 }
