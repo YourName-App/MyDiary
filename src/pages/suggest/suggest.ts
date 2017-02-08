@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SocialSharing } from 'ionic-native';
+import { SocialSharing } from '@ionic-native/socialsharing';
 
 @Component({
   selector: 'page-suggest',

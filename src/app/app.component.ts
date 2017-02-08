@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, ModalController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar } from '@ionic-native/statusbar';
+import { Splashscreen } from '@ionic-native/splashscreen';
 import { Storage } from '@ionic/storage';
 
 // Import pages

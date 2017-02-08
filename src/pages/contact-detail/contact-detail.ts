@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { IContact, ContactService } from '../../providers/contact-service';
-import { CallNumber, SocialSharing } from 'ionic-native';
+import { CallNumber } from '@ionic-native/call-number';
+import { SocialSharing } from '@ionic-native/socialsharing';
 
 @Component({
   selector: 'page-contact-detail',
