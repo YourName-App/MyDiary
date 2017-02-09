@@ -5,7 +5,7 @@ page-diary-edit {
     .diary-month {
       font-size: 18px;
       color: color($colors, clean);
-      transform: translate(0, 32px);
+      transform: translate(0, 35px);
     }
     .diary-date {
       font-size: 50px;
@@ -15,12 +15,12 @@ page-diary-edit {
     .diary-day {
       font-size: 13px;
       color: color($colors, clean);
-      transform: translate(3px, -36px);
+      transform: translate(3px, -39px);
     }
     .diary-time {
       font-size: 13px;
       color: color($colors, clean);
-      transform: translate(-3px, -36px);
+      transform: translate(-3px, -39px);
     }
   }
 

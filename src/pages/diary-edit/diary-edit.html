@@ -68,22 +68,22 @@
   </ion-fab>
 
   <ion-fab class="fab-mood" right top edge #fabMood>
-    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/{{theme}}-{{mood}}.svg"></button>
+    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/{{theme || 'male'}}-{{mood}}.svg"></button>
     <ion-fab-list side="bottom">
       <button ion-fab (click)="selectMood('happy', fabMood)">
-        <img height="24" width="24" src="assets/img/{{theme}}-happy.svg">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-happy.svg">
       </button>
       <button ion-fab (click)="selectMood('smile', fabMood)">
-        <img height="24" width="24" src="assets/img/{{theme}}-smile.svg">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-smile.svg">
       </button>
       <button ion-fab (click)="selectMood('neutral', fabMood)">
-        <img height="24" width="24" src="assets/img/{{theme}}-neutral.svg">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-neutral.svg">
       </button>
       <button ion-fab (click)="selectMood('sad', fabMood)">
-        <img height="24" width="24" src="assets/img/{{theme}}-sad.svg">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-sad.svg">
       </button>
       <button ion-fab (click)="selectMood('cry', fabMood)">
-        <img height="24" width="24" src="assets/img/{{theme}}-cry.svg">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-cry.svg">
       </button>
     </ion-fab-list>
   </ion-fab>

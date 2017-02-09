@@ -13,49 +13,57 @@ import { ConfigService } from '../../providers/config-service';
 export class HomePage {
 
   theme: string;
-  yourName: string;
-  yourGender: string;
-  yourAvatar: string;
+  userName: string;
+  userGender: string;
+  userAvatar: string;
 
 
   constructor(private navCtrl: NavController, private storage: Storage,
     private configServ: ConfigService) {
 
-    this.storage.get('yourName').then((val) => {
+    
+    setTimeout(()=> {
+      this.userName = this.configServ.getUserName();
+      this.userGender = this.configServ.getUserGender();
+      this.userAvatar = this.configServ.getUserAvatar();
+    }, 100);
+    /*
+    this.storage.get('userName').then((val) => {
       if (val === null || val.trim().length === 0) {
         val = '你的名字是？';
       }
 
-      this.yourName = val;
+      this.userName = val;
     }, (error) => {
       console.log(error);
     })
 
-    this.storage.get('yourGender').then((val) => {
+    this.storage.get('userGender').then((val) => {
       if (val === null || val.trim().length === 0) {
         val = 'male';
       }
 
-      this.yourGender = val;
+      this.userGender = val;
     }, (error) => {
       console.log(error);
     })
 
-    this.storage.get('yourAvatar').then((val) => {
+    this.storage.get('userAvatar').then((val) => {
       if (val === null || val.trim().length === 0) {
         val = 'assets/img/avatar-male.png';
       }
 
-      this.yourAvatar = val;
+      this.userAvatar = val;
     }, (error) => {
       console.log(error);
     })
 
     setTimeout(()=> {
-      this.configServ.setUserName(this.yourName); 
-      this.configServ.setUserGender(this.yourGender);
-      this.configServ.setUserAvatar(this.yourAvatar);
+      this.configServ.setUserName(this.userName); 
+      this.configServ.setUserGender(this.userGender);
+      this.configServ.setUserAvatar(this.userAvatar);
     }, 150);
+    */
   }
 
   ionViewWillEnter() {

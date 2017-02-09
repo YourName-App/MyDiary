@@ -12,13 +12,13 @@
 <ion-content padding>
   <ion-item>
     <ion-label>你的名字：</ion-label>
-    <ion-input text-right type="text" placeholder="你的名字" [(ngModel)]="yourName">
+    <ion-input text-right type="text" placeholder="你的名字" [(ngModel)]="userName">
     </ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>你的性別：</ion-label>
-    <ion-select [(ngModel)]="yourGender" okText="確認" cancelText="取消" interface="action-sheet">
+    <ion-select [(ngModel)]="userGender" okText="確認" cancelText="取消" interface="action-sheet">
       <ion-option value="male">男</ion-option>
       <ion-option value="female">女</ion-option>
     </ion-select>

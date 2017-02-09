@@ -2,9 +2,13 @@ page-diary {
   .diary-content .scroll-content {
     padding: 0!important;
   }
-  .diary-list {
-    //background-color: color($colors, diary);
-    background-image: url('../assets/img/bg-sky.png');
+  .diary-list.male {
+    background-image: url('../assets/img/bg-male.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
+  .diary-list.female {
+    background-image: url('../assets/img/bg-female.png');
     background-repeat: no-repeat;
     background-size:cover;
   }

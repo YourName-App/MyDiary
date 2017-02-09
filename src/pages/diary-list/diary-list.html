@@ -3,41 +3,48 @@
     <ion-item-sliding>
       <ion-item tappable (click)="showDiaryDetail(diary.$key)">
         <div class="diary-div-left" item-left text-center>
-          <h1 [class.m-diary-date]="_theme==='male'"
-              [class.f-diary-date]="_theme==='female'">
-              {{diary.date}}
+          <h1 class="diary-date"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.date}}
           </h1>
-          <h3 [class.m-diary-day]="_theme==='male'"
-              [class.f-diary-day]="_theme==='female'">
-              {{diary.day | chineseDay:'medium'}}
+          <h3 class="diary-day"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.day | chineseDay:'medium'}}
           </h3>
         </div>
         <div class="diary-div-main">
-          <h3 [class.m-diary-time]="_theme==='male'"
-              [class.f-diary-time]="_theme==='female'">
-              {{diary.time}}
+          <h3 class="diary-time"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.time}}
           </h3>
-          <h2 [class.m-diary-title]="_theme==='male'"
-              [class.f-diary-title]="_theme==='female'">
-              {{diary.title}}
+          <h2 class="diary-title"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'">
+            {{diary.title}}
           </h2>
           <h3 class="diary-content">{{diary.content}}</h3>
         </div>  
         <div class="diary-div-right" item-right>
           <div>
-            <img class="diary-img" src="assets/img/{{_theme}}-{{diary.mood || 'happy'}}.svg">
-            <ion-icon [class.m-diary-icon]="_theme==='male'"
-                      [class.f-diary-icon]="_theme==='female'" 
-                      name="ios-{{diary.weather || 'sunny'}}">
+            <img class="diary-img" src="assets/img/{{_theme || 'male'}}-{{diary.mood || 'happy'}}.svg">
+            <ion-icon class="diary-icon"
+              [class.male]="_theme==='male'"
+              [class.female]="_theme==='female'" 
+              name="ios-{{diary.weather || 'sunny'}}">
             </ion-icon>
-            <ion-icon [class.m-diary-icon]="_theme==='male'"
-                      [class.f-diary-icon]="_theme==='female'" 
-                      name="ios-bookmark-outline">
+            <ion-icon class="diary-icon"
+              [class.male]="_theme==='male'"
+              [class.female]="_theme==='female'" 
+              name="ios-bookmark-outline">
             </ion-icon>
           </div>
-          <ion-icon [class.m-diary-attach]="_theme==='male'"
-                    [class.f-diary-attach]="_theme==='female'"
-                    name="ios-attach-outline">
+          <ion-icon class="diary-attach"
+            [class.male]="_theme==='male'"
+            [class.female]="_theme==='female'"
+            name="ios-attach-outline">
           </ion-icon>
         </div>
       </ion-item>

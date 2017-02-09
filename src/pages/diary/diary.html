@@ -26,7 +26,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding [class.diary-list]="segment==='diary-list'" [class.diary-content]="segment==='calendar'">
+<ion-content padding 
+  [class.diary-list]="segment==='diary-list'" [class.diary-content]="segment==='calendar'"
+  [class.male]="theme==='male'"
+  [class.female]="theme==='female'">
   <div [ngSwitch]="segment">
     <div *ngSwitchCase="'diary-list'">
       <page-diary-list [diaryList]="diaryList" [theme]="theme"></page-diary-list>

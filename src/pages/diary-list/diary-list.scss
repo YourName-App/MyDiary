@@ -1,57 +1,37 @@
 page-diary-list {
   ion-card {
-    height: 70px;
+    height: 72px;
   }
   ion-item {
-    height: 72px;
+    height: 74px;
+  }
+  .male {
+    color: color($colors, male);
+  }
+  .female {
+    color: color($colors, female);
   }
 
   .diary-div-left {
     width: 36px;
     transform: translate(-5px, 0);
-    .m-diary-date {
-      color: color($colors, male);
+    .diary-date {
       font-size: 3rem;
       padding-top: 20px;
       margin-bottom: 0;
     }
-    .f-diary-date {
-      color: color($colors, female);
-      font-size: 3rem;
-      padding-top: 20px;
-      margin-bottom: 0;
-    }
-    .m-diary-day {
-      color: color($colors, male);
-      font-size: 1.2rem;
-      padding-bottom: 18px;
-    }
-    .f-diary-day {
-      color: color($colors, female);
+    .diary-day {
       font-size: 1.2rem;
       padding-bottom: 18px;
     }
   }
 
   .diary-div-main {
-    .m-diary-time {
-      color: color($colors, male);
+    .diary-time {
       font-size: 70%;
       margin: 0;
     }
-    .f-diary-time {
-      color: color($colors, female);
-      font-size: 70%;
-      margin: 0;
-    }
-    .m-diary-title {
-      color: color($colors, male);
-      font-size: 85%;
-      font-weight: bold;
-      margin: 0;
-    }
-    .f-diary-title {
-      color: color($colors, female);
+    .diary-title {
       font-size: 85%;
       font-weight: bold;
       margin: 0;
@@ -71,23 +51,11 @@ page-diary-list {
       width: 12px!important;
       display: inline;
     }
-    .m-diary-icon {
-      color: color($colors, male);
+    .diary-icon {
       transform: scale(0.7, 0.7);
       padding-bottom: 15px;
     }
-    .f-diary-icon {
-      color: color($colors, female);
-      transform: scale(0.7, 0.7);
-      padding-bottom: 15px;
-    }
-    .m-diary-attach {
-      color: color($colors, male);
-      transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
-      padding-left: 30px;
-    }
-    .f-diary-attach {
-      color: color($colors, female);
+    .diary-attach {
       transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
       padding-left: 30px;
     }

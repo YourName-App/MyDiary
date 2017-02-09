@@ -11,28 +11,33 @@ import { ConfigService } from '../../providers/config-service';
 export class ConfigPage {
 
   theme: string;
-  yourName: string;
-  yourGender: string;
-  yourAvatar: string;
+  userName: string;
+  userGender: string;
+  userAvatar: string;
 
   
   constructor(private navCtrl: NavController, private viewCtrl: ViewController,
     private appCtrl: App, private storage: Storage,
     private configServ: ConfigService) {
 
+    this.userName = this.configServ.getUserName();
+    this.userGender = this.configServ.getUserGender();
+
+    /*
     // Get user name
-    this.storage.get('yourName').then((val) => {
-      this.yourName = val;
+    this.storage.get('userName').then((val) => {
+      this.userName = val;
     }, (error) => {
       console.log(error);
     })
 
     // Get user gender
-    this.storage.get('yourGender').then((val) => {
-      this.yourGender = val;
+    this.storage.get('userGender').then((val) => {
+      this.userGender = val;
     }, (error) => {
       console.log(error);
     })
+    */
   }
 
   ionViewWillEnter() {
@@ -44,24 +49,24 @@ export class ConfigPage {
   }
 
   updateSetting() {
-    if (this.yourName === null || this.yourName.trim().length === 0) {
-      this.yourName = '你的名字是？';
+    if (this.userName === null || this.userName.trim().length === 0) {
+      this.userName = '你的名字是？';
     }
 
-    this.storage.set('yourName', this.yourName);
-    this.storage.set('yourGender', this.yourGender);
+    this.storage.set('userName', this.userName);
+    this.storage.set('userGender', this.userGender);
 
-    if (this.yourGender === null || this.yourGender.trim().length === 0) {
-      this.yourAvatar = 'yourAvatar', 'assets/img/avatar-male.png';
-      this.storage.set('yourAvatar', this.yourAvatar);
+    if (this.userGender === null || this.userGender.trim().length === 0) {
+      this.userAvatar = 'userAvatar', 'assets/img/avatar-male.png';
+      this.storage.set('userAvatar', this.userAvatar);
     } else {
-      this.yourAvatar = 'assets/img/avatar-' + this.yourGender + '.png';
-      this.storage.set('yourAvatar', this.yourAvatar);
+      this.userAvatar = 'assets/img/avatar-' + this.userGender + '.png';
+      this.storage.set('userAvatar', this.userAvatar);
     }
 
-    this.configServ.setUserName(this.yourName);
-    this.configServ.setUserGender(this.yourGender);
-    this.configServ.setUserAvatar(this.yourAvatar);
+    this.configServ.setUserName(this.userName);
+    this.configServ.setUserGender(this.userGender);
+    this.configServ.setUserAvatar(this.userAvatar);
     
     this.dismiss();
     this.appCtrl.getRootNav().setRoot(HomePage);

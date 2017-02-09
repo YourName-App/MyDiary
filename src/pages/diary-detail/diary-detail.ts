@@ -1,8 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
-import { DiaryEditPage } from '../diary-edit/diary-edit';
 
 @Component({
   selector: 'page-diary-detail',
@@ -11,7 +11,6 @@ import { DiaryEditPage } from '../diary-edit/diary-edit';
 export class DiaryDetailPage {
 
   theme: string;
-  inlineTheme: string;
   diary: any;
   diaryId: string;
 
@@ -31,7 +30,6 @@ export class DiaryDetailPage {
   ionViewWillEnter() {
     this.adjustTextarea();
     this.theme = this.configServ.getUserGender();
-    this.inlineTheme = "color:" + this.configServ.getUserGender();
   }
 
 	adjustTextarea(): void {
