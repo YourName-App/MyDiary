@@ -27,7 +27,7 @@
     "@ionic-native/statusbar": "3.0.0-alpha.1",
     "@ionic/storage": "1.1.8",
     "angularfire2": "2.0.0-beta.6",
-    "ionic-angular": "2.0.0",
+    "ionic-angular": "2.0.1",
     "ionicons": "3.0.0",
     "moment": "^2.17.1",
     "rxjs": "5.0.0-beta.12",
@@ -35,7 +35,7 @@
     "zone.js": "0.6.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.0.0",
+    "@ionic/app-scripts": "1.0.1",
     "eslint": "^3.12.2",
     "eslint-config-google": "^0.7.1",
     "typescript": "2.0.9"
