@@ -22,22 +22,6 @@ export class ConfigPage {
 
     this.userName = this.configServ.getUserName();
     this.userGender = this.configServ.getUserGender();
-
-    /*
-    // Get user name
-    this.storage.get('userName').then((val) => {
-      this.userName = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    // Get user gender
-    this.storage.get('userGender').then((val) => {
-      this.userGender = val;
-    }, (error) => {
-      console.log(error);
-    })
-    */
   }
 
   ionViewWillEnter() {
