@@ -3,6 +3,7 @@ import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-memo-list',
@@ -10,15 +11,21 @@ import { MemoService } from '../../providers/memo-service';
 })
 export class MemoListPage {
 
+  theme: string;
   memoList: any;
 
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private memoServ: MemoService) {
+    private modalCtrl: ModalController, private memoServ: MemoService,
+    private configServ: ConfigService) {
 
     this.initializeMemo();
   }
 
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
+  }
+  
   initializeMemo() {
     this.memoList = this.memoServ.getMemoList();
   }

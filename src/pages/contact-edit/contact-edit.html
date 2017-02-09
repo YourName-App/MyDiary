@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary">
+  <ion-navbar color={{theme}}>
     <ion-title>{{modeDesc}}</ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
@@ -21,7 +21,7 @@
       <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名" value={{inputName}}
         (change)="elementChanged(name)" [class.invalid]="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       </ion-input>
-      <button color="diary" ion-button icon-only clear large item-right
+      <button color={{theme}} ion-button icon-only clear large item-right
               *ngIf="mode==='create'" (click)="pickContact()">
         <ion-icon class="contact-icon" name="contact"></ion-icon>
       </button>
@@ -43,11 +43,11 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="diary" class="footer-toolbar">
+  <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
       <ion-row>
         <ion-col offset-80>
-          <button color="diary" (click)="editContact()" ion-button icon-only>
+          <button color={{theme}} (click)="editContact()" ion-button icon-only>
             <ion-icon name="ios-checkbox-outline"></ion-icon>
           </button>
         </ion-col>

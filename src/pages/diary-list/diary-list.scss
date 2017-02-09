@@ -9,27 +9,49 @@ page-diary-list {
   .diary-div-left {
     width: 36px;
     transform: translate(-5px, 0);
-    .diary-date {
-      color: color($colors, diary);
+    .m-diary-date {
+      color: color($colors, male);
       font-size: 3rem;
       padding-top: 20px;
       margin-bottom: 0;
     }
-    .diary-day {
-      color: color($colors, diary);
+    .f-diary-date {
+      color: color($colors, female);
+      font-size: 3rem;
+      padding-top: 20px;
+      margin-bottom: 0;
+    }
+    .m-diary-day {
+      color: color($colors, male);
+      font-size: 1.2rem;
+      padding-bottom: 18px;
+    }
+    .f-diary-day {
+      color: color($colors, female);
       font-size: 1.2rem;
       padding-bottom: 18px;
     }
   }
 
   .diary-div-main {
-    .diary-time {
-      color: color($colors, diary);
+    .m-diary-time {
+      color: color($colors, male);
       font-size: 70%;
       margin: 0;
     }
-    .diary-title {
-      color: color($colors, diary);
+    .f-diary-time {
+      color: color($colors, female);
+      font-size: 70%;
+      margin: 0;
+    }
+    .m-diary-title {
+      color: color($colors, male);
+      font-size: 85%;
+      font-weight: bold;
+      margin: 0;
+    }
+    .f-diary-title {
+      color: color($colors, female);
       font-size: 85%;
       font-weight: bold;
       margin: 0;
@@ -44,18 +66,28 @@ page-diary-list {
 
   .diary-div-right {
     width: 55px;
-    .diary-icon {
-      color: color($colors, diary);
-      transform: scale(0.7, 0.7);
-      padding-bottom: 15px;
-    }
     .diary-img {
       height: 12px!important;
       width: 12px!important;
       display: inline;
     }
-    .attach {
-      color: color($colors, diary);
+    .m-diary-icon {
+      color: color($colors, male);
+      transform: scale(0.7, 0.7);
+      padding-bottom: 15px;
+    }
+    .f-diary-icon {
+      color: color($colors, female);
+      transform: scale(0.7, 0.7);
+      padding-bottom: 15px;
+    }
+    .m-diary-attach {
+      color: color($colors, male);
+      transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
+      padding-left: 30px;
+    }
+    .f-diary-attach {
+      color: color($colors, female);
       transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
       padding-left: 30px;
     }

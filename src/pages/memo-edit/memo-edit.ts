@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MemoService } from '../../providers/memo-service';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-memo-edit',
@@ -9,6 +10,7 @@ import { MemoService } from '../../providers/memo-service';
 })
 export class MemoEditPage {
 
+  theme: string;
   memoForm: any;
   memoId: string = '';
   inputTitle: string = '';
@@ -20,7 +22,7 @@ export class MemoEditPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private viewCtrl: ViewController, private memoServ: MemoService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private configServ: ConfigService) {
 
     this.memoId = this.navParams.get('memoId') || '';
     this.inputTitle = this.navParams.get('title') || '';
@@ -39,6 +41,10 @@ export class MemoEditPage {
     }
   }
 
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
+  }
+  
   dismiss() {
     this.viewCtrl.dismiss();
   }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary">
+  <ion-navbar color={{theme}}>
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon class="back-icon" name="arrow-back"></ion-icon>
@@ -28,7 +28,10 @@
 
 <ion-content padding>
   <ion-item no-lines>
-    <ion-input class="diary-title" text-center value={{diary.title}} readonly></ion-input>
+    <ion-input text-center value={{diary.title}} readonly 
+      [class.m-diary-title]="theme==='male'"
+      [class.f-diary-title]="theme==='female'">
+    </ion-input>
   </ion-item>
   <ion-item no-lines>
     <ion-textarea class="diary-content" value={{diary.content}} readonly>
@@ -36,15 +39,15 @@
   </ion-item>
 
   <ion-fab class="fab-weather" right top edge #fabWeather>
-    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-{{diary.weather || 'sunny'}}"></ion-icon></button>
+    <button ion-fab mini color="light"><ion-icon color={{theme}} name="ios-{{diary.weather || 'sunny'}}"></ion-icon></button>
   </ion-fab>
   <ion-fab class="fab-mood" right top edge #fabMood>
-    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/img-{{diary.mood || 'happy'}}.svg"></button>
+    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/{{theme}}-{{diary.mood || 'happy'}}.svg"></button>
   </ion-fab>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="diary" class="footer-toolbar">
+  <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
       <ion-row>
         <ion-col width-20>
@@ -54,12 +57,12 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color="diary" (click)="updateDiary(diaryId, diary)" ion-button icon-only>
+          <button color={{theme}} (click)="updateDiary(diaryId, diary)" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>
         <ion-col width-20>
-          <button color="diary" (click)="deleteDiary(diaryId)" ion-button icon-only>
+          <button color={{theme}} (click)="deleteDiary(diaryId)" ion-button icon-only>
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-col>

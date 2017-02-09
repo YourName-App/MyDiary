@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IContact, ContactService } from '../../providers/contact-service';
+import { ConfigService } from '../../providers/config-service';
 import { Contacts } from '@ionic-native/contacts';
 
 @Component({
@@ -10,6 +11,7 @@ import { Contacts } from '@ionic-native/contacts';
 })
 export class ContactEditPage {
   
+  theme: string;
   contactForm: any;
   contactId: string = '';
   inputContact: IContact;
@@ -24,7 +26,7 @@ export class ContactEditPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private viewCtrl: ViewController, private contactServ: ContactService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private configServ: ConfigService) {
 
     this.contactId = this.navParams.get('contactId') || '';
     this.inputContact = this.navParams.get('contact') || {};
@@ -46,6 +48,10 @@ export class ContactEditPage {
       this.mode = 'create';
       this.modeDesc = '新增聯絡人';
     }
+  }
+
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
   }
 
   dismiss() {

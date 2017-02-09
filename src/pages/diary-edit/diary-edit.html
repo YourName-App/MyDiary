@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary">
+  <ion-navbar color={{theme}}>
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
         <ion-icon class="back-icon" name="arrow-back"></ion-icon>
@@ -47,54 +47,54 @@
   </form>
 
   <ion-fab class="fab-weather" right top edge #fabWeather>
-    <button ion-fab mini color="light"><ion-icon color="diary" name="ios-{{weather}}"></ion-icon></button>
+    <button ion-fab mini color="light"><ion-icon color={{theme}} name="ios-{{weather}}"></ion-icon></button>
     <ion-fab-list side="bottom">
       <button ion-fab (click)="selectWeather('sunny', fabWeather)">
-        <ion-icon color="diary" name="ios-sunny"></ion-icon>
+        <ion-icon color={{theme}} name="ios-sunny"></ion-icon>
       </button>
       <button ion-fab (click)="selectWeather('cloudy', fabWeather)">
-        <ion-icon color="diary" name="ios-cloudy"></ion-icon>
+        <ion-icon color={{theme}} name="ios-cloudy"></ion-icon>
       </button>
       <button ion-fab (click)="selectWeather('rainy', fabWeather)">
-        <ion-icon color="diary" name="ios-rainy"></ion-icon>
+        <ion-icon color={{theme}} name="ios-rainy"></ion-icon>
       </button>
       <button ion-fab (click)="selectWeather('thunderstorm', fabWeather)">
-        <ion-icon color="diary" name="ios-thunderstorm"></ion-icon>
+        <ion-icon color={{theme}} name="ios-thunderstorm"></ion-icon>
       </button>
       <button ion-fab (click)="selectWeather('cloudy-night', fabWeather)">
-        <ion-icon color="diary" name="ios-cloudy-night"></ion-icon>
+        <ion-icon color={{theme}} name="ios-cloudy-night"></ion-icon>
       </button>
     </ion-fab-list>
   </ion-fab>
 
   <ion-fab class="fab-mood" right top edge #fabMood>
-    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/img-{{mood}}.svg"></button>
+    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/{{theme}}-{{mood}}.svg"></button>
     <ion-fab-list side="bottom">
       <button ion-fab (click)="selectMood('happy', fabMood)">
-        <img height="24" width="24" src="assets/img/img-happy.svg">
+        <img height="24" width="24" src="assets/img/{{theme}}-happy.svg">
       </button>
       <button ion-fab (click)="selectMood('smile', fabMood)">
-        <img height="24" width="24" src="assets/img/img-smile.svg">
+        <img height="24" width="24" src="assets/img/{{theme}}-smile.svg">
       </button>
       <button ion-fab (click)="selectMood('neutral', fabMood)">
-        <img height="24" width="24" src="assets/img/img-neutral.svg">
+        <img height="24" width="24" src="assets/img/{{theme}}-neutral.svg">
       </button>
       <button ion-fab (click)="selectMood('sad', fabMood)">
-        <img height="24" width="24" src="assets/img/img-sad.svg">
+        <img height="24" width="24" src="assets/img/{{theme}}-sad.svg">
       </button>
       <button ion-fab (click)="selectMood('cry', fabMood)">
-        <img height="24" width="24" src="assets/img/img-cry.svg">
+        <img height="24" width="24" src="assets/img/{{theme}}-cry.svg">
       </button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="diary" class="footer-toolbar">
+  <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
       <ion-row>
         <ion-col offset-80>
-          <button color="diary" (click)="editDiary()" ion-button icon-only>
+          <button color={{theme}} (click)="editDiary()" ion-button icon-only>
             <ion-icon name="ios-checkbox-outline"></ion-icon>
           </button>
         </ion-col>

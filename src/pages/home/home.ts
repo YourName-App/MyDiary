@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { DiaryPage } from '../../pages/diary/diary';
 import { ContactListPage } from '../../pages/contact-list/contact-list';
 import { MemoListPage } from '../../pages/memo-list/memo-list';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-home',
@@ -11,14 +12,15 @@ import { MemoListPage } from '../../pages/memo-list/memo-list';
 })
 export class HomePage {
 
+  theme: string;
   yourName: string;
   yourGender: string;
   yourAvatar: string;
 
 
-  constructor(private navCtrl: NavController, private storage: Storage) {}
+  constructor(private navCtrl: NavController, private storage: Storage,
+    private configServ: ConfigService) {
 
-  ionViewWillEnter() {
     this.storage.get('yourName').then((val) => {
       if (val === null || val.trim().length === 0) {
         val = '你的名字是？';
@@ -48,6 +50,18 @@ export class HomePage {
     }, (error) => {
       console.log(error);
     })
+
+    setTimeout(()=> {
+      this.configServ.setUserName(this.yourName); 
+      this.configServ.setUserGender(this.yourGender);
+      this.configServ.setUserAvatar(this.yourAvatar);
+    }, 150);
+  }
+
+  ionViewWillEnter() {
+    setTimeout(()=> {
+      this.theme = this.configServ.getUserGender();
+    }, 150);
   }
 
   selectTab(tabIndex: number) {

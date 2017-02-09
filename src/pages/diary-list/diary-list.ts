@@ -3,6 +3,7 @@ import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-diary-list',
@@ -10,6 +11,7 @@ import { DiaryDetailPage } from '../diary-detail/diary-detail';
 })
 export class DiaryListPage {
 
+  _theme: string;
   _diaryList: any;
 
 
@@ -18,8 +20,14 @@ export class DiaryListPage {
     this._diaryList = diaryList;
   }
 
+  @Input()
+  set theme(theme: string) {
+    this._theme = theme;
+  }
+
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private diaryServ: DiaryService) {}
+    private modalCtrl: ModalController, private diaryServ: DiaryService,
+    private configServ: ConfigService) {}
 
   showDiaryDetail(diaryId: string): void {
     this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();

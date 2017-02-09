@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary">
+  <ion-navbar color={{theme}}>
     <ion-title>設定</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="dismiss()">
@@ -24,5 +24,5 @@
     </ion-select>
   </ion-item>
 
-  <button color="diary" ion-button block (click)="updateSetting()">確認</button>
+  <button color={{theme}} ion-button block (click)="updateSetting()">確認</button>
 </ion-content>

@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ViewController, FabContainer
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePicker } from '@ionic-native/datepicker';
 import { IDiary, DiaryService } from '../../providers/diary-service';
+import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
 
 @Component({
@@ -11,6 +12,7 @@ import * as moment from 'moment';
 })
 export class DiaryEditPage {
   
+  theme: string;
   diaryForm: any;
   diaryId: string = '';
   inputDiary: IDiary;
@@ -36,7 +38,7 @@ export class DiaryEditPage {
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private alertCtrl: AlertController, private viewCtrl: ViewController,
     private diaryServ: DiaryService, private formBuilder: FormBuilder,
-    private element: ElementRef) {
+    private element: ElementRef, private configServ: ConfigService) {
 
     this.diaryId = this.navParams.get('diaryId') || '';
     this.inputDiary = this.navParams.get('diary') || {};
@@ -74,6 +76,7 @@ export class DiaryEditPage {
 
   ionViewWillEnter() {
     this.adjustTextarea();
+    this.theme = this.configServ.getUserGender();
   }
 
 	adjustTextarea(): void {

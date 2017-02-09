@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary">
+  <ion-navbar color={{theme}}>
     <ion-title>聯絡人</ion-title>
     <ion-buttons start>
       <button ion-button icon-only (click)="dismiss()">
@@ -21,11 +21,11 @@
       </ion-item>
 
       <ion-buttons end>
-        <button color="diary" class="sms-button" (click)="sendSms(contact.phone)"
+        <button color={{theme}} class="sms-button" (click)="sendSms(contact.phone)"
                 ion-button icon-only round>
           <ion-icon name="chatboxes"> 簡訊</ion-icon>
         </button>
-        <button color="diary" class="phone-button" (click)="dial(contact.phone)"
+        <button color={{theme}} class="phone-button" (click)="dial(contact.phone)"
                 ion-button icon-only round>
           <ion-icon name="call"> 撥號</ion-icon>
         </button>
@@ -35,7 +35,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="diary" class="footer-toolbar">
+  <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
       <ion-row>
         <ion-col width-20>
@@ -45,12 +45,12 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color="diary" (click)="updateContact(contactId, contact)" ion-button icon-only>
+          <button color={{theme}} (click)="updateContact(contactId, contact)" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
           </button>
         </ion-col>
         <ion-col width-20>
-          <button color="diary" (click)="deleteContact(contactId)" ion-button icon-only>
+          <button color={{theme}} (click)="deleteContact(contactId)" ion-button icon-only>
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-col>

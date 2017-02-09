@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { MemoItemEditPage } from '../memo-item-edit/memo-item-edit';
 import { MemoService } from '../../providers/memo-service';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-memo-detail',
@@ -9,6 +10,7 @@ import { MemoService } from '../../providers/memo-service';
 })
 export class MemoDetailPage {
 
+  theme: string;
   memo: any;
   itemList: any;
   memoId: string = '';
@@ -21,7 +23,8 @@ export class MemoDetailPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private memoServ: MemoService) {
+    private modalCtrl: ModalController, private memoServ: MemoService,
+    private configServ: ConfigService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -29,6 +32,10 @@ export class MemoDetailPage {
 
     this.itemList = this.memoServ.getItemList(this.navParams.get('memoId'));
     this.memoId = this.navParams.get('memoId');
+  }
+
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
   }
 
   dismiss(): void {

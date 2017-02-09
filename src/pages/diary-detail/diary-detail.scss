@@ -26,8 +26,13 @@ page-diary-detail {
       transform: translate(-3px, -39px);
     }
   }
-  .diary-title {
-    color: color($colors, diary);
+  .m-diary-title {
+    color: color($colors, male);
+    font-size: 125%;
+    font-weight: bold;
+  }
+  .f-diary-title {
+    color: color($colors, female);
     font-size: 125%;
     font-weight: bold;
   }

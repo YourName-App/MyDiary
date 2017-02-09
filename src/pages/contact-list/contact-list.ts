@@ -3,6 +3,7 @@ import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
 import { IContact, ContactService } from '../../providers/contact-service';
+import { ConfigService } from '../../providers/config-service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
@@ -12,13 +13,19 @@ import 'rxjs/add/operator/map';
 })
 export class ContactListPage {
   
-  public contactList: any;
+  theme: string;
+  contactList: any;
 
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private contactServ: ContactService) {
+    private modalCtrl: ModalController, private contactServ: ContactService,
+    private configServ: ConfigService) {
       
     this.initializeContact();
+  }
+
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
   }
 
   initializeContact() {

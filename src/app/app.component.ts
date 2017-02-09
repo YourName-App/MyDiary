@@ -9,7 +9,7 @@ import { LandingPage } from '../pages/landing/landing';
 import { HomePage } from '../pages/home/home';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
-import { SettingPage } from '../pages/setting/setting';
+import { ConfigPage } from '../pages/config/config';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -37,7 +37,7 @@ export class MyApp {
   
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '設定', component: SettingPage, createModal: true, icon: 'ios-build-outline' }
+    { title: '設定', component: ConfigPage, createModal: true, icon: 'ios-build-outline' }
   ];
 
   otherPages: PageInterface[] = [

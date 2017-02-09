@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from '@ionic-native/socialsharing';
+import { ConfigService } from '../../providers/config-service';
 
 @Component({
   selector: 'page-suggest',
@@ -9,19 +10,25 @@ import { SocialSharing } from '@ionic-native/socialsharing';
 })
 export class SuggestPage {
 
+  theme: string;
   suggestForm: any;
   suggestChanged: boolean = false;
   submitAttempt: boolean = false;
 
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private formBuilder: FormBuilder, private viewCtrl: ViewController) {
+    private formBuilder: FormBuilder, private viewCtrl: ViewController,
+    private configServ: ConfigService) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]
     });
   }
 
+  ionViewWillEnter() {
+    this.theme = this.configServ.getUserGender();
+  }
+  
   dismiss() {
     this.viewCtrl.dismiss();
   }

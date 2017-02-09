@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="diary" no-border-bottom>
+  <ion-navbar color={{theme}} no-border-bottom>
     <ion-title>聯絡人</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="createContact()">
@@ -7,7 +7,7 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar color="diary" no-border-top>
+  <ion-toolbar color={{theme}} no-border-top>
     <ion-searchbar class="contact-searchbar" (ionInput)="searchContact($event)"
                    placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
     </ion-searchbar>

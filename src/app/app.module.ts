@@ -24,7 +24,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
-import { SettingPage } from '../pages/setting/setting';
+import { ConfigPage } from '../pages/config/config';
 
 // Import custom components
 import { Autoresize } from '../components/autoresize/autoresize';
@@ -34,6 +34,9 @@ import { AuthService } from '../providers/auth-service';
 import { DiaryService } from '../providers/diary-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
+import { ConfigService } from '../providers/config-service';
+
+// Import pipes
 import { ChineseDay } from '../pipes/chinese-day';
 
 // Import AF2 Module
@@ -76,7 +79,7 @@ const myFirebaseAuthConfig = {
     ResetPasswordPage,
     SuggestPage,
     AboutPage,
-    SettingPage,
+    ConfigPage,
     Autoresize,
     ChineseDay
   ],
@@ -108,7 +111,7 @@ const myFirebaseAuthConfig = {
     ResetPasswordPage,
     SuggestPage,
     AboutPage,
-    SettingPage
+    ConfigPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -116,7 +119,8 @@ const myFirebaseAuthConfig = {
     AuthService,
     DiaryService,
     MemoService,
-    ContactService
+    ContactService,
+    ConfigService
   ]
 })
 export class AppModule {}
