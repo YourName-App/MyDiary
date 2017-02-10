@@ -21,9 +21,8 @@
       <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名" value={{inputName}}
         (change)="elementChanged(name)" [class.invalid]="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       </ion-input>
-      <button color={{theme}} ion-button icon-only clear large item-right
-              *ngIf="mode==='create'" (click)="pickContact()">
-        <ion-icon class="contact-icon" name="contact"></ion-icon>
+      <button color={{theme}} ion-button icon-only clear large item-right (click)="pickContact()">
+        <ion-icon class="contact-icon" name="contacts"></ion-icon>
       </button>
     </ion-item>
     <ion-item class="error-message" *ngIf="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">

@@ -61,6 +61,9 @@
       <button ion-fab (click)="selectWeather('thunderstorm', fabWeather)">
         <ion-icon color={{theme}} name="ios-thunderstorm"></ion-icon>
       </button>
+      <button ion-fab (click)="selectWeather('snow', fabWeather)">
+        <ion-icon color={{theme}} name="ios-snow"></ion-icon>
+      </button>
       <button ion-fab (click)="selectWeather('cloudy-night', fabWeather)">
         <ion-icon color={{theme}} name="ios-cloudy-night"></ion-icon>
       </button>
@@ -81,6 +84,9 @@
       </button>
       <button ion-fab (click)="selectMood('sad', fabMood)">
         <img height="24" width="24" src="assets/img/{{theme || 'male'}}-sad.svg">
+      </button>
+      <button ion-fab (click)="selectMood('angry', fabMood)">
+        <img height="24" width="24" src="assets/img/{{theme || 'male'}}-angry.svg">
       </button>
       <button ion-fab (click)="selectMood('cry', fabMood)">
         <img height="24" width="24" src="assets/img/{{theme || 'male'}}-cry.svg">

@@ -21,7 +21,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let memo of memoList | async">
       <ion-item tabbable (click)="showMemoDetail(memo.$key)">
-        <ion-icon name="ios-list-box-outline" item-left ></ion-icon>
+        <ion-icon color={{theme}} name="ios-list-box-outline" item-left ></ion-icon>
         <h2>{{memo.title}}</h2>
       </ion-item>
       <ion-item-options>

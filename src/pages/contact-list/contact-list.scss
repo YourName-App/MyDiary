@@ -17,9 +17,8 @@ page-contact-list {
   .item-block {
     height: 64px;
   }
-  .item-ios ion-avatar img {
-    width: 56px;
-    height: 56px;
+  .item-ios ion-avatar .icon-avatar {
+    font-size: 56px;
     transform: translate(0, 4px);
   }
 }

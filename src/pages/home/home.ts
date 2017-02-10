@@ -25,7 +25,7 @@ export class HomePage {
       this.userName = this.configServ.getUserName();
       this.userGender = this.configServ.getUserGender();
       this.userAvatar = this.configServ.getUserAvatar();
-    }, 500);
+    }, 650);
   }
 
   ionViewWillEnter() {

@@ -22,7 +22,7 @@
     <ion-item-sliding *ngFor="let contact of contactList | async">
       <ion-item tabbable (click)="showContactDetail(contact.$key)">
         <ion-avatar item-left>
-          <img class="img-avatar" src="{{contact.avatar}}">
+          <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>
         </ion-avatar>
         <h2 class="contact-name">{{contact.name}}</h2>
         <p class="phone-no">{{contact.phone}}</p>

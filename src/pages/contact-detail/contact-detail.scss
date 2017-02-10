@@ -12,4 +12,7 @@ page-contact-detail {
   .contact-name, .contact-phone {
     transform: translate(0, 2px);
   }
+  .item-ios ion-avatar .icon-avatar {
+    font-size: 64px;
+  }
 }

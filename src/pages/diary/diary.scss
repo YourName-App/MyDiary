@@ -2,6 +2,9 @@ page-diary {
   .diary-content .scroll-content {
     padding: 0!important;
   }
+  .diary-list .scroll-content {
+    padding-top: 0!important;
+  }
   .diary-list.male {
     background-image: url('../assets/img/bg-male.png');
     background-repeat: no-repeat;
