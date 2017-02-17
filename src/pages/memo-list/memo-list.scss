@@ -2,13 +2,13 @@ page-memo-list {
   .memo-list-searchbar {
     margin-top: -10px;
   }
-  .add-icon {
-    margin-right: 10px;
-  }
-  .menu-icon {
-    padding-bottom: 5px;
-  }
   .input-wrapper {
     height: 63px;
+  }
+  .menu-icon {
+    transform: translate(0, 10px);
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
   }
 }

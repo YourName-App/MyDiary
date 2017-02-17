@@ -47,17 +47,18 @@ page-diary-list {
   .diary-div-right {
     width: 55px;
     .diary-img {
-      height: 12px!important;
-      width: 12px!important;
+      height: 13px!important;
+      width: 13px!important;
       display: inline;
+      transform: translate(2px, 1.5px);
     }
     .diary-icon {
-      transform: scale(0.7, 0.7);
       padding-bottom: 15px;
+      transform: scale(0.7, 0.7) translate(4px, 0);
     }
     .diary-attach {
-      transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
       padding-left: 30px;
+      transform: scale(1.0, 1.2) rotate(40deg) translate(2px, -20px);
     }
   }
 }

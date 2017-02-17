@@ -18,10 +18,10 @@ page-diary {
   .diary-searchbar {
     margin-top: -10px;
   }
-  .add-icon {
-    margin-right: 10px;
-  }
   .menu-icon {
-    padding-bottom: 5px; 
+    transform: translate(0, 10px);
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
   }
 }

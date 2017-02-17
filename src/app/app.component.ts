@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, ModalController } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/statusbar';
 import { Splashscreen } from '@ionic-native/splashscreen';
 import { Storage } from '@ionic/storage';
@@ -50,7 +50,7 @@ export class MyApp {
   ];
 
   constructor(platform: Platform, storage: Storage, private af: AngularFire, 
-    private authServ: AuthService, private modalCtrl: ModalController) {
+    private authServ: AuthService) {
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -74,7 +74,7 @@ export class MyApp {
 
   openPage(page: PageInterface) {
     if (page.createModal === true) {
-      this.modalCtrl.create(page.component).present();
+      this.nav.push(page.component);
     } else {
       this.nav.setRoot(page.component);
     }

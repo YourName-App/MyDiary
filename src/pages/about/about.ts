@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ConfigService } from '../../providers/config-service';
 
 @Component({
@@ -12,13 +12,9 @@ export class AboutPage {
 
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
-    private viewCtrl: ViewController, private configServ: ConfigService) {}
+    private configServ: ConfigService) {}
 
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-  }
-
-  dismiss() {
-    this.viewCtrl.dismiss();
   }
 }

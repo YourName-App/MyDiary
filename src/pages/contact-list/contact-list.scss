@@ -8,17 +8,17 @@ page-contact-list {
   .contact-searchbar {
     margin-top: -10px;
   }
-  .add-icon {
-    margin-right: 10px;
-  }
-  .menu-icon {
-    margin-bottom: 5px; 
-  }
   .item-block {
     height: 64px;
   }
   .item-ios ion-avatar .icon-avatar {
-    font-size: 56px;
-    transform: translate(0, 4px);
+    font-size: 50px;
+    transform: translate(0, 6px);
+  }
+  .menu-icon {
+    transform: translate(0, 10px);
+  }
+  ion-toolbar.footer-toolbar {
+    height: 50px;
   }
 }

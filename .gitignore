@@ -35,3 +35,6 @@ UserInterfaceState.xcuserstate
 ionic.config.json
 .io-config.json
 .eslintrc.js
+.firebaserc
+database.rules.json
+firebase.json

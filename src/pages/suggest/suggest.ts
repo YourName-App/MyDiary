@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ViewController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from '@ionic-native/socialsharing';
 import { ConfigService } from '../../providers/config-service';
@@ -17,8 +17,7 @@ export class SuggestPage {
 
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private formBuilder: FormBuilder, private viewCtrl: ViewController,
-    private configServ: ConfigService) {
+    private formBuilder: FormBuilder, private configServ: ConfigService) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]
@@ -27,10 +26,6 @@ export class SuggestPage {
 
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-  }
-  
-  dismiss() {
-    this.viewCtrl.dismiss();
   }
   
   elementChanged(input){

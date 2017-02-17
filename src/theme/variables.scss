@@ -47,7 +47,12 @@ $item-ios-avatar-size: 64px;
 $tabs-ios-tab-icon-color-active: color($colors, diary);
 $tabs-ios-tab-text-color-active: color($colors, diary);
 $segment-button-ios-toolbar-button-max-width: 78px;
-
+$modal-inset-min-width: 96vw;
+$modal-inset-min-height-small: 92vh;
+$modal-inset-min-height-large: 92vh;
+$modal-inset-width: 96vw;
+$modal-inset-height-small: 92vh;
+$modal-inset-height-large: 92vh;
 
 
 // App Material Design Variables

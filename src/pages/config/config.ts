@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, App } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../../pages/home/home';
 import { ConfigService } from '../../providers/config-service';
@@ -16,9 +16,8 @@ export class ConfigPage {
   userAvatar: string;
 
   
-  constructor(private navCtrl: NavController, private viewCtrl: ViewController,
-    private appCtrl: App, private storage: Storage,
-    private configServ: ConfigService) {
+  constructor(private navCtrl: NavController, private appCtrl: App,
+    private storage: Storage, private configServ: ConfigService) {
 
     this.userName = this.configServ.getUserName();
     this.userGender = this.configServ.getUserGender();
@@ -26,10 +25,6 @@ export class ConfigPage {
 
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-  }
-  
-  dismiss() {
-    this.viewCtrl.dismiss();
   }
 
   updateSetting() {
@@ -52,7 +47,7 @@ export class ConfigPage {
     this.configServ.setUserGender(this.userGender);
     this.configServ.setUserAvatar(this.userAvatar);
     
-    this.dismiss();
+    this.navCtrl.pop();
     this.appCtrl.getRootNav().setRoot(HomePage);
   }  
 }

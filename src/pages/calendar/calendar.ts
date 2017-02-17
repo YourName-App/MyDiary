@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
+import 'moment/locale/zh-tw';
 
 @Component({
   selector: 'page-calendar',

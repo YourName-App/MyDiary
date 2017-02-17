@@ -5,6 +5,7 @@ import { DatePicker } from '@ionic-native/datepicker';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
+import 'moment/locale/zh-tw';
 
 @Component({
   selector: 'page-diary-edit',
@@ -52,7 +53,7 @@ export class DiaryEditPage {
       title: ['', Validators.required],
       content: ['', Validators.required]
     });
-
+    
     moment.locale('zh-tw');
 
     if (this.diaryId) {
