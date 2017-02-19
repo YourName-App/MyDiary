@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SocialSharing } from '@ionic-native/socialsharing';
+import { SocialSharing } from 'ionic-native';
 import { ConfigService } from '../../providers/config-service';
 
 @Component({

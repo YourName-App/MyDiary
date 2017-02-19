@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-buttons start>
+    <ion-buttons padding end>
       <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
+        <ion-icon class="close-icon" name="md-close"></ion-icon>
       </button>
     </ion-buttons>
     <ion-row>
@@ -101,7 +101,7 @@
       <ion-row>
         <ion-col offset-80>
           <button color={{theme}} (click)="editDiary()" ion-button icon-only>
-            <ion-icon name="ios-checkbox-outline"></ion-icon>
+            <ion-icon name="md-checkmark"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

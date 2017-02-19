@@ -31,15 +31,18 @@ export class MemoListPage {
   }
 
   showMemoDetail(memoId: string): void {
-    this.modalCtrl.create(MemoDetailPage, {memoId}).present();
+    //this.modalCtrl.create(MemoDetailPage, {memoId}).present();
+    this.navCtrl.push(MemoDetailPage, {memoId});
   }
 
   createMemo(): void {
-    this.modalCtrl.create(MemoEditPage).present();
+    //this.modalCtrl.create(MemoEditPage).present();
+    this.navCtrl.push(MemoEditPage);
   }
 
   updateMemo(memoId: string, title: string) {
-    this.modalCtrl.create(MemoEditPage, {memoId, title}).present();
+    //this.modalCtrl.create(MemoEditPage, {memoId, title}).present();
+    this.navCtrl.push(MemoEditPage, {memoId, title});
   }
 
   deleteMemo(memoId: string): void {

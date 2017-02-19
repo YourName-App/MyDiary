@@ -2,28 +2,28 @@ page-diary-detail {
   ion-navbar {
     height: 110px;
 
-    .back-icon {
-      transform: translate(0, -25px);
+    .close-icon {
+      transform: translate(12px, -35px);
     }
     .diary-month {
       font-size: 18px;
       color: color($colors, clean);
-      transform: translate(0, 35px);
+      transform: translate(33px, 35px);
     }
     .diary-date {
       font-size: 50px;
       color: color($colors, clean);
-      transform: translate(0, -3px);
+      transform: translate(33px, -3px);
     }
     .diary-day {
       font-size: 13px;
       color: color($colors, clean);
-      transform: translate(3px, -39px);
+      transform: translate(36px, -39px);
     }
     .diary-time {
       font-size: 13px;
       color: color($colors, clean);
-      transform: translate(-3px, -39px);
+      transform: translate(30px, -39px);
     }
   }
   .diary-title {

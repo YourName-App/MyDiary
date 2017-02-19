@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
-import { Contacts } from '@ionic-native/contacts';
+import { Contacts } from 'ionic-native';
 
 @Component({
   selector: 'page-contact-edit',

@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController, ViewController, FabContainer } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DatePicker } from '@ionic-native/datepicker';
+import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';

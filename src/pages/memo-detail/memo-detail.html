@@ -1,21 +1,6 @@
 <ion-header>
   <ion-navbar color={{theme}}>
     <ion-title >{{memo.title}}</ion-title>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="back-icon" name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons *ngIf="!createMode" end>
-      <button ion-button icon-only (click)="toggleCreateMode()">
-        <ion-icon class="add-icon" name="add"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons *ngIf="createMode" end>
-      <button ion-button icon-only (click)="reset()">
-        <ion-icon class="refresh-icon" name="refresh"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -43,9 +28,12 @@
         </ion-col>
         <ion-col width-20>
         </ion-col>
-        <ion-col width-20>
+        
+        <ion-col width-20 *ngIf="!createMode">
+          <button color={{theme}} (click)="toggleCreateMode()" ion-button icon-only>
+            <ion-icon name="md-add"></ion-icon>
+          </button>
         </ion-col>
-
         <ion-col width-20 *ngIf="!createMode">
           <button color={{theme}} (click)="updateItem()" ion-button icon-only>
             <ion-icon name="create"></ion-icon>
@@ -60,8 +48,13 @@
         <ion-col width-20 *ngIf="createMode">
         </ion-col>
         <ion-col width-20 *ngIf="createMode">
+          <button color={{theme}} (click)="reset()"ion-button icon-only>
+            <ion-icon name="md-refresh"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-20 *ngIf="createMode">
           <button color={{theme}} (click)="createItem()" ion-button icon-only>
-            <ion-icon name="ios-checkbox-outline"></ion-icon>
+            <ion-icon name="md-checkmark"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

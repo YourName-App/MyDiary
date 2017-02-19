@@ -33,15 +33,18 @@ export class ContactListPage {
   }
 
   showContactDetail(contactId: string): void {
-    this.modalCtrl.create(ContactDetailPage, {contactId}).present();
+    //this.modalCtrl.create(ContactDetailPage, {contactId}).present();
+    this.navCtrl.push(ContactDetailPage, {contactId});
   }
 
   createContact(): void {
-    this.modalCtrl.create(ContactEditPage).present();
+    //this.modalCtrl.create(ContactEditPage).present();
+    this.navCtrl.push(ContactEditPage);
   }
 
   updateContact(contactId: string, contact: IContact) {
-    this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
+    //this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
+    this.navCtrl.push(ContactEditPage, {contactId, contact});
   }
 
   deleteContact(contactId: string): void {

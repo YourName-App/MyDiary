@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { MemoItemEditPage } from '../memo-item-edit/memo-item-edit';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
@@ -22,9 +22,8 @@ export class MemoDetailPage {
 
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
-    private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private memoServ: MemoService,
-    private configServ: ConfigService) {
+    private alertCtrl: AlertController, private modalCtrl: ModalController,
+    private memoServ: MemoService, private configServ: ConfigService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -36,10 +35,6 @@ export class MemoDetailPage {
 
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-  }
-
-  dismiss(): void {
-    this.viewCtrl.dismiss();
   }
 
   toggleItem(itemId: string, item: any): void {
@@ -79,7 +74,8 @@ export class MemoDetailPage {
   }
 
   updateItem(): void {
-    this.modalCtrl.create(MemoItemEditPage, { memoId: this.memoId }).present();
+    //this.modalCtrl.create(MemoItemEditPage, { memoId: this.memoId }).present();
+    this.navCtrl.push(MemoItemEditPage, { memoId: this.memoId });
   }
 
   deleteItem(itemId: string): void {

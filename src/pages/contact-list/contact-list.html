@@ -12,7 +12,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let contact of contactList | async">
-      <ion-item tabbable (click)="showContactDetail(contact.$key)">
+      <ion-item tabbable detail-push (click)="showContactDetail(contact.$key)">
         <ion-avatar item-left>
           <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>
         </ion-avatar>
@@ -37,19 +37,19 @@
       <ion-row>
         <ion-col width-20>
           <button color={{clean}} ion-button icon-only menuToggle>
-            <ion-icon class="menu-icon" name="menu"></ion-icon>
+            <ion-icon class="menu-icon" name="md-menu"></ion-icon>
           </button>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
+        </ion-col>
+        <ion-col width-20>
         </ion-col>
         <ion-col width-20>
           <button color={{theme}} ion-button icon-only (click)="createContact()">
-            <ion-icon name="add-circle"></ion-icon>
+            <ion-icon class="rightmost-icon" name="md-add"></ion-icon>
           </button>
-        </ion-col>
-        <ion-col width-20>
-        </ion-col>
-        <ion-col width-20>
-        </ion-col>
-        <ion-col width-20>
         </ion-col>
       </ion-row>
     </ion-grid>

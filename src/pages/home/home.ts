@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NativeAudio } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { DiaryPage } from '../../pages/diary/diary';
 import { ContactListPage } from '../../pages/contact-list/contact-list';
@@ -16,22 +17,25 @@ export class HomePage {
   userName: string;
   userGender: string;
   userAvatar: string;
+  musicPlayed: boolean = false;
 
 
   constructor(private navCtrl: NavController, private storage: Storage,
     private configServ: ConfigService) {
 
+    NativeAudio.preloadComplex('sparkle', 'assets/audio/Sparkle.mp3', 1, 1, 0);
+
     setTimeout(()=> {
       this.userName = this.configServ.getUserName();
       this.userGender = this.configServ.getUserGender();
       this.userAvatar = this.configServ.getUserAvatar();
-    }, 650);
+    }, 700);
   }
 
   ionViewWillEnter() {
     setTimeout(()=> {
       this.theme = this.configServ.getUserGender();
-    }, 150);
+    }, 200);
   }
 
   selectTab(tabIndex: number) {
@@ -48,5 +52,15 @@ export class HomePage {
 
   goToMemo() {
     this.navCtrl.push(MemoListPage);
+  }
+
+  playMusic() {
+    this.musicPlayed = true;
+    NativeAudio.loop('sparkle');
+  }
+
+  stopMusic() {
+    this.musicPlayed = false;
+    NativeAudio.stop('sparkle');
   }
 }

@@ -3,8 +3,8 @@ import { NavController, NavParams, ViewController, AlertController, ModalControl
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
-import { CallNumber } from '@ionic-native/call-number';
-import { SocialSharing } from '@ionic-native/socialsharing';
+import { CallNumber } from 'ionic-native';
+import { SocialSharing } from 'ionic-native';
 
 @Component({
   selector: 'page-contact-detail',
@@ -41,7 +41,8 @@ export class ContactDetailPage {
   }
 
   updateContact(contactId: string, contact: IContact): void {
-    this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
+    //this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
+    this.navCtrl.push(ContactEditPage, {contactId, contact});
   }
 
   deleteContact(contactId: string): void {

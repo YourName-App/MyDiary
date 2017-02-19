@@ -5,6 +5,12 @@ page-home {
   .user-name {
     padding-top: 16px;
   }
+  .menu-icon {
+    transform: translate(0, 10px);
+  }
+  .rightmost-icon {
+    transform: translate(10px, 0);
+  }
   ion-toolbar.footer-toolbar {
     height: 50px;
   }

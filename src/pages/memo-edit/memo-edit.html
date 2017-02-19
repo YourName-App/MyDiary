@@ -1,16 +1,6 @@
 <ion-header>
   <ion-navbar color={{theme}}>
     <ion-title>{{modeDesc}}</ion-title>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="dismiss()">
-        <ion-icon class="close-icon" name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon class="add-icon"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -34,7 +24,7 @@
       <ion-row>
         <ion-col width-10 offset-80>
           <button color={{theme}} type="button" (click)="editMemo()" ion-button icon-only>
-            <ion-icon name="ios-checkbox-outline"></ion-icon>
+            <ion-icon name="md-checkmark"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
