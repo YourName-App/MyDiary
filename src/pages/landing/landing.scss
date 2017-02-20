@@ -9,4 +9,13 @@ page-landing {
   .button-text {
     padding-bottom: 15px;
   }
+  .img-container {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+  }
+  img.landing-img {
+    width: 100%;
+    padding-bottom: 10px;
+  }
 }

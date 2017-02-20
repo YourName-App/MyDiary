@@ -2,4 +2,13 @@ page-about {
   .close-icon {
     margin-right: 10px;
   }
+  .img-container {
+    width: 85%;
+    display: block;
+    margin: 0 auto;
+  }
+  img.about-img {
+    width: 100%;
+    padding-bottom: 10px;
+  }
 }
