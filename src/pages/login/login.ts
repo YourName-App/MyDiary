@@ -17,7 +17,6 @@ export class LoginPage {
   submitAttempt: boolean = false;
   loader: any;
 
-
   constructor(private navCtrl: NavController, private authServ: AuthService,
     private formBuilder: FormBuilder, private alertCtrl: AlertController,
     private loadingCtrl: LoadingController) {

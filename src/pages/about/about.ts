@@ -10,7 +10,6 @@ export class AboutPage {
 
   theme: string;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private configServ: ConfigService) {}
 

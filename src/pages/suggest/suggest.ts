@@ -15,7 +15,6 @@ export class SuggestPage {
   suggestChanged: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
     private formBuilder: FormBuilder, private configServ: ConfigService) {
 

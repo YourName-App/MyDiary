@@ -35,7 +35,6 @@ export class DiaryEditPage {
   contentChanged: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private alertCtrl: AlertController, private viewCtrl: ViewController,
     private diaryServ: DiaryService, private formBuilder: FormBuilder,

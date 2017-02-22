@@ -26,7 +26,6 @@ export class DiaryService {
   diaryDetail: FirebaseObjectObservable<any>;
   userId: string;
 
-
   constructor(public af: AngularFire) {
     this.af.auth.subscribe(auth => {
       if (auth) {

@@ -19,7 +19,6 @@ export class MemoEditPage {
   titleChanged: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private viewCtrl: ViewController, private memoServ: MemoService,
     private formBuilder: FormBuilder, private configServ: ConfigService) {

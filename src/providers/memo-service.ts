@@ -9,7 +9,6 @@ export class MemoService {
   memoDetail: FirebaseObjectObservable<any>;
   userId: string;
 
-
   constructor(public af: AngularFire) {
     this.af.auth.subscribe(auth => {
       if (auth) {

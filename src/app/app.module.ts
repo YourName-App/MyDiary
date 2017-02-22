@@ -24,7 +24,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
-import { ConfigPage } from '../pages/config/config';
+import { UserConfigPage } from '../pages/user-config/user-config';
+import { LockConfigPage } from '../pages/lock-config/lock-config';
 
 // Import custom components
 import { Autoresize } from '../components/autoresize/autoresize';
@@ -79,7 +80,8 @@ const myFirebaseAuthConfig = {
     ResetPasswordPage,
     SuggestPage,
     AboutPage,
-    ConfigPage,
+    UserConfigPage,
+    LockConfigPage,
     Autoresize,
     ChineseDay
   ],
@@ -111,7 +113,8 @@ const myFirebaseAuthConfig = {
     ResetPasswordPage,
     SuggestPage,
     AboutPage,
-    ConfigPage
+    UserConfigPage,
+    LockConfigPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

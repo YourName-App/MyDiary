@@ -9,10 +9,12 @@ import { LandingPage } from '../pages/landing/landing';
 import { HomePage } from '../pages/home/home';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
-import { ConfigPage } from '../pages/config/config';
+import { UserConfigPage } from '../pages/user-config/user-config';
+import { LockConfigPage } from '../pages/lock-config/lock-config';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
+import { ConfigService } from '../providers/config-service';
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -21,7 +23,7 @@ export interface PageInterface {
   title: string;
   component: any;
   icon: string;
-  createModal?: boolean;
+  pushPage?: boolean;
   logsOut?: boolean;
 }
 
@@ -37,12 +39,13 @@ export class MyApp {
   
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '設定', component: ConfigPage, createModal: true, icon: 'ios-build-outline' }
+    { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
+    { title: '密碼鎖', component: LockConfigPage, pushPage: true, icon: 'ios-lock-outline' },
   ];
 
   otherPages: PageInterface[] = [
-    { title: '建議', component: SuggestPage, createModal: true, icon: 'ios-chatbubbles-outline' },
-    { title: '關於 ', component: AboutPage, createModal: true, icon: 'ios-help-circle-outline' }
+    { title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
+    { title: '關於 ', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
   ];
 
   accountPages: PageInterface[] = [
@@ -50,7 +53,7 @@ export class MyApp {
   ];
 
   constructor(platform: Platform, storage: Storage, private af: AngularFire, 
-    private authServ: AuthService) {
+    private authServ: AuthService, private configServ: ConfigService) {
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -67,13 +70,18 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      // Listen for pause event (emits when the native platform puts the application into the background)
+      platform.pause.subscribe(() => {
+        this.configServ.setPauseEmitted(true);
+      });
     }, (error) => {
       console.log(error);
     });
   }
 
   openPage(page: PageInterface) {
-    if (page.createModal === true) {
+    if (page.pushPage === true) {
       this.nav.push(page.component);
     } else {
       this.nav.setRoot(page.component);

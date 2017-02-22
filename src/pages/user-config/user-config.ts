@@ -5,17 +5,16 @@ import { HomePage } from '../../pages/home/home';
 import { ConfigService } from '../../providers/config-service';
 
 @Component({
-  selector: 'page-config',
-  templateUrl: 'config.html'
+  selector: 'page-user-config',
+  templateUrl: 'user-config.html'
 })
-export class ConfigPage {
+export class UserConfigPage {
 
   theme: string;
   userName: string;
   userGender: string;
   userAvatar: string;
 
-  
   constructor(private navCtrl: NavController, private appCtrl: App,
     private storage: Storage, private configServ: ConfigService) {
 
@@ -49,5 +48,5 @@ export class ConfigPage {
     
     this.navCtrl.pop();
     this.appCtrl.getRootNav().setRoot(HomePage);
-  }  
+  }
 }

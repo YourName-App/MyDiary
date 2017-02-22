@@ -6,7 +6,6 @@ page-contact-edit {
       margin-top: 20px;
     }
   }
-
   p {
     font-size: 0.8em;
     color: #d2d2d2;
@@ -26,10 +25,7 @@ page-contact-edit {
   .error-message .item-inner {
     border-bottom: 0 !important;
   }
-  .add-icon {
-    margin-right: 10px;
-  }
-  .contact-icon {
+  .contact-button {
     transform: translate(0, 10px);
   }
   ion-toolbar.footer-toolbar {

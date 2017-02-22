@@ -14,7 +14,6 @@ export class ResetPasswordPage {
   emailChanged: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private authServ: AuthService, 
     private formBuilder: FormBuilder, private alertCtrl: AlertController) {
 

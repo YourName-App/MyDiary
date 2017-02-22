@@ -11,8 +11,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let contact of contactList | async">
-      <ion-item tabbable detail-push (click)="showContactDetail(contact.$key)">
+    <ion-item-sliding #slidingItem *ngFor="let contact of contactList | async">
+      <ion-item tabbable (click)="showContactDetail(contact.$key)">
         <ion-avatar item-left>
           <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>
         </ion-avatar>
@@ -20,10 +20,10 @@
         <p class="phone-no">{{contact.phone}}</p>
       </ion-item>
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="updateContact(contact.$key, contact)">
+        <button ion-button icon-only color="cloud" (click)="updateContact(contact.$key, contact, slidingItem)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="deleteContact(contact.$key)">
+        <button ion-button icon-only color="danger" (click)="deleteContact(contact.$key, slidingItem)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
@@ -36,8 +36,8 @@
     <ion-grid>
       <ion-row>
         <ion-col width-20>
-          <button color={{clean}} ion-button icon-only menuToggle>
-            <ion-icon class="menu-icon" name="md-menu"></ion-icon>
+          <button color={{clean}} class="menu-button" ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
           </button>
         </ion-col>
         <ion-col width-20>
@@ -47,8 +47,8 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color={{theme}} ion-button icon-only (click)="createContact()">
-            <ion-icon class="rightmost-icon" name="md-add"></ion-icon>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only (click)="createContact()">
+            <ion-icon name="md-add"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

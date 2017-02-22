@@ -20,7 +20,6 @@ export class MemoDetailPage {
   createMode: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private alertCtrl: AlertController, private modalCtrl: ModalController,
     private memoServ: MemoService, private configServ: ConfigService) {

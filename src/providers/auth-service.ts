@@ -8,7 +8,6 @@ export class AuthService {
 
   fireAuth: any;
   
-
   constructor(public af: AngularFire) {
     af.auth.subscribe( user => {
       if (user) {

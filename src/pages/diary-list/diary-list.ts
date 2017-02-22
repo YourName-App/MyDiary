@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ModalController, ItemSliding } from 'ionic-angular';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
@@ -13,7 +13,6 @@ export class DiaryListPage {
 
   _theme: string;
   _diaryList: any;
-
 
   @Input()
   set diaryList(diaryList: any) {
@@ -37,11 +36,12 @@ export class DiaryListPage {
     this.modalCtrl.create(DiaryEditPage).present();
   }
 
-  updateDiary(diaryId: string, diary: IDiary) {
+  updateDiary(diaryId: string, diary: IDiary, slidingItem: ItemSliding) {
     this.modalCtrl.create(DiaryEditPage, {diaryId, diary}).present();
+    slidingItem.close();
   }
 
-  deleteDiary(diaryId: string): void {
+  deleteDiary(diaryId: string, slidingItem: ItemSliding): void {
     let confirm = this.alertCtrl.create({
       title: '刪除日記',
       message: '確認刪除？',
@@ -57,5 +57,6 @@ export class DiaryListPage {
     });
     
     confirm.present();
+    slidingItem.close();
   }
 }

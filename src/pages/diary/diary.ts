@@ -14,7 +14,6 @@ export class DiaryPage {
   segment: string;
   diaryList: any;
 
-
   constructor(private navCtrl: NavController, private modalCtrl: ModalController,
     private diaryServ: DiaryService, private configServ: ConfigService) {
 

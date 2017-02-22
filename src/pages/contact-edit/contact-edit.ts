@@ -23,7 +23,6 @@ export class ContactEditPage {
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private viewCtrl: ViewController, private contactServ: ContactService,
     private formBuilder: FormBuilder, private configServ: ConfigService) {

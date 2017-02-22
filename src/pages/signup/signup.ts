@@ -16,7 +16,6 @@ export class SignupPage {
   submitAttempt: boolean = false;
   loader: any;
 
-
   constructor(private navCtrl: NavController, private authServ: AuthService,
     private formBuilder: FormBuilder, private alertCtrl: AlertController,
     private loadingCtrl: LoadingController, private viewCtrl: ViewController) {

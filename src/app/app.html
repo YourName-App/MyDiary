@@ -7,7 +7,7 @@
 
   <ion-content class="outer-content">
     <ion-list>
-      <ion-list-header class="menu-header"><h3>系統</h3></ion-list-header>
+      <ion-list-header class="menu-header"><h3>設定</h3></ion-list-header>
       <button ion-item menuClose *ngFor="let page of settingPages" (click)="openPage(page)">
         <ion-icon item-left [name]="page.icon"></ion-icon>
         {{page.title}}

@@ -31,8 +31,8 @@
     <ion-grid>
       <ion-row>
         <ion-col width-20>
-          <button color={{clean}} ion-button icon-only menuToggle>
-            <ion-icon class="menu-icon" name="md-menu"></ion-icon>
+          <button color={{clean}} class="menu-button" ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
           </button>
         </ion-col>
         <ion-col width-20>
@@ -42,11 +42,11 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color={{theme}} ion-button icon-only *ngIf="!musicPlayed" (click)="playMusic()">
-            <ion-icon class="rightmost-icon" name="md-play"></ion-icon>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only *ngIf="!musicPlayed" (click)="playMusic()">
+            <ion-icon name="md-play"></ion-icon>
           </button>
-          <button color={{theme}} ion-button icon-only *ngIf="musicPlayed" (click)="stopMusic()">
-            <ion-icon class="rightmost-icon" name="md-square"></ion-icon>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only *ngIf="musicPlayed" (click)="stopMusic()">
+            <ion-icon name="md-square"></ion-icon>
           </button>
         </ion-col>
       </ion-row>

@@ -16,7 +16,6 @@ export class CalendarPage {
   day: string;
   date: string;
 
-
   @Input()
   set theme(theme: string) {
     this._theme = theme;

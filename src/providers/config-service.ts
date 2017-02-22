@@ -7,7 +7,8 @@ export class ConfigService {
   userName: string = '';
   userGender: string = '';
   userAvatar: string = '';
-
+  userPin: string = '';
+  pauseEmitted: boolean = true;
 
   constructor(private storage: Storage) {
     this.storage.get('userName').then((val) => {
@@ -36,6 +37,15 @@ export class ConfigService {
     }, (error) => {
       console.log(error);
     })
+
+    this.storage.get('userPin').then((val) => {
+      if (val === null || val.trim().length < 4) {
+        val = '';
+      }
+      this.userPin = val;
+    }, (error) => {
+      console.log(error);
+    })
   }
 
   getUserName() {
@@ -50,6 +60,14 @@ export class ConfigService {
     return this.userAvatar;
   }
 
+  getUserPin(): string {
+    return this.userPin;
+  }
+
+  getPauseEmitted(): boolean {
+    return this.pauseEmitted;
+  }
+
   setUserName(name: string) {
     this.userName = name;
   }
@@ -60,5 +78,13 @@ export class ConfigService {
 
   setUserAvatar(avatar: string) {
     this.userAvatar = avatar;
+  }
+
+  setUserPin(pin: string) {
+    this.userPin = pin;
+  }
+
+  setPauseEmitted(pauseEmitted: boolean) {
+    this.pauseEmitted = pauseEmitted;
   }
 }

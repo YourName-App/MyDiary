@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ModalController, ItemSliding } from 'ionic-angular';
 import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
@@ -13,7 +13,6 @@ export class MemoListPage {
 
   theme: string;
   memoList: any;
-
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
     private modalCtrl: ModalController, private memoServ: MemoService,
@@ -31,21 +30,19 @@ export class MemoListPage {
   }
 
   showMemoDetail(memoId: string): void {
-    //this.modalCtrl.create(MemoDetailPage, {memoId}).present();
     this.navCtrl.push(MemoDetailPage, {memoId});
   }
 
   createMemo(): void {
-    //this.modalCtrl.create(MemoEditPage).present();
     this.navCtrl.push(MemoEditPage);
   }
 
-  updateMemo(memoId: string, title: string) {
-    //this.modalCtrl.create(MemoEditPage, {memoId, title}).present();
+  updateMemo(memoId: string, title: string, slidingItem: ItemSliding) {
     this.navCtrl.push(MemoEditPage, {memoId, title});
+    slidingItem.close();
   }
 
-  deleteMemo(memoId: string): void {
+  deleteMemo(memoId: string, slidingItem: ItemSliding): void {
     let confirm = this.alertCtrl.create({
       title: '刪除備忘錄',
       message: '確認刪除？',
@@ -61,6 +58,7 @@ export class MemoListPage {
     });
     
     confirm.present();
+    slidingItem.close();
   }
 
   searchMemo(ev) {

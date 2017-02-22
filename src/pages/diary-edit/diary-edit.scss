@@ -2,7 +2,7 @@ page-diary-edit {
   ion-navbar {
     height: 110px;
 
-    .close-icon {
+    .close-button {
       transform: translate(12px, -35px);
     }
     .diary-month {
@@ -26,7 +26,6 @@ page-diary-edit {
       transform: translate(30px, -39px);
     }
   }
-
   textarea.text-input {
     padding-bottom: 12px;
   }

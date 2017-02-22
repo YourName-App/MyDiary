@@ -14,7 +14,6 @@ export class DiaryDetailPage {
   diary: any;
   diaryId: string;
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private viewCtrl: ViewController, private alertCtrl: AlertController,
     private modalCtrl: ModalController, private diaryServ: DiaryService,

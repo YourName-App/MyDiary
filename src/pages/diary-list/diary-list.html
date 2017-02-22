@@ -1,6 +1,6 @@
 <ion-card *ngFor="let diary of _diaryList | async">
   <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding #slidingItem>
       <ion-item tappable (click)="showDiaryDetail(diary.$key)">
         <div class="diary-div-left" item-left text-center>
           <h1 class="diary-date"
@@ -50,10 +50,10 @@
       </ion-item>
 
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="updateDiary(diary.$key, diary)">
+        <button ion-button icon-only color="cloud" (click)="updateDiary(diary.$key, diary, slidingItem)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="deleteDiary(diary.$key)">
+        <button ion-button icon-only color="danger" (click)="deleteDiary(diary.$key, slidingItem)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

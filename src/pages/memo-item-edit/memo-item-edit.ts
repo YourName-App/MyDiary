@@ -19,7 +19,6 @@ export class MemoItemEditPage {
   submitAttempt: boolean = false;
   itemBuffer = new Object();
 
-
   constructor(private navCtrl: NavController, private navParams: NavParams,
     private viewCtrl: ViewController, private alertCtrl: AlertController,
     private memoServ: MemoService, private configServ: ConfigService) {

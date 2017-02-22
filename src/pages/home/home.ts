@@ -17,25 +17,28 @@ export class HomePage {
   userName: string;
   userGender: string;
   userAvatar: string;
-  musicPlayed: boolean = false;
-
+  userPin: string;
+  pauseEmitted: boolean;
+  musicPlayed: boolean;
 
   constructor(private navCtrl: NavController, private storage: Storage,
     private configServ: ConfigService) {
 
     NativeAudio.preloadComplex('sparkle', 'assets/audio/Sparkle.mp3', 1, 1, 0);
 
-    setTimeout(()=> {
+    setTimeout(() => {
       this.userName = this.configServ.getUserName();
       this.userGender = this.configServ.getUserGender();
       this.userAvatar = this.configServ.getUserAvatar();
-    }, 700);
+      this.userPin = this.configServ.getUserPin();
+      this.pauseEmitted = this.configServ.getPauseEmitted();
+    }, 1000);
   }
 
   ionViewWillEnter() {
-    setTimeout(()=> {
+    setTimeout(() => {
       this.theme = this.configServ.getUserGender();
-    }, 200);
+    }, 150);
   }
 
   selectTab(tabIndex: number) {

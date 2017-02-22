@@ -17,7 +17,6 @@ export class TabsPage {
   tab4Root: any = MemoListPage;
   mySelectedIndex: number;
 
-
   constructor(navParams: NavParams) {
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }

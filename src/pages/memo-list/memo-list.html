@@ -11,16 +11,16 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let memo of memoList | async">
-      <ion-item tabbable detail-push (click)="showMemoDetail(memo.$key)">
+    <ion-item-sliding #slidingItem *ngFor="let memo of memoList | async">
+      <ion-item tabbable (click)="showMemoDetail(memo.$key)">
         <ion-icon color={{theme}} name="ios-list-box-outline" item-left ></ion-icon>
         <h2>{{memo.title}}</h2>
       </ion-item>
       <ion-item-options>
-        <button ion-button icon-only color="cloud" (click)="updateMemo(memo.$key, memo.title)">
+        <button ion-button icon-only color="cloud" (click)="updateMemo(memo.$key, memo.title, slidingItem)">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button icon-only color="danger" (click)="deleteMemo(memo.$key)">
+        <button ion-button icon-only color="danger" (click)="deleteMemo(memo.$key, slidingItem)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
@@ -33,8 +33,8 @@
     <ion-grid>
       <ion-row>
         <ion-col width-20>
-          <button color={{clean}} ion-button icon-only menuToggle>
-            <ion-icon class="menu-icon" name="md-menu"></ion-icon>
+          <button color={{clean}} class="menu-button" ion-button icon-only menuToggle>
+            <ion-icon name="md-menu"></ion-icon>
           </button>
         </ion-col>
         <ion-col width-20>
@@ -44,8 +44,8 @@
         <ion-col width-20>
         </ion-col>
         <ion-col width-20>
-          <button color={{theme}} ion-button icon-only (click)="createMemo()">
-            <ion-icon class="rightmost-icon" name="md-add"></ion-icon>
+          <button color={{theme}} class="rightmost-button" ion-button icon-only (click)="createMemo()">
+            <ion-icon name="md-add"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
