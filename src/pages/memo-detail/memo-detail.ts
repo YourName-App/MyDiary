@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MemoItemEditPage } from '../memo-item-edit/memo-item-edit';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
@@ -21,8 +21,8 @@ export class MemoDetailPage {
   submitAttempt: boolean = false;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
-    private alertCtrl: AlertController, private modalCtrl: ModalController,
-    private memoServ: MemoService, private configServ: ConfigService) {
+    private alertCtrl: AlertController, private memoServ: MemoService,
+    private configServ: ConfigService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -32,6 +32,10 @@ export class MemoDetailPage {
     this.memoId = this.navParams.get('memoId');
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
@@ -73,7 +77,6 @@ export class MemoDetailPage {
   }
 
   updateItem(): void {
-    //this.modalCtrl.create(MemoItemEditPage, { memoId: this.memoId }).present();
     this.navCtrl.push(MemoItemEditPage, { memoId: this.memoId });
   }
 

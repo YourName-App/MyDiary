@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
-import { Storage } from '@ionic/storage';
 import { DiaryPage } from '../../pages/diary/diary';
 import { ContactListPage } from '../../pages/contact-list/contact-list';
 import { MemoListPage } from '../../pages/memo-list/memo-list';
@@ -18,11 +17,10 @@ export class HomePage {
   userGender: string;
   userAvatar: string;
   userPin: string;
-  pauseEmitted: boolean;
+  pauseEmitted: string;
   musicPlayed: boolean;
 
-  constructor(private navCtrl: NavController, private storage: Storage,
-    private configServ: ConfigService) {
+  constructor(private navCtrl: NavController, private configServ: ConfigService) {
 
     NativeAudio.preloadComplex('sparkle', 'assets/audio/Sparkle.mp3', 1, 1, 0);
 

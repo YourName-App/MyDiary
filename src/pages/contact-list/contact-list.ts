@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ModalController, ItemSliding } from 'ionic-angular';
-import { PinDialog } from 'ionic-native';
+import { NavController, AlertController, ItemSliding } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
-import { HomePage } from '../home/home';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
 import 'rxjs/add/operator/filter';
@@ -20,29 +18,17 @@ export class ContactListPage {
   contactCount: number;
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private contactServ: ContactService,
-    private configServ: ConfigService) {
+    private contactServ: ContactService, private configServ: ConfigService) {
       
     this.initializeContact();
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-
-    if (this.configServ.getPauseEmitted && this.configServ.getUserPin.length >= 4) {
-      PinDialog.prompt('請輸入密碼', '解除密碼鎖', ['確認', '取消'])
-      .then((result: any) => {
-        if (result.buttonIndex === 1) {
-          if (result.input1 === this.configServ.getUserPin()) {
-            this.configServ.setPauseEmitted(false);
-          } else {
-            this.navCtrl.setRoot(HomePage);
-          }
-        } else {
-          this.navCtrl.setRoot(HomePage);
-        }
-      });
-    }
   }
 
   initializeContact() {

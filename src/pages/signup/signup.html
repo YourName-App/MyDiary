@@ -17,7 +17,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>密碼</ion-label>
+      <ion-label stacked>密碼 (<font color="#FF6153">密碼長度至少為 6 個字元</font>)</ion-label>
       <ion-input #password formControlName="password" type="password" placeholder="你的密碼"
         (change)="elementChanged(password)" [class.invalid]="!signupForm.controls.password.valid && (passwordChanged || submitAttempt)">
       </ion-input>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
@@ -23,9 +23,9 @@ export class ContactEditPage {
   nameChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams,
-    private viewCtrl: ViewController, private contactServ: ContactService,
-    private formBuilder: FormBuilder, private configServ: ConfigService) {
+  constructor(private navParams: NavParams, private viewCtrl: ViewController,
+    private contactServ: ContactService, private formBuilder: FormBuilder,
+    private configServ: ConfigService) {
 
     this.contactId = this.navParams.get('contactId') || '';
     this.inputContact = this.navParams.get('contact') || {};
@@ -49,6 +49,10 @@ export class ContactEditPage {
     }
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

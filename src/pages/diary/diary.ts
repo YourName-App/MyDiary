@@ -21,6 +21,10 @@ export class DiaryPage {
     this.initializeDiary();
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

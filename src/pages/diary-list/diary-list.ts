@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController, AlertController, ModalController, ItemSliding } from 'ionic-angular';
+import { AlertController, ModalController, ItemSliding } from 'ionic-angular';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
@@ -24,10 +24,13 @@ export class DiaryListPage {
     this._theme = theme;
   }
 
-  constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private diaryServ: DiaryService,
-    private configServ: ConfigService) {}
+  constructor(private alertCtrl: AlertController, private modalCtrl: ModalController,
+    private diaryServ: DiaryService, private configServ: ConfigService) {}
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   showDiaryDetail(diaryId: string): void {
     this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();
   }

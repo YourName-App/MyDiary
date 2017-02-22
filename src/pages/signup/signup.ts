@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController, ViewController } from 'ionic-angular';
+import { LoadingController, AlertController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
@@ -16,9 +16,9 @@ export class SignupPage {
   submitAttempt: boolean = false;
   loader: any;
 
-  constructor(private navCtrl: NavController, private authServ: AuthService,
-    private formBuilder: FormBuilder, private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController, private viewCtrl: ViewController) {
+  constructor(private authServ: AuthService, private formBuilder: FormBuilder,
+    private alertCtrl: AlertController, private loadingCtrl: LoadingController,
+    private viewCtrl: ViewController) {
   
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],

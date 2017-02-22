@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ModalController, ItemSliding } from 'ionic-angular';
+import { NavController, AlertController, ItemSliding } from 'ionic-angular';
 import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
@@ -15,12 +15,15 @@ export class MemoListPage {
   memoList: any;
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private memoServ: MemoService,
-    private configServ: ConfigService) {
+    private memoServ: MemoService, private configServ: ConfigService) {
 
     this.initializeMemo();
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

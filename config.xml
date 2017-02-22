@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.mydiary307271"
-        version="1.0.9"
-        android-versionCode="10090"
+        version="1.1.0"
+        android-versionCode="10100"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>My Diary</name>

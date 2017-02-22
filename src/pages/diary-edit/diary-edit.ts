@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavController, NavParams, AlertController, ViewController, FabContainer } from 'ionic-angular';
+import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
@@ -35,8 +35,7 @@ export class DiaryEditPage {
   contentChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams,
-    private alertCtrl: AlertController, private viewCtrl: ViewController,
+  constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private diaryServ: DiaryService, private formBuilder: FormBuilder,
     private element: ElementRef, private configServ: ConfigService) {
 
@@ -74,6 +73,10 @@ export class DiaryEditPage {
     this.diaryTime = moment(this.timestamp).format('HH:mm');
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.adjustTextarea();
     this.theme = this.configServ.getUserGender();

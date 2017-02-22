@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { Splashscreen } from 'ionic-native';
-import { Storage } from '@ionic/storage';
 
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
@@ -10,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { SuggestPage } from '../pages/suggest/suggest';
 import { AboutPage } from '../pages/about/about';
 import { UserConfigPage } from '../pages/user-config/user-config';
-import { LockConfigPage } from '../pages/lock-config/lock-config';
+import { PinConfigPage } from '../pages/pin-config/pin-config';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -40,7 +39,7 @@ export class MyApp {
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
     { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
-    { title: '密碼鎖', component: LockConfigPage, pushPage: true, icon: 'ios-lock-outline' },
+    { title: '密碼鎖', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
   ];
 
   otherPages: PageInterface[] = [
@@ -52,8 +51,9 @@ export class MyApp {
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  constructor(platform: Platform, storage: Storage, private af: AngularFire, 
-    private authServ: AuthService, private configServ: ConfigService) {
+  constructor(platform: Platform,
+    private af: AngularFire, private authServ: AuthService,
+    private configServ: ConfigService) {
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -73,7 +73,11 @@ export class MyApp {
 
       // Listen for pause event (emits when the native platform puts the application into the background)
       platform.pause.subscribe(() => {
-        this.configServ.setPauseEmitted(true);
+        this.configServ.setPauseEmitted('Y');
+
+        if (this.configServ.getUserPin().length >= 4) {
+          this.nav.setRoot(HomePage);
+        }
       });
     }, (error) => {
       console.log(error);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
 
@@ -19,9 +19,9 @@ export class MemoItemEditPage {
   submitAttempt: boolean = false;
   itemBuffer = new Object();
 
-  constructor(private navCtrl: NavController, private navParams: NavParams,
-    private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private memoServ: MemoService, private configServ: ConfigService) {
+  constructor(private navParams: NavParams, private viewCtrl: ViewController,
+    private alertCtrl: AlertController, private memoServ: MemoService,
+    private configServ: ConfigService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -31,6 +31,10 @@ export class MemoItemEditPage {
     this.memoId = this.navParams.get('memoId');
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

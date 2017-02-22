@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from 'ionic-native';
 import { ConfigService } from '../../providers/config-service';
@@ -15,8 +15,8 @@ export class SuggestPage {
   suggestChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private formBuilder: FormBuilder, private configServ: ConfigService) {
+  constructor(private alertCtrl: AlertController, private formBuilder: FormBuilder,
+    private configServ: ConfigService) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]

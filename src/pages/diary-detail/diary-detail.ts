@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
@@ -14,10 +14,10 @@ export class DiaryDetailPage {
   diary: any;
   diaryId: string;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, 
-    private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private diaryServ: DiaryService,
-    private element: ElementRef, private configServ: ConfigService) {
+  constructor(private navParams: NavParams, private viewCtrl: ViewController,
+    private alertCtrl: AlertController, private modalCtrl: ModalController,
+    private diaryServ: DiaryService, private configServ: ConfigService,
+    private element: ElementRef) {
 
     this.diaryServ.getDiary(this.navParams.get('diaryId')).subscribe((diarySnap) => {
       this.diary = diarySnap;
@@ -26,6 +26,10 @@ export class DiaryDetailPage {
     this.diaryId = this.navParams.get('diaryId');
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.adjustTextarea();
     this.theme = this.configServ.getUserGender();

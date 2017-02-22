@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
@@ -21,7 +20,7 @@ export class CalendarPage {
     this._theme = theme;
   }
 
-  constructor(private navCtrl: NavController, private configServ: ConfigService) {
+  constructor(private configServ: ConfigService) {
     moment.locale('zh-tw');
     this.timestamp = moment().format();
     this.month = moment(this.timestamp).format('MMMM');
@@ -29,6 +28,10 @@ export class CalendarPage {
     this.date = moment(this.timestamp).format('D');
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

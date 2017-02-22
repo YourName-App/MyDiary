@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
@@ -19,9 +19,9 @@ export class MemoEditPage {
   titleChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams,
-    private viewCtrl: ViewController, private memoServ: MemoService,
-    private formBuilder: FormBuilder, private configServ: ConfigService) {
+  constructor(private navParams: NavParams, private viewCtrl: ViewController,
+    private memoServ: MemoService, private formBuilder: FormBuilder,
+    private configServ: ConfigService) {
 
     this.memoId = this.navParams.get('memoId') || '';
     this.inputTitle = this.navParams.get('title') || '';
@@ -40,6 +40,10 @@ export class MemoEditPage {
     }
   }
 
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+  
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }

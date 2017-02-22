@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
@@ -20,8 +20,7 @@ export class ContactDetailPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private modalCtrl: ModalController, private contactServ: ContactService,
-    private configServ: ConfigService) {
+    private contactServ: ContactService, private configServ: ConfigService) {
 
     this.contactServ.getContact(this.navParams.get('contactId')).subscribe((contactSnap) => {
       this.contact = contactSnap;
@@ -31,6 +30,10 @@ export class ContactDetailPage {
     this.phone = this.contact.phone;
   }
   
+  ionViewCanEnter(): boolean {
+    return this.configServ.unlockScreen();
+  }
+    
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
@@ -40,7 +43,6 @@ export class ContactDetailPage {
   }
 
   updateContact(contactId: string, contact: IContact): void {
-    //this.modalCtrl.create(ContactEditPage, {contactId, contact}).present();
     this.navCtrl.push(ContactEditPage, {contactId, contact});
   }
 

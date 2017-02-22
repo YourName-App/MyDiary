@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>密碼鎖</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-row>
+      <ion-col>
+        <h2>設定：</h2>
+      </ion-col>
+      <ion-col>
+        <ion-buttons end>
+          <button color={{theme}} *ngIf="!enableLock" ion-button clear (click)="addPin()">開啟密碼鎖</button>
+          <button color={{theme}} *ngIf="enableLock" ion-button clear (click)="removePin()">關閉密碼鎖</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>
