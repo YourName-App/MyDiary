@@ -1,0 +1,47 @@
+{
+	"YOUR_NAME":"What's your name ?",
+	"TITLE" : "Menu",
+	"ENV" : "Environment",
+	"MISC" : "Miscellaneous",
+	"ACCOUNT" : "Account",
+	"LANDING_TITLE" : "What's your name？",
+	"HOME" : {
+		"DIARY" : "Diary",
+		"CONTACT" : "Contacts",
+		"MEMO" : "Memo"
+	},
+	"PAGE" : {
+		"OTHER" : {
+			"SUGGESTION" : "Comment",
+			"ABOUT" : "About"
+		},
+		"ACCOUNT" : {
+			"LOGOUT" : "Logout"
+		},
+		"SETTING" : {
+			"SETTINGS" : "Settings"
+		}
+	},
+	"CONFIG" : {
+		"TITLE" : "Configuration",
+		"NAME" : {
+			"LABEL" : "Name："
+		},
+		"GENDER" : {
+			"LABEL" : "Gender：",
+			"MALE" : "Male",
+			"FEMALE" : "Female"
+		},
+		"LOCK": {
+			"LABEL" : "Enable Lock :"
+		},
+		"LOCALE" : {
+			"LABEL" : "Locale：",
+			"EN" : "English",
+			"CH" : "Chinese (Traditional)"
+		},
+		"CONFIRM" : "Confirm",
+		"OK" : "OK",
+		"CANCEL"  : "Cancel"
+	}
+}

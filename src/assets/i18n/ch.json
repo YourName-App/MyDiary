@@ -1,0 +1,48 @@
+{
+	"YOUR_NAME":"你的名字是？",
+	"TITLE": "功能選單",
+	"ENV": "系統",
+	"MISC": "其他",
+	"ACCOUNT" : "帳號",
+	"LANDING_TITLE" : "你的名字是？",
+	"HOME" : {
+		"DIARY" : "我的日記",
+		"CONTACT" : "我的聯絡人",
+		"MEMO" : "我的備忘錄"
+	},
+	"PAGE" : {
+		"OTHER" : {
+			"SUGGESTION" : "建議",
+			"ABOUT" : "關於"
+		},
+		"ACCOUNT" : {
+			"LOGOUT" : "登出"
+		},
+		"SETTING" : {
+			"SETTINGS" : "設定"
+		}
+	},
+	"CONFIG" : {
+		"TITLE" : "設定",
+		"NAME" : {
+			"LABEL" : "你的名字："
+		},
+		"GENDER" : {
+			"LABEL" : "你的性別：",
+			"MALE" : "男",
+			"FEMALE" : "女"
+		},
+		"LOCK": {
+			"LABEL" : "密碼鎖："
+		},
+		"LOCALE" : {
+			"LABEL" : "語系：",
+			"EN" : "英文",
+			"CH" : "中文"
+		},
+		"CONFIRM" : "確認",
+		"OK" : "同意",
+		"CANCEL"  : "取消"
+
+	}
+}
