@@ -19,7 +19,8 @@
 			"LOGOUT" : "登出"
 		},
 		"SETTING" : {
-			"SETTINGS" : "設定"
+			"USER" : "使用者",
+			"LOCK" : "密碼鎖"
 		}
 	},
 	"CONFIG" : {
@@ -43,6 +44,5 @@
 		"CONFIRM" : "確認",
 		"OK" : "同意",
 		"CANCEL"  : "取消"
-
 	}
 }

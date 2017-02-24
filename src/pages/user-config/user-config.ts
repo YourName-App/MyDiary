@@ -20,7 +20,8 @@ export class UserConfigPage {
   userLocale: string;
 
   constructor(private navCtrl: NavController, private appCtrl: App,
-    private storage: Storage, private configServ: ConfigService, public translate: TranslateService, public localeServ:LocaleService) {
+    private storage: Storage, private configServ: ConfigService, 
+    private translate: TranslateService, private localeServ:LocaleService) {
 
     this.userName = this.configServ.getUserName();
     if (this.userName === null || this.userName.trim().length === 0) {
@@ -37,7 +38,6 @@ export class UserConfigPage {
 
   updateSetting() {
     if (this.userName === null || this.userName.trim().length === 0) {
-    //this.userName = '你的名字是？';
       this.translate.get('YOUR_NAME').subscribe((value: string) => {
             this.userName = value;
         });

@@ -19,7 +19,8 @@
 			"LOGOUT" : "Logout"
 		},
 		"SETTING" : {
-			"SETTINGS" : "Settings"
+			"USER" : "User",
+			"LOCK" : "Lock"
 		}
 	},
 	"CONFIG" : {
