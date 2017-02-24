@@ -14,9 +14,13 @@ import { PinConfigPage } from '../pages/pin-config/pin-config';
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { ConfigService } from '../providers/config-service';
+import { LocaleService } from '../providers/locale-service'
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
+
+// Import angular translate
+import { TranslateService } from 'ng2-translate';
 
 export interface PageInterface {
   title: string;
@@ -35,7 +39,7 @@ export class MyApp {
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
-  
+
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
     { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
@@ -44,16 +48,20 @@ export class MyApp {
 
   otherPages: PageInterface[] = [
     { title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
-    { title: '關於 ', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
+    { title: '關於', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
   ];
 
   accountPages: PageInterface[] = [
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  constructor(platform: Platform,
-    private af: AngularFire, private authServ: AuthService,
-    private configServ: ConfigService) {
+  constructor(private platform: Platform, private af: AngularFire,
+    private authServ: AuthService, private configServ: ConfigService, 
+    private translate: TranslateService, private localeServ:LocaleService) {
+
+    this.settingPages = this.localeServ.settingPages;
+    this.otherPages   = this.localeServ.otherPages;
+    this.accountPages = this.localeServ.accountPages;
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -62,6 +70,9 @@ export class MyApp {
       } else {
         this.rootPage = LandingPage;
       }
+
+      localeServ.updatePageLocale();
+
     }, (error) => {
       console.log(error);
     });
@@ -71,6 +82,9 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
       this.configServ.setMusicPlayed(false);
+
+      // initialize locale
+      translate.use('en')
 
       // Listen for pause event (emits when the native platform puts the application into the background)
       platform.pause.subscribe(() => {

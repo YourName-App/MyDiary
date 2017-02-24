@@ -3,6 +3,9 @@ import { NavController, App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../../pages/home/home';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
+import { TranslateService } from 'ng2-translate';
+
 
 @Component({
   selector: 'page-user-config',
@@ -14,11 +17,17 @@ export class UserConfigPage {
   userName: string;
   userGender: string;
   userAvatar: string;
+  userLocale: string;
 
   constructor(private navCtrl: NavController, private appCtrl: App,
-    private storage: Storage, private configServ: ConfigService) {
+    private storage: Storage, private configServ: ConfigService, public translate: TranslateService, public localeServ:LocaleService) {
 
     this.userName = this.configServ.getUserName();
+    if (this.userName === null || this.userName.trim().length === 0) {
+      this.translate.get('YOUR_NAME').subscribe((value: string) => {
+            this.userName = value;
+        });
+    }
     this.userGender = this.configServ.getUserGender();
   }
 
@@ -28,7 +37,10 @@ export class UserConfigPage {
 
   updateSetting() {
     if (this.userName === null || this.userName.trim().length === 0) {
-      this.userName = '你的名字是？';
+    //this.userName = '你的名字是？';
+      this.translate.get('YOUR_NAME').subscribe((value: string) => {
+            this.userName = value;
+        });
     }
 
     this.storage.set('userName', this.userName);
@@ -45,8 +57,16 @@ export class UserConfigPage {
     this.configServ.setUserName(this.userName);
     this.configServ.setUserGender(this.userGender);
     this.configServ.setUserAvatar(this.userAvatar);
-    
+
+    this.updateLocale();
+
     this.navCtrl.pop();
     this.appCtrl.getRootNav().setRoot(HomePage);
+  }
+
+  // To change the language the app is currently using
+  updateLocale() {
+    this.translate.use(this.userLocale.trim());
+    this.localeServ.updatePageLocale();
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { PinDialog } from 'ionic-native';
+import { TranslateService } from 'ng2-translate';
 
 @Injectable()
 export class ConfigService {
@@ -13,10 +14,16 @@ export class ConfigService {
   pauseEmitted: string = 'Y';
   musicPlayed: boolean = false;
 
-  constructor(private storage: Storage, private alertCtrl: AlertController) {
+  constructor(private storage: Storage, private alertCtrl: AlertController,
+    private translate: TranslateService) {
+
     this.storage.get('userName').then((val) => {
       if (val === null || val.trim().length === 0) {
-        val = '你的名字是？';
+        // val = '你的名字是？';
+        // apply prompt message by locale
+        translate.get('YOUR_NAME').subscribe((value: string) => {
+            val = value;
+        });
       }
       this.userName = val;
     }, (error) => {
