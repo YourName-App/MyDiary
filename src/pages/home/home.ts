@@ -22,7 +22,10 @@ export class HomePage {
 
   constructor(private navCtrl: NavController, private configServ: ConfigService) {
 
-    NativeAudio.preloadComplex('sparkle', 'assets/audio/Sparkle.mp3', 1, 1, 0);
+    NativeAudio.preloadComplex('sparkle', 'assets/audio/sparkle-piano.mp3', 1, 1, 0).then(
+      () => {console.log('Preload audio');},
+      (err) => {console.log(err);}
+    );
 
     setTimeout(() => {
       this.userName = this.configServ.getUserName();
@@ -30,6 +33,7 @@ export class HomePage {
       this.userAvatar = this.configServ.getUserAvatar();
       this.userPin = this.configServ.getUserPin();
       this.pauseEmitted = this.configServ.getPauseEmitted();
+      this.musicPlayed = this.configServ.getMusicPlayed();
     }, 1000);
   }
 
@@ -57,11 +61,19 @@ export class HomePage {
 
   playMusic() {
     this.musicPlayed = true;
-    NativeAudio.loop('sparkle');
+    this.configServ.setMusicPlayed(this.musicPlayed);
+    NativeAudio.loop('sparkle').then(
+      () => {console.log('Play audio');},
+      (err) => {console.log(err);}
+    );
   }
 
   stopMusic() {
     this.musicPlayed = false;
-    NativeAudio.stop('sparkle');
+    this.configServ.setMusicPlayed(this.musicPlayed);
+    NativeAudio.stop('sparkle').then(
+      () => {console.log('Stop audio');},
+      (err) => {console.log(err);}
+    );
   }
 }

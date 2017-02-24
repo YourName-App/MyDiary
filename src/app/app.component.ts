@@ -70,6 +70,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      this.configServ.setMusicPlayed(false);
 
       // Listen for pause event (emits when the native platform puts the application into the background)
       platform.pause.subscribe(() => {

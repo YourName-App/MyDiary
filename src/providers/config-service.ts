@@ -11,6 +11,7 @@ export class ConfigService {
   userAvatar: string = '';
   userPin: string = '';
   pauseEmitted: string = 'Y';
+  musicPlayed: boolean = false;
 
   constructor(private storage: Storage, private alertCtrl: AlertController) {
     this.storage.get('userName').then((val) => {
@@ -70,6 +71,10 @@ export class ConfigService {
     return this.pauseEmitted;
   }
 
+  getMusicPlayed(): boolean {
+    return this.musicPlayed;
+  }
+
   setUserName(name: string) {
     this.userName = name;
   }
@@ -90,6 +95,10 @@ export class ConfigService {
     this.pauseEmitted = pauseEmitted;
   }
 
+  setMusicPlayed(musicPlayed: boolean) {
+    this.musicPlayed = musicPlayed;
+  }
+  
   unlockScreen(): boolean {
     let canEnter: boolean = false;
 

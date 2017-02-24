@@ -1,4 +1,4 @@
-<ion-card *ngFor="let diary of _diaryList | async">
+<ion-card class="animated fadeInDown" *ngFor="let diary of _diaryList | async">
   <ion-list>
     <ion-item-sliding #slidingItem>
       <ion-item tappable (click)="showDiaryDetail(diary.$key)">

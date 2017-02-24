@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let contact of contactList | async">
+    <ion-item-sliding class="animated fadeInDown" #slidingItem *ngFor="let contact of contactList | async">
       <ion-item tabbable (click)="showContactDetail(contact.$key)">
         <ion-avatar item-left>
           <ion-icon color={{theme}} class="icon-avatar" name="contacts"></ion-icon>

@@ -1,4 +1,10 @@
 page-home {
+  ion-navbar {
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+  }
   .input-wrapper {
     height: 63px;
   }
@@ -14,4 +20,4 @@ page-home {
   ion-toolbar.footer-toolbar {
     height: 50px;
   }
-}  
+}
