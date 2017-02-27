@@ -44,5 +44,27 @@
 		"CONFIRM" : "確認",
 		"OK" : "同意",
 		"CANCEL"  : "取消"
+	},
+	"PIN_CONFIG_PAGE" : {
+		"TITLE" : "密碼鎖",
+		"COL_SETTING" : "設定：",
+		"COL_ENABLE" : "開啟密碼鎖",
+		"COL_DISABLE" : "關閉密碼鎖",
+		"ADD_PIN_PROMPT_MSG" : "請輸入至少4個數字的密碼", 
+  		"ADD_PIN_TITLE" : "設定密碼",
+  		"ADD_PIN_CONFIRM_BTN" : "確認",
+  		"ADD_PIN_CANCEL_BTN": "取消",
+  		"ADD_PIN_ALERT_MSG" : "請輸入至少4個數字的密碼",
+ 		"CONFIRM_PIN_PROMPT_MSG" :"請重複輸入密碼",
+  		"CONFIRM_PIN_TITLE" :"確認密碼",
+  		"CONFIRM_PIN_CONFIRM_BTN" :"確認",
+  		"CONFIRM_PIN_CANCEL_BTN" :"取消",
+  		"CONFIRM_PIN_ALERT_MSG" :"密碼不一致，請重新設定",
+  		"REMOVE_PIN_PROMPT_MSG" :"請輸入密碼",
+  		"REMOVE_PIN_TITLE" : "關閉密碼",
+  		"REMOVE_PIN_CONFIRM_BTN" : "確認",
+  		"REMOVE_PIN_CANCEL_BTN" : "取消",
+  		"REMOVE_PIN_ALERT_MSG" : "密碼錯誤",
+  		"ALERT_MSG_BTN" : "確認"
 	}
 }

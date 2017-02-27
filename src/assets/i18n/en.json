@@ -44,5 +44,27 @@
 		"CONFIRM" : "Confirm",
 		"OK" : "OK",
 		"CANCEL"  : "Cancel"
+	},
+	"PIN_CONFIG_PAGE" : {
+		"TITLE" : "Password",
+		"COL_SETTING" : "Setting：",
+		"COL_ENABLE" : "Enable",
+		"COL_DISABLE" : "Disable",
+		"ADD_PIN_PROMPT_MSG" : "Please enter a password with a least 4 digits", 
+  		"ADD_PIN_TITLE" : "Setting",
+  		"ADD_PIN_CONFIRM_BTN" : "Confirm",
+  		"ADD_PIN_CANCEL_BTN": "Cancel",
+  		"ADD_PIN_ALERT_MSG" : "Please enter a password with a least 4 digits",
+ 		"CONFIRM_PIN_PROMPT_MSG" :"Please enter the password again",
+  		"CONFIRM_PIN_TITLE" :"Confirm Password",
+  		"CONFIRM_PIN_CONFIRM_BTN" :"Confirm",
+  		"CONFIRM_PIN_CANCEL_BTN" :"Cancel",
+  		"CONFIRM_PIN_ALERT_MSG" :"Password doestn't match, please retype again",
+  		"REMOVE_PIN_PROMPT_MSG" :"Please enter the password",
+  		"REMOVE_PIN_TITLE" : "Disable password",
+  		"REMOVE_PIN_CONFIRM_BTN" : "Confirm",
+  		"REMOVE_PIN_CANCEL_BTN" : "Cancel",
+  		"REMOVE_PIN_ALERT_MSG" : "Password incorrect",
+  		"ALERT_MSG_BTN" : "Confirm"
 	}
 }

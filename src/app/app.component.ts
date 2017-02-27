@@ -14,13 +14,10 @@ import { PinConfigPage } from '../pages/pin-config/pin-config';
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { ConfigService } from '../providers/config-service';
-import { LocaleService } from '../providers/locale-service'
+import { LocaleService, LocaleUpdatedTarget } from '../providers/locale-service'
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
-
-// Import angular translate
-import { TranslateService } from 'ng2-translate';
 
 export interface PageInterface {
   title: string;
@@ -55,13 +52,55 @@ export class MyApp {
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
+  localeUpdatedUserConfigPage: LocaleUpdatedTarget = {
+    component: this.settingPages[0], 
+    mapping: 'PAGE.SETTING.USER',
+    update: (component:PageInterface, value: string) => {
+      component.title = value;
+    }
+  };
+
+  localeUpdatedPinConfigPage: LocaleUpdatedTarget = {
+    component: this.settingPages[1], 
+    mapping: 'PAGE.SETTING.LOCK',
+    update: (component:PageInterface, value: string) => {
+      component.title = value;
+    }
+  };
+
+  localeUpdatedSuggestPage: LocaleUpdatedTarget = {
+    component: this.otherPages[0], 
+    mapping: 'PAGE.OTHER.SUGGESTION',
+    update: (component:PageInterface, value: string) => {
+      component.title = value;
+    }
+  };
+
+  localeUpdatedAboutPage: LocaleUpdatedTarget = {
+    component: this.otherPages[1], 
+    mapping: 'PAGE.OTHER.ABOUT',
+    update: (component:PageInterface, value: string) => {
+      component.title = value;
+    }
+  };
+
+  localeUpdatedLandingPage: LocaleUpdatedTarget = {
+    component: this.accountPages[0], 
+    mapping: 'PAGE.ACCOUNT.LOGOUT',
+    update: (component:PageInterface, value: string) => {
+      component.title = value;
+    }
+  };
+
   constructor(private platform: Platform, private af: AngularFire,
     private authServ: AuthService, private configServ: ConfigService, 
-    private translate: TranslateService, private localeServ:LocaleService) {
+    private localeServ:LocaleService) {
 
-    this.settingPages = this.localeServ.settingPages;
-    this.otherPages   = this.localeServ.otherPages;
-    this.accountPages = this.localeServ.accountPages;
+    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserConfigPage);
+    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedPinConfigPage);
+    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedSuggestPage);
+    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedAboutPage);
+    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedLandingPage);
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -82,9 +121,6 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
       this.configServ.setMusicPlayed(false);
-
-      // initialize locale
-      translate.use('en')
 
       // Listen for pause event (emits when the native platform puts the application into the background)
       platform.pause.subscribe(() => {

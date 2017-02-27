@@ -29,5 +29,5 @@
     </ion-select>
   </ion-item>
 
-  <button color={{theme}} ion-button block (click)="updateSetting()">{{ "CONFIG.CONFIRM" | translate }}</button>
+  <button color={{theme}} ion-button block (click)="updateLocale(); updateSetting();">{{ "CONFIG.CONFIRM" | translate }}</button>
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-title>密碼鎖</ion-title>
+    <ion-title>{{ 'PIN_CONFIG_PAGE.TITLE' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,12 +8,12 @@
   <ion-item>
     <ion-row>
       <ion-col>
-        <h2>設定：</h2>
+        <h2>{{ 'PIN_CONFIG_PAGE.COL_SETTING' | translate }}</h2>
       </ion-col>
       <ion-col>
         <ion-buttons end>
-          <button color={{theme}} *ngIf="!enableLock" ion-button clear (click)="addPin()">開啟密碼鎖</button>
-          <button color={{theme}} *ngIf="enableLock" ion-button clear (click)="removePin()">關閉密碼鎖</button>
+          <button color={{theme}} *ngIf="!enableLock" ion-button clear (click)="addPin()">{{ 'PIN_CONFIG_PAGE.COL_ENABLE' | translate }}</button>
+          <button color={{theme}} *ngIf="enableLock" ion-button clear (click)="removePin()">{{ 'PIN_CONFIG_PAGE.COL_DISABLE' | translate }}</button>
         </ion-buttons>
       </ion-col>
     </ion-row>

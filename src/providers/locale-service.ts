@@ -1,64 +1,61 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
 
-import { LandingPage } from '../pages/landing/landing';
-import { SuggestPage } from '../pages/suggest/suggest';
-import { AboutPage } from '../pages/about/about';
-import { UserConfigPage } from '../pages/user-config/user-config';
-import { PinConfigPage } from '../pages/pin-config/pin-config';
-
-export interface PageInterface {
-  title: string;
-  component: any;
-  icon: string;
-  pushPage?: boolean;
-  logsOut?: boolean;
+export class LocaleUpdatedTarget {
+	mapping:string;
+	component:any;
+	update:(component:any, value:string)=> void;
 }
 
 @Injectable()
 export class LocaleService {
-
-	// List of pages that can be navigated to from the side menu
-	settingPages: PageInterface[] = [
-		{ title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
-		{ title: '密碼鎖', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
-	];
-
-	otherPages: PageInterface[] = [
-		{ title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
-		{ title: '關於', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
-	];
-
-	accountPages: PageInterface[] = [
-		{ title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
-	];
+	// update the locale of the rest of component subscribed 
+	listToLocaleUpdate: LocaleUpdatedTarget [] = [];
 
 	constructor(public translate: TranslateService) {
-		translate.setDefaultLang('en');
+		translate.setDefaultLang('ch');
 		this.updatePageLocale();
 	}
 
 	updatePageLocale() {
-		// change page title
-		this.translate.get('PAGE.SETTING.USER').subscribe((value: string) => {
-			this.settingPages[0].title = value;
-		});
+		this.updateAll();
+	}
+	
+	subscribeLocaleUpdateTarget(target:LocaleUpdatedTarget) {
+		this.listToLocaleUpdate.push(target);
+	}
 
-		this.translate.get('PAGE.SETTING.LOCK').subscribe((value: string) => {
-			this.settingPages[1].title = value;
-		});
+	subscribe(component:any, mapping:string, localize:(component, value:string) => void) {
+		var target = new LocaleUpdatedTarget(); 
+		target.component = component;
+		target.mapping = mapping;
+		target.update = localize;
+		this.listToLocaleUpdate.push(target);
+	}
 
-		this.translate.get('PAGE.OTHER.SUGGESTION').subscribe((value: string) => {
-			this.otherPages[0].title = value;
-		});
+	use(locale:string){
+		this.translate.use(locale);
+	}
 
-		this.translate.get('PAGE.OTHER.ABOUT').subscribe((value: string) => {
-			this.otherPages[1].title = value;
-		});
+	private updateAll() {
+		for (let target of this.listToLocaleUpdate) {
+			this.translate.get(target.mapping).subscribe((value: string) => {
+				target.update(target.component, value);
+			});
+		}
+	}
 
-		this.translate.get('PAGE.ACCOUNT.LOGOUT').subscribe((value: string) => {
-			this.accountPages[0].title = value;
+	updateNow(mapping:string, target:any, localize:(target:any, value:string)=>void) {
+		this.translate.get(mapping).subscribe((value: string) => {
+			localize(target, value);
 		});
+	}
 
+	update(mapping:string, target:string) {
+		this.translate.get(mapping).subscribe((value: string) => {
+			this.updateNow(mapping, target, (target:string, value:string) => {
+				target = value;
+			});
+		});
 	}
 }
