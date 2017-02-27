@@ -37,8 +37,9 @@
       <p>請輸入日記主題</p>
     </ion-item>
     <ion-item no-lines>
-      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)" value={{inputContent}} rows="10" autoresize
-        (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
+      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)"
+        value={{inputContent}} rows="8" autoresize (change)="elementChanged(content)"
+        [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>
     </ion-item>
     <ion-item class="error-message" *ngIf="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
