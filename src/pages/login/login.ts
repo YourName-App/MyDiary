@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { ResetPasswordPage } from '../reset-password/reset-password';
@@ -18,7 +18,7 @@ export class LoginPage {
   loader: any;
 
   constructor(private navCtrl: NavController, private authServ: AuthService,
-    private formBuilder: FormBuilder, private alertCtrl: AlertController,
+    private formBuilder: FormBuilder, private toastCtrl: ToastController,
     private loadingCtrl: LoadingController) {
       
     this.loginForm = formBuilder.group({
@@ -42,15 +42,7 @@ export class LoginPage {
         this.loader.dismiss();
       }, error => {
         this.loader.dismiss().then(() => {
-          let alert = this.alertCtrl.create({
-            message: '登入失敗，請確認你的電子郵件與密碼。',
-            buttons: [{
-              text: '確認',
-              role: 'cancel'
-            }]
-          });
-        
-          alert.present();
+          this.toastMessage('登入失敗，請確認你的電子郵件與密碼');
         });
       });
 
@@ -61,5 +53,16 @@ export class LoginPage {
 
   goToResetPassword() {
     this.navCtrl.push(ResetPasswordPage);
+  }
+
+  private toastMessage(msg: string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'middle',
+      dismissOnPageChange: true
+    });
+  
+    toast.present();
   }
 }

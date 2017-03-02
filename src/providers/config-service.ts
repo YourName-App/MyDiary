@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 import { PinDialog } from 'ionic-native';
 
 @Injectable()
@@ -13,44 +13,57 @@ export class ConfigService {
   pauseEmitted: string = 'Y';
   musicPlayed: boolean = false;
 
-  constructor(private storage: Storage, private alertCtrl: AlertController) {
-    this.storage.get('userName').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = '你的名字是？';
-      }
-      this.userName = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userGender').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = 'male';
-      }
-      this.userGender = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userAvatar').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = 'assets/img/avatar-male.png';
-      }
-      this.userAvatar = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userPin').then((val) => {
-      if (val === null || val.trim().length < 4) {
-        val = '';
-      }
-      this.userPin = val;
-    }, (error) => {
-      console.log(error);
-    })
+  constructor(private storage: Storage, private toastCtrl: ToastController) {
+    this.fetchUserName();
+    this.fetchUserGender();
+    this.fetchUserAvatar();
+    this.fetchUserPin();
   }
 
+  fetchUserName(): Promise<string> {
+    return this.storage.get('userName')
+      .then(val => {
+        this.userName = (val != null && val.trim().length != 0) ? val : '你的名字是？';
+        return this.userName;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserGender(): Promise<string> {
+    return this.storage.get('userGender')
+      .then(val => {
+        this.userGender = (val != null && val.trim().length != 0) ? val : 'male';
+        return this.userGender;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserAvatar(): Promise<string> {
+    return this.storage.get('userAvatar')
+      .then(val => {
+        this.userAvatar = (val != null && val.trim().length != 0) ? val : 'assets/img/avatar-male.png';
+        return this.userAvatar;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserPin(): Promise<string> {
+    return this.storage.get('userPin')
+      .then(val => {
+        this.userPin = (val != null && val.trim().length >= 4) ? val : '';
+        return this.userPin;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+  
   getUserName() {
     return this.userName;
   }
@@ -107,11 +120,11 @@ export class ConfigService {
       .then((result: any) => {
         if (result.buttonIndex === 1) {
           if (result.input1 === this.getUserPin()) {
-            this.alertMessage('成功解除密碼鎖');
+            this.toastMessage('成功解除密碼鎖');
             this.setPauseEmitted('N');
             canEnter = true;
           } else {
-            this.alertMessage('密碼錯誤');
+            this.toastMessage('密碼錯誤');
             canEnter = false;
           }
         } else {
@@ -125,15 +138,14 @@ export class ConfigService {
     return canEnter;
   }
 
-  private alertMessage(msg: string) {
-    let alert = this.alertCtrl.create({
+  private toastMessage(msg: string) {
+    let toast = this.toastCtrl.create({
       message: msg,
-      buttons: [{
-        text: '確認',
-        role: 'cancel'
-      }]
+      duration: 3000,
+      position: 'middle',
+      dismissOnPageChange: true
     });
   
-    alert.present();
+    toast.present();
   }
 }

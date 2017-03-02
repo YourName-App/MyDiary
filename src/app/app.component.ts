@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
-import { Splashscreen } from 'ionic-native';
+import { Splashscreen, StatusBar } from 'ionic-native';
 
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
