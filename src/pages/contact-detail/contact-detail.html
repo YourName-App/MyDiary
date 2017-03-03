@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-title>聯絡人</ion-title>
+    <ion-title>{{ 'CONTACT_DETAIL.TITLE' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,11 +18,11 @@
       <ion-buttons end>
         <button color={{theme}} class="sms-button" (click)="sendSms(contact.phone)"
                 ion-button icon-only round>
-          <ion-icon name="chatboxes"> 簡訊</ion-icon>
+          <ion-icon name="chatboxes"> {{ 'CONTACT_DETAIL.MESSAGES' | translate }}</ion-icon>
         </button>
         <button color={{theme}} class="phone-button" (click)="dial(contact.phone)"
                 ion-button icon-only round>
-          <ion-icon name="call"> 撥號</ion-icon>
+          <ion-icon name="call"> {{ 'CONTACT_DETAIL.PHONE' | translate }}</ion-icon>
         </button>
       </ion-buttons>
     </ion-list>

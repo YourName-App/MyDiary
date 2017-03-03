@@ -1,61 +1,54 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
 
-export class LocaleUpdatedTarget {
-	mapping:string;
-	component:any;
-	update:(component:any, value:string)=> void;
+export class TargetOnLocaleChange {
+	mapping  :string;
+	update   :(value:string)=> void;
 }
 
 @Injectable()
 export class LocaleService {
-	// update the locale of the rest of component subscribed 
-	listToLocaleUpdate: LocaleUpdatedTarget [] = [];
+	// update the locale of the rest of component subscribed
+	listToLocaleUpdate: TargetOnLocaleChange [] = [];
 
 	constructor(public translate: TranslateService) {
 		translate.setDefaultLang('ch');
 		this.updatePageLocale();
 	}
 
-	updatePageLocale() {
-		this.updateAll();
-	}
-	
-	subscribeLocaleUpdateTarget(target:LocaleUpdatedTarget) {
+	subscribeLocaleUpdateTarget(target:TargetOnLocaleChange) {
 		this.listToLocaleUpdate.push(target);
+		this.localize(target.mapping, target.update);
 	}
 
-	subscribe(component:any, mapping:string, localize:(component, value:string) => void) {
-		var target = new LocaleUpdatedTarget(); 
-		target.component = component;
-		target.mapping = mapping;
-		target.update = localize;
+	subscribeTargetOnLocaleChange(target:TargetOnLocaleChange) {
 		this.listToLocaleUpdate.push(target);
+		this.localize(target.mapping, target.update);
+	}
+
+	subscribe(mapping:string, update:(value:string) => void) {
+		var target = new TargetOnLocaleChange();
+		target.mapping = mapping;
+		target.update = update;
+		this.listToLocaleUpdate.push(target);
+		this.localize(mapping, update);
 	}
 
 	use(locale:string){
 		this.translate.use(locale);
 	}
 
-	private updateAll() {
+	updatePageLocale() {
 		for (let target of this.listToLocaleUpdate) {
 			this.translate.get(target.mapping).subscribe((value: string) => {
-				target.update(target.component, value);
+				target.update(value);
 			});
 		}
 	}
 
-	updateNow(mapping:string, target:any, localize:(target:any, value:string)=>void) {
+	localize(mapping:string, update:(value:string)=>void) {
 		this.translate.get(mapping).subscribe((value: string) => {
-			localize(target, value);
-		});
-	}
-
-	update(mapping:string, target:string) {
-		this.translate.get(mapping).subscribe((value: string) => {
-			this.updateNow(mapping, target, (target:string, value:string) => {
-				target = value;
-			});
+			update(value);
 		});
 	}
 }

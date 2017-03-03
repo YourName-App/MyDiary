@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar no-border-bottom hideBackButton="true">
     <ion-segment color={{theme}} [(ngModel)]="segment">
-      <ion-segment-button value="diary-list">項目</ion-segment-button>
-      <ion-segment-button value="calendar">日曆</ion-segment-button>
+      <ion-segment-button value="diary-list">{{ 'DIARY.DIARY_LIST' | translate }}</ion-segment-button>
+      <ion-segment-button value="calendar">{{ 'DIARY.CALENDAR' | translate }}</ion-segment-button>
     </ion-segment>
     <ion-buttons start>
       <button color={{theme}} ion-button icon-only (click)="goBack()">
@@ -13,7 +13,7 @@
 
   <ion-toolbar no-border-top>
     <ion-searchbar color={{theme}} class="diary-searchbar" (ionInput)="searchDiary($event)"
-                   placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
+                   placeholder="{{ 'DIARY.SEARCH' | translate }}" showCancelButton=true cancelButtonText="{{ 'DIARY.CANCEL' | translate }}">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>

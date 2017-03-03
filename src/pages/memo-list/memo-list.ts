@@ -4,6 +4,7 @@ import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-memo-list',
@@ -15,7 +16,8 @@ export class MemoListPage {
   memoList: any;
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private memoServ: MemoService, private configServ: ConfigService) {
+    private memoServ: MemoService, private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.initializeMemo();
   }
@@ -23,11 +25,11 @@ export class MemoListPage {
   ionViewCanEnter(): boolean {
     return this.configServ.unlockScreen();
   }
-  
+
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
-  
+
   initializeMemo() {
     this.memoList = this.memoServ.getMemoList();
   }
@@ -46,20 +48,26 @@ export class MemoListPage {
   }
 
   deleteMemo(memoId: string, slidingItem: ItemSliding): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除備忘錄',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           this.memoServ.deleteMemo(memoId);
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    };
+
+    this.localeServ.localize('MEMO_LIST.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('MEMO_LIST.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('MEMO_LIST.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('MEMO_LIST.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
+    let confirm = this.alertCtrl.create(options);
     confirm.present();
     slidingItem.close();
   }
@@ -73,7 +81,7 @@ export class MemoListPage {
         let result = memos.filter(
           memo => memo.title.toLowerCase().indexOf(targetVal.toLowerCase()) > -1
         );
-        
+
         return result;
       })
     }

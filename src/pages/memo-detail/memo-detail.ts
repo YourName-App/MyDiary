@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MemoItemEditPage } from '../memo-item-edit/memo-item-edit';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-memo-detail',
@@ -22,7 +23,8 @@ export class MemoDetailPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private alertCtrl: AlertController, private memoServ: MemoService,
-    private configServ: ConfigService) {
+    private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -35,7 +37,7 @@ export class MemoDetailPage {
   ionViewCanEnter(): boolean {
     return this.configServ.unlockScreen();
   }
-  
+
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
@@ -61,7 +63,7 @@ export class MemoDetailPage {
       this.entryValid = false;
     } else {
       this.entryValid = true;
-    }  
+    }
   }
 
   createItem(): void {
@@ -73,7 +75,7 @@ export class MemoDetailPage {
       this.entryValid = true;
       this.memoServ.createItem(this.memoId, {entry: this.entry, checked: false});
       this.entry = '';
-    } 
+    }
   }
 
   updateItem(): void {
@@ -85,11 +87,11 @@ export class MemoDetailPage {
   }
 
   deleteAllItems(): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除所有備忘錄項目',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           let deleteEvent = this.itemList.subscribe(itemSnaps => {
             itemSnaps.forEach(item => {
@@ -100,11 +102,16 @@ export class MemoDetailPage {
           deleteEvent.unsubscribe();
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    }
+    this.localeServ.localize('MEMO_DETAIL.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('MEMO_DETAIL.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('MEMO_DETAIL.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('MEMO_DETAIL.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
+    let confirm = this.alertCtrl.create(options);
     confirm.present();
   }
 }

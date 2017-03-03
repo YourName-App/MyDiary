@@ -14,7 +14,7 @@ import { PinConfigPage } from '../pages/pin-config/pin-config';
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { ConfigService } from '../providers/config-service';
-import { LocaleService, LocaleUpdatedTarget } from '../providers/locale-service'
+import { LocaleService, TargetOnLocaleChange } from '../providers/locale-service'
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -52,43 +52,38 @@ export class MyApp {
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  localeUpdatedUserConfigPage: LocaleUpdatedTarget = {
-    component: this.settingPages[0], 
+  localeUpdatedUserConfigPage: TargetOnLocaleChange = {
     mapping: 'PAGE.SETTING.USER',
-    update: (component:PageInterface, value: string) => {
-      component.title = value;
+    update: (value: string) => {
+      this.settingPages[0].title = value;
     }
   };
 
-  localeUpdatedPinConfigPage: LocaleUpdatedTarget = {
-    component: this.settingPages[1], 
+  localeUpdatedPinConfigPage: TargetOnLocaleChange = {
     mapping: 'PAGE.SETTING.LOCK',
-    update: (component:PageInterface, value: string) => {
-      component.title = value;
+    update: (value: string) => {
+      this.settingPages[1].title = value;
     }
   };
 
-  localeUpdatedSuggestPage: LocaleUpdatedTarget = {
-    component: this.otherPages[0], 
+  localeUpdatedSuggestPage: TargetOnLocaleChange = {
     mapping: 'PAGE.OTHER.SUGGESTION',
-    update: (component:PageInterface, value: string) => {
-      component.title = value;
+    update: (value: string) => {
+      this.otherPages[0].title = value;
     }
   };
 
-  localeUpdatedAboutPage: LocaleUpdatedTarget = {
-    component: this.otherPages[1], 
+  localeUpdatedAboutPage: TargetOnLocaleChange = {
     mapping: 'PAGE.OTHER.ABOUT',
-    update: (component:PageInterface, value: string) => {
-      component.title = value;
+    update: (value: string) => {
+      this.otherPages[1].title = value;
     }
   };
 
-  localeUpdatedLandingPage: LocaleUpdatedTarget = {
-    component: this.accountPages[0], 
+  localeUpdatedLandingPage: TargetOnLocaleChange = {
     mapping: 'PAGE.ACCOUNT.LOGOUT',
-    update: (component:PageInterface, value: string) => {
-      component.title = value;
+    update: (value: string) => {
+      this.accountPages[0].title = value;
     }
   };
 
@@ -96,11 +91,11 @@ export class MyApp {
     private authServ: AuthService, private configServ: ConfigService, 
     private localeServ:LocaleService) {
 
-    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserConfigPage);
-    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedPinConfigPage);
-    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedSuggestPage);
-    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedAboutPage);
-    this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedLandingPage);
+      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserConfigPage);
+      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedPinConfigPage);
+      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedSuggestPage);
+      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedAboutPage);
+      this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT', (value:string) => { this.accountPages[0].title = value; });
 
     // Listen for authentication
     af.auth.subscribe((user) => {

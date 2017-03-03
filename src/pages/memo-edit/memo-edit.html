@@ -7,13 +7,13 @@
 <ion-content padding>
   <form [formGroup]="memoForm" novalidate>
     <ion-item>
-      <ion-label stacked>標題</ion-label>
-      <ion-input #title formControlName="title" type="text" placeholder="備忘錄標題"
+      <ion-label stacked>{{ 'MEMO_EDIT.LABEL' | translate }}</ion-label>
+      <ion-input #title formControlName="title" type="text" placeholder="{{ 'MEMO_EDIT.INPUT_MEMO_TITLE' | translate }}"
         (change)="elementChanged(title)" [class.invalid]="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!memoForm.controls.title.valid && (titleChanged || submitAttempt)">
-      <p>請輸入備忘錄標題</p>
+      <p>{{ 'MEMO_EDIT.ERR_MSG' | translate }}</p>
     </ion-item>
   </form>  
 </ion-content>

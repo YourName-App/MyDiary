@@ -3,27 +3,27 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { PinDialog } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
+import { LocaleService } from '../providers/locale-service';
 
 @Injectable()
 export class ConfigService {
 
-  userName: string = '';
-  userGender: string = '';
-  userAvatar: string = '';
-  userPin: string = '';
+  userName    : string = '';
+  userGender  : string = '';
+  userAvatar  : string = '';
+  userPin     : string = '';
   pauseEmitted: string = 'Y';
-  musicPlayed: boolean = false;
+  musicPlayed : boolean = false;
 
   constructor(private storage: Storage, private alertCtrl: AlertController,
-    private translate: TranslateService) {
+    private translate: TranslateService,
+    private localServ: LocaleService) {
 
     this.storage.get('userName').then((val) => {
       if (val === null || val.trim().length === 0) {
         // val = '你的名字是？';
         // apply prompt message by locale
-        translate.get('YOUR_NAME').subscribe((value: string) => {
-            val = value;
-        });
+        localServ.localize('YOUR_NAME', (value:string) => { val = value; });
       }
       this.userName = val;
     }, (error) => {
@@ -105,7 +105,7 @@ export class ConfigService {
   setMusicPlayed(musicPlayed: boolean) {
     this.musicPlayed = musicPlayed;
   }
-  
+
   unlockScreen(): boolean {
     let canEnter: boolean = false;
 
@@ -140,7 +140,7 @@ export class ConfigService {
         role: 'cancel'
       }]
     });
-  
+
     alert.present();
   }
 }

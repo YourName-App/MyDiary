@@ -11,13 +11,13 @@
   </ion-item>
 
   <ion-item *ngIf="createMode">
-    <ion-input type="text" placeholder="新增備忘錄項目" [(ngModel)]="entry"
+    <ion-input type="text" placeholder="{{ 'MEMO_DETAIL.NEW_ENTRY' | translate }}" [(ngModel)]="entry"
       (keyup)="entryChange()" [class.invalid]="!entryValid && (entryChanged || submitAttempt)">
     </ion-input>
   </ion-item>
   <ion-item class="error-message" *ngIf="!entryValid && (entryChanged || submitAttempt)">
-    <p>請輸入備忘錄項目</p>
-  </ion-item> 
+    <p>{{ 'MEMO_DETAIL.ERR_MSG' | translate }}</p>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
@@ -28,7 +28,6 @@
         </ion-col>
         <ion-col width-20>
         </ion-col>
-        
         <ion-col width-20 *ngIf="!createMode">
           <button color={{theme}} (click)="toggleCreateMode()" ion-button icon-only>
             <ion-icon name="md-add"></ion-icon>

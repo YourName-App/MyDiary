@@ -1,19 +1,19 @@
 {
-	"YOUR_NAME":"What's your name ?",
-	"TITLE" : "Menu",
-	"ENV" : "Environment",
-	"MISC" : "Miscellaneous",
-	"ACCOUNT" : "Account",
-	"LANDING_TITLE" : "What's your name？",
+	"YOUR_NAME"    : "What's your name ?",
+	"TITLE"        : "Menu",
+	"ENV"          : "Environment",
+	"MISC"         : "Miscellaneous",
+	"ACCOUNT"      : "Account",
+	"LANDING_TITLE": "What's your name？",
 	"HOME" : {
-		"DIARY" : "Diary",
-		"CONTACT" : "Contacts",
-		"MEMO" : "Memo"
+		"DIARY"  : "Diary",
+		"CONTACT": "Contacts",
+		"MEMO"   : "Memo"
 	},
 	"PAGE" : {
 		"OTHER" : {
-			"SUGGESTION" : "Comment",
-			"ABOUT" : "About"
+			"SUGGESTION": "Comment",
+			"ABOUT"     : "About"
 		},
 		"ACCOUNT" : {
 			"LOGOUT" : "Logout"
@@ -30,41 +30,137 @@
 		},
 		"GENDER" : {
 			"LABEL" : "Gender：",
-			"MALE" : "Male",
-			"FEMALE" : "Female"
+			"MALE"  : "Male",
+			"FEMALE": "Female"
 		},
 		"LOCK": {
 			"LABEL" : "Enable Lock :"
 		},
 		"LOCALE" : {
-			"LABEL" : "Locale：",
-			"EN" : "English",
-			"CH" : "Chinese (Traditional)"
+			"LABEL": "Locale：",
+			"EN"   : "English",
+			"CH"   : "Chinese (Traditional)"
 		},
-		"CONFIRM" : "Confirm",
-		"OK" : "OK",
-		"CANCEL"  : "Cancel"
+		"CONFIRM": "Confirm",
+		"OK"     : "OK",
+		"CANCEL" : "Cancel"
 	},
 	"PIN_CONFIG_PAGE" : {
-		"TITLE" : "Password",
-		"COL_SETTING" : "Setting：",
-		"COL_ENABLE" : "Enable",
-		"COL_DISABLE" : "Disable",
-		"ADD_PIN_PROMPT_MSG" : "Please enter a password with a least 4 digits", 
-  		"ADD_PIN_TITLE" : "Setting",
-  		"ADD_PIN_CONFIRM_BTN" : "Confirm",
-  		"ADD_PIN_CANCEL_BTN": "Cancel",
-  		"ADD_PIN_ALERT_MSG" : "Please enter a password with a least 4 digits",
- 		"CONFIRM_PIN_PROMPT_MSG" :"Please enter the password again",
-  		"CONFIRM_PIN_TITLE" :"Confirm Password",
-  		"CONFIRM_PIN_CONFIRM_BTN" :"Confirm",
-  		"CONFIRM_PIN_CANCEL_BTN" :"Cancel",
-  		"CONFIRM_PIN_ALERT_MSG" :"Password doestn't match, please retype again",
-  		"REMOVE_PIN_PROMPT_MSG" :"Please enter the password",
-  		"REMOVE_PIN_TITLE" : "Disable password",
-  		"REMOVE_PIN_CONFIRM_BTN" : "Confirm",
-  		"REMOVE_PIN_CANCEL_BTN" : "Cancel",
-  		"REMOVE_PIN_ALERT_MSG" : "Password incorrect",
-  		"ALERT_MSG_BTN" : "Confirm"
+		"TITLE"                  : "Password",
+		"COL_SETTING"            : "Setting：",
+		"COL_ENABLE"             : "Enable",
+		"COL_DISABLE"            : "Disable",
+		"ADD_PIN_PROMPT_MSG"     : "Please enter a password with a least 4 digits",
+		"ADD_PIN_TITLE"          : "Setting",
+		"ADD_PIN_CONFIRM_BTN"    : "Confirm",
+		"ADD_PIN_CANCEL_BTN"     : "Cancel",
+		"ADD_PIN_ALERT_MSG"      : "Please enter a password with a least 4 digits",
+		"CONFIRM_PIN_PROMPT_MSG" : "Please enter the password again",
+		"CONFIRM_PIN_TITLE"      : "Confirm Password",
+		"CONFIRM_PIN_CONFIRM_BTN": "Confirm",
+		"CONFIRM_PIN_CANCEL_BTN" : "Cancel",
+		"CONFIRM_PIN_ALERT_MSG"  : "Password doestn't match, please retype again",
+		"REMOVE_PIN_PROMPT_MSG"  : "Please enter the password",
+		"REMOVE_PIN_TITLE"       : "Disable password",
+		"REMOVE_PIN_CONFIRM_BTN" : "Confirm",
+		"REMOVE_PIN_CANCEL_BTN"  : "Cancel",
+		"REMOVE_PIN_ALERT_MSG"   : "Password incorrect",
+		"ALERT_MSG_BTN"          : "Confirm"
+	},
+	"DIARY" : {
+		"DIARY_LIST": "Items",
+		"CALENDAR"  : "Calendar",
+		"SEARCH"    : "Search",
+		"CANCEL"    : "Cancel"
+	},
+	"DIARY_LIST" : {
+		"DELETE": {
+			"TITLE"  : "Delete Diary",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"DIARY_DETAIL" : {
+		"DELETE": {
+			"TITLE"  : "Delete Diary",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"CONTACT_LIST" : {
+		"TITLE" : "Contacts",
+		"SEARCH": "Search",
+		"CANCEL": "Cancel",
+		"DELETE": {
+			"TITLE"  : "Delete Contact",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"CONTACT_DETAIL" : {
+		"TITLE"   : "Contacts",
+		"MESSAGES": "Messages",
+		"PHONE"   : "Phone",
+		"DELETE"   : {
+			"TITLE"  : "Delete Contact",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"CONTACT_EDIT" : {
+		"TITLE_UPDATE" : "Update Contact",
+		"TITLE_CREATE" : "Create Contact",
+		"NAME"   : {
+			"LABEL"  : "Name",
+			"ENTER"  : "Contact Name",
+			"ERR_MSG": "Please enter contact name"
+		},
+		"PHONE" : {
+			"LABEL"  : "Phone",
+			"ENTER"  : "Contact Phone",
+			"ERR_MSG": "Please enter contact phone"
+		}
+	},
+	"MEMO_LIST" : {
+		"TITLE" : "Memo",
+		"SEARCH": "Search",
+		"CANCEL": "Cancel",
+		"DELETE"    : {
+			"TITLE"  : "Delete memo",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"MEMO_ITEM_EDIT" : {
+		"TITLE"     : "Edit",
+		"INPUT_ITEM": "Enter a memo item here",
+		"DELETE"    : {
+			"TITLE"  : "Delete memo item",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
+	},
+	"MEMO_EDIT" : {
+		"TITLE_CREATE" : "Update Memo",
+		"TITLE_UPDATE" : "Create Memo",
+		"LABEL"           : "Subject",
+		"INPUT_MEMO_TITLE": "Memo Subject",
+		"ERR_MSG"         : "Please enter a memo subject"
+	},
+	"MEMO_DETAIL" : {
+		"NEW_ENTRY": "Enter a new entry",
+		"ERR_MSG"  : "Please add a new entry",
+		"DELETE"   : {
+			"TITLE"  : "Delete all",
+			"MESSAGE": "Are you sure？",
+			"CONFIRM": "Confirm",
+			"CANCEL" : "Cancel"
+		}
 	}
 }

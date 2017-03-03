@@ -109,29 +109,29 @@ export class PinConfigPage {
         role: 'cancel'
       }]
     });
-  
+
     alert.present();
   }
 
   private subscribeLocaleUpdate() {
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ADD_PIN_PROMPT_MSG',  (componet:any, value:string) => { this.addPinPromptMsg  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ADD_PIN_TITLE',       (componet:any, value:string) => { this.addPinTitle      = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ADD_PIN_CONFIRM_BTN', (componet:any, value:string) => { this.addPinConfirmBtn = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ADD_PIN_CANCEL_BTN',  (componet:any, value:string) => { this.addPinCancelBtn  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ADD_PIN_ALERT_MSG',   (componet:any, value:string) => { this.addPinAlertMsg   = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ADD_PIN_PROMPT_MSG',    (value:string) => { this.addPinPromptMsg  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ADD_PIN_TITLE',         (value:string) => { this.addPinTitle      = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ADD_PIN_CONFIRM_BTN',   (value:string) => { this.addPinConfirmBtn = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ADD_PIN_CANCEL_BTN',    (value:string) => { this.addPinCancelBtn  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ADD_PIN_ALERT_MSG',     (value:string) => { this.addPinAlertMsg   = value; });
 
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.CONFIRM_PIN_PROMPT_MSG', (componet:any, value:string) => { this.ConfirmPinPromptMsg  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.CONFIRM_PIN_TITLE',      (componet:any, value:string) => { this.ConfirmPinTitle      = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.CONFIRM_PIN_CONFIRM_BTN',(componet:any, value:string) => { this.ConfirmPinConfirmBtn = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.CONFIRM_PIN_CANCEL_BTN', (componet:any, value:string) => { this.ConfirmPinCancelBtn  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.CONFIRM_PIN_ALERT_MSG',  (componet:any, value:string) => { this.ConfirmPinAlertMsg   = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.CONFIRM_PIN_PROMPT_MSG', (value:string) => { this.ConfirmPinPromptMsg  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.CONFIRM_PIN_TITLE',      (value:string) => { this.ConfirmPinTitle      = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.CONFIRM_PIN_CONFIRM_BTN',(value:string) => { this.ConfirmPinConfirmBtn = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.CONFIRM_PIN_CANCEL_BTN', (value:string) => { this.ConfirmPinCancelBtn  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.CONFIRM_PIN_ALERT_MSG',  (value:string) => { this.ConfirmPinAlertMsg   = value; });
 
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.REMOVE_PIN_PROMPT_MSG', (componet:any, value:string) => { this.RemovePinPromptMsg  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.REMOVE_PIN_TITLE',      (componet:any, value:string) => { this.RemovePinTitle      = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.REMOVE_PIN_CONFIRM_BTN',(componet:any, value:string) => { this.RemovePinConfirmBtn = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.REMOVE_PIN_CANCEL_BTN', (componet:any, value:string) => { this.RemovePinCancelBtn  = value; });
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.REMOVE_PIN_ALERT_MSG',  (componet:any, value:string) => { this.RemovePinAlertMsg   = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.REMOVE_PIN_PROMPT_MSG', (value:string) => { this.RemovePinPromptMsg  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.REMOVE_PIN_TITLE',      (value:string) => { this.RemovePinTitle      = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.REMOVE_PIN_CONFIRM_BTN',(value:string) => { this.RemovePinConfirmBtn = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.REMOVE_PIN_CANCEL_BTN', (value:string) => { this.RemovePinCancelBtn  = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.REMOVE_PIN_ALERT_MSG',  (value:string) => { this.RemovePinAlertMsg   = value; });
 
-    this.localeServ.subscribe(this, 'PIN_CONFIG_PAGE.ALERT_MSG_BTN', (componet:any, value:string) => { this.alertMsgBtn   = value; });
+    this.localeServ.subscribe('PIN_CONFIG_PAGE.ALERT_MSG_BTN', (value:string) => { this.alertMsgBtn   = value; });
   }
 }

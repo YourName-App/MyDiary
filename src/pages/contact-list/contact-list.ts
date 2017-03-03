@@ -4,6 +4,7 @@ import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailPage } from '../contact-detail/contact-detail';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
@@ -12,14 +13,14 @@ import 'rxjs/add/operator/map';
   templateUrl: 'contact-list.html'
 })
 export class ContactListPage {
-  
+
   theme: string;
   contactList: any;
   contactCount: number;
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController,
-    private contactServ: ContactService, private configServ: ConfigService) {
-      
+    private contactServ: ContactService, private configServ: ConfigService,
+    private localeServ:LocaleService) {
     this.initializeContact();
   }
 
@@ -49,20 +50,26 @@ export class ContactListPage {
   }
 
   deleteContact(contactId: string, slidingItem: ItemSliding): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除聯絡人',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           this.contactServ.deleteContact(contactId);
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    };
+
+    this.localeServ.localize('CONTACT_LIST.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('CONTACT_LIST.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('CONTACT_LIST.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('CONTACT_LIST.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
+    let confirm = this.alertCtrl.create(options);
     confirm.present();
     slidingItem.close();
   }
@@ -77,7 +84,7 @@ export class ContactListPage {
           contact => contact.name.toLowerCase().indexOf(targetVal.toLowerCase()) > -1 ||
                      contact.phone.indexOf(targetVal) > -1 
         );
-        
+
         return result;
       })
     }

@@ -3,7 +3,7 @@ import { NavController, App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../../pages/home/home';
 import { ConfigService } from '../../providers/config-service';
-import { LocaleService, LocaleUpdatedTarget } from '../../providers/locale-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-user-config',
@@ -17,14 +17,6 @@ export class UserConfigPage {
   userAvatar: string;
   userLocale: string;
 
-  localeUpdatedUserName: LocaleUpdatedTarget = {
-    component: this, 
-    mapping: 'YOUR_NAME',
-    update: (component: UserConfigPage, value: string) => {
-      component.userName = value;
-    }
-  };
-
   constructor(private navCtrl: NavController, private appCtrl: App,
     private storage: Storage, private configServ: ConfigService,
     private localeServ: LocaleService) {
@@ -33,10 +25,7 @@ export class UserConfigPage {
     if (this.userName === null || this.userName.trim().length === 0) {
 
     } else {
-      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserName);
-      this.localeServ.updateNow('YOUR_NAME', this, (target:string, value:string)=>{
-        this.userName = value + '?';
-      });
+      this.localeServ.subscribe('YOUR_NAME', (value:string) => { this.userName = value; })
     }
     this.userGender = this.configServ.getUserGender();
   }
