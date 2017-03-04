@@ -27,7 +27,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
+  <form [formGroup]="diaryForm" novalidate>
     <ion-item>
       <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
         (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
@@ -37,7 +37,7 @@
       <p>請輸入日記主題</p>
     </ion-item>
     <ion-item no-lines>
-      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)"
+      <ion-textarea #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)"
         value={{inputContent}} rows="8" autoresize (change)="elementChanged(content)"
         [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>

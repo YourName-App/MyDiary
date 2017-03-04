@@ -36,8 +36,11 @@ page-diary-detail {
   ion-toolbar.footer-toolbar {
     height: 50px;
   }
+  .fab-weather {
+    transform: translate(5px, 0);
+  }
   .fab-mood {
-    transform: translate(-50px, 0);
+    transform: translate(-45px, 0);
   }
   .male {
     color: color($colors, male);

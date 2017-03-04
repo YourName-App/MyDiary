@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavParams, ViewController } from 'ionic-angular';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
 
