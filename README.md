@@ -6,6 +6,11 @@ A real-world mobile app implementation inspired by the movie [Your Name][1].
 ----------
 
 
+## Download
+
+[![](/misc/google-play.png) ](https://play.google.com/store/apps/details?id=com.ionicframework.mydiary307271)
+
+
 ## Installation
 
 ##### Install Ionic CLI and Cordova:
