@@ -28,21 +28,26 @@
 
 <ion-content padding>
   <ion-item no-lines>
-    <ion-input class="diary-title" text-center value={{diary.title}} readonly 
+    <ion-input class="diary-title" type="text" value={{diary.title}}
+      text-center readonly 
       [class.male]="theme==='male'"
       [class.female]="theme==='female'">
     </ion-input>
   </ion-item>
   <ion-item no-lines>
-    <ion-textarea class="diary-content" value={{diary.content}} readonly>
+    <ion-textarea value={{diary.content}} readonly>
     </ion-textarea>
   </ion-item>
 
   <ion-fab class="fab-weather" right top edge #fabWeather>
-    <button ion-fab mini color="light"><ion-icon color={{theme}} name="ios-{{diary.weather || 'sunny'}}"></ion-icon></button>
+    <button ion-fab mini color="light">
+      <ion-icon color={{theme}} name="ios-{{diary.weather || 'sunny'}}"></ion-icon>
+    </button>
   </ion-fab>
   <ion-fab class="fab-mood" right top edge #fabMood>
-    <button ion-fab mini color="light"><img height="24" width="24" src="assets/img/{{theme || 'male'}}-{{diary.mood || 'happy'}}.svg"></button>
+    <button ion-fab mini color="light">
+      <img height="24" width="24" src="assets/img/{{theme || 'male'}}-{{diary.mood || 'happy'}}.svg">
+    </button>
   </ion-fab>
 </ion-content>
 

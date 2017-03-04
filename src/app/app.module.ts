@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
 // Import pages
@@ -88,6 +88,7 @@ const myFirebaseAuthConfig = {
   imports: [
     // Set the whole app in iOS's style
     IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: ''}),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   bootstrap: [IonicApp],

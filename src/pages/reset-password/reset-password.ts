@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
@@ -15,7 +15,7 @@ export class ResetPasswordPage {
   submitAttempt: boolean = false;
 
   constructor(private navCtrl: NavController, private authServ: AuthService, 
-    private formBuilder: FormBuilder, private alertCtrl: AlertController) {
+    private formBuilder: FormBuilder, private toastCtrl: ToastController) {
 
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])]
@@ -33,30 +33,22 @@ export class ResetPasswordPage {
       console.log(this.resetPasswordForm.value);
     } else {
       this.authServ.resetPassword(this.resetPasswordForm.value.email).then((user) => {
-        let alert = this.alertCtrl.create({
-          message: '重設密碼的連結已寄送至你的電子郵件',
-          buttons: [{
-            text: '確認',
-            role: 'cancel',
-            handler: () => {
-              this.navCtrl.pop();
-            }
-          }]
-        });
-
-        alert.present();
+        this.toastMessage('重設密碼的連結已寄送至你的電子郵件');
       }, (error) => {
-        let errorAlert = this.alertCtrl.create({
-          message: '此電子郵件尚未註冊。',
-          buttons: [{
-            text: '確認',
-            role: 'cancel'
-          }]
-        });
-
-        errorAlert.present();
+        this.toastMessage('此電子郵件尚未註冊');
       });
     }
+  }
+
+  private toastMessage(msg: string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'middle',
+      dismissOnPageChange: true
+    });
+  
+    toast.present();
   }
 }
 

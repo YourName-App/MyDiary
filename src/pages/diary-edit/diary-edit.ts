@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';

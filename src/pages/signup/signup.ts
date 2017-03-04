@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, AlertController, ViewController } from 'ionic-angular';
+import { LoadingController, ToastController, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
@@ -17,7 +17,7 @@ export class SignupPage {
   loader: any;
 
   constructor(private authServ: AuthService, private formBuilder: FormBuilder,
-    private alertCtrl: AlertController, private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController, private loadingCtrl: LoadingController,
     private viewCtrl: ViewController) {
   
     this.signupForm = formBuilder.group({
@@ -45,20 +45,23 @@ export class SignupPage {
         this.loader.dismiss();
       }, (error) => {
         this.loader.dismiss().then( () => {
-          let alert = this.alertCtrl.create({
-            message: '註冊失敗，請稍後再試。',
-            buttons: [{
-              text: '確認',
-              role: 'cancel'
-            }]
-          });
-          
-          alert.present();
+          this.toastMessage('註冊失敗，請稍後再試');
         });
       });
 
       this.loader = this.loadingCtrl.create();
       this.loader.present();
     }
-  } 
+  }
+
+  private toastMessage(msg: string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'middle',
+      dismissOnPageChange: true
+    });
+  
+    toast.present();
+  }
 }
