@@ -23,13 +23,13 @@
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)">
-      <p>密碼長度至少為 6 個字元</p>
+      <p>請輸入長度至少為 6 個字元的密碼</p>
     </ion-item>
 
-    <button color="diary" ion-button block type="submit">確認送出</button>
+    <button color="diary" ion-button block type="submit">登入</button>
   </form>
 
   <button color="diary" ion-button block clear (click)="goToResetPassword()">
-    糟糕 ... 忘記密碼了 😓
+    忘記密碼了 😓
   </button>
 </ion-content>  

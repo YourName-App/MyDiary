@@ -29,12 +29,12 @@
 <ion-content padding>
   <form [formGroup]="diaryForm" novalidate>
     <ion-item>
-      <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
+      <ion-input #title formControlName="title" type="text" placeholder="日記標題" value={{inputTitle}}
         (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
-      <p>請輸入日記主題</p>
+      <p>請輸入日記標題</p>
     </ion-item>
     <ion-item no-lines>
       <ion-textarea #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)"

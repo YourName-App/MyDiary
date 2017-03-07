@@ -42,7 +42,7 @@ export class LoginPage {
         this.loader.dismiss();
       }, error => {
         this.loader.dismiss().then(() => {
-          this.toastMessage('登入失敗，請確認你的電子郵件與密碼');
+          this.toastMessage('登入失敗，電子郵件或密碼輸入錯誤');
         });
       });
 

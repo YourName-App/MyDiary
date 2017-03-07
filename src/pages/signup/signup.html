@@ -23,9 +23,9 @@
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid && (passwordChanged || submitAttempt)">
-      <p>密碼長度至少為 6 個字元</p>
+      <p>請輸入長度至少為 6 個字元的密碼</p>
     </ion-item>
 
-    <button color="diary" ion-button block type="submit">確認送出</button>
+    <button color="diary" ion-button block type="submit">註冊</button>
   </form>
 </ion-content>

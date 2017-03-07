@@ -25,20 +25,20 @@ export class PinConfigPage {
   }
 
   addPin() {
-    PinDialog.prompt('請輸入至少4個數字的密碼', '設定密碼', ['確認', '取消'])
+    PinDialog.prompt('請輸入長度至少為 4 個數字的密碼', '開啟密碼鎖', ['確認', '取消'])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
         if (result.input1 !== null && result.input1.trim().length >= 4) {
           this.confirmPin(result.input1);
         } else {
-          this.toastMessage('請輸入至少4個數字的密碼');
+          this.toastMessage('請輸入長度至少為 4 個數字的密碼');
         }
       }
     });
   }
 
   confirmPin(pin: string) {
-    PinDialog.prompt('請重複輸入密碼', '確認密碼', ['確認', '取消'])
+    PinDialog.prompt('驗證密碼', '開啟密碼鎖', ['確認', '取消'])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
         if (result.input1 === pin) {
@@ -56,7 +56,7 @@ export class PinConfigPage {
   }
 
   removePin() {
-    PinDialog.prompt('請輸入密碼', '關閉密碼', ['確認', '取消'])
+    PinDialog.prompt('請輸入密碼', '關閉密碼鎖', ['確認', '取消'])
     .then((result: any) => {
       if (result.input1 === this.configServ.getUserPin()) {
         this.storage.set('userPin', '');

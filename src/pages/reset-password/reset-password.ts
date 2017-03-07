@@ -33,7 +33,7 @@ export class ResetPasswordPage {
       console.log(this.resetPasswordForm.value);
     } else {
       this.authServ.resetPassword(this.resetPasswordForm.value.email).then((user) => {
-        this.toastMessage('重設密碼的連結已寄送至你的電子郵件');
+        this.toastMessage('已寄送重設密碼的電子郵件');
       }, (error) => {
         this.toastMessage('此電子郵件尚未註冊');
       });
