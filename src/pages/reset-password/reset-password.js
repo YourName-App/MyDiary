@@ -12,12 +12,14 @@ import { NavController, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
+import { LocaleService } from '../../providers/locale-service';
 var ResetPasswordPage = (function () {
-    function ResetPasswordPage(navCtrl, authServ, formBuilder, alertCtrl) {
+    function ResetPasswordPage(navCtrl, authServ, formBuilder, alertCtrl, localeServ) {
         this.navCtrl = navCtrl;
         this.authServ = authServ;
         this.formBuilder = formBuilder;
         this.alertCtrl = alertCtrl;
+        this.localeServ = localeServ;
         this.emailChanged = false;
         this.submitAttempt = false;
         this.resetPasswordForm = formBuilder.group({
@@ -35,25 +37,31 @@ var ResetPasswordPage = (function () {
         }
         else {
             this.authServ.resetPassword(this.resetPasswordForm.value.email).then(function (user) {
-                var alert = _this.alertCtrl.create({
-                    message: '重設密碼的連結已寄送至你的電子郵件',
+                var options = {
+                    message: '',
                     buttons: [{
-                            text: '確認',
+                            text: '',
                             role: 'cancel',
                             handler: function () {
                                 _this.navCtrl.pop();
                             }
                         }]
-                });
+                };
+                _this.localeServ.localize('RESET_PASSWORD_PAGE.RESET.MSG', function (value) { options.message = value; });
+                _this.localeServ.localize('RESET_PASSWORD_PAGE.RESET.CONFIRM', function (value) { options.buttons[0].text = value; });
+                var alert = _this.alertCtrl.create(options);
                 alert.present();
             }, function (error) {
-                var errorAlert = _this.alertCtrl.create({
-                    message: '此電子郵件尚未註冊。',
+                var options = {
+                    message: '',
                     buttons: [{
-                            text: '確認',
+                            text: '',
                             role: 'cancel'
                         }]
-                });
+                };
+                _this.localeServ.localize('RESET_PASSWORD_PAGE.ALERT.MSG', function (value) { options.message = value; });
+                _this.localeServ.localize('RESET_PASSWORD_PAGE.ALERT.CONFIRM', function (value) { options.buttons[0].text = value; });
+                var errorAlert = _this.alertCtrl.create(options);
                 errorAlert.present();
             });
         }
@@ -66,7 +74,8 @@ ResetPasswordPage = __decorate([
         templateUrl: 'reset-password.html'
     }),
     __metadata("design:paramtypes", [NavController, AuthService,
-        FormBuilder, AlertController])
+        FormBuilder, AlertController,
+        LocaleService])
 ], ResetPasswordPage);
 export { ResetPasswordPage };
 //# sourceMappingURL=reset-password.js.map

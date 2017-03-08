@@ -8,17 +8,15 @@ export class TargetOnLocaleChange {
 
 @Injectable()
 export class LocaleService {
-	// update the locale of the rest of component subscribed
+//  update the locale of the rest of component subscribed
 	listToLocaleUpdate: TargetOnLocaleChange [] = [];
+//	currentLang:string = this.translate.currentLang;
+	onCalendarLocaleChange:() => void = ()=>{ };
 
 	constructor(public translate: TranslateService) {
-		translate.setDefaultLang('ch');
+		translate.setDefaultLang('en');
 		this.updatePageLocale();
-	}
-
-	subscribeLocaleUpdateTarget(target:TargetOnLocaleChange) {
-		this.listToLocaleUpdate.push(target);
-		this.localize(target.mapping, target.update);
+		this.onCalendarLocaleChange();
 	}
 
 	subscribeTargetOnLocaleChange(target:TargetOnLocaleChange) {
@@ -34,7 +32,7 @@ export class LocaleService {
 		this.localize(mapping, update);
 	}
 
-	use(locale:string){
+	use(locale:string) {
 		this.translate.use(locale);
 	}
 
@@ -50,5 +48,27 @@ export class LocaleService {
 		this.translate.get(mapping).subscribe((value: string) => {
 			update(value);
 		});
+	}
+
+	subscribeCalendar(onLocaleChange:(locale:string) => void) {
+		this.onCalendarLocaleChange = () => {
+			onLocaleChange(this.translate.currentLang);
+		}
+	}
+
+	localizeCalendar(onLocaleChange:(locale:string) => void) {
+		onLocaleChange(this.translate.currentLang);
+	}
+
+	getCalendarLang(){
+		if(this.getCurrentLang() == 'en') {
+			return 'en';
+	    } else if (this.getCurrentLang() == 'ch') {
+	    	return 'zh-tw';
+	    }
+	}
+
+	getCurrentLang() {
+		return this.translate.currentLang;
 	}
 }

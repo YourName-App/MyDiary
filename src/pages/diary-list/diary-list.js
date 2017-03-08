@@ -13,12 +13,14 @@ import { DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 var DiaryListPage = (function () {
-    function DiaryListPage(alertCtrl, modalCtrl, diaryServ, configServ) {
+    function DiaryListPage(alertCtrl, modalCtrl, diaryServ, configServ, localeServ) {
         this.alertCtrl = alertCtrl;
         this.modalCtrl = modalCtrl;
         this.diaryServ = diaryServ;
         this.configServ = configServ;
+        this.localeServ = localeServ;
     }
     Object.defineProperty(DiaryListPage.prototype, "diaryList", {
         set: function (diaryList) {
@@ -49,19 +51,24 @@ var DiaryListPage = (function () {
     };
     DiaryListPage.prototype.deleteDiary = function (diaryId, slidingItem) {
         var _this = this;
-        var confirm = this.alertCtrl.create({
-            title: '刪除日記',
-            message: '確認刪除？',
+        var options = {
+            title: '',
+            message: '',
             buttons: [{
-                    text: '確認',
+                    text: '',
                     handler: function () {
                         _this.diaryServ.deleteDiary(diaryId);
                     }
                 }, {
-                    text: '取消',
+                    text: '',
                     role: 'cancel'
                 }]
-        });
+        };
+        var confirm = this.alertCtrl.create(options);
+        this.localeServ.localize('DIARY_LIST.DELETE.TITLE', function (value) { options.title = value; });
+        this.localeServ.localize('DIARY_LIST.DELETE.MESSAGE', function (value) { options.message = value; });
+        this.localeServ.localize('DIARY_LIST.DELETE.CONFIRM', function (value) { options.buttons[0].text = value; });
+        this.localeServ.localize('DIARY_LIST.DELETE.CANCEL', function (value) { options.buttons[1].text = value; });
         confirm.present();
         slidingItem.close();
     };
@@ -83,7 +90,8 @@ DiaryListPage = __decorate([
         templateUrl: 'diary-list.html'
     }),
     __metadata("design:paramtypes", [AlertController, ModalController,
-        DiaryService, ConfigService])
+        DiaryService, ConfigService,
+        LocaleService])
 ], DiaryListPage);
 export { DiaryListPage };
 //# sourceMappingURL=diary-list.js.map

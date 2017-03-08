@@ -15,14 +15,16 @@ import { DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
+import { LocaleService } from '../../providers/locale-service';
 var DiaryEditPage = (function () {
-    function DiaryEditPage(navParams, viewCtrl, diaryServ, formBuilder, element, configServ) {
+    function DiaryEditPage(navParams, viewCtrl, diaryServ, formBuilder, element, configServ, localeServ) {
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
         this.diaryServ = diaryServ;
         this.formBuilder = formBuilder;
         this.element = element;
         this.configServ = configServ;
+        this.localeServ = localeServ;
         this.diaryId = '';
         this.inputTimeStamp = '';
         this.inputTitle = '';
@@ -83,14 +85,18 @@ var DiaryEditPage = (function () {
     };
     DiaryEditPage.prototype.openDatePicker = function () {
         var _this = this;
-        DatePicker.show({
+        var options = {
             date: moment(this.timestamp).toDate(),
             mode: 'datetime',
             locale: 'zh-tw',
-            doneButtonLabel: '確認',
-            cancelButtonLabel: '取消',
+            doneButtonLabel: '',
+            cancelButtonLabel: '',
             is24Hour: true
-        }).then(function (pickDate) {
+        };
+        options.locale = this.localeServ.currentLang ? '' : '';
+        this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.DONE', function (value) { options.doneButtonLabel = value; });
+        this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.CANCEL', function (value) { options.cancelButtonLabel = value; });
+        DatePicker.show(options).then(function (pickDate) {
             if (pickDate !== null && pickDate !== undefined) {
                 _this.timestamp = moment(pickDate).format();
                 _this.diaryYear = moment(pickDate).format('YYYY');
@@ -149,7 +155,8 @@ DiaryEditPage = __decorate([
     }),
     __metadata("design:paramtypes", [NavParams, ViewController,
         DiaryService, FormBuilder,
-        ElementRef, ConfigService])
+        ElementRef, ConfigService,
+        LocaleService])
 ], DiaryEditPage);
 export { DiaryEditPage };
 //# sourceMappingURL=diary-edit.js.map

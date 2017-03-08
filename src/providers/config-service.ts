@@ -108,17 +108,30 @@ export class ConfigService {
 
   unlockScreen(): boolean {
     let canEnter: boolean = false;
+    let message             :string;    // 請輸入密碼
+    let title               :string;    // 解除密碼鎖
+    let btnConfirm          :string;    // 確認
+    let btnCancel           :string;    // 取消
+    let alertMessageSuccess :string;    // 成功解除密碼鎖
+    let alertMessageError   :string;    // 密碼錯誤
+
+    this.localServ.localize('CONFIG_SERV.MESSAGE',            (value:string) => { message      = value; });
+    this.localServ.localize('CONFIG_SERV.TITLE',              (value:string) => { title        = value; });
+    this.localServ.localize('CONFIG_SERV.BTN_CONFIRM',        (value:string) => { btnConfirm   = value; });
+    this.localServ.localize('CONFIG_SERV.BTN_CANCEL',         (value:string) => { btnCancel    = value; });
+    this.localServ.localize('CONFIG_SERV.ALERT_MSG_SUCCESS',  (value:string) => { alertMessageSuccess = value; });
+    this.localServ.localize('CONFIG_SERV.ALERT_MSG_ERROR',    (value:string) => { alertMessageError   = value; });
 
     if (this.getPauseEmitted() === 'Y' && this.getUserPin().length >= 4) {
-      PinDialog.prompt('請輸入密碼', '解除密碼鎖', ['確認', '取消'])
+      PinDialog.prompt(message, title, [btnConfirm, btnCancel])
       .then((result: any) => {
         if (result.buttonIndex === 1) {
           if (result.input1 === this.getUserPin()) {
-            this.alertMessage('成功解除密碼鎖');
+            this.alertMessage(alertMessageSuccess);
             this.setPauseEmitted('N');
             canEnter = true;
           } else {
-            this.alertMessage('密碼錯誤');
+            this.alertMessage(alertMessageError);
             canEnter = false;
           }
         } else {
@@ -133,14 +146,16 @@ export class ConfigService {
   }
 
   private alertMessage(msg: string) {
-    let alert = this.alertCtrl.create({
+    let options =
+    {
       message: msg,
       buttons: [{
-        text: '確認',
+        text: '',           // 確認
         role: 'cancel'
       }]
-    });
-
+    };
+    this.localServ.localize('CONFIG_SERV.BTN_ALERT', (value:string) => { options.buttons[0].text = value; });
+    let alert = this.alertCtrl.create(options);
     alert.present();
   }
 }

@@ -10,6 +10,44 @@
 		"CONTACT": "我的聯絡人",
 		"MEMO"   : "我的備忘錄"
 	},
+	"LANDING" : {
+		"LOGIN"          : "登入",
+		"SIGNUP"         : "註冊",
+		"ANONYMOUS_LOGIN": "不告訴你！我要匿名使用 😜"
+	},
+	"SUGGEST" : {
+		"TITLE"  : "建議",
+		"LABEL"  : "建議",
+		"CAUTION": "注意！你將發送訊息給三年後的作者",
+		"PROMPT" : "你的建議",
+		"ERR_MSG": "請輸入你的建議",
+		"SUBMIT" : "確認送出"
+	},
+	"SUGGEST_PAGE" : {
+		"SEND"  : {
+			"SUBJECT": "MyDiary 使用者建議"
+		},
+		"ALERT" : {
+			"MSG"    : "你的手機不支援此功能",
+			"CONFIRM": "確認"
+		}
+	},
+	"LOGIN" : {
+		"TITLE"                 : "登入",
+		"E_MAIL"                : "電子郵件",
+		"YOUR_E_MAIL"           : "你的電子郵件",
+		"PLS_ENTER_VALID_E_MAIL": "請輸入正確的電子郵件",
+		"PASSWORD"              : "密碼",
+		"YOUR_PASSWD"           : "你的密碼",
+		"AT_LEAST_6_CHARS"      : "密碼長度至少為 6 個字元",
+		"SUBMIT"                : "確認送出",
+		"FORGOT_PASSWD"         : "糟糕 ... 忘記密碼了 😓"
+	},
+	"ABOUT" : {
+		"TITLE"        : "關於",
+		"THANKS"       : "感謝你（妳）的下載與使用 💕",
+		"GREETING_CARD": "這個程式的創作靈感源自於日本動畫電影「你的名字」（君の名は）。 除了盡力重現原著中的設計風格與功能外，更希望能夠符合使用者的需求， 任何的想法與建議，都歡迎透過功能選單中的「建議」功能與作者討論。"
+	},
 	"PAGE" : {
 		"OTHER" : {
 			"SUGGESTION": "建議",
@@ -26,7 +64,8 @@
 	"CONFIG" : {
 		"TITLE" : "設定",
 		"NAME" : {
-			"LABEL" : "你的名字："
+			"LABEL" : "你的名字：",
+			"PROMPT": "你的名字"
 		},
 		"GENDER" : {
 			"LABEL" : "你的性別：",
@@ -88,6 +127,70 @@
 			"CONFIRM": "確認",
 			"CANCEL" : "取消"
 		}
+	},
+	"DIARY_EDIT" : {
+		"SUBJECT": {
+			"LABEL"  : "日記主題",
+			"WARNING": "請輸入日記主題"
+		},
+		"CONTENT" : {
+			"LABEL"  :"日記內容(點選日期兩次開啟設定)",
+			"WARNING": "請輸入日記主題"
+		}
+	},
+	"DIARY_EDIT_PAGE" : {
+		"OPEN_DATE_PICKER" : {
+			"DONE"  : "確認",
+			"CANCEL": "取消"
+		},
+		"MODE_DESC" : {
+			"UPDATE":"編輯日記",
+			"CREATE":"新增日記"
+		}
+	},
+	"SIGN_UP" : {
+		"TITLE" : "註冊",
+		"E_MAIL": {
+			"LABEL"  : "電子郵件",
+			"PROMPT" : "你的電子郵件",
+			"WARNING": "請輸入正確的電子郵件"
+		},
+		"PASSWORD" : {
+			"LABEL"  : "密碼",
+			"TIP"   : "密碼長度至少為 6 個字元",
+			"PROMPT" : "密碼長度至少為 6 個字元",
+			"WARNING": "密碼長度至少為 6 個字元"
+		},
+		"SUBMIT" : "確認送出"
+	},
+	"SIGNUP_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "註冊失敗，請稍後再試。",
+			"CONFIRM": "確認"
+		}
+	},
+	"RESET_PASSWORD" : {
+		"TITLE"  : "重設密碼",
+		"E_MAIL" : "電子郵件",
+		"PROMPT" : "你的電子郵件",
+		"WARNING": "請輸入正確的電子郵件",
+		"CONFIRM": "確認送出"
+	},
+	"RESET_PASSWORD_PAGE" : {
+		"RESET" : {
+			"MSG"    : "重設密碼的連結已寄送至你的電子郵件",
+			"CONFIRM": "確認"
+		},
+		"ALERT" : {
+			"MSG"    : "此電子郵件尚未註冊。",
+			"CONFIRM": "確認"
+		}
+	},
+	"TABS" : {
+		"HOME"    :"首頁",
+		"DIARY"   :"日記",
+		"CONTACTS":"聯絡人",
+		"MEMO"    :"備忘錄"
 	},
 	"CONTACT_LIST" : {
 		"TITLE" : "聯絡人",
@@ -162,5 +265,14 @@
 			"CONFIRM": "確認",
 			"CANCEL" : "取消"
 		}
+	},
+	"CONFIG_SERV" : {
+		"MESSAGE"          : "請輸入密碼",
+		"TITLE"            : "解除密碼鎖",
+		"BTN_CONFIRM"      : "確認",
+		"BTN_CANCEL"       : "取消",
+		"ALERT_MSG_SUCCESS": "成功解除密碼鎖",
+		"ALERT_MSG_ERROR"  : "密碼錯誤",
+		"BTN_ALERT"        : "確認"
 	}
 }

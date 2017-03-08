@@ -14,7 +14,7 @@ import { PinConfigPage } from '../pages/pin-config/pin-config';
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { ConfigService } from '../providers/config-service';
-import { LocaleService, TargetOnLocaleChange } from '../providers/locale-service'
+import { LocaleService } from '../providers/locale-service'
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -39,63 +39,30 @@ export class MyApp {
 
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
-    { title: '密碼鎖', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
+    { title: '', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },  // 使用者
+    { title: '', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },     // 密碼鎖
   ];
 
   otherPages: PageInterface[] = [
-    { title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
-    { title: '關於', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
+    { title: '', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },   // 建議
+    { title: '', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }      // 關於
   ];
 
   accountPages: PageInterface[] = [
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  localeUpdatedUserConfigPage: TargetOnLocaleChange = {
-    mapping: 'PAGE.SETTING.USER',
-    update: (value: string) => {
-      this.settingPages[0].title = value;
-    }
-  };
-
-  localeUpdatedPinConfigPage: TargetOnLocaleChange = {
-    mapping: 'PAGE.SETTING.LOCK',
-    update: (value: string) => {
-      this.settingPages[1].title = value;
-    }
-  };
-
-  localeUpdatedSuggestPage: TargetOnLocaleChange = {
-    mapping: 'PAGE.OTHER.SUGGESTION',
-    update: (value: string) => {
-      this.otherPages[0].title = value;
-    }
-  };
-
-  localeUpdatedAboutPage: TargetOnLocaleChange = {
-    mapping: 'PAGE.OTHER.ABOUT',
-    update: (value: string) => {
-      this.otherPages[1].title = value;
-    }
-  };
-
-  localeUpdatedLandingPage: TargetOnLocaleChange = {
-    mapping: 'PAGE.ACCOUNT.LOGOUT',
-    update: (value: string) => {
-      this.accountPages[0].title = value;
-    }
-  };
-
   constructor(private platform: Platform, private af: AngularFire,
-    private authServ: AuthService, private configServ: ConfigService, 
+    private authServ: AuthService, private configServ: ConfigService,
     private localeServ:LocaleService) {
 
-      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserConfigPage);
-      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedPinConfigPage);
-      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedSuggestPage);
-      this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedAboutPage);
-      this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT', (value:string) => { this.accountPages[0].title = value; });
+      this.localeServ.subscribe('PAGE.SETTING.USER',    (value:string) => {this.settingPages[0].title   = value; });
+      this.localeServ.subscribe('PAGE.SETTING.LOCK',    (value:string) => {this.settingPages[1].title   = value; });
+
+      this.localeServ.subscribe('PAGE.OTHER.SUGGESTION', (value:string) => {this.otherPages[0].title   = value; });
+      this.localeServ.subscribe('PAGE.OTHER.ABOUT',      (value:string) => {this.otherPages[1].title   = value; });
+
+      this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT',   (value:string) => {this.accountPages[0].title = value; });
 
     // Listen for authentication
     af.auth.subscribe((user) => {

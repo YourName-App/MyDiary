@@ -12,13 +12,15 @@ import { LoadingController, AlertController, ViewController } from 'ionic-angula
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { EmailValidator } from '../../validators/email';
+import { LocaleService } from '../../providers/locale-service';
 var SignupPage = (function () {
-    function SignupPage(authServ, formBuilder, alertCtrl, loadingCtrl, viewCtrl) {
+    function SignupPage(authServ, formBuilder, alertCtrl, loadingCtrl, viewCtrl, localeServ) {
         this.authServ = authServ;
         this.formBuilder = formBuilder;
         this.alertCtrl = alertCtrl;
         this.loadingCtrl = loadingCtrl;
         this.viewCtrl = viewCtrl;
+        this.localeServ = localeServ;
         this.emailChanged = false;
         this.passwordChanged = false;
         this.submitAttempt = false;
@@ -45,13 +47,16 @@ var SignupPage = (function () {
                 _this.loader.dismiss();
             }, function (error) {
                 _this.loader.dismiss().then(function () {
-                    var alert = _this.alertCtrl.create({
-                        message: '註冊失敗，請稍後再試。',
+                    var options = {
+                        message: '',
                         buttons: [{
-                                text: '確認',
+                                text: '',
                                 role: 'cancel'
                             }]
-                    });
+                    };
+                    _this.localeServ.localize('SIGNUP_PAGE.ALERT.MSG', function (value) { options.message = value; });
+                    _this.localeServ.localize('SIGNUP_PAGE.ALERT.CONFIRM', function (value) { options.buttons[0].text = value; });
+                    var alert = _this.alertCtrl.create(options);
                     alert.present();
                 });
             });
@@ -68,7 +73,8 @@ SignupPage = __decorate([
     }),
     __metadata("design:paramtypes", [AuthService, FormBuilder,
         AlertController, LoadingController,
-        ViewController])
+        ViewController,
+        LocaleService])
 ], SignupPage);
 export { SignupPage };
 //# sourceMappingURL=signup.js.map

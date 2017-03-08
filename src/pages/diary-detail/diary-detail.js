@@ -12,8 +12,9 @@ import { NavParams, ViewController, AlertController, ModalController } from 'ion
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 var DiaryDetailPage = (function () {
-    function DiaryDetailPage(navParams, viewCtrl, alertCtrl, modalCtrl, diaryServ, configServ, element) {
+    function DiaryDetailPage(navParams, viewCtrl, alertCtrl, modalCtrl, diaryServ, configServ, element, localeServ) {
         var _this = this;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
@@ -22,6 +23,7 @@ var DiaryDetailPage = (function () {
         this.diaryServ = diaryServ;
         this.configServ = configServ;
         this.element = element;
+        this.localeServ = localeServ;
         this.diaryServ.getDiary(this.navParams.get('diaryId')).subscribe(function (diarySnap) {
             _this.diary = diarySnap;
         });
@@ -48,26 +50,25 @@ var DiaryDetailPage = (function () {
     };
     DiaryDetailPage.prototype.deleteDiary = function (diaryId) {
         var _this = this;
-        var confirm = this.alertCtrl.create({
-            title: '刪除日記',
-            message: '確認刪除？',
+        var options = {
+            title: '',
+            message: '',
             buttons: [{
-                    text: '確認',
+                    text: '',
                     handler: function () {
                         _this.diaryServ.deleteDiary(diaryId);
                         _this.dismiss();
                     }
                 }, {
-                    text: '取消',
+                    text: '',
                     role: 'cancel'
                 }]
-        });
-        
-        this.localeServ.localize('CONTACT_LIST.DELETE.TITLE',   (value:string) => { options.title = value; });
-        this.localeServ.localize('CONTACT_LIST.DELETE.MESSAGE', (value:string) => { options.message = value; });
-        this.localeServ.localize('CONTACT_LIST.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
-        this.localeServ.localize('CONTACT_LIST.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
-
+        };
+        this.localeServ.localize('DIARY_DETAIL.DELETE.TITLE', function (value) { options.title = value; });
+        this.localeServ.localize('DIARY_DETAIL.DELETE.MESSAGE', function (value) { options.message = value; });
+        this.localeServ.localize('DIARY_DETAIL.DELETE.CONFIRM', function (value) { options.buttons[0].text = value; });
+        this.localeServ.localize('DIARY_DETAIL.DELETE.CANCEL', function (value) { options.buttons[1].text = value; });
+        var confirm = this.alertCtrl.create(options);
         confirm.present();
     };
     return DiaryDetailPage;
@@ -80,7 +81,8 @@ DiaryDetailPage = __decorate([
     __metadata("design:paramtypes", [NavParams, ViewController,
         AlertController, ModalController,
         DiaryService, ConfigService,
-        ElementRef])
+        ElementRef,
+        LocaleService])
 ], DiaryDetailPage);
 export { DiaryDetailPage };
 //# sourceMappingURL=diary-detail.js.map

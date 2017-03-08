@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-title>關於</ion-title>
+    <ion-title>{{ 'ABOUT.TITLE' | translate }}</ion-title>
     <ion-buttons end>
     </ion-buttons>
   </ion-navbar>
@@ -10,15 +10,13 @@
   <ion-card>
     <div class="img-container">
       <img class="about-img" src="assets/img/ionic02.png"/>
-    </div>  
+    </div>
     <ion-card-content>
       <ion-card-title>
-        感謝你（妳）的下載與使用 💕
+        {{ 'ABOUT.THANKS' | translate }}
       </ion-card-title>
       <p>
-        這個程式的創作靈感源自於日本動畫電影「你的名字」（君の名は）。
-        除了盡力重現原著中的設計風格與功能外，更希望能夠符合使用者的需求，
-        任何的想法與建議，都歡迎透過功能選單中的「建議」功能與作者討論。
+        {{ 'ABOUT.GREETING_CARD' | translate }}
       </p>
     </ion-card-content>
   </ion-card>

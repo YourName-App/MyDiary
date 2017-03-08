@@ -3,6 +3,7 @@ import { AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from 'ionic-native';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-suggest',
@@ -16,7 +17,8 @@ export class SuggestPage {
   submitAttempt: boolean = false;
 
   constructor(private alertCtrl: AlertController, private formBuilder: FormBuilder,
-    private configServ: ConfigService) {
+    private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]
@@ -39,17 +41,23 @@ export class SuggestPage {
     } else {
       SocialSharing.canShareViaEmail()
         .then(() => {
-          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, 'MyDiary 使用者建議', ['yourname.ionic.app@gmail.com']);
+          let subject = '';
+          this.localeServ.localize('SUGGEST_PAGE.SEND.SUBJECT', (value:string) => {subject = value;});
+          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, subject, ['yourname.ionic.app@gmail.com']);
         })
         .catch(() => {
-          const alert = this.alertCtrl.create({
-            message: '你的手機不支援此功能',
+          let options = {
+            message: '',
             buttons: [{
-              text: '確認',
+              text: '',
               role: 'cancel'
             }]
-          });
+          };
 
+          this.localeServ.localize('SUGGEST_PAGE.ALERT.MSG',     (value:string ) => {options.message = value;});
+          this.localeServ.localize('SUGGEST_PAGE.ALERT.CONFIRM', (value:string) => {options.buttons[0].text = value;});
+
+          const alert = this.alertCtrl.create(options);
           alert.present();
         });
     }

@@ -12,11 +12,13 @@ import { AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from 'ionic-native';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 var SuggestPage = (function () {
-    function SuggestPage(alertCtrl, formBuilder, configServ) {
+    function SuggestPage(alertCtrl, formBuilder, configServ, localeServ) {
         this.alertCtrl = alertCtrl;
         this.formBuilder = formBuilder;
         this.configServ = configServ;
+        this.localeServ = localeServ;
         this.suggestChanged = false;
         this.submitAttempt = false;
         this.suggestForm = formBuilder.group({
@@ -38,16 +40,21 @@ var SuggestPage = (function () {
         else {
             SocialSharing.canShareViaEmail()
                 .then(function () {
-                SocialSharing.shareViaEmail(_this.suggestForm.value.suggest, 'MyDiary 使用者建議', ['yourname.ionic.app@gmail.com']);
+                var subject = '';
+                _this.localeServ.localize('SUGGEST_PAGE.SEND.SUBJECT', function (value) { subject = value; });
+                SocialSharing.shareViaEmail(_this.suggestForm.value.suggest, subject, ['yourname.ionic.app@gmail.com']);
             })
                 .catch(function () {
-                var alert = _this.alertCtrl.create({
-                    message: '你的手機不支援此功能',
+                var options = {
+                    message: '',
                     buttons: [{
-                            text: '確認',
+                            text: '',
                             role: 'cancel'
                         }]
-                });
+                };
+                _this.localeServ.localize('SUGGEST_PAGE.ALERT.MSG', function (value) { options.message = value; });
+                _this.localeServ.localize('SUGGEST_PAGE.ALERT.CONFIRM', function (value) { options.buttons[0].text = value; });
+                var alert = _this.alertCtrl.create(options);
                 alert.present();
             });
         }
@@ -60,7 +67,8 @@ SuggestPage = __decorate([
         templateUrl: 'suggest.html'
     }),
     __metadata("design:paramtypes", [AlertController, FormBuilder,
-        ConfigService])
+        ConfigService,
+        LocaleService])
 ], SuggestPage);
 export { SuggestPage };
 //# sourceMappingURL=suggest.js.map

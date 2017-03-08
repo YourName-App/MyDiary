@@ -1,35 +1,35 @@
 <ion-header>
   <ion-navbar color="diary">
-    <ion-title>登入</ion-title>
+    <ion-title>{{ 'LOGIN.TITLE' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
     <ion-item>
-      <ion-label stacked>電子郵件</ion-label>
-      <ion-input #email formControlName="email" type="email" placeholder="你的電子郵件"
+      <ion-label stacked>{{ 'LOGIN.E_MAIL' | translate }}</ion-label>
+      <ion-input #email formControlName="email" type="email" placeholder="{{ 'LOGIN.YOUR_E_MAIL' | translate }}"
         (change)="elementChanged(email)" [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && (emailChanged || submitAttempt)">
-      <p>請輸入正確的電子郵件</p>
+      <p>{{ 'LOGIN.PLS_ENTER_VALID_E_MAIL' | translate }}</p>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>密碼</ion-label>
-      <ion-input #password formControlName="password" type="password" placeholder="你的密碼"
+      <ion-label stacked>{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
+      <ion-input #password formControlName="password" type="password" placeholder="{{ 'LOGIN.YOUR_PASSWD' | translate }}"
         (change)="elementChanged(password)" [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)">
-      <p>密碼長度至少為 6 個字元</p>
+      <p>{{ 'LOGIN.AT_LEAST_6_CHARS' | translate }}</p>
     </ion-item>
 
-    <button color="diary" ion-button block type="submit">確認送出</button>
+    <button color="diary" ion-button block type="submit">{{ 'LOGIN.SUBMIT' | translate }}</button>
   </form>
 
   <button color="diary" ion-button block clear (click)="goToResetPassword()">
-    糟糕 ... 忘記密碼了 😓
+    {{ 'LOGIN.FORGOT_PASSWD' | translate }}
   </button>
 </ion-content>  

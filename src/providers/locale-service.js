@@ -18,39 +18,33 @@ export { TargetOnLocaleChange };
 var LocaleService = (function () {
     function LocaleService(translate) {
         this.translate = translate;
-        // update the locale of the rest of component subscribed
+        //  update the locale of the rest of component subscribed
         this.listToLocaleUpdate = [];
-        translate.setDefaultLang('ch');
+        //	currentLang:string = this.translate.currentLang;
+        this.onCalendarLocaleChange = function () { };
+        translate.setDefaultLang('en');
         this.updatePageLocale();
+        this.onCalendarLocaleChange();
     }
-    LocaleService.prototype.subscribeLocaleUpdateTarget = function (target) {
-        this.listToLocaleUpdate.push(target);
-        this.localize(target.component, target.mapping, target.update);
-    };
     LocaleService.prototype.subscribeTargetOnLocaleChange = function (target) {
         this.listToLocaleUpdate.push(target);
-        this.localize(target.component, target.mapping, target.update);
+        this.localize(target.mapping, target.update);
     };
-    LocaleService.prototype.subscribe = function (component, mapping, update) {
+    LocaleService.prototype.subscribe = function (mapping, update) {
         var target = new TargetOnLocaleChange();
-        target.component = component;
         target.mapping = mapping;
         target.update = update;
         this.listToLocaleUpdate.push(target);
-        this.localize(component, mapping, update);
-    };
-    LocaleService.prototype.localizeOnChange = function (mapping, update) {
-        this.translate.get(mapping).subscribe(function (value) {
-            update(value);
-        });
+        this.localize(mapping, update);
     };
     LocaleService.prototype.use = function (locale) {
         this.translate.use(locale);
+        this.onCalendarLocaleChange();
     };
     LocaleService.prototype.updatePageLocale = function () {
         var _loop_1 = function (target) {
             this_1.translate.get(target.mapping).subscribe(function (value) {
-                target.update(target.component, value);
+                target.update(value);
             });
         };
         var this_1 = this;
@@ -59,10 +53,30 @@ var LocaleService = (function () {
             _loop_1(target);
         }
     };
-    LocaleService.prototype.localize = function (target, mapping, update) {
+    LocaleService.prototype.localize = function (mapping, update) {
         this.translate.get(mapping).subscribe(function (value) {
-            update(target, value);
+            update(value);
         });
+    };
+    LocaleService.prototype.subscribeCalendar = function (onLocaleChange) {
+        var _this = this;
+        this.onCalendarLocaleChange = function () {
+            onLocaleChange(_this.translate.currentLang);
+        };
+    };
+    LocaleService.prototype.localizeCalendar = function (onLocaleChange) {
+        onLocaleChange(this.translate.currentLang);
+    };
+    LocaleService.prototype.getCalendarLang = function () {
+        if (this.getCurrentLang() == 'en') {
+            this.init('en');
+        }
+        else if (this.getCurrentLang() == 'ch') {
+            this.init('zh-tw');
+        }
+    };
+    LocaleService.prototype.getCurrentLang = function () {
+        return this.translate.currentLang;
     };
     return LocaleService;
 }());

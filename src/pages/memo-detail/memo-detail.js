@@ -80,10 +80,10 @@ var MemoDetailPage = (function () {
     MemoDetailPage.prototype.deleteAllItems = function () {
         var _this = this;
         var options = {
-            title: '刪除所有備忘錄項目',
-            message: '確認刪除？',
+            title: '',
+            message: '',
             buttons: [{
-                    text: '確認',
+                    text: '',
                     handler: function () {
                         var deleteEvent = _this.itemList.subscribe(function (itemSnaps) {
                             itemSnaps.forEach(function (item) {
@@ -93,14 +93,14 @@ var MemoDetailPage = (function () {
                         deleteEvent.unsubscribe();
                     }
                 }, {
-                    text: '取消',
+                    text: '',
                     role: 'cancel'
                 }]
         };
-        options.title = '';
-        options.message = '';
-        options.buttons[0].text = '';
-        options.buttons[1].text = '';
+        this.localeServ.localize('MEMO_DETAIL.DELETE.TITLE', function (value) { options.title = value; });
+        this.localeServ.localize('MEMO_DETAIL.DELETE.MESSAGE', function (value) { options.message = value; });
+        this.localeServ.localize('MEMO_DETAIL.DELETE.CONFIRM', function (value) { options.buttons[0].text = value; });
+        this.localeServ.localize('MEMO_DETAIL.DELETE.CANCEL', function (value) { options.buttons[1].text = value; });
         var confirm = this.alertCtrl.create(options);
         confirm.present();
     };

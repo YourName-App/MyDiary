@@ -11,14 +11,15 @@ import { Component, Input } from '@angular/core';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
+import { LocaleService } from '../../providers/locale-service';
 var CalendarPage = (function () {
-    function CalendarPage(configServ) {
+    function CalendarPage(configServ, localeServ) {
         this.configServ = configServ;
-        moment.locale('zh-tw');
-        this.timestamp = moment().format();
-        this.month = moment(this.timestamp).format('MMMM');
-        this.day = moment(this.timestamp).format('dddd');
-        this.date = moment(this.timestamp).format('D');
+        this.localeServ = localeServ;
+        //moment.locale('zh-tw');
+        this.init('en');
+        localeServ.subscribeCalendar(this.onLocaleChange);
+        this.onLocaleChange(localeServ.currentLang);
     }
     Object.defineProperty(CalendarPage.prototype, "theme", {
         set: function (theme) {
@@ -27,11 +28,26 @@ var CalendarPage = (function () {
         enumerable: true,
         configurable: true
     });
+    CalendarPage.prototype.init = function (lang) {
+        moment.locale(lang);
+        this.timestamp = moment().format();
+        this.month = moment(this.timestamp).format('MMMM');
+        this.day = moment(this.timestamp).format('dddd');
+        this.date = moment(this.timestamp).format('D');
+    };
     CalendarPage.prototype.ionViewCanEnter = function () {
         return this.configServ.unlockScreen();
     };
     CalendarPage.prototype.ionViewWillEnter = function () {
         this.theme = this.configServ.getUserGender();
+    };
+    CalendarPage.prototype.onLocaleChange = function (lang) {
+        if (lang == 'en') {
+            this.init('en');
+        }
+        else if (lang == 'ch') {
+            this.init('zh-tw');
+        }
     };
     return CalendarPage;
 }());
@@ -45,7 +61,7 @@ CalendarPage = __decorate([
         selector: 'page-calendar',
         templateUrl: 'calendar.html'
     }),
-    __metadata("design:paramtypes", [ConfigService])
+    __metadata("design:paramtypes", [ConfigService, LocaleService])
 ], CalendarPage);
 export { CalendarPage };
 //# sourceMappingURL=calendar.js.map

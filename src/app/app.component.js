@@ -34,57 +34,21 @@ var MyApp = (function () {
         this.localeServ = localeServ;
         // List of pages that can be navigated to from the side menu
         this.settingPages = [
-            { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
-            { title: '密碼鎖', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
+            { title: '', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
+            { title: '', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
         ];
         this.otherPages = [
-            { title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
-            { title: '關於', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
+            { title: '', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
+            { title: '', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' } // 關於
         ];
         this.accountPages = [
             { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
         ];
-        this.localeUpdatedUserConfigPage = {
-            component: this.settingPages[0],
-            mapping: 'PAGE.SETTING.USER',
-            update: function (component, value) {
-                component.title = value;
-            }
-        };
-        this.localeUpdatedPinConfigPage = {
-            component: this.settingPages[1],
-            mapping: 'PAGE.SETTING.LOCK',
-            update: function (component, value) {
-                component.title = value;
-            }
-        };
-        this.localeUpdatedSuggestPage = {
-            component: this.otherPages[0],
-            mapping: 'PAGE.OTHER.SUGGESTION',
-            update: function (component, value) {
-                component.title = value;
-            }
-        };
-        this.localeUpdatedAboutPage = {
-            component: this.otherPages[1],
-            mapping: 'PAGE.OTHER.ABOUT',
-            update: function (component, value) {
-                component.title = value;
-            }
-        };
-        this.localeUpdatedLandingPage = {
-            component: this.accountPages[0],
-            mapping: 'PAGE.ACCOUNT.LOGOUT',
-            update: function (component, value) {
-                component.title = value;
-            }
-        };
-        this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedUserConfigPage);
-        this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedPinConfigPage);
-        this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedSuggestPage);
-        this.localeServ.subscribeLocaleUpdateTarget(this.localeUpdatedAboutPage);
-        //this.localeServ.subscribeTargetOnLocaleChange({ component: this.accountPages[0], mapping: 'PAGE.ACCOUNT.LOGOUT', update:(value:string)=>{this.accountPages[0] = value}});
-        this.localeServ.localizeOnChange('PAGE.ACCOUNT.LOGOUT', function (value) { _this.accountPages[0].title = value; });
+        this.localeServ.subscribe('PAGE.SETTING.USER', function (value) { _this.settingPages[0].title = value; });
+        this.localeServ.subscribe('PAGE.SETTING.LOCK', function (value) { _this.settingPages[1].title = value; });
+        this.localeServ.subscribe('PAGE.OTHER.SUGGESTION', function (value) { _this.otherPages[0].title = value; });
+        this.localeServ.subscribe('PAGE.OTHER.ABOUT', function (value) { _this.otherPages[1].title = value; });
+        this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT', function (value) { _this.accountPages[0].title = value; });
         // Listen for authentication
         af.auth.subscribe(function (user) {
             if (user) {

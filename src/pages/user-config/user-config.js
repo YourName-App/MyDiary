@@ -15,6 +15,7 @@ import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
 var UserConfigPage = (function () {
     function UserConfigPage(navCtrl, appCtrl, storage, configServ, localeServ) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.appCtrl = appCtrl;
         this.storage = storage;
@@ -24,7 +25,7 @@ var UserConfigPage = (function () {
         if (this.userName === null || this.userName.trim().length === 0) {
         }
         else {
-            this.localeServ.subscribe(this, 'YOUR_NAME', function (component, value) { component.userName = value; });
+            this.localeServ.subscribe('YOUR_NAME', function (value) { _this.userName = value; });
         }
         this.userGender = this.configServ.getUserGender();
     }

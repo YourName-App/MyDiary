@@ -14,8 +14,9 @@ import { ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
 import { CallNumber } from 'ionic-native';
 import { SocialSharing } from 'ionic-native';
+import { LocaleService } from '../../providers/locale-service';
 var ContactDetailPage = (function () {
-    function ContactDetailPage(navCtrl, navParams, viewCtrl, alertCtrl, contactServ, configServ) {
+    function ContactDetailPage(navCtrl, navParams, viewCtrl, alertCtrl, contactServ, configServ, localeServ) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -23,6 +24,7 @@ var ContactDetailPage = (function () {
         this.alertCtrl = alertCtrl;
         this.contactServ = contactServ;
         this.configServ = configServ;
+        this.localeServ = localeServ;
         this.phone = '';
         this.smsMsg = '';
         this.contactServ.getContact(this.navParams.get('contactId')).subscribe(function (contactSnap) {
@@ -45,20 +47,25 @@ var ContactDetailPage = (function () {
     };
     ContactDetailPage.prototype.deleteContact = function (contactId) {
         var _this = this;
-        var confirm = this.alertCtrl.create({
-            title: '刪除聯絡人',
-            message: '確認刪除？',
+        var options = {
+            title: '',
+            message: '',
             buttons: [{
-                    text: '確認',
+                    text: '',
                     handler: function () {
                         _this.contactServ.deleteContact(contactId);
                         _this.dismiss();
                     }
                 }, {
-                    text: '取消',
+                    text: '',
                     role: 'cancel'
                 }]
-        });
+        };
+        this.localeServ.localize('CONTACT_DETAIL.DELETE.TITLE', function (value) { options.title = value; });
+        this.localeServ.localize('CONTACT_DETAIL.DELETE.MESSAGE', function (value) { options.message = value; });
+        this.localeServ.localize('CONTACT_DETAIL.DELETE.CONFIRM', function (value) { options.buttons[0].text = value; });
+        this.localeServ.localize('CONTACT_DETAIL.DELETE.CANCEL', function (value) { options.buttons[1].text = value; });
+        var confirm = this.alertCtrl.create(options);
         confirm.present();
     };
     ContactDetailPage.prototype.sendSms = function (phone) {
@@ -76,7 +83,8 @@ ContactDetailPage = __decorate([
     }),
     __metadata("design:paramtypes", [NavController, NavParams,
         ViewController, AlertController,
-        ContactService, ConfigService])
+        ContactService, ConfigService,
+        LocaleService])
 ], ContactDetailPage);
 export { ContactDetailPage };
 //# sourceMappingURL=contact-detail.js.map

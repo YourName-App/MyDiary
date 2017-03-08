@@ -42,13 +42,13 @@ var ContactEditPage = (function () {
         });
         if (this.contactId) {
             this.mode = 'update';
-            this.localeServ.subscribe(this, 'CONTACT_EDIT.TITLE_UPDATE', function (component, value) { _this.modeDesc = value; });
+            this.localeServ.subscribe('CONTACT_EDIT.TITLE_UPDATE', function (value) { _this.modeDesc = value; });
             this.contactForm.controls['name'].patchValue(this.inputName);
             this.contactForm.controls['phone'].patchValue(this.inputPhone);
         }
         else {
             this.mode = 'create';
-            this.localeServ.subscribe(this, 'CONTACT_EDIT.TITLE_CREATE', function (component, value) { _this.modeDesc = value; });
+            this.localeServ.subscribe('CONTACT_EDIT.TITLE_CREATE', function (value) { _this.modeDesc = value; });
         }
     }
     ContactEditPage.prototype.ionViewCanEnter = function () {

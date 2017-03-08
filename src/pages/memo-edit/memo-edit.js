@@ -35,14 +35,12 @@ var MemoEditPage = (function () {
         });
         if (this.navParams.get('memoId')) {
             this.mode = 'update';
-            // this.modeDesc = '編輯備忘錄';
-            this.localeServ.subscribe(this, 'MEMO_EDIT.TITLE_UPDATE', function (component, value) { _this.modeDesc = value; });
+            this.localeServ.subscribe('MEMO_EDIT.TITLE_UPDATE', function (value) { _this.modeDesc = value; });
             this.memoForm.controls['title'].patchValue(this.inputTitle);
         }
         else {
             this.mode = 'create';
-            // this.modeDesc = '新增備忘錄';
-            this.localeServ.subscribe(this, 'MEMO_EDIT.TITLE_CREATE', function (component, value) { _this.modeDesc = value; });
+            this.localeServ.subscribe('MEMO_EDIT.TITLE_CREATE', function (value) { _this.modeDesc = value; });
         }
     }
     MemoEditPage.prototype.ionViewCanEnter = function () {

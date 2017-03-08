@@ -13,12 +13,14 @@ import { MemoEditPage } from '../memo-edit/memo-edit';
 import { MemoDetailPage } from '../memo-detail/memo-detail';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 var MemoListPage = (function () {
-    function MemoListPage(navCtrl, alertCtrl, memoServ, configServ) {
+    function MemoListPage(navCtrl, alertCtrl, memoServ, configServ, localeServ) {
         this.navCtrl = navCtrl;
         this.alertCtrl = alertCtrl;
         this.memoServ = memoServ;
         this.configServ = configServ;
+        this.localeServ = localeServ;
         this.initializeMemo();
     }
     MemoListPage.prototype.ionViewCanEnter = function () {
@@ -42,19 +44,24 @@ var MemoListPage = (function () {
     };
     MemoListPage.prototype.deleteMemo = function (memoId, slidingItem) {
         var _this = this;
-        var confirm = this.alertCtrl.create({
-            title: '刪除備忘錄',
-            message: '確認刪除？',
+        var options = {
+            title: '',
+            message: '',
             buttons: [{
-                    text: '確認',
+                    text: '',
                     handler: function () {
                         _this.memoServ.deleteMemo(memoId);
                     }
                 }, {
-                    text: '取消',
+                    text: '',
                     role: 'cancel'
                 }]
-        });
+        };
+        this.localeServ.localize('MEMO_LIST.DELETE.TITLE', function (value) { options.title = value; });
+        this.localeServ.localize('MEMO_LIST.DELETE.MESSAGE', function (value) { options.message = value; });
+        this.localeServ.localize('MEMO_LIST.DELETE.CONFIRM', function (value) { options.buttons[0].text = value; });
+        this.localeServ.localize('MEMO_LIST.DELETE.CANCEL', function (value) { options.buttons[1].text = value; });
+        var confirm = this.alertCtrl.create(options);
         confirm.present();
         slidingItem.close();
     };
@@ -76,7 +83,8 @@ MemoListPage = __decorate([
         templateUrl: 'memo-list.html'
     }),
     __metadata("design:paramtypes", [NavController, AlertController,
-        MemoService, ConfigService])
+        MemoService, ConfigService,
+        LocaleService])
 ], MemoListPage);
 export { MemoListPage };
 //# sourceMappingURL=memo-list.js.map

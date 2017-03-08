@@ -10,6 +10,44 @@
 		"CONTACT": "Contacts",
 		"MEMO"   : "Memo"
 	},
+	"LANDING" : {
+		"LOGIN"          : "Login",
+		"SIGNUP"         : "Sign Up",
+		"ANONYMOUS_LOGIN": "I'd rather not tell! I wanna login as annoymous user"
+	},
+	"SUGGEST" : {
+		"TITLE"  : "Suggestion",
+		"LABEL"  : "Suggestion",
+		"CAUTION": "Be aware! You are going to send messages to the author in 3 years later",
+		"PROMPT" : "Your Suggestion",
+		"ERR_MSG": "Please enter your suggestion!",
+		"SUBMIT" : "Send"
+	},
+	"SUGGEST_PAGE" : {
+		"SEND"  : {
+			"SUBJECT": "MyDiary user's suggestion"
+		},
+		"ALERT" : {
+			"MSG"    : "This function isn't supported by your device",
+			"CONFIRM": "Confirm"
+		}
+	},
+	"LOGIN" : {
+		"TITLE"                 : "Login",
+		"E_MAIL"                : "e-mail",
+		"YOUR_E_MAIL"           : "Your e-mail",
+		"PLS_ENTER_VALID_E_MAIL": "Please enter a valid e-mail address",
+		"PASSWORD"              : "Password",
+		"YOUR_PASSWD"           : "Your password",
+		"AT_LEAST_6_CHARS"      : "Password must contain a least 6 characters",
+		"SUBMIT"                : "Submit",
+		"FORGOT_PASSWD"         : "Damn it ... I forgot the password 😓"
+	},
+	"ABOUT" : {
+		"TITLE"        : "About",
+		"THANKS"       : "Thanks for downloading and hope you enjoy !",
+		"GREETING_CARD": "This app is inspired by a Japanese animation film named 'Your Name' (君の名は）。Not only did the auther try his best to implement the layout style and functionality from the original film, but also he improved this app to meet user's needs as much as he can.  Any idea and suggestion is welcome to discuss with author by the function 'Suggest' in <Menu> list."
+	},
 	"PAGE" : {
 		"OTHER" : {
 			"SUGGESTION": "Comment",
@@ -26,7 +64,8 @@
 	"CONFIG" : {
 		"TITLE" : "Configuration",
 		"NAME" : {
-			"LABEL" : "Name："
+			"LABEL" : "Name：",
+			"PROMPT": "Your Name"
 		},
 		"GENDER" : {
 			"LABEL" : "Gender：",
@@ -88,6 +127,69 @@
 			"CONFIRM": "Confirm",
 			"CANCEL" : "Cancel"
 		}
+	},
+	"DIARY_EDIT" : {
+		"SUBJECT": {
+			"LABEL"  : "Subject",
+			"WARNING": "Please enter diary subject"
+		},
+		"CONTENT" : {
+			"LABEL"  : "Diary Content(double click on date item to edit)",
+			"WARNING": "Please enter diary content"
+		}
+	},
+	"DIARY_EDIT_PAGE" : {
+		"OPEN_DATE_PICKER" : {
+			"DONE"  : "Done",
+			"CANCEL": "Cancel"
+		},
+		"MODE_DESC" : {
+			"UPDATE":"Edit Diary",
+			"CREATE":"Create Diary"
+		}
+	},
+	"SIGN_UP" : {
+		"TITLE" : "",
+		"E_MAIL": {
+			"LABEL"  : "e-mail",
+			"PROMPT" : "Please enter a valid e-mail address",
+			"WARNING": "Please enter a valid e-mail address"
+		},
+		"PASSWORD" : {
+			"LABEL"  : "Password",
+			"PROMPT" : "Password must contain a least 6 characters",
+			"WARNING": "Password must contain a least 6 characters"
+		},
+		"SUBMIT" : "Submit"
+	},
+	"SIGNUP_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "The e-mail wasn't signed up",
+			"CONFIRM": "Confirm"
+		}
+	},
+	"RESET_PASSWORD" : {
+		"TITLE"  : "Reset Password",
+		"E_MAIL" : "e-mail",
+		"PROMPT" : "Your e-mail",
+		"WARNING": "Please enter a valid e-mail",
+		"CONFIRM": "Confirm"
+	},
+	"RESET_PASSWORD_PAGE" : {
+		"RESET" : {
+			"MSG"    : "Password reset link has be sent to your email",
+			"CONFIRM": "Confirm"
+		},
+		"ALERT" : {
+			"MSG"    : "The e-mail wasn't signed up",
+			"CONFIRM": "Confirm"
+		}
+	},
+	"TABS" : {
+		"HOME"    :"Home",
+		"DIARY"   :"Diary",
+		"CONTACTS":"Contacts",
+		"MEMO"    :"Memo"
 	},
 	"CONTACT_LIST" : {
 		"TITLE" : "Contacts",
@@ -162,5 +264,14 @@
 			"CONFIRM": "Confirm",
 			"CANCEL" : "Cancel"
 		}
+	},
+	"CONFIG_SERV" : {
+		"MESSAGE"          : "Please enter password",
+		"TITLE"            : "Unlock",
+		"BTN_CONFIRM"      : "Confirm",
+		"BTN_CANCEL"       : "Cancel",
+		"ALERT_MSG_SUCCESS": "Successfully unlocked",
+		"ALERT_MSG_ERROR"  : "Wrong password",
+		"BTN_ALERT"        : "Confirm"
 	}
 }

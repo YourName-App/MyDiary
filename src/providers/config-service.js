@@ -30,10 +30,7 @@ var ConfigService = (function () {
             if (val === null || val.trim().length === 0) {
                 // val = '你的名字是？';
                 // apply prompt message by locale
-                translate.get('YOUR_NAME').subscribe(function (value) {
-                    val = value;
-                });
-                localServ.localize(val, 'YOUR_NAME', function (component, value) { val = value; });
+                localServ.localize('YOUR_NAME', function (value) { val = value; });
             }
             _this.userName = val;
         }, function (error) {
@@ -103,17 +100,29 @@ var ConfigService = (function () {
     ConfigService.prototype.unlockScreen = function () {
         var _this = this;
         var canEnter = false;
+        var message; // 請輸入密碼
+        var title; // 解除密碼鎖
+        var btnConfirm; // 確認
+        var btnCancel; // 取消
+        var alertMessageSuccess; // 成功解除密碼鎖
+        var alertMessageError; // 密碼錯誤
+        this.localServ.localize('CONFIG_SERV.MESSAGE', function (value) { message = value; });
+        this.localServ.localize('CONFIG_SERV.TITLE', function (value) { title = value; });
+        this.localServ.localize('CONFIG_SERV.BTN_CONFIRM', function (value) { btnConfirm = value; });
+        this.localServ.localize('CONFIG_SERV.BTN_CANCEL', function (value) { btnCancel = value; });
+        this.localServ.localize('CONFIG_SERV.ALERT_MSG_SUCCESS', function (value) { alertMessageSuccess = value; });
+        this.localServ.localize('CONFIG_SERV.ALERT_MSG_ERROR', function (value) { alertMessageError = value; });
         if (this.getPauseEmitted() === 'Y' && this.getUserPin().length >= 4) {
-            PinDialog.prompt('請輸入密碼', '解除密碼鎖', ['確認', '取消'])
+            PinDialog.prompt(message, title, [btnConfirm, btnCancel])
                 .then(function (result) {
                 if (result.buttonIndex === 1) {
                     if (result.input1 === _this.getUserPin()) {
-                        _this.alertMessage('成功解除密碼鎖');
+                        _this.alertMessage(alertMessageSuccess);
                         _this.setPauseEmitted('N');
                         canEnter = true;
                     }
                     else {
-                        _this.alertMessage('密碼錯誤');
+                        _this.alertMessage(alertMessageError);
                         canEnter = false;
                     }
                 }
@@ -128,13 +137,15 @@ var ConfigService = (function () {
         return canEnter;
     };
     ConfigService.prototype.alertMessage = function (msg) {
-        var alert = this.alertCtrl.create({
+        var options = {
             message: msg,
             buttons: [{
-                    text: '確認',
+                    text: '',
                     role: 'cancel'
                 }]
-        });
+        };
+        this.localServ.localize('CONFIG_SERV.BTN_ALERT', function (value) { options.buttons[0].text = value; });
+        var alert = this.alertCtrl.create(options);
         alert.present();
     };
     return ConfigService;
