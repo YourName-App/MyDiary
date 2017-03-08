@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MemoService } from '../../providers/memo-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-memo-item-edit',
@@ -21,7 +22,8 @@ export class MemoItemEditPage {
 
   constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private alertCtrl: AlertController, private memoServ: MemoService,
-    private configServ: ConfigService) {
+    private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.memoServ.getMemo(this.navParams.get('memoId')).subscribe((memoSnap) => {
       this.memo = memoSnap;
@@ -58,20 +60,26 @@ export class MemoItemEditPage {
   }
 
   deleteItem(itemId: string): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除備忘錄項目',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           this.memoServ.deleteItem(this.memoId, itemId);
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    };
+
+    this.localeServ.localize('MEMO_ITEM_EDIT.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('MEMO_ITEM_EDIT.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('MEMO_ITEM_EDIT.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('MEMO_ITEM_EDIT.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
+    let confirm = this.alertCtrl.create(options);
     confirm.present();
   }
 }

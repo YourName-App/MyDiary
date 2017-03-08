@@ -1,23 +1,33 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-title>使用者</ion-title>
+    <ion-title>{{ 'CONFIG.TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item>
-    <ion-label>你的名字：</ion-label>
-    <ion-input text-right type="text" placeholder="你的名字" [(ngModel)]="userName">
+    <ion-label>{{ 'CONFIG.NAME.LABEL' | translate }}</ion-label>
+    <ion-input text-right type="text" placeholder="{{ 'CONFIG.NAME.PROMPT' | translate }}" [(ngModel)]="userName">
     </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>你的性別：</ion-label>
-    <ion-select [(ngModel)]="userGender" okText="確認" cancelText="取消" interface="action-sheet">
-      <ion-option value="male">男</ion-option>
-      <ion-option value="female">女</ion-option>
+    <ion-label>{{ 'CONFIG.GENDER.LABEL' | translate }}</ion-label>
+    <ion-select [(ngModel)]="userGender" okText="{{ 'CONFIG.OK' | translate }}" cancelText="{{ 'CONFIG.CANCEL' | translate }}" interface="action-sheet">
+      <ion-option value="male">{{ "CONFIG.GENDER.MALE" | translate }}</ion-option>
+      <ion-option value="female">{{ "CONFIG.GENDER.FEMALE" | translate }}</ion-option>
     </ion-select>
   </ion-item>
 
-  <button color={{theme}} ion-button block (click)="updateSettings()">確認</button>
+  <ion-item>
+    <ion-label>{{ 'CONFIG.LOCALE.LABEL' | translate }}</ion-label>
+    <ion-select [(ngModel)]="userLocale" okText="{{ 'CONFIG.OK' | translate }}" cancelText="{{ 'CONFIG.CANCEL' | translate }}" interface="action-sheet">
+      <ion-option value="en">{{ 'CONFIG.LOCALE.EN' | translate }}</ion-option>
+      <ion-option value="ch">{{ 'CONFIG.LOCALE.CH' | translate }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button color={{theme}} ion-button block (click)="updateLocale(); updateSetting();">{{ 'CONFIG.CONFIRM' | translate }}</button>
 </ion-content>

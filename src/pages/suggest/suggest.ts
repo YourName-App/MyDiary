@@ -3,6 +3,7 @@ import { ToastController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SocialSharing } from 'ionic-native';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-suggest',
@@ -16,7 +17,8 @@ export class SuggestPage {
   submitAttempt: boolean = false;
 
   constructor(private toastCtrl: ToastController, private formBuilder: FormBuilder,
-    private configServ: ConfigService) {
+    private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]
@@ -26,7 +28,7 @@ export class SuggestPage {
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
-  
+
   elementChanged(input){
     this.suggestChanged = true;
   }
@@ -39,10 +41,14 @@ export class SuggestPage {
     } else {
       SocialSharing.canShareViaEmail()
         .then(() => {
-          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, 'MyDiary 使用者建議', ['yourname.ionic.app@gmail.com']);
+          let subject:string;
+          this.localeServ.localize('SUGGEST_PAGE.SEND.SUBJECT', (value:string) => {subject = value;});
+          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, subject, ['yourname.ionic.app@gmail.com']);
         })
         .catch(() => {
-          this.toastMessage('你的手機不支援此功能');
+          let alert = '';          // 你的手機不支援此功能
+          this.localeServ.localize('SUGGEST_PAGE.ALERT.MSG',     (value:string ) => {alert = value;});
+          this.toastMessage(alert);
         });
     }
   }
@@ -54,7 +60,7 @@ export class SuggestPage {
       position: 'middle',
       dismissOnPageChange: true
     });
-  
+
     toast.present();
   }
 }

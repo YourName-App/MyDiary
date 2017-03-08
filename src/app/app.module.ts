@@ -36,6 +36,7 @@ import { DiaryService } from '../providers/diary-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
 import { ConfigService } from '../providers/config-service';
+import { LocaleService } from '../providers/locale-service';
 
 // Import pipes
 import { ChineseDay } from '../pipes/chinese-day';
@@ -55,6 +56,15 @@ export const firebaseConfig = {
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password
+}
+
+// Import internationlization module
+import { Http } from '@angular/http';
+import {TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-translate/ng2-translate';
+
+// Internationalization factory
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 }
 
 @NgModule({
@@ -89,7 +99,13 @@ const myFirebaseAuthConfig = {
     // Set the whole app in iOS's style
     IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: ''}),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    // Internationalization setup
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -124,7 +140,8 @@ const myFirebaseAuthConfig = {
     DiaryService,
     MemoService,
     ContactService,
-    ConfigService
+    ConfigService,
+    LocaleService
   ]
 })
 export class AppModule {}

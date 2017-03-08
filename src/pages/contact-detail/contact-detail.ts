@@ -5,6 +5,7 @@ import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
 import { CallNumber } from 'ionic-native';
 import { SocialSharing } from 'ionic-native';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-contact-detail',
@@ -20,7 +21,8 @@ export class ContactDetailPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private viewCtrl: ViewController, private alertCtrl: AlertController,
-    private contactServ: ContactService, private configServ: ConfigService) {
+    private contactServ: ContactService, private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.contactServ.getContact(this.navParams.get('contactId')).subscribe((contactSnap) => {
       this.contact = contactSnap;
@@ -47,21 +49,27 @@ export class ContactDetailPage {
   }
 
   deleteContact(contactId: string): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除聯絡人',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           this.contactServ.deleteContact(contactId);
           this.dismiss();
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    };
+
+    this.localeServ.localize('CONTACT_DETAIL.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('CONTACT_DETAIL.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('CONTACT_DETAIL.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('CONTACT_DETAIL.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
+    let confirm = this.alertCtrl.create(options);
     confirm.present();
   }
 

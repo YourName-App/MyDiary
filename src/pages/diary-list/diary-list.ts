@@ -4,6 +4,7 @@ import { IDiary, DiaryService } from '../../providers/diary-service';
 import { DiaryEditPage } from '../diary-edit/diary-edit';
 import { DiaryDetailPage } from '../diary-detail/diary-detail';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-diary-list',
@@ -25,12 +26,15 @@ export class DiaryListPage {
   }
 
   constructor(private alertCtrl: AlertController, private modalCtrl: ModalController,
-    private diaryServ: DiaryService, private configServ: ConfigService) {}
+    private diaryServ: DiaryService, private configServ: ConfigService,
+    private localeServ: LocaleService) {
+
+  }
 
   ionViewCanEnter(): boolean {
     return this.configServ.unlockScreen();
   }
-  
+
   showDiaryDetail(diaryId: string): void {
     this.modalCtrl.create(DiaryDetailPage, {diaryId}).present();
   }
@@ -45,20 +49,26 @@ export class DiaryListPage {
   }
 
   deleteDiary(diaryId: string, slidingItem: ItemSliding): void {
-    let confirm = this.alertCtrl.create({
-      title: '刪除日記',
-      message: '確認刪除？',
+    let options = {
+      title: '',
+      message: '',
       buttons: [{
-        text: '確認',
+        text: '',
         handler: () => {
           this.diaryServ.deleteDiary(diaryId);
         }
       }, {
-        text: '取消',
+        text: '',
         role: 'cancel'
       }]
-    });
-    
+    };
+    let confirm = this.alertCtrl.create(options);
+
+    this.localeServ.localize('DIARY_LIST.DELETE.TITLE',   (value:string) => { options.title = value; });
+    this.localeServ.localize('DIARY_LIST.DELETE.MESSAGE', (value:string) => { options.message = value; });
+    this.localeServ.localize('DIARY_LIST.DELETE.CONFIRM', (value:string) => { options.buttons[0].text = value; });
+    this.localeServ.localize('DIARY_LIST.DELETE.CANCEL',  (value:string) => { options.buttons[1].text = value; });
+
     confirm.present();
     slidingItem.close();
   }

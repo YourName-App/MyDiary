@@ -1,10 +1,10 @@
 <ion-header>
   <ion-navbar color={{theme}} no-border-bottom>
-    <ion-title>聯絡人</ion-title>
+    <ion-title>{{ 'CONTACT_LIST.TITLE' | translate }}</ion-title>
   </ion-navbar>
   <ion-toolbar color={{theme}} no-border-top>
     <ion-searchbar class="contact-searchbar" (ionInput)="searchContact($event)"
-                   placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
+                   placeholder="{{ 'CONTACT_LIST.SEARCH' | translate }}" showCancelButton=true cancelButtonText="{{ 'CONTACT_LIST.CANCEL' | translate }}">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>

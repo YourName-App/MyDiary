@@ -4,7 +4,7 @@
       <ion-avatar item-left>
         <img src="{{userAvatar}}">
       </ion-avatar>
-      <h1 class="user-name">{{userName}}</h1>
+      <h1 class="user-name">{{ 'YOUR_NAME' | translate }}</h1>
     </ion-item>
   </ion-navbar>
 </ion-header>
@@ -13,15 +13,15 @@
   <ion-list>
     <ion-item tabbable detail-push (click)="goToDiary()">
       <ion-icon color={{theme}} name="ios-book-outline" item-left></ion-icon>
-      <h2>我的日記</h2>
+      <h2>{{ "HOME.DIARY" | translate }}</h2>
     </ion-item>
     <ion-item tabbable detail-push (click)="goToContact()">
       <ion-icon color={{theme}} name="ios-call-outline" item-left></ion-icon>
-      <h2>我的聯絡人</h2>
+      <h2>{{ "HOME.CONTACT" | translate }}</h2>
     </ion-item>
     <ion-item tabbable detail-push (click)="goToMemo()">
       <ion-icon color={{theme}} name="ios-alert-outline" item-left></ion-icon>
-      <h2>我的備忘錄</h2>
+      <h2>{{ "HOME.MEMO" | translate }}</h2>
     </ion-item> 
   </ion-list>
 </ion-content>

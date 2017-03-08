@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { PinDialog } from 'ionic-native';
+import { LocaleService } from '../providers/locale-service';
 
 @Injectable()
 export class ConfigService {
 
-  userName: string = '';
-  userGender: string = '';
-  userAvatar: string = '';
-  userPin: string = '';
+  userName    : string = '';
+  userGender  : string = '';
+  userAvatar  : string = '';
+  userPin     : string = '';
   pauseEmitted: string = 'Y';
-  musicPlayed: boolean = false;
+  musicPlayed : boolean = false;
 
-  constructor(private storage: Storage, private toastCtrl: ToastController) {
+  constructor(private storage: Storage, private toastCtrl: ToastController, private localeServ: LocaleService) {
     this.fetchUserName();
     this.fetchUserGender();
     this.fetchUserAvatar();
@@ -21,9 +22,12 @@ export class ConfigService {
   }
 
   fetchUserName(): Promise<string> {
+    let prompt:string;
+    this.localeServ.localize('YOUR_NAME', (value:string) => { prompt = value; });
+
     return this.storage.get('userName')
       .then(val => {
-        this.userName = (val != null && val.trim().length != 0) ? val : '你的名字是？';
+        this.userName = (val != null && val.trim().length != 0) ? val : prompt;
         return this.userName;
       })
       .catch(error => {
@@ -63,8 +67,8 @@ export class ConfigService {
         console.log(error);
       })
   }
-  
-  getUserName() {
+
+  getUserName():string {
     return this.userName;
   }
 
@@ -111,20 +115,33 @@ export class ConfigService {
   setMusicPlayed(musicPlayed: boolean) {
     this.musicPlayed = musicPlayed;
   }
-  
+
   unlockScreen(): boolean {
     let canEnter: boolean = false;
+    let message             :string;    // 請輸入密碼
+    let title               :string;    // 解除密碼鎖
+    let btnConfirm          :string;    // 確認
+    let btnCancel           :string;    // 取消
+    let alertMessageSuccess :string;    // 成功解除密碼鎖
+    let alertMessageError   :string;    // 密碼錯誤
+
+    this.localeServ.localize('CONFIG_SERV.MESSAGE',            (value:string) => { message      = value; });
+    this.localeServ.localize('CONFIG_SERV.TITLE',              (value:string) => { title        = value; });
+    this.localeServ.localize('CONFIG_SERV.BTN_CONFIRM',        (value:string) => { btnConfirm   = value; });
+    this.localeServ.localize('CONFIG_SERV.BTN_CANCEL',         (value:string) => { btnCancel    = value; });
+    this.localeServ.localize('CONFIG_SERV.ALERT_MSG_SUCCESS',  (value:string) => { alertMessageSuccess = value; });
+    this.localeServ.localize('CONFIG_SERV.ALERT_MSG_ERROR',    (value:string) => { alertMessageError   = value; });
 
     if (this.getPauseEmitted() === 'Y' && this.getUserPin().length >= 4) {
-      PinDialog.prompt('請輸入密碼', '解除密碼鎖', ['確認', '取消'])
+      PinDialog.prompt(message, title, [btnConfirm, btnCancel])
       .then((result: any) => {
         if (result.buttonIndex === 1) {
           if (result.input1 === this.getUserPin()) {
-            this.toastMessage('成功解除密碼鎖');
+            this.toastMessage(alertMessageSuccess);
             this.setPauseEmitted('N');
             canEnter = true;
           } else {
-            this.toastMessage('密碼錯誤');
+            this.toastMessage(alertMessageError);
             canEnter = false;
           }
         } else {
@@ -134,7 +151,6 @@ export class ConfigService {
     } else {
       canEnter = true;
     }
-
     return canEnter;
   }
 
@@ -145,7 +161,6 @@ export class ConfigService {
       position: 'middle',
       dismissOnPageChange: true
     });
-  
     toast.present();
   }
 }
