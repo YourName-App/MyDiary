@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 // Import AF2 Module
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import firebase from 'firebase';
 
 @Injectable()
 export class AuthService {

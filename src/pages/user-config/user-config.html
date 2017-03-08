@@ -5,6 +5,14 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-item no-lines>
+    <ion-row justify-content-center>
+      <ion-avatar tappable>
+        <img class="avatar-img" src="{{userAvatar}}" (click)="chooseAvatar()">
+      </ion-avatar>
+    </ion-row>
+  </ion-item>
+
   <ion-item>
     <ion-label>你的名字：</ion-label>
     <ion-input text-right type="text" placeholder="你的名字" [(ngModel)]="userName">
