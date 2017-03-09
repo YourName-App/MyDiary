@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
-import { File, FileChooser, Entry, FileError } from 'ionic-native';
+import { File, FilePath, FileChooser, Entry, FileError } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { ConfigService } from '../../providers/config-service';
 
@@ -31,7 +31,7 @@ export class UserConfigPage {
   updateSettings() {
     this.userName = (this.userName === null || this.userName.trim().length === 0) ? '你的名字是？' : this.userName;
     this.userGender = (this.userGender === null || this.userGender.trim().length === 0) ? 'male' : this.userGender;
-    this.userAvatar = (this.avatarFromFile === true) ? this.userAvatar : 'assets/img/avatar-' + this.userGender + '.png';
+    this.userAvatar = (this.userAvatar === null || this.userAvatar.trim().length === 0) ? 'assets/img/avatar-' + this.userGender + '.png' : this.userAvatar;
 
     this.storage.set('userName', this.userName);
     this.storage.set('userGender', this.userGender);
@@ -47,21 +47,26 @@ export class UserConfigPage {
   chooseAvatar() {
     FileChooser.open()
       .then(uri => {
-        const fileName = uri.replace(/^.*[\\\/]/, '');
-        const path = uri.replace(/[^\/]*$/, '');
+        FilePath.resolveNativePath(uri)
+          .then(nativePath => {
+            const filePath = nativePath.replace(/[^\/]*$/, '');
+            const fileName = nativePath.replace(/^.*[\\\/]/, '');
         
-        File.copyFile(path, fileName, cordova.file.dataDirectory, fileName)
-          .then((data: Entry) => {
-            this.avatarFromFile = true;
-            this.userAvatar = cordova.file.dataDirectory + fileName;
+            File.copyFile(filePath, fileName, cordova.file.dataDirectory, fileName)
+              .then((data: Entry) => {
+                this.userAvatar = data.toURL();
+              })
+              .catch((error: FileError) => {
+                this.userAvatar = '';
+                console.log(error);
+              });
           })
-          .catch((error: FileError) => {
-            this.userAvatar = '';
-            console.log(error)
+          .catch(error => {
+            console.log(error);
           });
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 }

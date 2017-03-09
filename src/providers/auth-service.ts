@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 // Import AF2 Module
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-import firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -60,6 +59,6 @@ export class AuthService {
 
   // Log-out from the app
   logoutUser(): any {
-    return firebase.auth().signOut();
+    return this.af.auth.logout();
   }
 }

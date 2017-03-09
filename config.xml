@@ -59,6 +59,8 @@
     <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
+  <preference name="AndroidPersistentFileLocation" value="Internal"/>
+  <preference name="AndroidPersistentFileLocation" value="Compatibility"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

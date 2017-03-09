@@ -38,3 +38,4 @@ ionic.config.json
 .firebaserc
 database.rules.json
 firebase.json
+tslint.json

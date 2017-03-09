@@ -8,18 +8,17 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/common": "2.4.9",
-    "@angular/compiler": "2.4.9",
-    "@angular/compiler-cli": "2.4.9",
-    "@angular/core": "2.4.9",
-    "@angular/forms": "2.4.9",
-    "@angular/http": "2.4.9",
-    "@angular/platform-browser": "2.4.9",
-    "@angular/platform-browser-dynamic": "2.4.9",
-    "@angular/platform-server": "2.4.9",
+    "@angular/common": "2.2.1",
+    "@angular/compiler": "2.2.1",
+    "@angular/compiler-cli": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/forms": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
+    "@angular/platform-server": "2.2.1",
     "@ionic/storage": "2.0.0",
-    "angularfire2": "2.0.0-beta.8",
-    "firebase": "^3.7.0",
+    "angularfire2": "2.0.0-beta.6",
     "ionic-angular": "2.1.0",
     "ionic-native": "2.8.0",
     "ionicons": "3.0.0",
@@ -32,7 +31,8 @@
     "@ionic/app-scripts": "1.1.4",
     "eslint": "^3.16.0",
     "eslint-config-google": "^0.7.1",
-    "typescript": "2.0.9"
+    "typescript": "2.0.9",
+    "typings": "^2.1.0"
   },
   "cordovaPlugins": [
     "cordova-plugin-crosswalk-webview",
@@ -41,19 +41,20 @@
     "cordova-plugin-console",
     "cordova-plugin-device",
     "ionic-plugin-keyboard",
-    "cordova-plugin-x-socialsharing",
-    "mx.ferreyra.callnumber",
     "cordova-plugin-splashscreen",
+    "cordova-plugin-x-socialsharing",
     "cordova-plugin-datepicker",
+    "mx.ferreyra.callnumber",
     "cordova-plugin-contacts",
     "cordova-plugin-compat",
-    "cordova-plugin-pin-dialog",
     "cordova-plugin-nativeaudio",
+    "cordova-plugin-pin-dialog",
+    "cordova-plugin-file",
     {
       "locator": "http://github.com/don/cordova-filechooser.git",
       "id": "com.megster.cordova.FileChooser"
     },
-    "cordova-plugin-file"
+    "cordova-plugin-filepath"
   ],
   "cordovaPlatforms": [
     "ios",
