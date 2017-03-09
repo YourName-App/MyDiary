@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="diary">
-    <ion-title>你的名字是？ </ion-title>
+    <ion-title>{{ "LANDING_TITLE" | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,14 +10,14 @@
   </div>
   <form novalidate>
     <button color="diary" ion-button block (click)="goToLogin()">
-      登入
+      {{ 'LANDING.LOGIN' | translate }}
     </button>
     <button color="diary" ion-button block (click)="goToSignup()">
-      註冊
+      {{ 'LANDING.SIGNUP' | translate }}
     </button>
   </form>
 
   <button color="diary" class="button-text" ion-button block clear (click)="goToAnonymousLogin()">
-    不告訴你！我要匿名使用 😜
+  {{ 'LANDING.ANONYMOUS_LOGIN' | translate }}
   </button>
 </ion-content>

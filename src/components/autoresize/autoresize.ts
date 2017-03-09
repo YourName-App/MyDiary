@@ -12,7 +12,7 @@ export class Autoresize {
 
 	constructor(private element: ElementRef) {}
 
-	ngOnInit(): void {
+	ngOnInit() {
 		this.adjust();
 	}
 

@@ -1,18 +1,19 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-diary-edit',
   templateUrl: 'diary-edit.html'
 })
 export class DiaryEditPage {
-  
+
   theme: string;
   diaryForm: any;
   diaryId: string = '';
@@ -20,7 +21,7 @@ export class DiaryEditPage {
   inputTimeStamp: string = '';
   inputTitle: string = '';
   inputContent: string = '';
-  
+
   timestamp: string;
   diaryYear: string;
   diaryMonth: string;
@@ -37,7 +38,8 @@ export class DiaryEditPage {
 
   constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private diaryServ: DiaryService, private formBuilder: FormBuilder,
-    private element: ElementRef, private configServ: ConfigService) {
+    private element: ElementRef, private configServ: ConfigService,
+    private localeServ:LocaleService) {
 
     this.diaryId = this.navParams.get('diaryId') || '';
     this.inputDiary = this.navParams.get('diary') || {};
@@ -52,23 +54,26 @@ export class DiaryEditPage {
       content: ['', Validators.required]
     });
     
-    moment.locale('zh-tw');
+    let lang = this.localeServ.getCalendarLang(); // 'zh-tw';
+    moment.locale(lang);
 
     if (this.diaryId) {
       this.mode = 'update';
-      this.modeDesc = '編輯日記';
+      this.modeDesc = '';      // 編輯日記
       this.diaryForm.controls['title'].patchValue(this.inputTitle);
       this.diaryForm.controls['content'].patchValue(this.inputContent);
       this.timestamp = this.inputTimeStamp;
+      this.localeServ.localize('DIARY_EDIT_PAGE.MODE_DESC.UPDATE', (value:string)=>{ this.modeDesc = value; });
     } else {
       this.mode = 'create';
-      this.modeDesc = '新增日記';
+      this.modeDesc = '';      // 新增日記
       this.timestamp = moment().format();
+      this.localeServ.localize('DIARY_EDIT_PAGE.MODE_DESC.CREATE', (value:string)=>{ this.modeDesc = value; });
     }
 
     this.diaryYear = moment(this.timestamp).format('YYYY');
     this.diaryMonth = moment(this.timestamp).format('MMMM');
-    this.diaryDay = moment(this.timestamp).format('dddd');
+    this.diaryDay = moment(this.timestamp).format('ddd');
     this.diaryDate = moment(this.timestamp).format('D');
     this.diaryTime = moment(this.timestamp).format('HH:mm');
   }
@@ -100,14 +105,19 @@ export class DiaryEditPage {
   }
 
   openDatePicker(): void {
-    DatePicker.show({
+    let options = {
       date: moment(this.timestamp).toDate(),
       mode: 'datetime',
-      locale: 'zh-tw',
-      doneButtonLabel: '確認',
-      cancelButtonLabel: '取消',
+      locale: this.localeServ.getCalendarLang(),    // 'zh-tw'
+      doneButtonLabel: '',                          // 確認
+      cancelButtonLabel: '',                        // 取消
       is24Hour: true
-    }).then(
+    };
+
+    this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.DONE',   (value:string)=>{ options.doneButtonLabel   = value; });
+    this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.CANCEL', (value:string)=>{ options.cancelButtonLabel = value; });
+
+    DatePicker.show(options).then(
       pickDate => {
         if (pickDate !== null && pickDate !== undefined) {
           this.timestamp = moment(pickDate).format();

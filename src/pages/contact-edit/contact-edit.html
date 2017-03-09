@@ -7,8 +7,8 @@
 <ion-content padding>
   <form [formGroup]="contactForm" novalidate>
     <ion-item>
-      <ion-label stacked>姓名</ion-label>
-      <ion-input #name formControlName="name" type="text" placeholder="聯絡人姓名" value={{inputName}}
+      <ion-label stacked>{{ 'CONTACT_EDIT.NAME.LABEL' | translate }}</ion-label>
+      <ion-input #name formControlName="name" type="text" placeholder="{{ 'CONTACT_EDIT.NAME.ENTER' | translate }}" value={{inputName}}
         (change)="elementChanged(name)" [class.invalid]="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
       </ion-input>
       <button color={{theme}} class="contact-button" ion-button icon-only clear large item-right (click)="pickContact()">
@@ -16,17 +16,17 @@
       </button>
     </ion-item>
     <ion-item class="error-message" *ngIf="!contactForm.controls.name.valid && (nameChanged || submitAttempt)">
-      <p>請輸入聯絡人姓名</p>
+      <p>{{ 'CONTACT_EDIT.NAME.ERR_MSG' | translate }}</p>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>電話</ion-label>
-      <ion-input #phone formControlName="phone" type="tel" placeholder="聯絡人電話" value={{inputPhone}}
+      <ion-label stacked>{{ 'CONTACT_EDIT.PHONE.LABEL' | translate }}</ion-label>
+      <ion-input #phone formControlName="phone" type="tel" placeholder="{{ 'CONTACT_EDIT.PHONE.ENTER' | translate }}" value={{inputPhone}}
         (change)="elementChanged(phone)" [class.invalid]="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!contactForm.controls.phone.valid && (phoneChanged || submitAttempt)">
-      <p>請輸入聯絡人電話</p>
+      <p>{{ 'CONTACT_EDIT.PHONE.ERR_MSG' | translate }}</p>
     </ion-item>
   </form>
 </ion-content>

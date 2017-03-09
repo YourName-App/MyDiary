@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
+import { NavParams, ViewController } from 'ionic-angular';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
 import { Contacts } from 'ionic-native';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-contact-edit',
   templateUrl: 'contact-edit.html'
 })
 export class ContactEditPage {
-  
+
   theme: string;
   contactForm: any;
   contactId: string = '';
@@ -25,7 +26,8 @@ export class ContactEditPage {
 
   constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private contactServ: ContactService, private formBuilder: FormBuilder,
-    private configServ: ConfigService) {
+    private configServ: ConfigService,
+    private localeServ: LocaleService) {
 
     this.contactId = this.navParams.get('contactId') || '';
     this.inputContact = this.navParams.get('contact') || {};
@@ -40,19 +42,19 @@ export class ContactEditPage {
 
     if (this.contactId) {
       this.mode = 'update';
-      this.modeDesc = '編輯聯絡人';
+      this.localeServ.subscribe('CONTACT_EDIT.TITLE_UPDATE', (value:string) => { this.modeDesc = value; })
       this.contactForm.controls['name'].patchValue(this.inputName);
       this.contactForm.controls['phone'].patchValue(this.inputPhone);
     } else {
       this.mode = 'create';
-      this.modeDesc = '新增聯絡人';
+      this.localeServ.subscribe('CONTACT_EDIT.TITLE_CREATE', (value:string) => { this.modeDesc = value; })
     }
   }
 
   ionViewCanEnter(): boolean {
     return this.configServ.unlockScreen();
   }
-  
+
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
   }
@@ -77,21 +79,21 @@ export class ContactEditPage {
         phone: this.contactForm.value.phone,
         avatar: this.contactForm.value.avatar || 'assets/img/avatar-contact.png'
       }
-      
+
       if (this.mode === 'create') {
         this.contactServ.createContact(contact)
         .then(
-          () => {this.dismiss();}, 
+          () => {this.dismiss();},
           error => {console.log(error);}
         );
       } else if (this.mode === 'update') {
         this.contactServ.updateContact(this.contactId, contact)
         .then(
-          () => {this.dismiss();}, 
+          () => {this.dismiss();},
           error => {console.log(error);}
         );
       }
-    } 
+    }
   }
 
   pickContact() {

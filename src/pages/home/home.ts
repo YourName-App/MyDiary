@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { DiaryPage } from '../../pages/diary/diary';
@@ -10,7 +10,7 @@ import { ConfigService } from '../../providers/config-service';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   theme: string;
   userName: string;
@@ -20,27 +20,37 @@ export class HomePage {
   pauseEmitted: string;
   musicPlayed: boolean;
 
-  constructor(private navCtrl: NavController, private configServ: ConfigService) {
+  constructor(private navCtrl: NavController, private configServ: ConfigService)  {
+    this.preloadMusic();
+  }
 
-    NativeAudio.preloadComplex('sparkle', 'assets/audio/sparkle-piano.mp3', 1, 1, 0).then(
-      () => {console.log('Preload audio');},
-      (err) => {console.log(err);}
-    );
+  ngOnInit() {  
+    this.configServ.fetchUserName().then(userName => {
+      this.userName = userName;
+    });
 
-    setTimeout(() => {
-      this.userName = this.configServ.getUserName();
-      this.userGender = this.configServ.getUserGender();
-      this.userAvatar = this.configServ.getUserAvatar();
-      this.userPin = this.configServ.getUserPin();
-      this.pauseEmitted = this.configServ.getPauseEmitted();
-      this.musicPlayed = this.configServ.getMusicPlayed();
-    }, 1000);
+    this.configServ.fetchUserGender().then(userGender => {
+      this.userGender = userGender;
+    });
+
+    this.configServ.fetchUserAvatar().then(userAvatar => {
+      this.userAvatar = userAvatar;
+    });
+
+    this.configServ.fetchUserPin().then(userPin => {
+      this.userPin = userPin;
+    });
+
+    this.pauseEmitted = this.configServ.getPauseEmitted();
+    this.musicPlayed = this.configServ.getMusicPlayed();
   }
 
   ionViewWillEnter() {
-    setTimeout(() => {
-      this.theme = this.configServ.getUserGender();
-    }, 150);
+    this.userName = this.configServ.getUserName();
+    this.userGender = this.configServ.getUserGender();
+    this.userAvatar = this.configServ.getUserAvatar();
+    this.userPin = this.configServ.getUserPin();
+    this.theme = this.configServ.getUserGender();
   }
 
   selectTab(tabIndex: number) {
@@ -57,6 +67,13 @@ export class HomePage {
 
   goToMemo() {
     this.navCtrl.push(MemoListPage);
+  }
+
+  preloadMusic() {
+    NativeAudio.preloadComplex('sparkle', 'assets/audio/sparkle-piano.mp3', 1, 1, 0).then(
+      () => {console.log('Preload audio');},
+      (err) => {console.log(err);}
+    );
   }
 
   playMusic() {

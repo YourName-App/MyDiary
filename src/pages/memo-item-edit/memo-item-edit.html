@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar color={{theme}}>
-    <ion-title >編輯{{memo.title}}</ion-title>
+    <ion-title >{{ 'MEMO_ITEM_EDIT.TITLE' | translate }}{{memo.title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item *ngFor="let item of itemList | async">
-    <ion-input #entry type='text' placeholder="請輸入備忘錄項目" [value]="item.entry" (blur)="bufferItem(item.$key, item, entry)"></ion-input>
+    <ion-input #entry type='text' placeholder="{{ 'MEMO_ITEM_EDIT.INPUT_ITEM' | translate }}" [value]="item.entry" (blur)="bufferItem(item.$key, item, entry)"></ion-input>
     <button color="danger" item-right ion-button icon-only clear (click)='deleteItem(item.$key)'>
       <ion-icon name="close-circle"></ion-icon>
     </button>

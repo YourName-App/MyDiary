@@ -27,22 +27,23 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="diaryForm" (submit)="dismiss()" novalidate>
+  <form [formGroup]="diaryForm" novalidate>
     <ion-item>
-      <ion-input #title formControlName="title" type="text" placeholder="日記主題" value={{inputTitle}}
+      <ion-input #title formControlName="title" type="text" placeholder="{{ 'DIARY_EDIT.SUBJECT.LABEL' | translate }}" value={{inputTitle}}
         (change)="elementChanged(title)" [class.invalid]="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!diaryForm.controls.title.valid && (titleChanged || submitAttempt)">
-      <p>請輸入日記主題</p>
+      <p>{{ 'DIARY_EDIT.SUBJECT.WARNING' | translate }}</p>
     </ion-item>
     <ion-item no-lines>
-      <ion-textarea class="diary-content" #content formControlName="content" placeholder="日記內容(點選日期兩次開啟設定)" value={{inputContent}} rows="10" autoresize
+      <ion-textarea #content formControlName="content" placeholder="{{ 'DIARY_EDIT.CONTENT.LABEL' | translate }}"
+        value={{inputContent}} rows="8" autoresize
         (change)="elementChanged(content)" [class.invalid]="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
       </ion-textarea>
     </ion-item>
     <ion-item class="error-message" *ngIf="!diaryForm.controls.content.valid && (contentChanged || submitAttempt)">
-      <p>請輸入日記內容</p>
+      <p>{{ 'DIARY_EDIT.CONTENT.WARNING' | translate }}</p>
     </ion-item>
   </form>
 

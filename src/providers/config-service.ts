@@ -1,57 +1,87 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 import { PinDialog } from 'ionic-native';
+import { LocaleService } from '../providers/locale-service';
 
 @Injectable()
 export class ConfigService {
 
-  userName: string = '';
-  userGender: string = '';
-  userAvatar: string = '';
-  userPin: string = '';
+  userName    : string = '';
+  userGender  : string = '';
+  userAvatar  : string = '';
+  userPin     : string = '';
+  userLocale  : string = '';
   pauseEmitted: string = 'Y';
-  musicPlayed: boolean = false;
+  musicPlayed : boolean = false;
 
-  constructor(private storage: Storage, private alertCtrl: AlertController) {
-    this.storage.get('userName').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = '你的名字是？';
-      }
-      this.userName = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userGender').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = 'male';
-      }
-      this.userGender = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userAvatar').then((val) => {
-      if (val === null || val.trim().length === 0) {
-        val = 'assets/img/avatar-male.png';
-      }
-      this.userAvatar = val;
-    }, (error) => {
-      console.log(error);
-    })
-
-    this.storage.get('userPin').then((val) => {
-      if (val === null || val.trim().length < 4) {
-        val = '';
-      }
-      this.userPin = val;
-    }, (error) => {
-      console.log(error);
-    })
+  constructor(private storage: Storage, private toastCtrl: ToastController, private localeServ: LocaleService) {
+    this.fetchUserName();
+    this.fetchUserGender();
+    this.fetchUserAvatar();
+    this.fetchUserPin();
+    this.fetchUserLocale();
   }
 
-  getUserName() {
+  fetchUserName(): Promise<string> {
+    let prompt:string;
+    this.localeServ.localize('YOUR_NAME', (value:string) => { prompt = value; });
+
+    return this.storage.get('userName')
+      .then(val => {
+        this.userName = (val != null && val.trim().length != 0) ? val : prompt;
+        return this.userName;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserGender(): Promise<string> {
+    return this.storage.get('userGender')
+      .then(val => {
+        this.userGender = (val != null && val.trim().length != 0) ? val : 'male';
+        return this.userGender;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserAvatar(): Promise<string> {
+    return this.storage.get('userAvatar')
+      .then(val => {
+        this.userAvatar = (val != null && val.trim().length != 0) ? val : 'assets/img/avatar-male.png';
+        return this.userAvatar;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserPin(): Promise<string> {
+    return this.storage.get('userPin')
+      .then(val => {
+        this.userPin = (val != null && val.trim().length >= 4) ? val : '';
+        return this.userPin;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  fetchUserLocale(): Promise<string> {
+    return this.storage.get('userLocale')
+      .then(val => {
+        this.userLocale = (val != null && val.trim().length != 0) ? val : 'en';
+        return this.userLocale;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  getUserName():string {
     return this.userName;
   }
 
@@ -75,6 +105,10 @@ export class ConfigService {
     return this.musicPlayed;
   }
 
+  getUserLocale(): string {
+    return this.userLocale;
+  }
+
   setUserName(name: string) {
     this.userName = name;
   }
@@ -91,6 +125,10 @@ export class ConfigService {
     this.userPin = pin;
   }
 
+  setUserLocale(locale: string) {
+    this.userLocale = locale;
+  }
+
   setPauseEmitted(pauseEmitted: string) {
     this.pauseEmitted = pauseEmitted;
   }
@@ -98,20 +136,33 @@ export class ConfigService {
   setMusicPlayed(musicPlayed: boolean) {
     this.musicPlayed = musicPlayed;
   }
-  
+
   unlockScreen(): boolean {
     let canEnter: boolean = false;
+    let message             :string;    // 請輸入密碼
+    let title               :string;    // 解除密碼鎖
+    let btnConfirm          :string;    // 確認
+    let btnCancel           :string;    // 取消
+    let alertMessageSuccess :string;    // 成功解除密碼鎖
+    let alertMessageError   :string;    // 密碼錯誤
+
+    this.localeServ.localize('CONFIG_SERV.MESSAGE',            (value:string) => { message      = value; });
+    this.localeServ.localize('CONFIG_SERV.TITLE',              (value:string) => { title        = value; });
+    this.localeServ.localize('CONFIG_SERV.BTN_CONFIRM',        (value:string) => { btnConfirm   = value; });
+    this.localeServ.localize('CONFIG_SERV.BTN_CANCEL',         (value:string) => { btnCancel    = value; });
+    this.localeServ.localize('CONFIG_SERV.ALERT_MSG_SUCCESS',  (value:string) => { alertMessageSuccess = value; });
+    this.localeServ.localize('CONFIG_SERV.ALERT_MSG_ERROR',    (value:string) => { alertMessageError   = value; });
 
     if (this.getPauseEmitted() === 'Y' && this.getUserPin().length >= 4) {
-      PinDialog.prompt('請輸入密碼', '解除密碼鎖', ['確認', '取消'])
+      PinDialog.prompt(message, title, [btnConfirm, btnCancel])
       .then((result: any) => {
         if (result.buttonIndex === 1) {
           if (result.input1 === this.getUserPin()) {
-            this.alertMessage('成功解除密碼鎖');
+            this.toastMessage(alertMessageSuccess);
             this.setPauseEmitted('N');
             canEnter = true;
           } else {
-            this.alertMessage('密碼錯誤');
+            this.toastMessage(alertMessageError);
             canEnter = false;
           }
         } else {
@@ -121,19 +172,16 @@ export class ConfigService {
     } else {
       canEnter = true;
     }
-
     return canEnter;
   }
 
-  private alertMessage(msg: string) {
-    let alert = this.alertCtrl.create({
+  private toastMessage(msg: string) {
+    let toast = this.toastCtrl.create({
       message: msg,
-      buttons: [{
-        text: '確認',
-        role: 'cancel'
-      }]
+      duration: 3000,
+      position: 'middle',
+      dismissOnPageChange: true
     });
-  
-    alert.present();
+    toast.present();
   }
 }

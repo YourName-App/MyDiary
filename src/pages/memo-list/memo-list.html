@@ -1,10 +1,10 @@
 <ion-header>
   <ion-navbar color={{theme}} no-border-bottom>
-    <ion-title>備忘錄</ion-title>
+    <ion-title>{{ 'MEMO_LIST.TITLE' | translate }}</ion-title>
   </ion-navbar>
   <ion-toolbar color={{theme}} no-border-top>
     <ion-searchbar class="memo-list-searchbar" (ionInput)="searchMemo($event)"
-                   placeholder="搜尋" showCancelButton=true cancelButtonText="取消">
+                   placeholder="{{ 'MEMO_LIST.SEARCH' | translate }}" showCancelButton=true cancelButtonText="{{ 'MEMO_LIST.CANCEL' | translate }}">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -31,9 +31,9 @@
 <ion-footer>
   <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
-      <ion-row>
+      <ion-row align-items-center>
         <ion-col width-20>
-          <button color={{clean}} class="menu-button" ion-button icon-only menuToggle>
+          <button color={{clean}} ion-button icon-only menuToggle>
             <ion-icon name="md-menu"></ion-icon>
           </button>
         </ion-col>

@@ -13,15 +13,15 @@
   <ion-list>
     <ion-item tabbable detail-push (click)="goToDiary()">
       <ion-icon color={{theme}} name="ios-book-outline" item-left></ion-icon>
-      <h2>我的日記</h2>
+      <h2>{{ "HOME.DIARY" | translate }}</h2>
     </ion-item>
     <ion-item tabbable detail-push (click)="goToContact()">
       <ion-icon color={{theme}} name="ios-call-outline" item-left></ion-icon>
-      <h2>我的聯絡人</h2>
+      <h2>{{ "HOME.CONTACT" | translate }}</h2>
     </ion-item>
     <ion-item tabbable detail-push (click)="goToMemo()">
       <ion-icon color={{theme}} name="ios-alert-outline" item-left></ion-icon>
-      <h2>我的備忘錄</h2>
+      <h2>{{ "HOME.MEMO" | translate }}</h2>
     </ion-item> 
   </ion-list>
 </ion-content>
@@ -29,9 +29,9 @@
 <ion-footer>
   <ion-toolbar color={{theme}} class="footer-toolbar">
     <ion-grid>
-      <ion-row>
+      <ion-row align-items-center>
         <ion-col width-20>
-          <button color={{clean}} class="menu-button" ion-button icon-only menuToggle>
+          <button color={{clean}} ion-button icon-only menuToggle>
             <ion-icon name="md-menu"></ion-icon>
           </button>
         </ion-col>

@@ -40,12 +40,11 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$toast-ios-background: color($colors, cloud);
 $card-ios-border-radius: 5px;
 $card-ios-margin-left: 0;
 $card-ios-margin-right: 0;
 $item-ios-avatar-size: 64px;
-$tabs-ios-tab-icon-color-active: color($colors, diary);
-$tabs-ios-tab-text-color-active: color($colors, diary);
 $segment-button-ios-toolbar-button-max-width: 78px;
 $modal-inset-min-width: 96vw;
 $modal-inset-min-height-small: 92vh;

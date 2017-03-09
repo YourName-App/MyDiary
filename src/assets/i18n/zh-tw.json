@@ -1,0 +1,288 @@
+{
+	"YOUR_NAME"    : "你的名字是？",
+	"TITLE"        : "功能選單",
+	"ENV"          : "系統",
+	"MISC"         : "其他",
+	"ACCOUNT"      : "帳號",
+	"LANDING_TITLE": "你的名字是？",
+	"HOME" : {
+		"DIARY"  : "我的日記",
+		"CONTACT": "我的聯絡人",
+		"MEMO"   : "我的備忘錄"
+	},
+	"LANDING" : {
+		"LOGIN"          : "登入",
+		"SIGNUP"         : "註冊",
+		"ANONYMOUS_LOGIN": "我要匿名使用 😜"
+	},
+	"SUGGEST" : {
+		"TITLE"  : "建議",
+		"LABEL"  : "建議",
+		"CAUTION": "注意！你將發送訊息給三年後的作者",
+		"PROMPT" : "你的建議",
+		"ERR_MSG": "請輸入你的建議",
+		"SUBMIT" : "送出"
+	},
+	"SUGGEST_PAGE" : {
+		"SEND"  : {
+			"SUBJECT": "MyDiary 使用者建議"
+		},
+		"ALERT" : {
+			"MSG"    : "你的手機不支援此功能",
+			"CONFIRM": "確認"
+		}
+	},
+	"LOGIN" : {
+		"TITLE"                 : "登入",
+		"E_MAIL"                : "電子郵件",
+		"YOUR_E_MAIL"           : "你的電子郵件",
+		"PLS_ENTER_VALID_E_MAIL": "請輸入正確的電子郵件",
+		"PASSWORD"              : "密碼",
+		"YOUR_PASSWD"           : "你的密碼",
+		"AT_LEAST_6_CHARS"      : "密碼長度至少為 6 個字元",
+		"SUBMIT"                : "登入",
+		"FORGOT_PASSWD"         : "忘記密碼了 😓"
+	},
+  "LOGIN_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "登入失敗，電子郵件或密碼輸入錯誤",
+			"CONFIRM": "確認"
+		}
+	},
+	"ABOUT" : {
+		"TITLE"        : "關於",
+		"THANKS"       : "感謝你的下載與使用 💕",
+		"GREETING_CARD": "這個程式的創作靈感源自於日本動畫電影「你的名字」。 除了盡力重現原著中的設計風格與功能外，更希望能夠符合使用者的需求， 任何的想法與建議，都歡迎透過功能選單中的建議功能與作者討論。"
+	},
+	"PAGE" : {
+		"OTHER" : {
+			"SUGGESTION": "建議",
+			"ABOUT"     : "關於"
+		},
+		"ACCOUNT" : {
+			"LOGOUT" : "登出"
+		},
+		"SETTING" : {
+			"USER" : "使用者",
+      "LOCALE" : "語言",
+			"LOCK" : "密碼鎖"
+		}
+	},
+	"CONFIG" : {
+		"TITLE" : "使用者",
+		"NAME" : {
+			"LABEL" : "你的名字：",
+			"PROMPT": "你的名字"
+		},
+		"GENDER" : {
+			"LABEL" : "你的性別：",
+			"MALE"  : "男",
+			"FEMALE": "女"
+		},
+		"LOCK": {
+			"LABEL" : "密碼鎖："
+		},
+		"CONFIRM": "確認",
+		"OK"     : "同意",
+		"CANCEL" : "取消"
+	},
+  "LOCALE_CONFIG" : {
+		"TITLE" : "語言",
+		"LABEL": "語言：",
+		"EN"   : "英文",
+		"CH"   : "中文"
+	},
+	"PIN_CONFIG_PAGE" : {
+		"TITLE"                  : "密碼鎖",
+		"COL_SETTING"            : "設定：",
+		"COL_ENABLE"             : "開啟密碼鎖",
+		"COL_DISABLE"            : "關閉密碼鎖",
+		"ADD_PIN_PROMPT_MSG"     : "請輸入至少4個數字的密碼",
+		"ADD_PIN_TITLE"          : "開啟密碼鎖",
+		"ADD_PIN_CONFIRM_BTN"    : "確認",
+		"ADD_PIN_CANCEL_BTN"     : "取消",
+		"ADD_PIN_ALERT_MSG"      : "請輸入至少4個數字的密碼",
+		"CONFIRM_PIN_PROMPT_MSG" : "驗證密碼",
+		"CONFIRM_PIN_TITLE"      : "開啟密碼鎖",
+		"CONFIRM_PIN_CONFIRM_BTN": "確認",
+		"CONFIRM_PIN_CANCEL_BTN" : "取消",
+		"CONFIRM_PIN_DONE_MSG"   : "密碼鎖已開啟",
+		"CONFIRM_PIN_ALERT_MSG"  : "密碼不一致，請重新設定",
+		"REMOVE_PIN_PROMPT_MSG"  : "請輸入密碼",
+		"REMOVE_PIN_TITLE"       : "關閉密碼鎖",
+		"REMOVE_PIN_CONFIRM_BTN" : "確認",
+		"REMOVE_PIN_CANCEL_BTN"  : "取消",
+		"REMOVE_PIN_DONE_MSG"    : "密碼鎖已關閉",
+		"REMOVE_PIN_ALERT_MSG"   : "密碼錯誤",
+		"ALERT_MSG_BTN"          : "確認"
+	},
+	"DIARY" : {
+		"DIARY_LIST": "項目",
+		"CALENDAR"  : "日曆",
+		"SEARCH"    : "搜尋",
+		"CANCEL"    : "取消"
+	},
+	"DIARY_LIST" : {
+		"DELETE": {
+			"TITLE"  : "刪除日記",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"DIARY_DETAIL" : {
+		"DELETE": {
+			"TITLE"  : "刪除日記",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"DIARY_EDIT" : {
+		"SUBJECT": {
+			"LABEL"  : "日記主題",
+			"WARNING": "請輸入日記主題"
+		},
+		"CONTENT" : {
+			"LABEL"  :"日記內容(點選日期兩次開啟設定)",
+			"WARNING": "請輸入日記內容"
+		}
+	},
+	"DIARY_EDIT_PAGE" : {
+		"OPEN_DATE_PICKER" : {
+			"DONE"  : "確認",
+			"CANCEL": "取消"
+		},
+		"MODE_DESC" : {
+			"UPDATE":"編輯日記",
+			"CREATE":"新增日記"
+		}
+	},
+	"SIGN_UP" : {
+		"TITLE" : "註冊",
+		"E_MAIL": {
+			"LABEL"  : "電子郵件",
+			"PROMPT" : "你的電子郵件",
+			"WARNING": "請輸入正確的電子郵件"
+		},
+		"PASSWORD" : {
+			"LABEL"  : "密碼",
+			"TIP"    : "密碼長度至少為 6 個字元",
+			"PROMPT" : "你的密碼",
+			"WARNING": "密碼長度至少為 6 個字元"
+		},
+		"SUBMIT" : "註冊"
+	},
+	"SIGNUP_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "註冊失敗，請稍後再試",
+			"CONFIRM": "確認"
+		}
+	},
+	"RESET_PASSWORD" : {
+		"TITLE"  : "重設密碼",
+		"E_MAIL" : "電子郵件",
+		"PROMPT" : "你的電子郵件",
+		"WARNING": "請輸入正確的電子郵件",
+		"CONFIRM": "重設密碼"
+	},
+	"RESET_PASSWORD_PAGE" : {
+		"RESET" : {
+			"MSG"    : "重設密碼的連結已寄送至你的電子郵件",
+			"CONFIRM": "確認"
+		},
+		"ALERT" : {
+			"MSG"    : "此電子郵件尚未註冊",
+			"CONFIRM": "確認"
+		}
+	},
+	"TABS" : {
+		"HOME"    :"首頁",
+		"DIARY"   :"日記",
+		"CONTACTS":"聯絡人",
+		"MEMO"    :"備忘錄"
+	},
+	"CONTACT_LIST" : {
+		"TITLE" : "聯絡人",
+		"SEARCH": "搜尋",
+		"CANCEL": "取消",
+		"DELETE"  : {
+			"TITLE"  : "刪除聯絡人",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"CONTACT_DETAIL" : {
+		"TITLE"   : "聯絡人",
+		"MESSAGES": "簡訊",
+		"PHONE"   : "撥號",
+		"DELETE"  : {
+			"TITLE"  : "刪除聯絡人",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"CONTACT_EDIT" : {
+		"TITLE_CREATE": "新增聯絡人",
+		"TITLE_UPDATE": "編輯聯絡人",
+		"NAME" : {
+			"LABEL"  : "姓名",
+			"ENTER"  : "聯絡人姓名",
+			"ERR_MSG": "請輸入聯絡人姓名"
+		},
+		"PHONE" : {
+			"LABEL"  : "電話",
+			"ENTER"  : "聯絡人電話",
+			"ERR_MSG": "請輸入聯絡人電話"
+		}
+	},
+	"MEMO_LIST" : {
+		"TITLE" : "備忘錄",
+		"SEARCH": "搜尋",
+		"CANCEL": "取消",
+		"DELETE"	 : {
+			"TITLE"  : "刪除備忘錄",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"MEMO_ITEM_EDIT": {
+		"TITLE"      : "編輯",
+		"INPUT_ITEM" : "請輸入備忘錄項目",
+		"DELETE"	 : {
+			"TITLE"  : "刪除備忘錄項目",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"MEMO_EDIT" : {
+		"TITLE_CREATE"    : "新增備忘錄",
+		"TITLE_UPDATE"    : "編輯備忘錄",
+		"LABEL"           : "標題",
+		"INPUT_MEMO_TITLE": "備忘錄標題",
+		"ERR_MSG"         : "請輸入備忘錄標題"
+	},
+	"MEMO_DETAIL" : {
+		"NEW_ENTRY"  : "新增備忘錄項目",
+		"ERR_MSG"    : "請輸入備忘錄項目",
+		"DELETE"	 : {
+			"TITLE"  : "刪除所有備忘錄項目",
+			"MESSAGE": "確認刪除？",
+			"CONFIRM": "確認",
+			"CANCEL" : "取消"
+		}
+	},
+	"CONFIG_SERV" : {
+		"MESSAGE"          : "請輸入密碼",
+		"TITLE"            : "解除密碼鎖",
+		"BTN_CONFIRM"      : "確認",
+		"BTN_CANCEL"       : "取消",
+		"ALERT_MSG_SUCCESS": "成功解除密碼鎖",
+		"ALERT_MSG_ERROR"  : "密碼錯誤",
+		"BTN_ALERT"        : "確認"
+	}
+}

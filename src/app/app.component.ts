@@ -1,19 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
-import { Splashscreen } from 'ionic-native';
+import { Splashscreen, StatusBar } from 'ionic-native';
 
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
 import { HomePage } from '../pages/home/home';
-import { SuggestPage } from '../pages/suggest/suggest';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { AboutPage } from '../pages/about/about';
 import { UserConfigPage } from '../pages/user-config/user-config';
 import { PinConfigPage } from '../pages/pin-config/pin-config';
+import { LocaleConfigPage } from '../pages/locale-config/locale-config';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
 import { ConfigService } from '../providers/config-service';
+import { LocaleService } from '../providers/locale-service'
 
 // Import AF2
 import { AngularFire } from 'angularfire2';
@@ -35,25 +36,35 @@ export class MyApp {
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
-  
+
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
-    { title: '使用者', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },
-    { title: '密碼鎖', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },
+    { title: '', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },  // 使用者
+    { title: '', component: LocaleConfigPage, pushPage: true, icon: 'ios-globe-outline' }, // 語言
+    { title: '', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' }      // 密碼鎖
   ];
 
   otherPages: PageInterface[] = [
-    { title: '建議', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },
-    { title: '關於 ', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }
+    { title: '', component: SuggestionPage, pushPage: true, icon: 'ios-chatbubbles-outline' },// 建議
+    { title: '', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }      // 關於
   ];
 
   accountPages: PageInterface[] = [
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  constructor(platform: Platform,
-    private af: AngularFire, private authServ: AuthService,
-    private configServ: ConfigService) {
+  constructor(private platform: Platform, private af: AngularFire,
+    private authServ: AuthService, private configServ: ConfigService,
+    private localeServ:LocaleService) {
+
+      this.localeServ.subscribe('PAGE.SETTING.USER',    (value:string) => {this.settingPages[0].title   = value; });
+      this.localeServ.subscribe('PAGE.SETTING.LOCALE',  (value:string) => {this.settingPages[1].title   = value; });
+      this.localeServ.subscribe('PAGE.SETTING.LOCK',    (value:string) => {this.settingPages[2].title   = value; });
+
+      this.localeServ.subscribe('PAGE.OTHER.SUGGESTION', (value:string) => {this.otherPages[0].title   = value; });
+      this.localeServ.subscribe('PAGE.OTHER.ABOUT',      (value:string) => {this.otherPages[1].title   = value; });
+
+      this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT',   (value:string) => {this.accountPages[0].title = value; });
 
     // Listen for authentication
     af.auth.subscribe((user) => {
@@ -62,6 +73,9 @@ export class MyApp {
       } else {
         this.rootPage = LandingPage;
       }
+
+      localeServ.updatePageLocale();
+
     }, (error) => {
       console.log(error);
     });

@@ -59,6 +59,6 @@ export class AuthService {
 
   // Log-out from the app
   logoutUser(): any {
-    return firebase.auth().signOut();
+    return this.af.auth.logout();
   }
 }

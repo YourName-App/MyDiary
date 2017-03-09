@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
 // Import pages
@@ -22,10 +22,11 @@ import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
-import { SuggestPage } from '../pages/suggest/suggest';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { AboutPage } from '../pages/about/about';
 import { UserConfigPage } from '../pages/user-config/user-config';
 import { PinConfigPage } from '../pages/pin-config/pin-config';
+import { LocaleConfigPage } from '../pages/locale-config/locale-config';
 
 // Import custom components
 import { Autoresize } from '../components/autoresize/autoresize';
@@ -36,6 +37,7 @@ import { DiaryService } from '../providers/diary-service';
 import { MemoService } from '../providers/memo-service';
 import { ContactService } from '../providers/contact-service';
 import { ConfigService } from '../providers/config-service';
+import { LocaleService } from '../providers/locale-service';
 
 // Import pipes
 import { ChineseDay } from '../pipes/chinese-day';
@@ -55,6 +57,15 @@ export const firebaseConfig = {
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password
+}
+
+// Import internationlization module
+import { Http } from '@angular/http';
+import {TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-translate/ng2-translate';
+
+// Internationalization factory
+export function createTranslateLoader(http: Http) {
+  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 }
 
 @NgModule({
@@ -78,17 +89,25 @@ const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    SuggestPage,
+    SuggestionPage,
     AboutPage,
     UserConfigPage,
     PinConfigPage,
+    LocaleConfigPage,
     Autoresize,
     ChineseDay
   ],
   imports: [
     // Set the whole app in iOS's style
     IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: ''}),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    // Internationalization setup
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -111,10 +130,11 @@ const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    SuggestPage,
+    SuggestionPage,
     AboutPage,
     UserConfigPage,
-    PinConfigPage
+    PinConfigPage,
+    LocaleConfigPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -123,7 +143,8 @@ const myFirebaseAuthConfig = {
     DiaryService,
     MemoService,
     ContactService,
-    ConfigService
+    ConfigService,
+    LocaleService
   ]
 })
 export class AppModule {}

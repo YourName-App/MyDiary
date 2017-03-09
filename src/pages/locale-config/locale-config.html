@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color={{theme}}>
+    <ion-title>{{ 'LOCALE_CONFIG.TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>{{ 'LOCALE_CONFIG.LABEL' | translate }}</ion-label>
+    <ion-select [(ngModel)]="userLocale" okText="{{ 'CONFIG.OK' | translate }}" cancelText="{{ 'CONFIG.CANCEL' | translate }}" interface="action-sheet">
+      <ion-option value="en">{{ 'LOCALE_CONFIG.EN' | translate }}</ion-option>
+      <ion-option value="zh-tw">{{ 'LOCALE_CONFIG.CH' | translate }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button color={{theme}} ion-button block (click)="updateLocale();">{{ 'CONFIG.CONFIRM' | translate }}</button>
+</ion-content>
