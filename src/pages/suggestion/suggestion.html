@@ -9,7 +9,7 @@
 <ion-content padding>
   <form [formGroup]="suggestForm" (submit)="sendSuggestion()" novalidate>
     <ion-item>
-      <ion-label stacked>{{ 'SUGGEST.LABEL' | translate }}(<font color="#FF6153">{{ 'SUGGEST.CAUTION' | translate }}</font>)</ion-label>
+      <ion-label stacked>{{ 'SUGGEST.LABEL' | translate }}</ion-label>
       <ion-textarea #suggest formControlName="suggest" rows="6" placeholder="{{ 'SUGGEST.PROMPT' | translate }}"
         (change)="elementChanged(suggest)" [class.invalid]="!suggestForm.controls.suggest.valid && (suggestChanged || submitAttempt)">
       </ion-textarea>

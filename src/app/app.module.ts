@@ -22,10 +22,11 @@ import { LandingPage } from '../pages/landing/landing';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
-import { SuggestPage } from '../pages/suggest/suggest';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { AboutPage } from '../pages/about/about';
 import { UserConfigPage } from '../pages/user-config/user-config';
 import { PinConfigPage } from '../pages/pin-config/pin-config';
+import { LocaleConfigPage } from '../pages/locale-config/locale-config';
 
 // Import custom components
 import { Autoresize } from '../components/autoresize/autoresize';
@@ -64,7 +65,7 @@ import {TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-tran
 
 // Internationalization factory
 export function createTranslateLoader(http: Http) {
-    return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 }
 
 @NgModule({
@@ -88,10 +89,11 @@ export function createTranslateLoader(http: Http) {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    SuggestPage,
+    SuggestionPage,
     AboutPage,
     UserConfigPage,
     PinConfigPage,
+    LocaleConfigPage,
     Autoresize,
     ChineseDay
   ],
@@ -128,10 +130,11 @@ export function createTranslateLoader(http: Http) {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    SuggestPage,
+    SuggestionPage,
     AboutPage,
     UserConfigPage,
-    PinConfigPage
+    PinConfigPage,
+    LocaleConfigPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

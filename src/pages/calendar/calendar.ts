@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { ConfigService } from '../../providers/config-service';
+import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
+import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-calendar',
   templateUrl: 'calendar.html'
 })
-export class CalendarPage {
+export class CalendarPage implements OnInit {
 
   _theme: string;
   timestamp: string;
@@ -22,19 +22,19 @@ export class CalendarPage {
   }
 
   constructor(private configServ: ConfigService, private localeServ: LocaleService) {
-  //moment.locale('zh-tw');
-    this.init('en');
+  }
 
-    localeServ.subscribeCalendar(this.onLocaleChange);
-    this.init(this.localeServ.getCalendarLang());
+  ngOnInit() {
+    //this.localeServ.subscribeCalendar(this.onLocaleChange);
+    this.init(this.configServ.getUserLocale());
   }
 
   init(lang:string) {
     moment.locale(lang);
     this.timestamp = moment().format();
     this.month = moment(this.timestamp).format('MMMM');
-    this.day = moment(this.timestamp).format('dddd');
     this.date = moment(this.timestamp).format('D');
+    this.day = moment(this.timestamp).format('dddd');
   }
 
   ionViewCanEnter(): boolean {

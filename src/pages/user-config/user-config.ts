@@ -14,20 +14,18 @@ export class UserConfigPage {
   userName: string;
   userGender: string;
   userAvatar: string;
-  userLocale: string;
 
   constructor(private navCtrl: NavController, private appCtrl: App,
     private storage: Storage, private configServ: ConfigService, private localeServ: LocaleService) {
-
   }
 
   ionViewWillEnter() {
     this.userName = this.configServ.getUserName();
-    if (this.userName === null || this.userName.trim().length === 0) {
 
-    } else {
+    if (this.userName === null || this.userName.trim().length === 0) {
       this.localeServ.subscribe('YOUR_NAME', (value:string) => { this.userName = value; })
     }
+
     this.userGender = this.configServ.getUserGender();
     this.theme = this.userGender;
   }
@@ -49,11 +47,5 @@ export class UserConfigPage {
     this.configServ.setUserAvatar(this.userAvatar);
 
     this.navCtrl.pop();
-  }
-
-  // To change the language the app is currently using
-  updateLocale() {
-    this.localeServ.use(this.userLocale.trim());
-    this.localeServ.updatePageLocale();
   }
 }

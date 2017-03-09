@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { TranslateService } from 'ng2-translate';
 
 export class TargetOnLocaleChange {
@@ -8,17 +9,40 @@ export class TargetOnLocaleChange {
 
 @Injectable()
 export class LocaleService {
-//  update the locale of the rest of component subscribed
+  //  update the locale of the rest of component subscribed
 	listToLocaleUpdate: TargetOnLocaleChange [] = [];
-//	currentLang:string = this.translate.currentLang;
-	onCalendarLocaleChange:() => void = ()=>{ };
+  userLocale: string = '';
 
-	constructor(public translate: TranslateService) {
-		translate.setDefaultLang('en');
-		this.updatePageLocale();
-		this.onCalendarLocaleChange();
+	onCalendarLocaleChange:() => void = () => { };
+
+	constructor(public translate: TranslateService, private storage: Storage) {
+    this.fetchUserLocale().then(userLocale => {
+      this.userLocale = userLocale;
+      translate.setDefaultLang(this.userLocale);
+      this.updatePageLocale();
+      this.onCalendarLocaleChange();
+    });
 	}
 
+  fetchUserLocale(): Promise<string> {
+    return this.storage.get('userLocale')
+      .then(val => {
+        this.userLocale = (val != null && val.trim().length != 0) ? val : 'en';
+        return this.userLocale;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  getUserLocale(): string {
+    return this.userLocale;
+  }
+
+  setUserLocale(locale: string) {
+    this.userLocale = locale;
+  }
+  
 	subscribeTargetOnLocaleChange(target:TargetOnLocaleChange) {
 		this.listToLocaleUpdate.push(target);
 		this.localize(target.mapping, target.update);
@@ -44,7 +68,7 @@ export class LocaleService {
 		}
 	}
 
-	localize(mapping:string, update:(value:string)=>void) {
+	localize(mapping:string, update:(value:string) => void) {
 		this.translate.get(mapping).subscribe((value: string) => {
 			update(value);
 		});
@@ -61,11 +85,7 @@ export class LocaleService {
 	}
 
 	getCalendarLang(){
-		if(this.getCurrentLang() == 'en') {
-			return 'en';
-	    } else if (this.getCurrentLang() == 'ch') {
-	    	return 'zh-tw';
-	    }
+		return this.getCurrentLang();
 	}
 
 	getCurrentLang() {
