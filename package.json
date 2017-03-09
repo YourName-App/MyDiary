@@ -20,19 +20,20 @@
     "@ionic/storage": "2.0.0",
     "angularfire2": "2.0.0-beta.6",
     "ionic-angular": "2.1.0",
-    "ionic-native": "2.7.0",
+    "ionic-native": "2.8.0",
     "ionicons": "3.0.0",
     "moment": "^2.17.1",
     "ng2-translate": "^5.0.0",
     "rxjs": "5.0.0-beta.12",
     "sw-toolbox": "3.4.0",
-    "zone.js": "0.6.26"
+    "zone.js": "0.7.2"
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
     "eslint": "^3.16.0",
     "eslint-config-google": "^0.7.1",
-    "typescript": "2.0.9"
+    "typescript": "2.0.9",
+    "typings": "^2.1.0"
   },
   "cordovaPlugins": [
     "cordova-plugin-crosswalk-webview",
@@ -40,15 +41,21 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-console",
     "cordova-plugin-device",
+    "ionic-plugin-keyboard",
     "cordova-plugin-splashscreen",
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-datepicker",
+    "mx.ferreyra.callnumber",
     "cordova-plugin-contacts",
     "cordova-plugin-compat",
     "cordova-plugin-nativeaudio",
     "cordova-plugin-pin-dialog",
-    "ionic-plugin-keyboard",
-    "call-number"
+    "cordova-plugin-file",
+    {
+      "locator": "http://github.com/don/cordova-filechooser.git",
+      "id": "com.megster.cordova.FileChooser"
+    },
+    "cordova-plugin-filepath"
   ],
   "cordovaPlatforms": [
     "ios",

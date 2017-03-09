@@ -35,7 +35,7 @@ export class PinConfigPage {
   addPinAlertMsg:string;
 
   addPin() {
-  //PinDialog.prompt('請輸入至少4個數字的密碼', '設定密碼', ['確認', '取消'])
+    //PinDialog.prompt('請輸入至少4個數字的密碼', '設定密碼', ['確認', '取消'])
     PinDialog.prompt(this.addPinPromptMsg, this.addPinTitle, [this.addPinConfirmBtn, this.addPinCancelBtn])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
@@ -56,7 +56,7 @@ export class PinConfigPage {
   ConfirmPinAlertMsg:string;
 
   confirmPin(pin: string) {
-  //PinDialog.prompt('請重複輸入密碼', '確認密碼', ['確認', '取消'])
+    //PinDialog.prompt('請重複輸入密碼', '確認密碼', ['確認', '取消'])
     PinDialog.prompt(this.ConfirmPinPromptMsg, this.ConfirmPinTitle, [this.ConfirmPinConfirmBtn, this.ConfirmPinCancelBtn])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
@@ -82,7 +82,7 @@ export class PinConfigPage {
   RemovePinAlertMsg:string;
 
   removePin() {
-  //PinDialog.prompt('請輸入密碼', '關閉密碼', ['確認', '取消'])
+    //PinDialog.prompt('請輸入密碼', '關閉密碼', ['確認', '取消'])
     PinDialog.prompt(this.RemovePinPromptMsg,this.RemovePinTitle, [this.RemovePinConfirmBtn, this.RemovePinCancelBtn])
     .then((result: any) => {
       if (result.input1 === this.configServ.getUserPin()) {

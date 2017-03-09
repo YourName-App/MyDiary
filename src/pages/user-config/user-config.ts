@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
+import { File, FilePath, FileChooser, Entry, FileError } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
+
+declare var cordova: any;
 
 @Component({
   selector: 'page-user-config',
@@ -14,6 +17,7 @@ export class UserConfigPage {
   userName: string;
   userGender: string;
   userAvatar: string;
+  avatarFromFile: boolean = false;
 
   constructor(private navCtrl: NavController, private appCtrl: App,
     private storage: Storage, private configServ: ConfigService, private localeServ: LocaleService) {
@@ -27,6 +31,7 @@ export class UserConfigPage {
     }
 
     this.userGender = this.configServ.getUserGender();
+    this.userAvatar = this.configServ.getUserAvatar();
     this.theme = this.userGender;
   }
 
@@ -36,7 +41,7 @@ export class UserConfigPage {
 
     this.userName = (this.userName === null || this.userName.trim().length === 0) ? prompt : this.userName;  // 你的名字是？
     this.userGender = (this.userGender === null || this.userGender.trim().length === 0) ? 'male' : this.userGender;
-    this.userAvatar = 'assets/img/avatar-' + this.userGender + '.png';
+    this.userAvatar = (this.userAvatar === null || this.userAvatar.trim().length === 0) ? 'assets/img/avatar-' + this.userGender + '.png' : this.userAvatar;
 
     this.storage.set('userName', this.userName);
     this.storage.set('userGender', this.userGender);
@@ -47,5 +52,31 @@ export class UserConfigPage {
     this.configServ.setUserAvatar(this.userAvatar);
 
     this.navCtrl.pop();
+  }
+
+  chooseAvatar() {
+    FileChooser.open()
+      .then(uri => {
+        FilePath.resolveNativePath(uri)
+          .then(nativePath => {
+            const filePath = nativePath.replace(/[^\/]*$/, '');
+            const fileName = nativePath.replace(/^.*[\\\/]/, '');
+        
+            File.copyFile(filePath, fileName, cordova.file.dataDirectory, fileName)
+              .then((data: Entry) => {
+                this.userAvatar = data.toURL();
+              })
+              .catch((error: FileError) => {
+                this.userAvatar = '';
+                console.log(error);
+              });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 }

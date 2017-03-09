@@ -7,5 +7,9 @@
   },
   "rulesDirectory": [
     "node_modules/tslint-eslint-rules/dist/rules"
+  ],
+  "files": [
+    "typings.d.ts",
+    "main"
   ]
 }
