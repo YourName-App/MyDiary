@@ -22,9 +22,6 @@ export class CalendarPage {
   }
 
   constructor(private configServ: ConfigService, private localeServ: LocaleService) {
-  //moment.locale('zh-tw');
-    this.init('en');
-
     localeServ.subscribeCalendar(this.onLocaleChange);
     this.init(this.localeServ.getCalendarLang());
   }
@@ -33,8 +30,13 @@ export class CalendarPage {
     moment.locale(lang);
     this.timestamp = moment().format();
     this.month = moment(this.timestamp).format('MMMM');
-    this.day = moment(this.timestamp).format('dddd');
     this.date = moment(this.timestamp).format('D');
+
+    if (lang === 'zh-tw') {
+      this.day = moment(this.timestamp).format('dddd');
+    } else {
+      this.day = moment(this.timestamp).format('ddd');
+    }
   }
 
   ionViewCanEnter(): boolean {

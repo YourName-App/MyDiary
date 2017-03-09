@@ -20,7 +20,7 @@ export class SignupPage {
   constructor(private authServ: AuthService, private formBuilder: FormBuilder,
     private toastCtrl: ToastController, private loadingCtrl: LoadingController,
     private viewCtrl: ViewController,
-    private localeServ:LocaleService) {
+    private localeServ: LocaleService) {
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -47,7 +47,7 @@ export class SignupPage {
         this.loader.dismiss();
       }, (error) => {
         this.loader.dismiss().then( () => {
-          let alert = '';        // 註冊失敗，請稍後再試
+          let alert = ''; // 註冊失敗，請稍後再試
           this.localeServ.localize('SIGNUP_PAGE.ALERT.MSG',     (value:string) => { alert = value; });
           this.toastMessage(alert);
         });

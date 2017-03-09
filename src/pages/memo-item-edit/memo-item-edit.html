@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <ion-item *ngFor="let item of itemList | async">
-    <ion-input #entry type='text' placeholder="{{ 'MEMO_ITEM_EDIT.TITLE.INPUT_ITEM' | translate }}" [value]="item.entry" (blur)="bufferItem(item.$key, item, entry)"></ion-input>
+    <ion-input #entry type='text' placeholder="{{ 'MEMO_ITEM_EDIT.INPUT_ITEM' | translate }}" [value]="item.entry" (blur)="bufferItem(item.$key, item, entry)"></ion-input>
     <button color="danger" item-right ion-button icon-only clear (click)='deleteItem(item.$key)'>
       <ion-icon name="close-circle"></ion-icon>
     </button>

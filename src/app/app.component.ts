@@ -5,10 +5,11 @@ import { Splashscreen, StatusBar } from 'ionic-native';
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
 import { HomePage } from '../pages/home/home';
-import { SuggestPage } from '../pages/suggest/suggest';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { AboutPage } from '../pages/about/about';
 import { UserConfigPage } from '../pages/user-config/user-config';
 import { PinConfigPage } from '../pages/pin-config/pin-config';
+import { LocaleConfigPage } from '../pages/locale-config/locale-config';
 
 // Import providers
 import { AuthService } from '../providers/auth-service';
@@ -39,11 +40,12 @@ export class MyApp {
   // List of pages that can be navigated to from the side menu
   settingPages: PageInterface[] = [
     { title: '', component: UserConfigPage, pushPage: true, icon: 'ios-person-outline' },  // 使用者
-    { title: '', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' },     // 密碼鎖
+    { title: '', component: LocaleConfigPage, pushPage: true, icon: 'ios-globe-outline' }, // 語言
+    { title: '', component: PinConfigPage, pushPage: true, icon: 'ios-lock-outline' }      // 密碼鎖
   ];
 
   otherPages: PageInterface[] = [
-    { title: '', component: SuggestPage, pushPage: true, icon: 'ios-chatbubbles-outline' },   // 建議
+    { title: '', component: SuggestionPage, pushPage: true, icon: 'ios-chatbubbles-outline' },// 建議
     { title: '', component: AboutPage, pushPage: true, icon: 'ios-help-circle-outline' }      // 關於
   ];
 
@@ -56,7 +58,8 @@ export class MyApp {
     private localeServ:LocaleService) {
 
       this.localeServ.subscribe('PAGE.SETTING.USER',    (value:string) => {this.settingPages[0].title   = value; });
-      this.localeServ.subscribe('PAGE.SETTING.LOCK',    (value:string) => {this.settingPages[1].title   = value; });
+      this.localeServ.subscribe('PAGE.SETTING.LOCALE',  (value:string) => {this.settingPages[1].title   = value; });
+      this.localeServ.subscribe('PAGE.SETTING.LOCK',    (value:string) => {this.settingPages[2].title   = value; });
 
       this.localeServ.subscribe('PAGE.OTHER.SUGGESTION', (value:string) => {this.otherPages[0].title   = value; });
       this.localeServ.subscribe('PAGE.OTHER.ABOUT',      (value:string) => {this.otherPages[1].title   = value; });

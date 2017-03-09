@@ -1,71 +1,78 @@
 {
-	"YOUR_NAME"    : "What's your name ?",
+	"YOUR_NAME"    : "What's your name?",
 	"TITLE"        : "Menu",
-	"ENV"          : "Environment",
-	"MISC"         : "Miscellaneous",
+	"ENV"          : "System",
+	"MISC"         : "Misc",
 	"ACCOUNT"      : "Account",
 	"LANDING_TITLE": "What's your name？",
 	"HOME" : {
 		"DIARY"  : "Diary",
 		"CONTACT": "Contacts",
-		"MEMO"   : "Memo"
+		"MEMO"   : "Memos"
 	},
 	"LANDING" : {
-		"LOGIN"          : "Login",
-		"SIGNUP"         : "Sign Up",
-		"ANONYMOUS_LOGIN": "I'd rather not tell! I wanna login as annoymous user"
+		"LOGIN"          : "Log in",
+		"SIGNUP"         : "Sign up",
+		"ANONYMOUS_LOGIN": "Log in as annoymous user 😜"
 	},
 	"SUGGEST" : {
 		"TITLE"  : "Suggestion",
 		"LABEL"  : "Suggestion",
-		"CAUTION": "Be aware! You are going to send messages to the author in 3 years later",
+		"CAUTION": "Be aware! You are going to send messages to the author 3 years later",
 		"PROMPT" : "Your Suggestion",
-		"ERR_MSG": "Please enter your suggestion!",
+		"ERR_MSG": "Please enter your suggestion",
 		"SUBMIT" : "Send"
 	},
 	"SUGGEST_PAGE" : {
 		"SEND"  : {
-			"SUBJECT": "MyDiary user's suggestion"
+			"SUBJECT": "MyDiary - User suggestion"
 		},
 		"ALERT" : {
-			"MSG"    : "This function isn't supported by your device",
+			"MSG"    : "Your phone does not support this feature",
 			"CONFIRM": "Confirm"
 		}
 	},
 	"LOGIN" : {
-		"TITLE"                 : "Login",
-		"E_MAIL"                : "e-mail",
-		"YOUR_E_MAIL"           : "Your e-mail",
-		"PLS_ENTER_VALID_E_MAIL": "Please enter a valid e-mail address",
+		"TITLE"                 : "Log In",
+		"E_MAIL"                : "Email",
+		"YOUR_E_MAIL"           : "Your email",
+		"PLS_ENTER_VALID_E_MAIL": "Please enter a valid email address",
 		"PASSWORD"              : "Password",
 		"YOUR_PASSWD"           : "Your password",
-		"AT_LEAST_6_CHARS"      : "Password must contain a least 6 characters",
-		"SUBMIT"                : "Submit",
-		"FORGOT_PASSWD"         : "Damn it ... I forgot the password 😓"
+		"AT_LEAST_6_CHARS"      : "At least 6 characters long",
+		"SUBMIT"                : "Log in",
+		"FORGOT_PASSWD"         : "I forgot the password 😓"
+	},
+  "LOGIN_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "Log in failed. The email or password is incorrect",
+			"CONFIRM": "Confirm"
+		}
 	},
 	"ABOUT" : {
 		"TITLE"        : "About",
-		"THANKS"       : "Thanks for downloading and hope you enjoy !",
-		"GREETING_CARD": "This app is inspired by a Japanese animation film named 'Your Name' (君の名は）。Not only did the auther try his best to implement the layout style and functionality from the original film, but also he improved this app to meet user's needs as much as he can.  Any idea and suggestion is welcome to discuss with author by the function 'Suggest' in <Menu> list."
+		"THANKS"       : "Thanks for downloading and hope you enjoy!",
+		"GREETING_CARD": "This app was inspired by the Japanese movie 'Your Name'. Not only I will try to reproduce the original style and functionality, but also hope to meet the needs of users. Feel free to send your suggestions, ideas or issues to me through the Suggestion feature in the menu."
 	},
 	"PAGE" : {
 		"OTHER" : {
-			"SUGGESTION": "Comment",
+			"SUGGESTION": "Suggestion",
 			"ABOUT"     : "About"
 		},
 		"ACCOUNT" : {
-			"LOGOUT" : "Logout"
+			"LOGOUT" : "Log out"
 		},
 		"SETTING" : {
 			"USER" : "User",
-			"LOCK" : "Lock"
+      "LOCALE" : "Language",
+			"LOCK" : "Passcode"
 		}
 	},
 	"CONFIG" : {
-		"TITLE" : "Configuration",
+		"TITLE" : "User",
 		"NAME" : {
 			"LABEL" : "Name：",
-			"PROMPT": "Your Name"
+			"PROMPT": "Your name"
 		},
 		"GENDER" : {
 			"LABEL" : "Gender：",
@@ -75,41 +82,42 @@
 		"LOCK": {
 			"LABEL" : "Enable Lock :"
 		},
-		"LOCALE" : {
-			"LABEL": "Locale：",
-			"EN"   : "English",
-			"CH"   : "Chinese (Traditional)"
-		},
 		"CONFIRM": "Confirm",
 		"OK"     : "OK",
 		"CANCEL" : "Cancel"
 	},
+  "LOCALE_CONFIG" : {
+		"TITLE" : "Language",
+		"LABEL": "Language：",
+		"EN"   : "English",
+		"CH"   : "Chinese (Traditional)"
+	},
 	"PIN_CONFIG_PAGE" : {
-		"TITLE"                  : "Password",
+		"TITLE"                  : "Passcode",
 		"COL_SETTING"            : "Setting：",
-		"COL_ENABLE"             : "Enable",
-		"COL_DISABLE"            : "Disable",
-		"ADD_PIN_PROMPT_MSG"     : "Please enter a password with a least 4 digits",
-		"ADD_PIN_TITLE"          : "Setting",
+		"COL_ENABLE"             : "Turn passcod on",
+		"COL_DISABLE"            : "Turn passcod off",
+		"ADD_PIN_PROMPT_MSG"     : "Please enter a passcode at least 4 digits long",
+		"ADD_PIN_TITLE"          : "Turn passcod on",
 		"ADD_PIN_CONFIRM_BTN"    : "Confirm",
 		"ADD_PIN_CANCEL_BTN"     : "Cancel",
-		"ADD_PIN_ALERT_MSG"      : "Please enter a password with a least 4 digits",
-		"CONFIRM_PIN_PROMPT_MSG" : "Please enter the password again",
-		"CONFIRM_PIN_TITLE"      : "Confirm Password",
+		"ADD_PIN_ALERT_MSG"      : "Please enter a passcode at least 4 digits long",
+		"CONFIRM_PIN_PROMPT_MSG" : "Verify your passcode",
+		"CONFIRM_PIN_TITLE"      : "Turn passcod on",
 		"CONFIRM_PIN_CONFIRM_BTN": "Confirm",
 		"CONFIRM_PIN_CANCEL_BTN" : "Cancel",
-		"CONFIRM_PIN_ENABLED_MSG": "Password lock enabled",
-		"CONFIRM_PIN_ALERT_MSG"  : "Password doestn't match, please retype again",
-		"REMOVE_PIN_PROMPT_MSG"  : "Please enter the password",
-		"REMOVE_PIN_TITLE"       : "Disable password",
+		"CONFIRM_PIN_ENABLED_MSG": "Passcode has been turned on",
+		"CONFIRM_PIN_ALERT_MSG"  : "Passcodes did not match. Please try again",
+		"REMOVE_PIN_PROMPT_MSG"  : "Enter your passcode",
+		"REMOVE_PIN_TITLE"       : "Turn passcod off",
 		"REMOVE_PIN_CONFIRM_BTN" : "Confirm",
 		"REMOVE_PIN_CANCEL_BTN"  : "Cancel",
-		"REMOVE_PIN_DONE_MSG"    : "Password lock disabled",
-		"REMOVE_PIN_ALERT_MSG"   : "Password incorrect",
+		"REMOVE_PIN_DONE_MSG"    : "Passcode has been turned off",
+		"REMOVE_PIN_ALERT_MSG"   : "The passcode is incorrect",
 		"ALERT_MSG_BTN"          : "Confirm"
 	},
 	"DIARY" : {
-		"DIARY_LIST": "Items",
+		"DIARY_LIST": "Entries",
 		"CALENDAR"  : "Calendar",
 		"SEARCH"    : "Search",
 		"CANCEL"    : "Cancel"
@@ -136,7 +144,7 @@
 			"WARNING": "Please enter diary subject"
 		},
 		"CONTENT" : {
-			"LABEL"  : "Diary Content(double click on date item to edit)",
+			"LABEL"  : "Content (Double click the date to open datepicker)",
 			"WARNING": "Please enter diary content"
 		}
 	},
@@ -147,43 +155,44 @@
 		},
 		"MODE_DESC" : {
 			"UPDATE":"Edit Diary",
-			"CREATE":"Create Diary"
+			"CREATE":"New Diary"
 		}
 	},
 	"SIGN_UP" : {
-		"TITLE" : "",
+		"TITLE" : "Sign Up",
 		"E_MAIL": {
-			"LABEL"  : "e-mail",
-			"PROMPT" : "Please enter a valid e-mail address",
-			"WARNING": "Please enter a valid e-mail address"
+			"LABEL"  : "Email",
+			"PROMPT" : "Your email",
+			"WARNING": "Please enter a valid email address"
 		},
 		"PASSWORD" : {
 			"LABEL"  : "Password",
-			"PROMPT" : "Password must contain a least 6 characters",
-			"WARNING": "Password must contain a least 6 characters"
+      "TIP"    : "At least 6 characters long",
+			"PROMPT" : "Your password",
+			"WARNING": "At least 6 characters long"
 		},
-		"SUBMIT" : "Submit"
+		"SUBMIT" : "Sign up"
 	},
 	"SIGNUP_PAGE" : {
 		"ALERT" : {
-			"MSG"    : "The e-mail wasn't signed up",
+			"MSG"    : "Sign up failed. Please try again later",
 			"CONFIRM": "Confirm"
 		}
 	},
 	"RESET_PASSWORD" : {
 		"TITLE"  : "Reset Password",
-		"E_MAIL" : "e-mail",
-		"PROMPT" : "Your e-mail",
-		"WARNING": "Please enter a valid e-mail",
-		"CONFIRM": "Confirm"
+		"E_MAIL" : "Email",
+		"PROMPT" : "Your email",
+		"WARNING": "Please enter a valid email",
+		"CONFIRM": "Reset password"
 	},
 	"RESET_PASSWORD_PAGE" : {
 		"RESET" : {
-			"MSG"    : "Password reset link has be sent to your email",
+			"MSG"    : "Password reset link has been sent to your email",
 			"CONFIRM": "Confirm"
 		},
 		"ALERT" : {
-			"MSG"    : "The e-mail wasn't signed up",
+			"MSG"    : "This email has not registered yet",
 			"CONFIRM": "Confirm"
 		}
 	},
@@ -191,7 +200,7 @@
 		"HOME"    :"Home",
 		"DIARY"   :"Diary",
 		"CONTACTS":"Contacts",
-		"MEMO"    :"Memo"
+		"MEMO"    :"Memos"
 	},
 	"CONTACT_LIST" : {
 		"TITLE" : "Contacts",
@@ -216,8 +225,8 @@
 		}
 	},
 	"CONTACT_EDIT" : {
-		"TITLE_UPDATE" : "Update Contact",
-		"TITLE_CREATE" : "Create Contact",
+    "TITLE_CREATE" : "New Contact",
+		"TITLE_UPDATE" : "Edit Contact",
 		"NAME"   : {
 			"LABEL"  : "Name",
 			"ENTER"  : "Contact Name",
@@ -230,7 +239,7 @@
 		}
 	},
 	"MEMO_LIST" : {
-		"TITLE" : "Memo",
+		"TITLE" : "Memos",
 		"SEARCH": "Search",
 		"CANCEL": "Cancel",
 		"DELETE"    : {
@@ -241,27 +250,27 @@
 		}
 	},
 	"MEMO_ITEM_EDIT" : {
-		"TITLE"     : "Edit",
+		"TITLE"     : "Edit ",
 		"INPUT_ITEM": "Enter a memo item here",
 		"DELETE"    : {
-			"TITLE"  : "Delete memo item",
+			"TITLE"  : "Delete a memo item",
 			"MESSAGE": "Are you sure？",
 			"CONFIRM": "Confirm",
 			"CANCEL" : "Cancel"
 		}
 	},
 	"MEMO_EDIT" : {
-		"TITLE_CREATE" : "Update Memo",
-		"TITLE_UPDATE" : "Create Memo",
+		"TITLE_CREATE" : "New Memo",
+		"TITLE_UPDATE" : "Edit Memo",
 		"LABEL"           : "Subject",
-		"INPUT_MEMO_TITLE": "Memo Subject",
-		"ERR_MSG"         : "Please enter a memo subject"
+		"INPUT_MEMO_TITLE": "Memo subject",
+		"ERR_MSG"         : "Please enter memo subject"
 	},
 	"MEMO_DETAIL" : {
-		"NEW_ENTRY": "Enter a new entry",
-		"ERR_MSG"  : "Please add a new entry",
+		"NEW_ENTRY": "Add a memo item here",
+		"ERR_MSG"  : "Please enter a memo item",
 		"DELETE"   : {
-			"TITLE"  : "Delete all",
+			"TITLE"  : "Delete all memo items",
 			"MESSAGE": "Are you sure？",
 			"CONFIRM": "Confirm",
 			"CANCEL" : "Cancel"

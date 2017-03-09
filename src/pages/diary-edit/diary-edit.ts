@@ -73,7 +73,13 @@ export class DiaryEditPage {
 
     this.diaryYear = moment(this.timestamp).format('YYYY');
     this.diaryMonth = moment(this.timestamp).format('MMMM');
-    this.diaryDay = moment(this.timestamp).format('dddd');
+
+    if (lang === 'zh-tw') {
+      this.diaryDay = moment(this.timestamp).format('dddd');
+    } else {
+      this.diaryDay = moment(this.timestamp).format('ddd');
+    }
+
     this.diaryDate = moment(this.timestamp).format('D');
     this.diaryTime = moment(this.timestamp).format('HH:mm');
   }

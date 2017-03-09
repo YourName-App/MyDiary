@@ -6,10 +6,10 @@ import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
 
 @Component({
-  selector: 'page-suggest',
-  templateUrl: 'suggest.html'
+  selector: 'page-suggestion',
+  templateUrl: 'suggestion.html'
 })
-export class SuggestPage {
+export class SuggestionPage {
 
   theme: string;
   suggestForm: any;

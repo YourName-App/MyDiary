@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import { EmailValidator } from '../../validators/email';
+import { LocaleService } from '../../providers/locale-service';
 
 @Component({
   selector: 'page-login',
@@ -19,7 +20,7 @@ export class LoginPage {
 
   constructor(private navCtrl: NavController, private authServ: AuthService,
     private formBuilder: FormBuilder, private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController, private localeServ: LocaleService) {
       
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -42,7 +43,9 @@ export class LoginPage {
         this.loader.dismiss();
       }, error => {
         this.loader.dismiss().then(() => {
-          this.toastMessage('登入失敗，請確認你的電子郵件與密碼');
+          let alert = ''; // 登入失敗，電子郵件或密碼輸入錯誤
+          this.localeServ.localize('LOGIN_PAGE.ALERT.MSG',     (value:string) => { alert = value; });
+          this.toastMessage(alert);
         });
       });
 

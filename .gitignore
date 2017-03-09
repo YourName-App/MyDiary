@@ -25,7 +25,11 @@ hooks/
 platforms/
 plugins/
 typings/
-src/app/app.module.ts
+src/app/*.js*
+src/components/*.js*
+src/pages/*.js*
+src/providers/*.js*
+src/validators/*.js*
 www/
 $RECYCLE.BIN/
 
