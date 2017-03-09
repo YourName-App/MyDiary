@@ -65,7 +65,7 @@ import {TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-tran
 
 // Internationalization factory
 export function createTranslateLoader(http: Http) {
-    return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+  return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 }
 
 @NgModule({

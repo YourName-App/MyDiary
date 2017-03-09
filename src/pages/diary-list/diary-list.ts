@@ -28,7 +28,6 @@ export class DiaryListPage {
   constructor(private alertCtrl: AlertController, private modalCtrl: ModalController,
     private diaryServ: DiaryService, private configServ: ConfigService,
     private localeServ: LocaleService) {
-
   }
 
   ionViewCanEnter(): boolean {

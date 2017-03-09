@@ -13,7 +13,7 @@ export class LocaleService {
 	listToLocaleUpdate: TargetOnLocaleChange [] = [];
   userLocale: string = '';
 
-	onCalendarLocaleChange:() => void = ()=>{ };
+	onCalendarLocaleChange:() => void = () => { };
 
 	constructor(public translate: TranslateService, private storage: Storage) {
     this.fetchUserLocale().then(userLocale => {
@@ -68,7 +68,7 @@ export class LocaleService {
 		}
 	}
 
-	localize(mapping:string, update:(value:string)=>void) {
+	localize(mapping:string, update:(value:string) => void) {
 		this.translate.get(mapping).subscribe((value: string) => {
 			update(value);
 		});
@@ -85,11 +85,7 @@ export class LocaleService {
 	}
 
 	getCalendarLang(){
-		if(this.getCurrentLang() == 'en') {
-			return 'en';
-	    } else if (this.getCurrentLang() == 'ch') {
-	    	return 'zh-tw';
-	    }
+		return this.getCurrentLang();
 	}
 
 	getCurrentLang() {

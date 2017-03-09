@@ -145,7 +145,7 @@
 		},
 		"CONTENT" : {
 			"LABEL"  :"日記內容(點選日期兩次開啟設定)",
-			"WARNING": "請輸入日記主題"
+			"WARNING": "請輸入日記內容"
 		}
 	},
 	"DIARY_EDIT_PAGE" : {
@@ -225,8 +225,8 @@
 		}
 	},
 	"CONTACT_EDIT" : {
-		"TITLE_UPDATE": "編輯聯絡人",
 		"TITLE_CREATE": "新增聯絡人",
+		"TITLE_UPDATE": "編輯聯絡人",
 		"NAME" : {
 			"LABEL"  : "姓名",
 			"ENTER"  : "聯絡人姓名",
@@ -260,8 +260,8 @@
 		}
 	},
 	"MEMO_EDIT" : {
-		"TITLE_CREATE"    : "編輯備忘錄",
-		"TITLE_UPDATE"    : "新增備忘錄",
+		"TITLE_CREATE"    : "新增備忘錄",
+		"TITLE_UPDATE"    : "編輯備忘錄",
 		"LABEL"           : "標題",
 		"INPUT_MEMO_TITLE": "備忘錄標題",
 		"ERR_MSG"         : "請輸入備忘錄標題"

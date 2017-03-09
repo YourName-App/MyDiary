@@ -90,7 +90,7 @@
 		"TITLE" : "Language",
 		"LABEL": "Language：",
 		"EN"   : "English",
-		"CH"   : "Chinese (Traditional)"
+		"CH"   : "Chinese"
 	},
 	"PIN_CONFIG_PAGE" : {
 		"TITLE"                  : "Passcode",
