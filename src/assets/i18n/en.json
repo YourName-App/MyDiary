@@ -18,7 +18,7 @@
 	"SUGGEST" : {
 		"TITLE"  : "Suggestion",
 		"LABEL"  : "Suggestion",
-		"CAUTION": "Be aware! You are going to send messages to the author 3 years later",
+		"CAUTION": "",
 		"PROMPT" : "Your Suggestion",
 		"ERR_MSG": "Please enter your suggestion",
 		"SUBMIT" : "Send"
@@ -39,7 +39,7 @@
 		"PLS_ENTER_VALID_E_MAIL": "Please enter a valid email address",
 		"PASSWORD"              : "Password",
 		"YOUR_PASSWD"           : "Your password",
-		"AT_LEAST_6_CHARS"      : "At least 6 characters long",
+		"AT_LEAST_6_CHARS"      : "Please enter a password at least 6 characters",
 		"SUBMIT"                : "Log in",
 		"FORGOT_PASSWD"         : "I forgot the password 😓"
 	},
@@ -79,9 +79,6 @@
 			"MALE"  : "Male",
 			"FEMALE": "Female"
 		},
-		"LOCK": {
-			"LABEL" : "Enable Lock :"
-		},
 		"CONFIRM": "Confirm",
 		"OK"     : "OK",
 		"CANCEL" : "Cancel"
@@ -90,18 +87,19 @@
 		"TITLE" : "Language",
 		"LABEL": "Language：",
 		"EN"   : "English",
-		"CH"   : "Chinese"
+		"CH"   : "Chinese",
+		"KO"	 : "Korean"
 	},
 	"PIN_CONFIG_PAGE" : {
 		"TITLE"                  : "Passcode",
 		"COL_SETTING"            : "Setting：",
 		"COL_ENABLE"             : "Turn passcod on",
 		"COL_DISABLE"            : "Turn passcod off",
-		"ADD_PIN_PROMPT_MSG"     : "Please enter a passcode at least 4 digits long",
+		"ADD_PIN_PROMPT_MSG"     : "Please enter a passcode at least 4 digits",
 		"ADD_PIN_TITLE"          : "Turn passcod on",
 		"ADD_PIN_CONFIRM_BTN"    : "Confirm",
 		"ADD_PIN_CANCEL_BTN"     : "Cancel",
-		"ADD_PIN_ALERT_MSG"      : "Please enter a passcode at least 4 digits long",
+		"ADD_PIN_ALERT_MSG"      : "Please enter a passcode at least 4 digits",
 		"CONFIRM_PIN_PROMPT_MSG" : "Verify your passcode",
 		"CONFIRM_PIN_TITLE"      : "Turn passcod on",
 		"CONFIRM_PIN_CONFIRM_BTN": "Confirm",
@@ -144,13 +142,13 @@
 			"WARNING": "Please enter diary subject"
 		},
 		"CONTENT" : {
-			"LABEL"  : "Content (Double click the date to open datepicker)",
-			"WARNING": "Please enter diary content"
+			"LABEL"  : "Contents (Double click the date to open datepicker)",
+			"WARNING": "Please enter diary contents"
 		}
 	},
 	"DIARY_EDIT_PAGE" : {
 		"OPEN_DATE_PICKER" : {
-			"DONE"  : "Done",
+			"DONE"  : "Confirm",
 			"CANCEL": "Cancel"
 		},
 		"MODE_DESC" : {
@@ -167,9 +165,9 @@
 		},
 		"PASSWORD" : {
 			"LABEL"  : "Password",
-      "TIP"    : "At least 6 characters long",
+      "TIP"    : "Please enter a password at least 6 characters",
 			"PROMPT" : "Your password",
-			"WARNING": "At least 6 characters long"
+			"WARNING": "Please enter a password at least 6 characters"
 		},
 		"SUBMIT" : "Sign up"
 	},
@@ -183,7 +181,7 @@
 		"TITLE"  : "Reset Password",
 		"E_MAIL" : "Email",
 		"PROMPT" : "Your email",
-		"WARNING": "Please enter a valid email",
+		"WARNING": "Please enter a valid email address",
 		"CONFIRM": "Reset password"
 	},
 	"RESET_PASSWORD_PAGE" : {
@@ -215,8 +213,8 @@
 	},
 	"CONTACT_DETAIL" : {
 		"TITLE"   : "Contacts",
-		"MESSAGES": "Messages",
-		"PHONE"   : "Phone",
+		"MESSAGES": "Message",
+		"PHONE"   : "Call",
 		"DELETE"   : {
 			"TITLE"  : "Delete Contact",
 			"MESSAGE": "Are you sure？",
@@ -277,12 +275,12 @@
 		}
 	},
 	"CONFIG_SERV" : {
-		"MESSAGE"          : "Please enter password",
+		"MESSAGE"          : "Please enter passcode",
 		"TITLE"            : "Unlock",
 		"BTN_CONFIRM"      : "Confirm",
 		"BTN_CANCEL"       : "Cancel",
 		"ALERT_MSG_SUCCESS": "Successfully unlocked",
-		"ALERT_MSG_ERROR"  : "Wrong password",
+		"ALERT_MSG_ERROR"  : "The passcode is incorrect",
 		"BTN_ALERT"        : "Confirm"
 	}
 }

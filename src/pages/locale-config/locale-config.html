@@ -10,8 +10,9 @@
   <ion-item>
     <ion-label>{{ 'LOCALE_CONFIG.LABEL' | translate }}</ion-label>
     <ion-select [(ngModel)]="userLocale" okText="{{ 'CONFIG.OK' | translate }}" cancelText="{{ 'CONFIG.CANCEL' | translate }}" interface="action-sheet">
-      <ion-option value="en">{{ 'LOCALE_CONFIG.EN' | translate }}</ion-option>
       <ion-option value="zh-tw">{{ 'LOCALE_CONFIG.CH' | translate }}</ion-option>
+      <ion-option value="en">{{ 'LOCALE_CONFIG.EN' | translate }}</ion-option>
+      <ion-option value="ko">{{ 'LOCALE_CONFIG.KO' | translate }}</ion-option>
     </ion-select>
   </ion-item>
 
