@@ -1,0 +1,286 @@
+{
+	"YOUR_NAME"    : "당신의 이름은?",
+	"TITLE"        : "메뉴",
+	"ENV"          : "체계",
+	"MISC"         : "여러 가지 잡다한",
+	"ACCOUNT"      : "계정",
+	"LANDING_TITLE": "당신의 이름은？",
+	"HOME" : {
+		"DIARY"  : "일기",
+		"CONTACT": "연락처",
+		"MEMO"   : "메모"
+	},
+	"LANDING" : {
+		"LOGIN"          : "로그인",
+		"SIGNUP"         : "회원가입",
+		"ANONYMOUS_LOGIN": "게스트로 로그인 😜"
+	},
+	"SUGGEST" : {
+		"TITLE"  : "제안",
+		"LABEL"  : "제안",
+		"CAUTION": "",
+		"PROMPT" : "당신의 제안",
+		"ERR_MSG": "제안을 입력하세요",
+		"SUBMIT" : "제안 보내기"
+	},
+	"SUGGEST_PAGE" : {
+		"SEND"  : {
+			"SUBJECT": "MyDiary - 사용자 제안"
+		},
+		"ALERT" : {
+			"MSG"    : "휴대전화가 기능을 지원하지 않습니다",
+			"CONFIRM": "확인"
+		}
+	},
+	"LOGIN" : {
+		"TITLE"                 : "로그인",
+		"E_MAIL"                : "이메일",
+		"YOUR_E_MAIL"           : "당신의 이메일은",
+		"PLS_ENTER_VALID_E_MAIL": "유효한 이메일 주소를 입력해 주세요",
+		"PASSWORD"              : "비밀번호",
+		"YOUR_PASSWD"           : "당신의 비밀번호는",
+		"AT_LEAST_6_CHARS"      : "최소 6자 이상의 비밀번호를 입력해 주세요",
+		"SUBMIT"                : "로그인",
+		"FORGOT_PASSWD"         : "암호 까먹었다 😓"
+	},
+  "LOGIN_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "로그인 실패. 이메일 또는 비밀번호가 틀립니다",
+			"CONFIRM": "확인"
+		}
+	},
+	"ABOUT" : {
+		"TITLE"        : "소개",
+		"THANKS"       : "앱을 사용해 주셔서 감사합니다 💕",
+		"GREETING_CARD": "이 앱은 일본 영화 '너의 이름은'. 으로부터 동기부여를 받아 제작되었습니다. 원작의 기능과 디자인을 살리면서, 사용자들에게 편리하게 만들고자 합니다. 제안이나 아이디어, 또는 버그나 이슈 등을 메뉴의 제안 기능을 통해 저에게 보내주세요."
+	},
+	"PAGE" : {
+		"OTHER" : {
+			"SUGGESTION": "제안",
+			"ABOUT"     : "소개"
+		},
+		"ACCOUNT" : {
+			"LOGOUT" : "로그아웃"
+		},
+		"SETTING" : {
+			"USER" : "사용자",
+      "LOCALE" : "언어",
+			"LOCK" : "암호"
+		}
+	},
+	"CONFIG" : {
+		"TITLE" : "사용자",
+		"NAME" : {
+			"LABEL" : "이름：",
+			"PROMPT": "이름"
+		},
+		"GENDER" : {
+			"LABEL" : "성별：",
+			"MALE"  : "남성",
+			"FEMALE": "여자"
+		},
+		"CONFIRM": "확인",
+		"OK"     : "승인",
+		"CANCEL" : "취소"
+	},
+  "LOCALE_CONFIG" : {
+		"TITLE" : "언어",
+		"LABEL": "언어：",
+		"EN"   : "영어",
+		"CH"   : "중국말",
+		"KO"	 : "한국어"
+	},
+	"PIN_CONFIG_PAGE" : {
+		"TITLE"                  : "암호",
+		"COL_SETTING"            : "환경：",
+		"COL_ENABLE"             : "암호 잠금 켜기",
+		"COL_DISABLE"            : "암호 잠금 끄기",
+		"ADD_PIN_PROMPT_MSG"     : "최소 4자 이상의 암호를 입력하세요",
+		"ADD_PIN_TITLE"          : "암호 잠금 켜기",
+		"ADD_PIN_CONFIRM_BTN"    : "확인",
+		"ADD_PIN_CANCEL_BTN"     : "취소",
+		"ADD_PIN_ALERT_MSG"      : "최소 4자 이상의 암호를 입력하세요",
+		"CONFIRM_PIN_PROMPT_MSG" : "암호를 확인하세요",
+		"CONFIRM_PIN_TITLE"      : "암호 잠금 켜기",
+		"CONFIRM_PIN_CONFIRM_BTN": "확인",
+		"CONFIRM_PIN_CANCEL_BTN" : "취소",
+		"CONFIRM_PIN_ENABLED_MSG": "암호 잠금 켜짐",
+		"CONFIRM_PIN_ALERT_MSG"  : "암호가 일치하지 않습니다. 다시 시도하세요",
+		"REMOVE_PIN_PROMPT_MSG"  : "암호 입력",
+		"REMOVE_PIN_TITLE"       : "암호 잠금 끄기",
+		"REMOVE_PIN_CONFIRM_BTN" : "확인",
+		"REMOVE_PIN_CANCEL_BTN"  : "취소",
+		"REMOVE_PIN_DONE_MSG"    : "암호 잠금 꺼짐",
+		"REMOVE_PIN_ALERT_MSG"   : "암호가 틀립니다",
+		"ALERT_MSG_BTN"          : "확인"
+	},
+	"DIARY" : {
+		"DIARY_LIST": "항목",
+		"CALENDAR"  : "달력",
+		"SEARCH"    : "검색",
+		"CANCEL"    : "취소"
+	},
+	"DIARY_LIST" : {
+		"DELETE": {
+			"TITLE"  : "일기 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"DIARY_DETAIL" : {
+		"DELETE": {
+			"TITLE"  : "일기 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"DIARY_EDIT" : {
+		"SUBJECT": {
+			"LABEL"  : "제목",
+			"WARNING": "일기 제목 입력"
+		},
+		"CONTENT" : {
+			"LABEL"  : "내용 (날짜를 두번 탭하여 날짜 선택)",
+			"WARNING": "일기 내용 입력"
+		}
+	},
+	"DIARY_EDIT_PAGE" : {
+		"OPEN_DATE_PICKER" : {
+			"DONE"  : "확인",
+			"CANCEL": "취소"
+		},
+		"MODE_DESC" : {
+			"UPDATE":"일기 수정",
+			"CREATE":"새 일기"
+		}
+	},
+	"SIGN_UP" : {
+		"TITLE" : "회원가입",
+		"E_MAIL": {
+			"LABEL"  : "이메일",
+			"PROMPT" : "당신의 이메일은",
+			"WARNING": "유효한 이메일 주소를 입력해 주세요"
+		},
+		"PASSWORD" : {
+			"LABEL"  : "비밀번호",
+      "TIP"    : "최소 6자 이상의 비밀번호를 입력해 주세요",
+			"PROMPT" : "당신의 비밀번호는",
+			"WARNING": "최소 6자 이상의 비밀번호를 입력해 주세요"
+		},
+		"SUBMIT" : "회원가입"
+	},
+	"SIGNUP_PAGE" : {
+		"ALERT" : {
+			"MSG"    : "회원가입 실패. 나중에 다시 시도해 주세요",
+			"CONFIRM": "확인"
+		}
+	},
+	"RESET_PASSWORD" : {
+		"TITLE"  : "비밀번호 초기화",
+		"E_MAIL" : "이메일",
+		"PROMPT" : "당신의 이메일은",
+		"WARNING": "유효한 이메일 주소를 입력해 주세요",
+		"CONFIRM": "비밀번호 초기화"
+	},
+	"RESET_PASSWORD_PAGE" : {
+		"RESET" : {
+			"MSG"    : "비밀번호 초기화 링크를 메일로 보냈습니다",
+			"CONFIRM": "확인"
+		},
+		"ALERT" : {
+			"MSG"    : "이 이메일은 가입되어 있지 않습니다",
+			"CONFIRM": "확인"
+		}
+	},
+	"TABS" : {
+		"HOME"    :"집",
+		"DIARY"   :"일기",
+		"CONTACTS":"연락처",
+		"MEMO"    :"메모"
+	},
+	"CONTACT_LIST" : {
+		"TITLE" : "연락처",
+		"SEARCH": "검색",
+		"CANCEL": "취소",
+		"DELETE": {
+			"TITLE"  : "연락처 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"CONTACT_DETAIL" : {
+		"TITLE"   : "연락처",
+		"MESSAGES": "메시지",
+		"PHONE"   : "전화",
+		"DELETE"   : {
+			"TITLE"  : "연락처 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"CONTACT_EDIT" : {
+    "TITLE_CREATE" : "새 연락처",
+		"TITLE_UPDATE" : "연락처 수정",
+		"NAME"   : {
+			"LABEL"  : "이름",
+			"ENTER"  : "이름",
+			"ERR_MSG": "이름 입력"
+		},
+		"PHONE" : {
+			"LABEL"  : "전화번호",
+			"ENTER"  : "전화번호",
+			"ERR_MSG": "전화번호 입력"
+		}
+	},
+	"MEMO_LIST" : {
+		"TITLE" : "메모",
+		"SEARCH": "검색",
+		"CANCEL": "취소",
+		"DELETE"    : {
+			"TITLE"  : "메모 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"MEMO_ITEM_EDIT" : {
+		"TITLE"     : "",
+		"INPUT_ITEM": "항목 입력",
+		"DELETE"    : {
+			"TITLE"  : "항목 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"MEMO_EDIT" : {
+		"TITLE_CREATE" : "새 메모",
+		"TITLE_UPDATE" : "메모 수정",
+		"LABEL"           : "주제",
+		"INPUT_MEMO_TITLE": "메모 주제",
+		"ERR_MSG"         : "메모 주제 입력"
+	},
+	"MEMO_DETAIL" : {
+		"NEW_ENTRY": "항목 추가",
+		"ERR_MSG"  : "항목 입력",
+		"DELETE"   : {
+			"TITLE"  : "항목 모두 삭제",
+			"MESSAGE": "확실합니까？",
+			"CONFIRM": "확인",
+			"CANCEL" : "취소"
+		}
+	},
+	"CONFIG_SERV" : {
+		"MESSAGE"          : "암호를 입력하십시오",
+		"TITLE"            : "터놓다",
+		"BTN_CONFIRM"      : "확인",
+		"BTN_CANCEL"       : "취소",
+		"ALERT_MSG_SUCCESS": "성공적으로 잠금 해제 됨",
+		"ALERT_MSG_ERROR"  : "로그인 실패. 이메일 또는 비밀번호가 틀립니다",
+		"BTN_ALERT"        : "확인"
+	}
+}

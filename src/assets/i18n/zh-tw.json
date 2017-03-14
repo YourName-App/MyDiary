@@ -18,7 +18,7 @@
 	"SUGGEST" : {
 		"TITLE"  : "建議",
 		"LABEL"  : "建議",
-		"CAUTION": "注意！你將發送訊息給三年後的作者",
+		"CAUTION": "",
 		"PROMPT" : "你的建議",
 		"ERR_MSG": "請輸入你的建議",
 		"SUBMIT" : "送出"
@@ -41,7 +41,7 @@
 		"YOUR_PASSWD"           : "你的密碼",
 		"AT_LEAST_6_CHARS"      : "密碼長度至少為 6 個字元",
 		"SUBMIT"                : "登入",
-		"FORGOT_PASSWD"         : "忘記密碼了 😓"
+		"FORGOT_PASSWD"         : "我忘記密碼了 😓"
 	},
   "LOGIN_PAGE" : {
 		"ALERT" : {
@@ -79,9 +79,6 @@
 			"MALE"  : "男",
 			"FEMALE": "女"
 		},
-		"LOCK": {
-			"LABEL" : "密碼鎖："
-		},
 		"CONFIRM": "確認",
 		"OK"     : "同意",
 		"CANCEL" : "取消"
@@ -90,7 +87,8 @@
 		"TITLE" : "語言",
 		"LABEL": "語言：",
 		"EN"   : "英文",
-		"CH"   : "中文"
+		"CH"   : "中文",
+		"KO"	 : "韓文"
 	},
 	"PIN_CONFIG_PAGE" : {
 		"TITLE"                  : "密碼鎖",
