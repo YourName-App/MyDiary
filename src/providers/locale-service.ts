@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from 'ng2-translate';
+import { Globalization } from 'ionic-native';
 
 export class TargetOnLocaleChange {
 	mapping  :string;
@@ -9,7 +10,7 @@ export class TargetOnLocaleChange {
 
 @Injectable()
 export class LocaleService {
-  //  update the locale of the rest of component subscribed
+  // update the locale of the rest of component subscribed
 	listToLocaleUpdate: TargetOnLocaleChange [] = [];
   userLocale: string = '';
 
@@ -25,14 +26,38 @@ export class LocaleService {
 	}
 
   fetchUserLocale(): Promise<string> {
-    return this.storage.get('userLocale')
-      .then(val => {
-        this.userLocale = (val != null && val.trim().length != 0) ? val : 'en';
-        return this.userLocale;
-      })
-      .catch(error => {
-        console.log(error);
-      })
+		return this.storage.get('userLocale')
+			.then(val => {
+				if (val === null || val.trim().length === 0) {
+					return Globalization.getPreferredLanguage()
+						.then(lang => {
+							let language: string = '';
+
+							if (lang.value === 'ko') {
+								this.storage.set('userLocale', 'ko');
+								language = 'ko';
+							} else if (lang.value.startsWith('zh')) {
+								this.storage.set('userLocale', 'zh-tw');
+								language = 'zh-tw';
+							} else {
+								this.storage.set('userLocale', 'en');
+								language = 'en';
+							}
+
+							return language;
+						})
+						.catch(error => {
+							console.log(error);
+							return 'en';
+						})
+				} else {
+					return val;
+				}
+			})
+			.catch(error => {
+				console.log(error);
+				return 'en';
+			})
   }
 
   getUserLocale(): string {

@@ -55,7 +55,8 @@
       "locator": "http://github.com/don/cordova-filechooser.git",
       "id": "com.megster.cordova.FileChooser"
     },
-    "cordova-plugin-filepath"
+    "cordova-plugin-filepath",
+    "cordova-plugin-globalization"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -11,7 +11,6 @@ export class ConfigService {
   userGender  : string = '';
   userAvatar  : string = '';
   userPin     : string = '';
-  userLocale  : string = '';
   pauseEmitted: string = 'Y';
   musicPlayed : boolean = false;
 
@@ -20,7 +19,6 @@ export class ConfigService {
     this.fetchUserGender();
     this.fetchUserAvatar();
     this.fetchUserPin();
-    this.fetchUserLocale();
   }
 
   fetchUserName(): Promise<string> {
@@ -70,17 +68,6 @@ export class ConfigService {
       })
   }
 
-  fetchUserLocale(): Promise<string> {
-    return this.storage.get('userLocale')
-      .then(val => {
-        this.userLocale = (val != null && val.trim().length != 0) ? val : 'en';
-        return this.userLocale;
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
   getUserName():string {
     return this.userName;
   }
@@ -105,10 +92,6 @@ export class ConfigService {
     return this.musicPlayed;
   }
 
-  getUserLocale(): string {
-    return this.userLocale;
-  }
-
   setUserName(name: string) {
     this.userName = name;
   }
@@ -123,10 +106,6 @@ export class ConfigService {
 
   setUserPin(pin: string) {
     this.userPin = pin;
-  }
-
-  setUserLocale(locale: string) {
-    this.userLocale = locale;
   }
 
   setPauseEmitted(pauseEmitted: string) {

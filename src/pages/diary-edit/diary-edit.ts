@@ -4,9 +4,10 @@ import { NavParams, ViewController, FabContainer } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
+import { LocaleService } from '../../providers/locale-service';
 import * as moment from 'moment';
 import 'moment/locale/zh-tw';
-import { LocaleService } from '../../providers/locale-service';
+import 'moment/locale/ko';
 
 @Component({
   selector: 'page-diary-edit',

@@ -20,7 +20,7 @@ export class LocaleConfigPage {
   }
 
   ionViewWillEnter() {
-    this.userLocale = this.configServ.getUserLocale();
+    this.userLocale = this.localeServ.getUserLocale();
     this.userGender = this.configServ.getUserGender();
     this.theme = this.userGender;
   }
@@ -29,8 +29,7 @@ export class LocaleConfigPage {
   updateLocale() {
     this.userLocale = (this.userLocale === null || this.userLocale.trim().length === 0) ? 'en' : this.userLocale.trim();
     this.storage.set('userLocale', this.userLocale);
-    this.configServ.setUserLocale(this.userLocale);
-
+    this.localeServ.setUserLocale(this.userLocale);
     this.localeServ.use(this.userLocale);
     this.localeServ.updatePageLocale();
 
