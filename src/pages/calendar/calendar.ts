@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as moment from 'moment';
-import 'moment/locale/zh-tw';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
+import * as moment from 'moment';
+import 'moment/locale/zh-tw';
+import 'moment/locale/ko';
 
 @Component({
   selector: 'page-calendar',
@@ -26,7 +27,7 @@ export class CalendarPage implements OnInit {
 
   ngOnInit() {
     //this.localeServ.subscribeCalendar(this.onLocaleChange);
-    this.init(this.configServ.getUserLocale());
+    this.init(this.localeServ.getUserLocale());
   }
 
   init(lang:string) {
