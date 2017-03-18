@@ -55,7 +55,7 @@ export class DiaryEditPage {
       content: ['', Validators.required]
     });
     
-    let lang = this.localeServ.getCalendarLang(); // 'zh-tw';
+    let lang = this.localeServ.getUserLocale();
     moment.locale(lang);
 
     if (this.diaryId) {
@@ -109,7 +109,7 @@ export class DiaryEditPage {
     let options = {
       date: moment(this.timestamp).toDate(),
       mode: 'datetime',
-      locale: this.localeServ.getCalendarLang(),    // 'zh-tw'
+      locale: this.localeServ.getUserLocale(),
       doneButtonLabel: '',                          // 確認
       cancelButtonLabel: '',                        // 取消
       is24Hour: true

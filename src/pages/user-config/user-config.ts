@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { File, FilePath, FileChooser, Entry, FileError } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { ConfigService } from '../../providers/config-service';
@@ -21,7 +21,7 @@ export class UserConfigPage {
 
   constructor(private navCtrl: NavController, 
     private storage: Storage, private configServ: ConfigService,
-    private localeServ: LocaleService, private toastCtrl: ToastController) {
+    private localeServ: LocaleService) {
   }
 
   ionViewWillEnter() {
@@ -70,26 +70,15 @@ export class UserConfigPage {
               })
               .catch((error: FileError) => {
                 this.userAvatar = '';
-                this.toastMessage('COPY_ERROR:' + error.message);
+                console.log('COPY_ERROR:' + error.message);
               });
           })
           .catch((error) => {
-            this.toastMessage('RESOLVE_ERROR:' + error);
+            console.log('RESOLVE_ERROR:' + error);
           });
       })
       .catch((error) => {
-        this.toastMessage('OPEN_ERROR:' + error);
+        console.log('OPEN_ERROR:' + error);
       });
-  }
-
-  private toastMessage(msg: string) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'middle',
-      dismissOnPageChange: true
-    });
-
-    toast.present();
   }
 }

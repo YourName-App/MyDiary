@@ -26,7 +26,6 @@ export class CalendarPage implements OnInit {
   }
 
   ngOnInit() {
-    //this.localeServ.subscribeCalendar(this.onLocaleChange);
     this.init(this.localeServ.getUserLocale());
   }
 
@@ -44,9 +43,5 @@ export class CalendarPage implements OnInit {
 
   ionViewWillEnter() {
     this.theme = this.configServ.getUserGender();
-  }
-
-  onLocaleChange(lang:string) {
-    this.init(this.localeServ.getCalendarLang());
   }
 }

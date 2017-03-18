@@ -14,14 +14,11 @@ export class LocaleService {
 	listToLocaleUpdate: TargetOnLocaleChange [] = [];
   userLocale: string = '';
 
-	onCalendarLocaleChange:() => void = () => { };
-
 	constructor(public translate: TranslateService, private storage: Storage) {
     this.fetchUserLocale().then(userLocale => {
       this.userLocale = userLocale;
       translate.setDefaultLang(this.userLocale);
       this.updatePageLocale();
-      this.onCalendarLocaleChange();
     });
 	}
 
@@ -97,23 +94,5 @@ export class LocaleService {
 		this.translate.get(mapping).subscribe((value: string) => {
 			update(value);
 		});
-	}
-
-	subscribeCalendar(onLocaleChange:(locale:string) => void) {
-		this.onCalendarLocaleChange = () => {
-			onLocaleChange(this.translate.currentLang);
-		}
-	}
-
-	localizeCalendar(onLocaleChange:(locale:string) => void) {
-		onLocaleChange(this.translate.currentLang);
-	}
-
-	getCalendarLang(){
-		return this.getCurrentLang();
-	}
-
-	getCurrentLang() {
-		return this.translate.currentLang;
 	}
 }
