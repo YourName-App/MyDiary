@@ -13,7 +13,7 @@
 	"LANDING" : {
 		"LOGIN"          : "登入",
 		"SIGNUP"         : "註冊",
-		"ANONYMOUS_LOGIN": "我要匿名使用 😜"
+		"ANONYMOUS_LOGIN": "不告訴你！我要匿名使用 😜"
 	},
 	"SUGGEST" : {
 		"TITLE"  : "建議",

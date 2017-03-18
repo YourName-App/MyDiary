@@ -17,7 +17,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input class="diary-day" text-right readonly value={{diary.day}}></ion-input>
+        <ion-input class="diary-day" text-right readonly value="{{diary.day | chineseDay:'medium'}}"></ion-input>
       </ion-col>
       <ion-col>
         <ion-input class="diary-time" text-left readonly value={{diary.time}}></ion-input>

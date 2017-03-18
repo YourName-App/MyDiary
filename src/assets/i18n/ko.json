@@ -1,8 +1,8 @@
 {
 	"YOUR_NAME"    : "당신의 이름은?",
 	"TITLE"        : "메뉴",
-	"ENV"          : "체계",
-	"MISC"         : "여러 가지 잡다한",
+	"ENV"          : "시스템",
+	"MISC"         : "기타",
 	"ACCOUNT"      : "계정",
 	"LANDING_TITLE": "당신의 이름은？",
 	"HOME" : {
@@ -13,7 +13,7 @@
 	"LANDING" : {
 		"LOGIN"          : "로그인",
 		"SIGNUP"         : "회원가입",
-		"ANONYMOUS_LOGIN": "게스트로 로그인 😜"
+		"ANONYMOUS_LOGIN": "가입하지 않고 로그인 😜"
 	},
 	"SUGGEST" : {
 		"TITLE"  : "제안",
@@ -41,7 +41,7 @@
 		"YOUR_PASSWD"           : "당신의 비밀번호는",
 		"AT_LEAST_6_CHARS"      : "최소 6자 이상의 비밀번호를 입력해 주세요",
 		"SUBMIT"                : "로그인",
-		"FORGOT_PASSWD"         : "암호 까먹었다 😓"
+		"FORGOT_PASSWD"         : "비밀번호를 잊어버렸습니다 😓"
 	},
   "LOGIN_PAGE" : {
 		"ALERT" : {
@@ -76,7 +76,7 @@
 		},
 		"GENDER" : {
 			"LABEL" : "성별：",
-			"MALE"  : "남성",
+			"MALE"  : "남자",
 			"FEMALE": "여자"
 		},
 		"CONFIRM": "확인",
@@ -87,7 +87,7 @@
 		"TITLE" : "언어",
 		"LABEL": "언어：",
 		"EN"   : "영어",
-		"CH"   : "중국말",
+		"CH"   : "중국어",
 		"KO"	 : "한국어"
 	},
 	"PIN_CONFIG_PAGE" : {
