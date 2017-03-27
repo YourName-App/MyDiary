@@ -30,7 +30,6 @@ export class LocaleConfigPage {
     this.userLocale = (this.userLocale === null || this.userLocale.trim().length === 0) ? 'en' : this.userLocale.trim();
     this.storage.set('userLocale', this.userLocale);
     this.localeServ.setUserLocale(this.userLocale);
-    this.localeServ.use(this.userLocale);
     this.localeServ.updatePageLocale();
 
     this.navCtrl.setRoot(HomePage);
