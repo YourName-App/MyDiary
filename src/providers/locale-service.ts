@@ -3,15 +3,14 @@ import { Storage } from '@ionic/storage';
 import { TranslateService } from 'ng2-translate';
 import { Globalization } from 'ionic-native';
 
-export class TargetOnLocaleChange {
-	mapping  :string;
-	update   :(value:string)=> void;
+class TargetOnLocaleChange {
+	mapping: string;
+	update: (value: string) => void;
 }
 
 @Injectable()
 export class LocaleService {
-  // update the locale of the rest of component subscribed
-	listToLocaleUpdate: TargetOnLocaleChange [] = [];
+	listToLocaleUpdate: TargetOnLocaleChange[] = [];
   userLocale: string = '';
 
 	constructor(public translate: TranslateService, private storage: Storage) {
@@ -63,23 +62,20 @@ export class LocaleService {
 
   setUserLocale(locale: string) {
     this.userLocale = locale;
+		this.translate.use(locale);
   }
   
-	subscribeTargetOnLocaleChange(target:TargetOnLocaleChange) {
+	subscribeTargetOnLocaleChange(target: TargetOnLocaleChange) {
 		this.listToLocaleUpdate.push(target);
 		this.localize(target.mapping, target.update);
 	}
 
-	subscribe(mapping:string, update:(value:string) => void) {
+	subscribe(mapping:string, update:(value: string) => void) {
 		var target = new TargetOnLocaleChange();
 		target.mapping = mapping;
 		target.update = update;
 		this.listToLocaleUpdate.push(target);
 		this.localize(mapping, update);
-	}
-
-	use(locale:string) {
-		this.translate.use(locale);
 	}
 
 	updatePageLocale() {
@@ -90,7 +86,7 @@ export class LocaleService {
 		}
 	}
 
-	localize(mapping:string, update:(value:string) => void) {
+	localize(mapping:string, update:(value: string) => void) {
 		this.translate.get(mapping).subscribe((value: string) => {
 			update(value);
 		});
