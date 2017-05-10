@@ -3,8 +3,8 @@ import { NavController, NavParams, ViewController, AlertController } from 'ionic
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
-import { CallNumber } from 'ionic-native';
-import { SocialSharing } from 'ionic-native';
+import { CallNumber } from '@ionic-native/call-number';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { LocaleService } from '../../providers/locale-service';
 
 @Component({
@@ -22,7 +22,8 @@ export class ContactDetailPage {
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private viewCtrl: ViewController, private alertCtrl: AlertController,
     private contactServ: ContactService, private configServ: ConfigService,
-    private localeServ: LocaleService) {
+    private localeServ: LocaleService, private socialSharing: SocialSharing,
+    private callNumber: CallNumber) {
 
     this.contactServ.getContact(this.navParams.get('contactId')).subscribe((contactSnap) => {
       this.contact = contactSnap;
@@ -74,10 +75,10 @@ export class ContactDetailPage {
   }
 
   sendSms(phone: string): void {
-    SocialSharing.shareViaSMS(this.smsMsg, phone);
+    this.socialSharing.shareViaSMS(this.smsMsg, phone);
   }
 
   dial(phone: string): void {
-    CallNumber.callNumber(phone, true);
+    this.callNumber.callNumber(phone, true);
   }
 }

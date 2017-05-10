@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SocialSharing } from 'ionic-native';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
 
@@ -17,8 +17,8 @@ export class SuggestionPage {
   submitAttempt: boolean = false;
 
   constructor(private toastCtrl: ToastController, private formBuilder: FormBuilder,
-    private configServ: ConfigService,
-    private localeServ: LocaleService) {
+    private configServ: ConfigService, private localeServ: LocaleService,
+    private socialSharing: SocialSharing) {
 
     this.suggestForm = formBuilder.group({
       suggest: ['', Validators.required]
@@ -39,11 +39,11 @@ export class SuggestionPage {
     if (!this.suggestForm.valid) {
       console.log(this.suggestForm.value);
     } else {
-      SocialSharing.canShareViaEmail()
+      this.socialSharing.canShareViaEmail()
         .then(() => {
           let subject:string;
           this.localeServ.localize('SUGGEST_PAGE.SEND.SUBJECT', (value:string) => {subject = value;});
-          SocialSharing.shareViaEmail(this.suggestForm.value.suggest, subject, ['yourname.ionic.app@gmail.com']);
+          this.socialSharing.shareViaEmail(this.suggestForm.value.suggest, subject, ['yourname.ionic.app@gmail.com']);
         })
         .catch(() => {
           let alert = '';          // 你的手機不支援此功能

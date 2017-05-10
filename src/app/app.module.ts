@@ -1,5 +1,20 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { CallNumber } from '@ionic-native/call-number';
+import { Contacts } from '@ionic-native/contacts';
+import { DatePicker } from '@ionic-native/date-picker';
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { Globalization } from '@ionic-native/globalization';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { PinDialog } from '@ionic-native/pin-dialog';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 
@@ -43,7 +58,9 @@ import { LocaleService } from '../providers/locale-service';
 import { ChineseDay } from '../pipes/chinese-day';
 
 // Import AF2 Module
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // AF2 Settings (test env)
 export const firebaseConfig = {
@@ -53,11 +70,6 @@ export const firebaseConfig = {
   storageBucket: "mydiary-1b17a.appspot.com",
   messagingSenderId: "647185474664"
 };
-
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
-}
 
 // Import internationlization module
 import { Http } from '@angular/http';
@@ -98,11 +110,13 @@ export function createTranslateLoader(http: Http) {
     ChineseDay
   ],
   imports: [
-    // Set the whole app in iOS's style
+    BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {mode: 'ios', backButtonText: ''}),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-    // Internationalization setup
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (createTranslateLoader),
@@ -138,13 +152,24 @@ export function createTranslateLoader(http: Http) {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Storage,
     AuthService,
     DiaryService,
     MemoService,
     ContactService,
     ConfigService,
-    LocaleService
+    LocaleService,
+    CallNumber,
+    Contacts,
+    DatePicker,
+    File,
+    FileChooser,
+    FilePath,
+    Globalization,
+    NativeAudio,
+    PinDialog,
+    SocialSharing,
+    StatusBar,
+    SplashScreen
   ]
 })
 export class AppModule {}

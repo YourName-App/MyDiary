@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NavParams, ViewController } from 'ionic-angular';
 import { IContact, ContactService } from '../../providers/contact-service';
 import { ConfigService } from '../../providers/config-service';
-import { Contacts } from 'ionic-native';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 import { LocaleService } from '../../providers/locale-service';
 
 @Component({
@@ -26,8 +26,8 @@ export class ContactEditPage {
 
   constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private contactServ: ContactService, private formBuilder: FormBuilder,
-    private configServ: ConfigService,
-    private localeServ: LocaleService) {
+    private configServ: ConfigService, private localeServ: LocaleService,
+    private contacts: Contacts) {
 
     this.contactId = this.navParams.get('contactId') || '';
     this.inputContact = this.navParams.get('contact') || {};
@@ -97,7 +97,7 @@ export class ContactEditPage {
   }
 
   pickContact() {
-    Contacts.pickContact()
+    this.contacts.pickContact()
       .then(contact => {
         this.contactForm.controls['name'].patchValue(contact.displayName);
         this.contactForm.controls['phone'].patchValue(contact.phoneNumbers[0].value);

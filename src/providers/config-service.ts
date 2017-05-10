@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
-import { PinDialog } from 'ionic-native';
+import { PinDialog } from '@ionic-native/pin-dialog';
 import { LocaleService } from '../providers/locale-service';
 
 @Injectable()
@@ -14,7 +14,9 @@ export class ConfigService {
   pauseEmitted: string = 'Y';
   musicPlayed : boolean = false;
 
-  constructor(private storage: Storage, private toastCtrl: ToastController, private localeServ: LocaleService) {
+  constructor(private storage: Storage, private toastCtrl: ToastController,
+    private localeServ: LocaleService, private pinDialog: PinDialog) {
+
     this.fetchUserName();
     this.fetchUserGender();
     this.fetchUserAvatar();
@@ -133,7 +135,7 @@ export class ConfigService {
     this.localeServ.localize('CONFIG_SERV.ALERT_MSG_ERROR',    (value:string) => { alertMessageError   = value; });
 
     if (this.getPauseEmitted() === 'Y' && this.getUserPin().length >= 4) {
-      PinDialog.prompt(message, title, [btnConfirm, btnCancel])
+      this.pinDialog.prompt(message, title, [btnConfirm, btnCancel])
       .then((result: any) => {
         if (result.buttonIndex === 1) {
           if (result.input1 === this.getUserPin()) {

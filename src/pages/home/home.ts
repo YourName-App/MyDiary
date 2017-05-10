@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { NativeAudio } from 'ionic-native';
+import { NativeAudio } from '@ionic-native/native-audio';
 import { DiaryPage } from '../../pages/diary/diary';
 import { ContactListPage } from '../../pages/contact-list/contact-list';
 import { MemoListPage } from '../../pages/memo-list/memo-list';
@@ -20,7 +20,8 @@ export class HomePage implements OnInit {
   pauseEmitted: string;
   musicPlayed: boolean;
 
-  constructor(private navCtrl: NavController, private configServ: ConfigService)  {
+  constructor(private navCtrl: NavController, private configServ: ConfigService,
+    private nativeAudio: NativeAudio)  {
     this.preloadMusic();
   }
 
@@ -70,7 +71,7 @@ export class HomePage implements OnInit {
   }
 
   preloadMusic() {
-    NativeAudio.preloadComplex('sparkle', 'assets/audio/sparkle-piano.mp3', 1, 1, 0).then(
+    this.nativeAudio.preloadComplex('sparkle', 'assets/audio/sparkle-piano.mp3', 1, 1, 0).then(
       () => {console.log('Preload audio');},
       (err) => {console.log(err);}
     );
@@ -79,7 +80,7 @@ export class HomePage implements OnInit {
   playMusic() {
     this.musicPlayed = true;
     this.configServ.setMusicPlayed(this.musicPlayed);
-    NativeAudio.loop('sparkle').then(
+    this.nativeAudio.loop('sparkle').then(
       () => {console.log('Play audio');},
       (err) => {console.log(err);}
     );
@@ -88,7 +89,7 @@ export class HomePage implements OnInit {
   stopMusic() {
     this.musicPlayed = false;
     this.configServ.setMusicPlayed(this.musicPlayed);
-    NativeAudio.stop('sparkle').then(
+    this.nativeAudio.stop('sparkle').then(
       () => {console.log('Stop audio');},
       (err) => {console.log(err);}
     );

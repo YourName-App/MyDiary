@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from 'ng2-translate';
-import { Globalization } from 'ionic-native';
+import { Globalization } from '@ionic-native/globalization';
 
 class TargetOnLocaleChange {
 	mapping: string;
@@ -13,7 +13,9 @@ export class LocaleService {
 	listToLocaleUpdate: TargetOnLocaleChange[] = [];
   userLocale: string = '';
 
-	constructor(public translate: TranslateService, private storage: Storage) {
+	constructor(public translate: TranslateService, private storage: Storage,
+	  private globalization: Globalization) {
+
     this.fetchUserLocale().then(userLocale => {
       this.userLocale = userLocale;
       translate.setDefaultLang(this.userLocale);
@@ -25,7 +27,7 @@ export class LocaleService {
 		return this.storage.get('userLocale')
 			.then(val => {
 				if (val === null || val.trim().length === 0) {
-					return Globalization.getPreferredLanguage()
+					return this.globalization.getPreferredLanguage()
 						.then(lang => {
 							let language: string = '';
 

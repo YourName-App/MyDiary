@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, App, ToastController } from 'ionic-angular';
-import { PinDialog } from 'ionic-native';
+import { PinDialog } from '@ionic-native/pin-dialog';
 import { Storage } from '@ionic/storage';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
@@ -17,7 +17,8 @@ export class PinConfigPage {
 
   constructor(private navCtrl: NavController, private appCtrl: App,
     private configServ: ConfigService, private toastCtrl: ToastController,
-    private storage: Storage, private localeServ:LocaleService) {
+    private storage: Storage, private localeServ:LocaleService,
+    private pinDialog: PinDialog) {
 
     this.subscribeLocaleUpdate();
   }
@@ -36,7 +37,7 @@ export class PinConfigPage {
 
   addPin() {
     //PinDialog.prompt('請輸入至少4個數字的密碼', '設定密碼', ['確認', '取消'])
-    PinDialog.prompt(this.addPinPromptMsg, this.addPinTitle, [this.addPinConfirmBtn, this.addPinCancelBtn])
+    this.pinDialog.prompt(this.addPinPromptMsg, this.addPinTitle, [this.addPinConfirmBtn, this.addPinCancelBtn])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
         if (result.input1 !== null && result.input1.trim().length >= 4) {
@@ -57,7 +58,7 @@ export class PinConfigPage {
 
   confirmPin(pin: string) {
     //PinDialog.prompt('請重複輸入密碼', '確認密碼', ['確認', '取消'])
-    PinDialog.prompt(this.ConfirmPinPromptMsg, this.ConfirmPinTitle, [this.ConfirmPinConfirmBtn, this.ConfirmPinCancelBtn])
+    this.pinDialog.prompt(this.ConfirmPinPromptMsg, this.ConfirmPinTitle, [this.ConfirmPinConfirmBtn, this.ConfirmPinCancelBtn])
     .then((result: any) => {
       if (result.buttonIndex === 1) {
         if (result.input1 === pin) {
@@ -83,7 +84,7 @@ export class PinConfigPage {
 
   removePin() {
     //PinDialog.prompt('請輸入密碼', '關閉密碼', ['確認', '取消'])
-    PinDialog.prompt(this.RemovePinPromptMsg,this.RemovePinTitle, [this.RemovePinConfirmBtn, this.RemovePinCancelBtn])
+    this.pinDialog.prompt(this.RemovePinPromptMsg,this.RemovePinTitle, [this.RemovePinConfirmBtn, this.RemovePinCancelBtn])
     .then((result: any) => {
       if (result.input1 === this.configServ.getUserPin()) {
         this.storage.set('userPin', '');

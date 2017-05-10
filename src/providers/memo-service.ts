@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+
 
 @Injectable()
 export class MemoService {
@@ -9,10 +11,10 @@ export class MemoService {
   memoDetail: FirebaseObjectObservable<any>;
   userId: string;
 
-  constructor(public af: AngularFire) {
-    this.af.auth.subscribe(auth => {
+  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
+    this.afAuth.authState.subscribe(auth => {
       if (auth) {
-        this.memoList = af.database.list(`/userProfile/${auth.uid}/memoList`);
+        this.memoList = this.afDatabase.list(`/userProfile/${auth.uid}/memoList`);
         this.userId = auth.uid;
       }
     });
@@ -26,7 +28,7 @@ export class MemoService {
   // Get a specific memo from the list
   getMemo(memoId: string) {
     return this.memoDetail = 
-      this.af.database.object(`/userProfile/${this.userId}/memoList/${memoId}`);
+      this.afDatabase.object(`/userProfile/${this.userId}/memoList/${memoId}`);
   }
 
   // Create a new memo
@@ -47,28 +49,28 @@ export class MemoService {
   // Get the full list of items
   getItemList(memoId: string) {
     return this.itemList = 
-      this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`);
+      this.afDatabase.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`);
   }
 
   // Get a specific item from the list
   getItem(memoId: string, itemId: string) {
     return this.memoDetail = 
-      this.af.database.object(`/userProfile/${this.userId}/memoList/${memoId}/itemList/${itemId}`);
+      this.afDatabase.object(`/userProfile/${this.userId}/memoList/${memoId}/itemList/${itemId}`);
   }
 
   // Create a new memo item
   createItem(memoId: string, item: any) {
-    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).push(item);
+    return this.afDatabase.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).push(item);
   }
 
   // Update an existing memo item
   updateItem(memoId: string, itemId: string, entry: string, checked?: boolean) {
-    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`)
+    return this.afDatabase.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`)
       .update(itemId, {entry, checked});
   }
 
   // Delete an existing memo item
   deleteItem(memoId: string, itemId: string) {
-    return this.af.database.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).remove(itemId);
+    return this.afDatabase.list(`/userProfile/${this.userId}/memoList/${memoId}/itemList`).remove(itemId);
   }
 }

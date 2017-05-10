@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NavParams, ViewController, FabContainer } from 'ionic-angular';
-import { DatePicker } from 'ionic-native';
+import { DatePicker } from '@ionic-native/date-picker';
 import { IDiary, DiaryService } from '../../providers/diary-service';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
@@ -40,7 +40,7 @@ export class DiaryEditPage {
   constructor(private navParams: NavParams, private viewCtrl: ViewController,
     private diaryServ: DiaryService, private formBuilder: FormBuilder,
     private element: ElementRef, private configServ: ConfigService,
-    private localeServ:LocaleService) {
+    private localeServ:LocaleService, private datePicker: DatePicker) {
 
     this.diaryId = this.navParams.get('diaryId') || '';
     this.inputDiary = this.navParams.get('diary') || {};
@@ -118,7 +118,7 @@ export class DiaryEditPage {
     this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.DONE',   (value:string)=>{ options.doneButtonLabel   = value; });
     this.localeServ.localize('DIARY_EDIT_PAGE.OPEN_DATE_PICKER.CANCEL', (value:string)=>{ options.cancelButtonLabel = value; });
 
-    DatePicker.show(options).then(
+    this.datePicker.show(options).then(
       pickDate => {
         if (pickDate !== null && pickDate !== undefined) {
           this.timestamp = moment(pickDate).format();

@@ -1,8 +1,6 @@
 {
   "name": "myDiary",
   "app_id": "9c9d24fa",
-  "v2": true,
-  "typescript": true,
   "gulpStartupTasks": [
     "sass",
     "watch"
@@ -11,5 +9,6 @@
     "www/**/*",
     "!www/lib/**/*",
     "!www/**/*.map"
-  ]
+  ],
+  "type": "ionic-angular"
 }

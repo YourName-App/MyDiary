@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 export interface IContact {
   name: string;
@@ -14,10 +15,10 @@ export class ContactService {
   contactDetail: FirebaseObjectObservable<any>;
   userId: string;
 
-  constructor(public af: AngularFire) {
-    this.af.auth.subscribe(auth => {
+  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
+    this.afAuth.authState.subscribe(auth => {
       if (auth) {
-        this.contactList = af.database.list(`/userProfile/${auth.uid}/contactList`);
+        this.contactList = this.afDatabase.list(`/userProfile/${auth.uid}/contactList`);
         this.userId = auth.uid;
       }
     });
@@ -31,7 +32,7 @@ export class ContactService {
   // Get a specific contact from the list
   getContact(contactId: string) {
     return this.contactDetail = 
-      this.af.database.object(`/userProfile/${this.userId}/contactList/${contactId}`);
+      this.afDatabase.object(`/userProfile/${this.userId}/contactList/${contactId}`);
   }
 
   // Create a new contact

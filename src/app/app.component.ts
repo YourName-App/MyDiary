@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { Splashscreen, StatusBar } from 'ionic-native';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Import pages
 import { LandingPage } from '../pages/landing/landing';
@@ -17,7 +18,7 @@ import { ConfigService } from '../providers/config-service';
 import { LocaleService } from '../providers/locale-service'
 
 // Import AF2
-import { AngularFire } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 export interface PageInterface {
   title: string;
@@ -53,7 +54,8 @@ export class MyApp {
     { title: '登出', component: LandingPage, icon: 'log-out', logsOut: true }
   ];
 
-  constructor(private platform: Platform, private af: AngularFire,
+  constructor(private platform: Platform, private statusBar: StatusBar,
+    private splashScreen: SplashScreen, private afAuth: AngularFireAuth,
     private authServ: AuthService, private configServ: ConfigService,
     private localeServ:LocaleService) {
 
@@ -67,23 +69,24 @@ export class MyApp {
       this.localeServ.subscribe('PAGE.ACCOUNT.LOGOUT',   (value:string) => {this.accountPages[0].title = value; });
 
     // Listen for authentication
-    af.auth.subscribe((user) => {
+    const authListener = afAuth.authState.subscribe(user => {
       if (user) {
         this.rootPage = HomePage;
+        // authListener.unsubscribe();
       } else {
         this.rootPage = LandingPage;
+        //authListener.unsubscribe(); 
       }
 
       localeServ.updatePageLocale();
-
     }, (error) => {
-      console.log(error);
+      console.log(error);  
     });
 
     platform.ready().then(() => {
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      statusBar.styleDefault();
+      splashScreen.hide();
       this.configServ.setMusicPlayed(false);
 
       // Listen for pause event (emits when the native platform puts the application into the background)

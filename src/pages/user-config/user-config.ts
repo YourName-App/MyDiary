@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { File, FilePath, FileChooser, Entry, FileError } from 'ionic-native';
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
 import { Storage } from '@ionic/storage';
 import { ConfigService } from '../../providers/config-service';
 import { LocaleService } from '../../providers/locale-service';
@@ -19,9 +21,10 @@ export class UserConfigPage {
   userAvatar: string;
   avatarFromFile: boolean = false;
 
-  constructor(private navCtrl: NavController, 
-    private storage: Storage, private configServ: ConfigService,
-    private localeServ: LocaleService) {
+  constructor(private navCtrl: NavController, private storage: Storage, 
+    private configServ: ConfigService, private localeServ: LocaleService,
+    private file: File, private fileChooser: FileChooser,
+    private filePath: FilePath) {
   }
 
   ionViewWillEnter() {
@@ -57,18 +60,18 @@ export class UserConfigPage {
   }
 
   chooseAvatar() {
-    FileChooser.open()
+    this.fileChooser.open()
       .then(uri => {
-        FilePath.resolveNativePath(uri)
+        this.filePath.resolveNativePath(uri)
           .then(nativePath => {
             const filePath = nativePath.replace(/[^\/]*$/, '');
             const fileName = nativePath.replace(/^.*[\\\/]/, '');
         
-            File.copyFile(filePath, fileName, cordova.file.dataDirectory, fileName)
-              .then((data: Entry) => {
+            this.file.copyFile(filePath, fileName, cordova.file.dataDirectory, fileName)
+              .then((data) => {
                 this.userAvatar = data.toURL();
               })
-              .catch((error: FileError) => {
+              .catch((error) => {
                 this.userAvatar = '';
                 console.log('COPY_ERROR:' + error.message);
               });

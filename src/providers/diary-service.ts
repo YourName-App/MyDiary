@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { IDiary } from '../models/diary';
 
 export interface IDiary {
@@ -26,10 +27,10 @@ export class DiaryService {
   diaryDetail: FirebaseObjectObservable<any>;
   userId: string;
 
-  constructor(public af: AngularFire) {
-    this.af.auth.subscribe(auth => {
+  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
+    this.afAuth.authState.subscribe(auth => {
       if (auth) {
-        this.diaryList = af.database.list(`/userProfile/${auth.uid}/diaryList`);
+        this.diaryList = this.afDatabase.list(`/userProfile/${auth.uid}/diaryList`);
         this.userId = auth.uid;
       }
     });
@@ -43,7 +44,7 @@ export class DiaryService {
   // Get a specific contact from the list
   getDiary(diaryId: string) {
     return this.diaryDetail = 
-      this.af.database.object(`/userProfile/${this.userId}/diaryList/${diaryId}`);
+      this.afDatabase.object(`/userProfile/${this.userId}/diaryList/${diaryId}`);
   }
 
   // Create a new contact
