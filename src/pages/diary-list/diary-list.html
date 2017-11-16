@@ -1,7 +1,7 @@
 <ion-card *ngFor="let diary of _diaryList | async">
   <ion-list>
     <ion-item-sliding #slidingItem>
-      <ion-item tappable (click)="showDiaryDetail(diary.$key)">
+      <ion-item tappable (click)="showDiaryDetail(diary.$key)" (press)="deleteDiary(diary.$key, slidingItem)">
         <div class="diary-div-left" item-left text-center>
           <h1 class="diary-date"
             [class.male]="_theme==='male'"
